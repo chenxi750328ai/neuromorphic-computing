@@ -1,0 +1,7 @@
+.env
+.venv/
+data/
+runs/
+reports/cron.log
+*.pyc
+__pycache__/

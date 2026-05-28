@@ -1,0 +1,4 @@
+# Phase 1: MNIST SNN simulation (陈正共)
+torch>=2.0.0
+torchvision>=0.15.0
+snntorch>=0.7.0

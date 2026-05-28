@@ -1,0 +1,2 @@
+# 每天 09:00（WSL 机器本地时间）推送进展（请 crontab -e 自行合并）
+# 0 9 * * * . $HOME/.profile; export NEUROMORPHIC_FEISHU_WEBHOOK='https://open.feishu.cn/open-apis/bot/v2/hook/你的key'; /usr/bin/python3 /home/cx/neuromorphic-computing/scripts/daily_progress_report.py >> /home/cx/neuromorphic-computing/reports/cron.log 2>&1
