@@ -57,8 +57,8 @@ neuromorphic-computing/
 
 | 阶段 | 内容 | 状态 |
 |------|------|------|
-| **Phase 1** | MNIST + SNN 仿真（训练/评估） | **首跑完成**（待 TR1 签字后固化基线） |
-| Phase 2 | ANN 基线 + 与 SNN 对比表 | 未开始 |
+| **Phase 1** | MNIST + SNN 仿真（训练/评估） | **首跑完成**（TR1 已通过，基线固化） |
+| Phase 2 | ANN 基线 + 与 SNN 对比表 | **首跑完成**（98.10%，对比表初稿） |
 | Phase 3 | 小样本 / 自学习 PoC | 未开始 |
 | Phase 4 | Atlas / FPGA 推理验证 | 未开始 |
 

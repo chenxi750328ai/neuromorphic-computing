@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "hooks": {
+    "sessionStart": [
+      {
+        "command": "python3 /home/cx/vcompany/scripts/neuromorphic-cursor-wake.py"
+      }
+    ],
+    "stop": [
+      {
+        "command": "python3 /home/cx/vcompany/scripts/neuromorphic-cursor-wake.py",
+        "loop_limit": 2
+      }
+    ]
+  }
+}

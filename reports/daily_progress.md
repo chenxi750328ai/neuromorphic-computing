@@ -1,5 +1,25 @@
 # 类脑计算项目 · 每日进展
 
+## 2026-05-30
+
+- **Phase2**：`train_mnist_ann.py` + `run_phase2.sh`；4090 首跑 **test acc 98.10%**（36s，10 epoch）。  
+- **对比**：`docs/phase2_snn_vs_ann.md`（SNN 96.97% vs ANN 98.10%）。  
+- **分支**：`feature/phase2-ann-baseline` 已 push，PR 待合并 `main`。  
+- **自驱**：项目级 hook + `neuro-drive-loop.sh`；看板文档经 vcompany 18766 代理 `/docs/neuromorphic-computing/`。
+
+## 2026-05-29
+
+- **计划**：每日计划文档 `docs/每日计划.md`；看板增加「计划+完成」分栏、Phase1 训练说明。  
+- **说明**：96.97% = 10 epoch **全部跑完**后的测试集准确率，不是没跑完。  
+- **待办**：Phase2 ANN 脚本（计划 05-30）。
+
+## 2026-05-28
+
+- **TR1**：总裁拍板通过（纪要 `docs/会议纪要_TR1总裁拍板_20260528.md`）。  
+- **Git**：独立仓 https://github.com/chenxi750328ai/neuromorphic-computing 首提 `957f6f2`。  
+- **看板**：TR1 可勾选、CDT UTF-8 阅读页。  
+- **待办**：Phase 2 ANN 基线；飞书 Webhook。
+
 ## 2026-05-27
 
 - **Phase 1 首跑**：`train_mnist_snn.py` 10 epoch，**test acc 96.97%**（4090），输出 `runs/20260527T092534Z/metrics.json`。  
