@@ -1,6 +1,6 @@
 # Phase 3 · 小样本学习需求草案（v0）
 
-> **负责人**：陈正共 · **状态**：草案，不启动开发直至 Phase2 合并 `main`  
+> **负责人**：陈正共 · **状态**：v0 本地已跑通（见 `phase3_fewshot_results.md`）  
 > **前置**：Phase1 SNN 96.97%、Phase2 ANN 98.10%（MNIST 全量训练基线）
 
 ## 1. 目标
@@ -13,7 +13,7 @@
 |----|------|
 | 数据集 | MNIST；训练集仅取每类 **K-shot**（如 K=1,5,10） |
 | 模型 | 先 **ANN MLP**（与 Phase2 同结构），再可选 SNN 对照 |
-| 方法 | 基线：从头训练小集；可选：冻结 backbone + 线性头 / 简单 meta-learning（v0.1） |
+| 方法 | **v0 已做**：从头训练（A）+ 全量 ANN 微调（B，5-shot **96.32%**）；v0.2：SNN 微调、meta-learning |
 | 指标 | test accuracy、与全量 98.10% 的 **gap**、训练耗时 |
 | 及格线（待定） | 例：5-shot 每类，test acc ≥85%（评审时冻结） |
 
