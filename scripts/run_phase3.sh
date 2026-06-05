@@ -36,6 +36,60 @@ print(f\"| {m['shots_per_class']} | {m['train_images']} | {m['test_accuracy']*10
     echo "| $K | — | — | — | ✗ | 无 metrics |" >> "$RESULTS"
   fi
 done
+SNN_CKPT="${SNN_CKPT:-$ROOT/runs/20260527T092534Z/checkpoint.pt}"
+ANN_CKPT="${ANN_CKPT:-$ROOT/runs/20260530T010904Z_ann/checkpoint.pt}"
+{
+  echo ""
+  echo "## SNN 小样本（类脑路线）"
+  echo ""
+  echo "| 方式 | K | test acc | 及格 | run_id |"
+  echo "|------|---|----------|------|--------|"
+} >> "$RESULTS"
+for MODE in scratch finetune; do
+  for K in 5 10; do
+    EXTRA=()
+    if [[ "$MODE" == "finetune" && -f "$SNN_CKPT" ]]; then
+      EXTRA=(--warm-start "$SNN_CKPT" --epochs 20)
+      LABEL="SNN微调"
+    else
+      EXTRA=(--epochs 30)
+      LABEL="SNN从头"
+      [[ "$MODE" == "finetune" ]] && continue
+    fi
+    "$PY" scripts/train_mnist_fewshot_snn.py --shots-per-class "$K" --pass-line 0.85 "${EXTRA[@]}" "$@" || true
+    RUN=$(ls -td "$ROOT"/runs/*_fewshot_snn_k"${K}" 2>/dev/null | head -1 || true)
+    if [[ -n "$RUN" && -f "$RUN/metrics.json" ]]; then
+      "$PY" -c "
+import json
+from pathlib import Path
+m = json.loads(Path('$RUN/metrics.json').read_text())
+ok = '✓' if m['pass_fewshot'] else '✗'
+print(f\"| $LABEL | {m['shots_per_class']} | {m['test_accuracy']*100:.2f}% | {ok} | \`{Path('$RUN').name}\` |\")
+" >> "$RESULTS"
+    fi
+  done
+done
+{
+  echo ""
+  echo "## ANN 小样本微调（对照）"
+  echo ""
+  echo "| K | test acc | run_id |"
+  echo "|---|----------|--------|"
+} >> "$RESULTS"
+for K in 5 10; do
+  if [[ -f "$ANN_CKPT" ]]; then
+    "$PY" scripts/train_mnist_fewshot.py -k "$K" --warm-start "$ANN_CKPT" --epochs 20 --pass-line 0.85 "$@" || true
+    RUN=$(ls -td "$ROOT"/runs/*_fewshot_k"${K}" 2>/dev/null | head -1 || true)
+    if [[ -n "$RUN" && -f "$RUN/metrics.json" ]]; then
+      "$PY" -c "
+import json
+from pathlib import Path
+m = json.loads(Path('$RUN/metrics.json').read_text())
+print(f\"| {m['shots_per_class']} | {m['test_accuracy']*100:.2f}% | \`{Path('$RUN').name}\` |\")
+" >> "$RESULTS"
+    fi
+  fi
+done
 {
   echo ""
   echo "基线：全量 ANN **98.10%** · 全量 SNN **96.97%**（见 \`phase2_snn_vs_ann.md\`）"

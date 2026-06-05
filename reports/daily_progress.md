@@ -1,11 +1,16 @@
 # 类脑计算项目 · 每日进展
 
+## 2026-06-05
+
+- **Phase3 SNN**：`train_mnist_fewshot_snn.py`；5-shot 微调 **89.23%**、10-shot **92.98%**（预训练 Phase1 ckpt）。  
+- **对照**：ANN 5-shot 微调 **96.32%**；从头训 SNN 仅 41%。  
+- **看板**：`neuromorphic-tr1.html` 增加 Phase3 专块；燃尽 Phase3 **active 70%**。  
+- **待办**：GitHub 恢复后 push；PR #1。
+
 ## 2026-06-04
 
-- **看板**：`vcompany/dashboard/neuromorphic-tr1.html` 已同步 Phase2（此前停在 05-29「今日」）。  
-- **燃尽**：`vcompany/data/neuromorphic-milestones.json` 更新至 06-04。  
-- **文档**：`docs/phase3_fewshot_requirements_draft.md`（Phase3 小样本 v0 草案）。  
-- **待办**：推送分支并 PR 合并 `main`；飞书 Webhook 仍可选。
+- **Phase3 ANN**：小样本脚本 + 全量微调实验；`phase3_fewshot_results.md`。  
+- **看板/燃尽**同步 Phase2。
 
 ## 2026-05-30
 
