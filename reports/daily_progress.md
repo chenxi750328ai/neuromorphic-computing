@@ -1,10 +1,17 @@
 # 类脑计算项目 · 每日进展
 
+## 2026-06-04
+
+- **看板**：`vcompany/dashboard/neuromorphic-tr1.html` 已同步 Phase2（此前停在 05-29「今日」）。  
+- **燃尽**：`vcompany/data/neuromorphic-milestones.json` 更新至 06-04。  
+- **文档**：`docs/phase3_fewshot_requirements_draft.md`（Phase3 小样本 v0 草案）。  
+- **待办**：推送分支并 PR 合并 `main`；飞书 Webhook 仍可选。
+
 ## 2026-05-30
 
 - **Phase2**：`train_mnist_ann.py` + `run_phase2.sh`；4090 首跑 **test acc 98.10%**（36s，10 epoch）。  
 - **对比**：`docs/phase2_snn_vs_ann.md`（SNN 96.97% vs ANN 98.10%）。  
-- **分支**：`feature/phase2-ann-baseline` 已 push，PR 待合并 `main`。  
+- **分支**：`feature/phase2-ann-baseline` 本地提交 e56e1b0，PR 待合并 `main`。  
 - **自驱**：项目级 hook + `neuro-drive-loop.sh`；看板文档经 vcompany 18766 代理 `/docs/neuromorphic-computing/`。
 
 ## 2026-05-29
