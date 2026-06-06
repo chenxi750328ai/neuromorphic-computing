@@ -1,5 +1,11 @@
 # 类脑计算项目 · 每日进展
 
+## 2026-06-06
+
+- **增强实验**：`train_mnist_fewshot_aug.py`；5-shot 从 66.84% → **69.70%**，10-shot 75.76% → 75.21%（增强仅微弱帮助，维持微调为首选）。  
+- **CDT 栈对齐**：`cdt_v1_stack_alignment.md`（CHARTER 长期方向 vs v1 实际栈，不再两套口径）。  
+- **GitHub**：已恢复 push。
+
 ## 2026-06-05
 
 - **Phase3 SNN**：`train_mnist_fewshot_snn.py`；5-shot 微调 **89.23%**、10-shot **92.98%**（预训练 Phase1 ckpt）。  
