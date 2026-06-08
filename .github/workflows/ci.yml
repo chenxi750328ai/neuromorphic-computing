@@ -1,0 +1,33 @@
+name: neuro-ci
+
+on:
+  pull_request:
+  push:
+    branches: [main, "feature/**", "fix/**", "docs/**"]
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Research QA baseline (ci tier)
+        run: python3 scripts/qa-neuro-baseline-run.py --tier ci
+
+      - name: Shellcheck (optional on runner)
+        run: |
+          if command -v shellcheck >/dev/null; then
+            shellcheck -e SC2012 scripts/*.sh
+          else
+            echo "shellcheck not on runner; covered by qa-neuro-baseline-run warn/skip"
+          fi

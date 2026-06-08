@@ -4,10 +4,49 @@
 
 本仓 **`chenxi750328ai/neuromorphic-computing`** 与 **`chenxi750328ai/agent-jianghu`** 并列，专责类脑计算工程与文档，不依赖父目录 `/home/cx` 的 git 状态。
 
+**流程轨道**：**研究项目（Research Track）** — IPD/QA 相对 vcompany 标准有 **裁剪**，见 [`docs/IPD-QA流程裁剪_待VP总裁批准.md`](docs/IPD-QA流程裁剪_待VP总裁批准.md)（须 VP 讨论 + 总裁批准生效）。
+
+---
+
+## 流程（裁剪版 · 五段）
+
+| 步骤 | 研究轨要求 |
+|------|------------|
+| **1. 设计** | Phase 需求/结论写 `docs/`；TR1 已 Go，Phase4 前补 TR2 轻评审 |
+| **2. 开发** | `feature/*`、`fix/*`、`docs/*` 分支 |
+| **3. 测试** | 本地 4090 手跑 + `runs/*/metrics.json`；**CI** 跑语法/冒烟（不跑全量训练） |
+| **4. QA** | VP 在 `docs/QA_验收记录_*.md` 写 **`VP QA: PASS`** |
+| **5. 合并** | `neuro-ci` 绿 + VP PASS + 总裁已批准裁剪方案 → PR 合 `main` |
+
+VP 讨论稿（vcompany）：[`vcompany/docs/03-ipd/类脑计算-QA流程裁剪_VP讨论稿.md`](../vcompany/docs/03-ipd/类脑计算-QA流程裁剪_VP讨论稿.md)
+
+---
+
 ## 分支
 
 - 禁止在本地 **`main`** 上堆叠未评审的日常提交；开发在 **`feature/*`**、**`fix/*`**、**`docs/*`** 完成。
 - 合并进 **`main`** 经 Pull Request（或总裁授权的 hotfix）。
+
+---
+
+## QA / CI 命令
+
+```bash
+# CI 层（每个 PR 必绿）
+python3 scripts/qa-neuro-baseline-run.py --tier ci
+
+# 合 main 前（须 VP 已在 QA 记录签字 PASS）
+python3 scripts/qa-neuro-baseline-run.py --tier all
+python3 scripts/qa-neuro-phase-signoff.py --check
+
+# 冒烟单测
+python3 -m unittest discover -s tests -p "test_*.py" -q
+```
+
+机读 gate：[`config/neuro-qa-gate-baseline.json`](config/neuro-qa-gate-baseline.json)  
+GitHub Actions：[`.github/workflows/ci.yml`](.github/workflows/ci.yml)
+
+---
 
 ## 提交说明（必须）
 
@@ -21,6 +60,8 @@
 ```text
 feat(phase1): MNIST SNN 训练脚本 [陈正共 · ChenZhengGong]
 ```
+
+---
 
 ## 推送凭证
 

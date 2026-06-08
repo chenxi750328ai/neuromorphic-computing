@@ -1,0 +1,77 @@
+{
+  "title": "类脑计算 · 研究项目 QA 门禁基线（VP 已确认 · 待总裁批准）",
+  "project": "neuromorphic-computing",
+  "track": "research",
+  "parentBaseline": "vcompany/data/qa-gate-baseline.json",
+  "tailoringDoc": "docs/IPD-QA流程裁剪_待VP总裁批准.md",
+  "baselinePath": "config/neuro-qa-gate-baseline.json",
+  "updated": "2026-06-08",
+  "owner": "陈正共 · ChenZhengGong",
+  "ciPolicy": "NO_TAILORING",
+  "ciPolicyNote": "总裁 2026-06-08：CI 不可裁剪；tier=ci 全 gate BLOCK；4090 全量训练手跑≠裁剪 CI",
+  "presidentPreReview": "2026-06-08",
+  "vpDiscussionStatus": "concluded",
+  "vpConclusion": "2026-06-08 陈小五-VP：5点全同意，CI不裁剪",
+  "gates": [
+    {
+      "id": "N-CI-SYNTAX",
+      "label": "Python 语法检查",
+      "tier": "ci",
+      "script": "scripts/qa-neuro-baseline-run.py",
+      "args": ["--only", "N-CI-SYNTAX"],
+      "owner": "陈正共",
+      "blockMerge": true,
+      "tailoring": "FORBIDDEN"
+    },
+    {
+      "id": "N-CI-SMOKE",
+      "label": "模型冒烟（无 MNIST 下载）",
+      "tier": "ci",
+      "script": "scripts/qa-neuro-baseline-run.py",
+      "args": ["--only", "N-CI-SMOKE"],
+      "owner": "陈正共",
+      "blockMerge": true,
+      "tailoring": "FORBIDDEN"
+    },
+    {
+      "id": "N-CI-SHELL",
+      "label": "Shellcheck 脚本",
+      "tier": "ci",
+      "script": "scripts/qa-neuro-baseline-run.py",
+      "args": ["--only", "N-CI-SHELL"],
+      "owner": "陈正共",
+      "blockMerge": true,
+      "tailoring": "FORBIDDEN"
+    },
+    {
+      "id": "N-CI-DOCS",
+      "label": "关键文档存在性",
+      "tier": "ci",
+      "script": "scripts/qa-neuro-doc-check.py",
+      "args": [],
+      "owner": "陈正共",
+      "blockMerge": true,
+      "tailoring": "FORBIDDEN"
+    },
+    {
+      "id": "N-PRE-MERGE-QA",
+      "label": "VP QA 阶段验收签字",
+      "tier": "pre_merge",
+      "script": "scripts/qa-neuro-phase-signoff.py",
+      "args": ["--check"],
+      "owner": "陈小五-VP",
+      "blockMerge": true,
+      "note": "研究轨：signoff 块 VP_QA: PASS + PRESIDENT: APPROVED"
+    },
+    {
+      "id": "N-PHASE-METRICS",
+      "label": "阶段指标归档",
+      "tier": "pre_merge",
+      "script": "scripts/qa-neuro-phase-signoff.py",
+      "args": ["--metrics"],
+      "owner": "陈正共",
+      "blockMerge": false,
+      "note": "WARN：runs/ 本地留档，不入库时手填 QA 记录"
+    }
+  ]
+}
