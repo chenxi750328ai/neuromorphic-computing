@@ -1,5 +1,13 @@
 # 类脑计算项目 · 每日进展
 
+## 2026-06-08
+
+- **VP**：陈小五-VP 确认 QA 裁剪（5 点全同意；**CI 不裁剪**）。  
+- **IPD/QA**：`neuro-ci` + `qa-neuro-baseline-run.py` + 裁剪方案 VP 签字栏已填。  
+- **待办**：提请总裁批准 → push PR #2（IPD/QA + Phase3）→ 总裁批准后 VP 补 QA signoff PASS。  
+
+## 2026-06-08（早）
+
 ## 2026-06-04
 
 - **看板**：`vcompany/dashboard/neuromorphic-tr1.html` 已同步 Phase2（此前停在 05-29「今日」）。  

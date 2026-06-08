@@ -50,6 +50,7 @@ python3 scripts/daily_progress_report.py
 ## 任务 2：需求分析 → 设计 → 开发 → 验证（阶段划分）
 
 1. **需求**：v0 [docs/requirements_v0.md](docs/requirements_v0.md) · **v1（评审基线）** [docs/requirements_v1.md](docs/requirements_v1.md)（**MNIST + Phase1 SNN 仿真**）。  
+2. **流程**：研究轨 IPD/QA 裁剪 [docs/IPD-QA流程裁剪_待VP总裁批准.md](docs/IPD-QA流程裁剪_待VP总裁批准.md) · CI：`python3 scripts/qa-neuro-baseline-run.py --tier ci`
 2. **设计**：训练/推理软件栈、数据与实验协议、多硬件分工（4090 / Atlas / FPGA）、能效与精度 KPI。  
 3. **开发**：在 WSL 内统一版本管理；昇腾与 FPGA 侧各自子目录与构建说明（后续补充）。  
 4. **验证**：可复现实验、基准任务（含小样本/自学习子集）、能耗与延迟测量；工业场景（如贴膜机）在 KPI 明确后作为场景验收之一。
