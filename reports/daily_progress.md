@@ -6,14 +6,22 @@
 - **IPD/QA**：`neuro-ci` + `qa-neuro-baseline-run.py` + 裁剪方案 VP 签字栏已填。  
 - **待办**：提请总裁批准 → push PR #2（IPD/QA + Phase3）→ 总裁批准后 VP 补 QA signoff PASS。  
 
-## 2026-06-08（早）
+## 2026-06-06
+
+- **增强实验**：`train_mnist_fewshot_aug.py`；5-shot 从 66.84% → **69.70%**。  
+- **CDT 栈对齐**：`cdt_v1_stack_alignment.md`。  
+- **GitHub**：已恢复 push。
+
+## 2026-06-05
+
+- **Phase3 SNN**：5-shot 微调 **89.23%**、10-shot **92.98%**。  
+- **对照**：ANN 5-shot 微调 **96.32%**。  
+- **看板**：Phase3 专块；燃尽 Phase3 done。
 
 ## 2026-06-04
 
-- **看板**：`vcompany/dashboard/neuromorphic-tr1.html` 已同步 Phase2（此前停在 05-29「今日」）。  
-- **燃尽**：`vcompany/data/neuromorphic-milestones.json` 更新至 06-04。  
-- **文档**：`docs/phase3_fewshot_requirements_draft.md`（Phase3 小样本 v0 草案）。  
-- **待办**：推送分支并 PR 合并 `main`；飞书 Webhook 仍可选。
+- **Phase3 ANN**：小样本脚本 + 全量微调实验；`phase3_fewshot_results.md`。  
+- **看板/燃尽**同步 Phase2。
 
 ## 2026-05-30
 
