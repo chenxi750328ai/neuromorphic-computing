@@ -3,7 +3,10 @@
 > **项目**：`chenxi750328ai/neuromorphic-computing` · **轨道**：**研究项目（Research Track）**  
 > **负责人**：陈正共 · **起草**：2026-06-08 · **VP 确认**：2026-06-08 陈小五-VP  
 > **依据**：[`vcompany/docs/03-ipd/QA与工程门禁基线_V1.md`](../../vcompany/docs/03-ipd/QA与工程门禁基线_V1.md) · [`PDCP-QA裁剪表_模板.md`](../../vcompany/docs/03-ipd/PDCP-QA裁剪表_模板.md)  
-> **VP 讨论稿**：[`vcompany/docs/03-ipd/类脑计算-QA流程裁剪_VP讨论稿.md`](../../vcompany/docs/03-ipd/类脑计算-QA流程裁剪_VP讨论稿.md)
+> **VP 讨论稿**：[`vcompany/docs/03-ipd/类脑计算-QA流程裁剪_VP讨论稿.md`](../../vcompany/docs/03-ipd/类脑计算-QA流程裁剪_VP讨论稿.md)  
+> **浏览器阅读 + 总裁批示**：http://127.0.0.1:18766/dashboard/md-viewer.html?src=%2Fdocs%2Fneuromorphic-computing%2FIPD-QA%E6%B5%81%E7%A8%8B%E8%A3%81%E5%89%AA_%E5%BE%85VP%E6%80%BB%E8%A3%81%E6%89%B9%E5%87%86.md&from=console  
+> **页顶有「批准生效 / 附条件 / 驳回」按钮**；或打开 [总裁对话台](http://127.0.0.1:18766/dashboard/president-console.html) →「类脑 · 待总裁批示」  
+> （须先起看板服务：`python3 /home/cx/vcompany/scripts/vp-dashboard-serve.py`）
 
 ---
 
