@@ -2,12 +2,12 @@
 
 ## 2026-06-22
 
-- **PR #3**：已合并 main（Phase4 PoC + Atlas 文档 + 小脑工具链）；`neuro-ci` **PASS**（merge `ddabfcd`）。  
-- **M4-3 Atlas**：`model_ann_surrogate.onnx` → OM → AclLite **PASS**（~0.86ms）。  
-- **M4-4**：S4 CI **PASS**；燃尽 **94%**（剩 TR2/VP 签字）。  
-- **下一步**：TR2 VP/总裁签字 · VP 补 `VP_QA: PASS`。  
+- **真 SNN 上板**：`MnistSNNUnrolled` → `model_snn.onnx` → Atlas `mnist_snn.om` AclLite **PASS**（~3–16ms）。  
+- **数值对齐**：ORT vs 板端脉冲计数 **bit-exact**（`snn_board_align.json` diff=0）。  
+- **PR #5**：已合 main（`fe2ea78`）；问题记录见 `docs/phase4_snn_onboard_log.md`。  
+- **Phase4 v0**：工程线 **收工**；剩 TR2/VP 签字。  
 
-## 2026-06-08
+## 2026-06-22（早期）
 
 - **总裁**：批准 IPD/QA 研究轨裁剪（`PRESIDENT: APPROVED`，批注 test）。  
 - **VP**：陈小五 5 点全同意；**CI 不裁剪**；signoff 仍待 `VP_QA: PASS`。  

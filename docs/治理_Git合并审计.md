@@ -34,4 +34,19 @@
 
 ---
 
+## PR #5（2026-06-21）
+
+| 项 | 值 |
+|----|-----|
+| PR | https://github.com/chenxi750328ai/neuromorphic-computing/pull/5 |
+| 合并提交 | `fe2ea78` feat(phase4): 真 SNN 上 Atlas 板 (#5) |
+| **merged_by（GitHub 记录）** | **`chenxi750328`** |
+| merged_at | 2026-06-21T14:53:02Z |
+| neuro-ci | **PASS** |
+| 本机 Agent | **未执行** `gh pr merge`；`gh pr view` 确认 MERGED |
+
+**范围**：`MnistSNNUnrolled` ONNX 导出、Atlas `mnist_snn.om`、ORT/板端 bit-exact 对齐；[phase4_snn_onboard_log.md](./phase4_snn_onboard_log.md)。
+
+---
+
 *陈正共 · 2026-06-22*
