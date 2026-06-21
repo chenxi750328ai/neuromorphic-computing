@@ -1,0 +1,25 @@
+; Atlas 200I DK A2 — USB RNDIS6 (Huawei 12D1:107E)
+; 参考昇腾《使用Type-C接口登录》— Microsoft USB RNDIS6 适配器
+
+[Version]
+Signature   = "$Windows NT$"
+Class       = Net
+ClassGUID   = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider    = %Provider%
+DriverVer   = 06/19/2026,1.0.0.0
+CatalogFile =
+
+[Manufacturer]
+%Provider% = AtlasRndis,NTamd64
+
+[AtlasRndis.NTamd64]
+%DeviceDesc% = AtlasRndisInstall, USB\VID_12D1&PID_107E&MI_00, USB\VID_12D1&PID_107E, USB\Class_02&SubClass_06&Prot_00
+
+[AtlasRndisInstall]
+Include     = netrndis.inf
+Needs       = usbrndis6.ndi
+Characteristics = 0x84
+
+[Strings]
+Provider   = "Huawei Atlas RNDIS"
+DeviceDesc = "Huawei Atlas 200 DK A2 USB RNDIS6"

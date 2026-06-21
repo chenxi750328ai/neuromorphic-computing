@@ -3,12 +3,12 @@
   "hooks": {
     "sessionStart": [
       {
-        "command": "python3 /home/cx/vcompany/scripts/neuromorphic-cursor-wake.py"
+        "command": "/home/cx/neuromorphic-computing/scripts/neuromorphic-cursor-wake.py"
       }
     ],
     "stop": [
       {
-        "command": "python3 /home/cx/vcompany/scripts/neuromorphic-cursor-wake.py",
+        "command": "/home/cx/neuromorphic-computing/scripts/neuromorphic-cursor-wake.py",
         "loop_limit": 2
       }
     ]

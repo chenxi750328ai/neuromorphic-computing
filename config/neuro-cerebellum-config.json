@@ -1,0 +1,9 @@
+{
+  "poll_interval_sec": 600,
+  "min_wake_interval_sec": 300,
+  "stale_wake_sec": 3600,
+  "owner": "陈正共 · ChenZhengGong",
+  "wakePath": ".neuro-brain-wake",
+  "loopScript": "scripts/neuro-drive-loop.sh",
+  "sentinel": "AGENT_LOOP_TICK_NEURO"
+}

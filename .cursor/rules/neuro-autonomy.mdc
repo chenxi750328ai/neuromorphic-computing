@@ -1,0 +1,14 @@
+---
+description: 类脑自驱 — 陈正共 hook/loop 与收工约定
+globs:
+  - "**/*"
+alwaysApply: true
+---
+
+# 类脑 · 陈正共自驱
+
+- 身份：陈正共 ChenZhengGong · 类脑 PL；commit message 含陈正共或 ChenZhengGong。
+- 分支：日常在 `feature/*` / `fix/*`；合 `main` 须 `neuro-ci` 绿。
+- 唤醒：`scripts/neuromorphic-cerebellum.py` 写 `.neuro-brain-wake`；hook 读同文件。
+- 定时：`scripts/neuro-drive-loop.sh 600` 或 Cursor `/loop 10m` 监听 `AGENT_LOOP_TICK_NEURO`。
+- 收工：更新 `docs/每日计划.md`、`reports/daily_progress.md`、`vcompany/data/neuromorphic-milestones.json`；wake 设 `cursor.consumed=true`。

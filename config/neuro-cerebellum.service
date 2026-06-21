@@ -1,0 +1,15 @@
+[Unit]
+Description=Neuro cerebellum — 类脑小脑例行 tick（看板/总裁汇报/wake）
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/cx/neuromorphic-computing
+Environment=NEUROMORPHIC_ROOT=/home/cx/neuromorphic-computing
+Environment=VCOMPANY_ROOT=/home/cx/vcompany
+ExecStart=/usr/bin/python3 /home/cx/neuromorphic-computing/scripts/neuromorphic-cerebellum.py --daemon
+Restart=on-failure
+RestartSec=30
+
+[Install]
+WantedBy=default.target
