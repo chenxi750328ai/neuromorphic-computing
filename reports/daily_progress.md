@@ -1,10 +1,23 @@
 # 类脑计算项目 · 每日进展
 
+## 2026-06-22
+
+- **M4-3 Atlas**：`model_ann_surrogate.onnx` → ATC → `mnist_snn_surrogate.om` → AclLite **PASS**（~0.86ms）。  
+- **S2 CPU 冒烟**：ONNXRuntime 前向 `(1,10)` **PASS**。  
+- **CI**：本地 `neuro-ci` 全绿（shellcheck 修复 Atlas 脚本）。  
+- **文档**：Atlas 连接真源、QA Phase4、TR2 路径 A 勾选、看板/燃尽同步。  
+- **下一步**：TR2 VP/总裁签字 → `feature/phase4-tr2-prep` 提 PR 合 main。  
+
 ## 2026-06-08
 
-- **VP**：陈小五-VP 确认 QA 裁剪（5 点全同意；**CI 不裁剪**）。  
-- **IPD/QA**：`neuro-ci` + `qa-neuro-baseline-run.py` + 裁剪方案 VP 签字栏已填。  
-- **待办**：提请总裁批准 → push PR #2（IPD/QA + Phase3）→ 总裁批准后 VP 补 QA signoff PASS。  
+- **总裁**：批准 IPD/QA 研究轨裁剪（`PRESIDENT: APPROVED`，批注 test）。  
+- **VP**：陈小五 5 点全同意；**CI 不裁剪**；signoff 仍待 `VP_QA: PASS`。  
+- **PR #2**：已合并 main（IPD/QA 文档 + Phase3 + `neuro-ci` 绿）。  
+- **自驱**：类脑仓自有 hook/loop 脚本；`neuro-drive-loop.sh` 已切本仓。  
+- **M4-2 实测**：S1 eval-only **96.97% PASS**（`runs/20260608T090726Z`）；SNN 直导 ONNX 失败（缺 onnx 包 / LIF 算子）；已加 `phase4_export_ann_surrogate.py` 兜底路径。  
+- **小脑修复**：`stale_wake_sec=3600` 过期刷新；`neuro-consume-wake.py` 收工消费；loop 日志带时间戳。  
+- **分支**：`feature/phase4-tr2-prep`（`main` @ PR #2）。  
+- **下一步**：M4-2 导出留档 → M4-3 Atlas 冒烟。  
 
 ## 2026-06-06
 

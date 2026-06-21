@@ -18,7 +18,10 @@
       "label": "Python 语法检查",
       "tier": "ci",
       "script": "scripts/qa-neuro-baseline-run.py",
-      "args": ["--only", "N-CI-SYNTAX"],
+      "args": [
+        "--only",
+        "N-CI-SYNTAX"
+      ],
       "owner": "陈正共",
       "blockMerge": true,
       "tailoring": "FORBIDDEN"
@@ -28,7 +31,10 @@
       "label": "模型冒烟（无 MNIST 下载）",
       "tier": "ci",
       "script": "scripts/qa-neuro-baseline-run.py",
-      "args": ["--only", "N-CI-SMOKE"],
+      "args": [
+        "--only",
+        "N-CI-SMOKE"
+      ],
       "owner": "陈正共",
       "blockMerge": true,
       "tailoring": "FORBIDDEN"
@@ -38,7 +44,10 @@
       "label": "Shellcheck 脚本",
       "tier": "ci",
       "script": "scripts/qa-neuro-baseline-run.py",
-      "args": ["--only", "N-CI-SHELL"],
+      "args": [
+        "--only",
+        "N-CI-SHELL"
+      ],
       "owner": "陈正共",
       "blockMerge": true,
       "tailoring": "FORBIDDEN"
@@ -58,7 +67,9 @@
       "label": "VP QA 阶段验收签字",
       "tier": "pre_merge",
       "script": "scripts/qa-neuro-phase-signoff.py",
-      "args": ["--check"],
+      "args": [
+        "--check"
+      ],
       "owner": "陈小五-VP",
       "blockMerge": true,
       "note": "研究轨：signoff 块 VP_QA: PASS + PRESIDENT: APPROVED"
@@ -68,10 +79,14 @@
       "label": "阶段指标归档",
       "tier": "pre_merge",
       "script": "scripts/qa-neuro-phase-signoff.py",
-      "args": ["--metrics"],
+      "args": [
+        "--metrics"
+      ],
       "owner": "陈正共",
       "blockMerge": false,
       "note": "WARN：runs/ 本地留档，不入库时手填 QA 记录"
     }
-  ]
+  ],
+  "presidentApproval": "APPROVED",
+  "presidentApprovedAt": "2026-06-08T14:42:13.088177+08:00"
 }
