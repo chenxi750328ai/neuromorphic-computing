@@ -209,8 +209,17 @@ def parse_phase4_status() -> dict:
         out["m4_4"] = "⏳ 待 PR"
     if QA_P4.is_file():
         qa = QA_P4.read_text(encoding="utf-8", errors="replace")
+<<<<<<< HEAD
         if "S3 · 硬件冒烟" in qa and "真 SNN" in qa and "**PASS**" in qa.split("S3 · 硬件冒烟")[1].split("\n")[0]:
             out["m4_3"] = "✅ 真 SNN OM · ORT 对齐"
+=======
+        if "S3 · 硬件冒烟" in qa and "**PASS**" in qa.split("S3 · 硬件冒烟")[1].split("\n")[0]:
+            out["m4_3"] = "✅ 真 SNN OM · ORT 对齐"
+            out["m4_4"] = "✅ PR #3 已合 main"
+        elif "S3b" in qa and "surrogate" in qa.lower():
+            pass
+        snn_manifest = load_json(NEURO / "runs" / "phase4_export" / "snn_manifest.json")
+>>>>>>> origin/main
         if snn_manifest.get("status") == "ok":
             out["s2_snn"] = "PASS"
         if "S4 · CI" in qa and "**PASS**" in qa.split("S4 · CI")[1].split("\n")[0]:
