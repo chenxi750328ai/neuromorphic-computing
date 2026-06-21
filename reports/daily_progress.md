@@ -2,11 +2,10 @@
 
 ## 2026-06-22
 
-- **M4-3 Atlas**：`model_ann_surrogate.onnx` → ATC → `mnist_snn_surrogate.om` → AclLite **PASS**（~0.86ms）。  
-- **S2 CPU 冒烟**：ONNXRuntime 前向 `(1,10)` **PASS**。  
-- **CI**：本地 `neuro-ci` 全绿（shellcheck 修复 Atlas 脚本）。  
-- **文档**：Atlas 连接真源、QA Phase4、TR2 路径 A 勾选、看板/燃尽同步。  
-- **下一步**：TR2 VP/总裁签字 → `feature/phase4-tr2-prep` 提 PR 合 main。  
+- **PR #3**：已合并 main（Phase4 PoC + Atlas 文档 + 小脑工具链）；`neuro-ci` **PASS**（merge `ddabfcd`）。  
+- **M4-3 Atlas**：`model_ann_surrogate.onnx` → OM → AclLite **PASS**（~0.86ms）。  
+- **M4-4**：S4 CI **PASS**；燃尽 **94%**（剩 TR2/VP 签字）。  
+- **下一步**：TR2 VP/总裁签字 · VP 补 `VP_QA: PASS`。  
 
 ## 2026-06-08
 

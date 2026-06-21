@@ -14,7 +14,7 @@
 | S2b · ANN 近似 ONNX | 兜底 IR | **PASS** `model_ann_surrogate.onnx` | `runs/phase4_export/surrogate_manifest.json` |
 | S2 · CPU 冒烟 | ONNXRuntime 前向 | **PASS** `(1,10)` | 2026-06-22 本地 |
 | S3 · 硬件冒烟 | Atlas MNIST-surrogate OM | **PASS** ~0.86ms | `runs/phase4_poc/atlas_smoke.log` |
-| S4 · CI | `neuro-ci` 绿 | ⏳ 待 PR | GitHub Actions |
+| S4 · CI | `neuro-ci` 绿 | **PASS** | [PR #3](https://github.com/chenxi750328ai/neuromorphic-computing/pull/3) · merge `ddabfcd` |
 
 ---
 

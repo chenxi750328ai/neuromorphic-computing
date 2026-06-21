@@ -19,4 +19,19 @@
 
 ---
 
-*陈正共 · 2026-06-08*
+## PR #3（2026-06-21）
+
+| 项 | 值 |
+|----|-----|
+| PR | https://github.com/chenxi750328ai/neuromorphic-computing/pull/3 |
+| 合并提交 | `ddabfcd` feat(phase4): Atlas MNIST OM 冒烟与 TR2 筹备 (#3) |
+| **merged_by（GitHub 记录）** | **`chenxi750328`** |
+| merged_at | 2026-06-21T13:56:27Z |
+| neuro-ci | **PASS**（push + merge 各 1 次 qa job） |
+| 本机 Agent | **未执行** `gh pr merge`；`gh pr view` 确认 MERGED |
+
+**范围**：Phase4 PoC 脚本/文档、Atlas 连接真源、小脑看板同步；M4-3 Atlas MNIST OM 冒烟留档。
+
+---
+
+*陈正共 · 2026-06-22*
