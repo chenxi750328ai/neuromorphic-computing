@@ -64,6 +64,7 @@ python3 scripts/phase4_smoke_onnx.py --model runs/phase4_export/model.onnx
 - [x] `QA_验收记录_Phase4.md` §1–2 填 PASS/WARN  
 - [x] `neuromorphic-milestones.json`：`phase4` → `active`  
 - [x] `docs/每日计划.md` + `reports/daily_progress.md` 追加当日块  
+- [x] PR #3 合 main · `neuro-ci` 绿  
 
 ---
 
