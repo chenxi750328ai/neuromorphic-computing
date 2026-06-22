@@ -5,9 +5,9 @@
 - **真 SNN 上板**：`MnistSNNUnrolled` → `model_snn.onnx` → Atlas `mnist_snn.om` AclLite **PASS**（~3–16ms）。  
 - **数值对齐**：ORT vs 板端脉冲计数 **bit-exact**（`snn_board_align.json` diff=0）。  
 - **PR #5**：已合 main（`fe2ea78`）；问题记录见 `docs/phase4_snn_onboard_log.md`。  
-- **FPGA 路径 B v1**：定点 SNN + 三路对照 + HLS 参考核；**PR #7** 已开（neuro-ci 绿）。  
-- **自驱唤醒**：小脑恢复 + 本会话 5m loop；本次立即执行 wake，看板/汇报同步 commit 已推。  
-- **Phase4**：工程线收工；剩 **TR2 VP/总裁签字**、**VP_QA: PASS**（可后补）。  
+- **FPGA 路径 B v1**：**PR #7 已合 main**（`67c178b`）。  
+- **Phase4 技术报告**：[docs/Phase4_技术报告_总裁评审.md](../neuromorphic-computing/docs/Phase4_技术报告_总裁评审.md) — **待总裁 §8 评审**。  
+- **Phase4**：工程收工；剩总裁技术评审、TR2/VP_QA 签字。  
 
 ## 2026-06-22（早期）
 

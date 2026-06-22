@@ -2,7 +2,8 @@
 
 > **负责人**：陈正共 · ChenZhengGong  
 > **状态**：草案 · 待 VP/总裁轻评审勾选  
-> **前置**：Phase1–3 已合 main · IPD/QA 研究轨裁剪已批 · **PR #3 Phase4 已合 main**
+> **技术详报**：[Phase4_技术报告_总裁评审.md](./Phase4_技术报告_总裁评审.md)（总裁请先阅 §1、§8）  
+> **前置**：Phase1–3 已合 main · IPD/QA 研究轨裁剪已批 · PR #5/#7 Phase4 已合 main
 
 ---
 
