@@ -51,10 +51,16 @@ python3 scripts/phase4_smoke_onnx.py --model runs/phase4_export/model.onnx
 
 ---
 
-## 阶段 4：FPGA（可选 · 路径 B）
+## 阶段 4：FPGA（路径 B · A+B 补充）✅ v0
 
-- 仅当 TR2 勾选 B 或 A+B 时执行。  
-- 首步：定点化脉冲累加模块仿真（Vitis HLS 或现有 FPGA 流程），不接全网络。
+- TR2 默认路径 A 已完成；FPGA 作 **脉冲累加 / 事件驱动** 长线探索。  
+- **B1** PYNQ 联调 + Jupyter 示例：`neuromorphic/01_fpga_blue_led_demo.ipynb`  
+- **B2** 定点 LIF：`scripts/phase4_fpga_lif_fixedpoint.py` → `runs/phase4_poc/fpga_spike_accum.json`  
+- **B3** 板上演示：`phase4_fpga_pynq_spike_demo.py --blink`  
+- **B4** 全网络定点：`phase4_fpga_snn_fixedpoint.py` → acc **97.27%** / 512  
+- **B5** 三路对照：`phase4_fpga_tri_compare.py` → fixed↔Atlas pred **100%**  
+- **B6** HLS：`fpga/hls/lif_step.cpp`（待 Vitis 综合）  
+- 文档：[phase4_fpga_path_b.md](./phase4_fpga_path_b.md) · [phase4_fpga_hls_readme.md](./phase4_fpga_hls_readme.md)
 
 ---
 
