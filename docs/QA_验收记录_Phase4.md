@@ -15,6 +15,7 @@
 | S2 · CPU 冒烟 | ONNXRuntime 前向 | **PASS** `(1,10)` spike_counts | 2026-06-22 本地 |
 | S3 · 硬件冒烟 | Atlas **真 SNN** OM | **PASS** ~3–16ms · ORT 对齐 diff=0 | `runs/phase4_poc/snn_board_align.json` |
 | S3b · 硬件冒烟 | Atlas ANN-surrogate OM | **PASS** ~0.86ms（对照） | `runs/phase4_poc/atlas_smoke.log` |
+| S3c · 硬件冒烟 | FPGA 路径 B · 定点全网络 + 三路对照 | **PASS** 512 样本 acc 97.27% · fixed↔Atlas pred 100% | `fpga_fixedpoint_snn.json` · `fpga_tri_compare.json` |
 | S4 · CI | `neuro-ci` 绿 | **PASS** | [PR #3](https://github.com/chenxi750328ai/neuromorphic-computing/pull/3) · [PR #5](https://github.com/chenxi750328ai/neuromorphic-computing/pull/5) |
 
 ---
