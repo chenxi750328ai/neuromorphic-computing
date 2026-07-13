@@ -27,6 +27,19 @@ VP 讨论稿（vcompany）：[`vcompany/docs/03-ipd/类脑计算-QA流程裁剪_
 - 禁止在本地 **`main`** 上堆叠未评审的日常提交；开发在 **`feature/*`**、**`fix/*`**、**`docs/*`** 完成。
 - 合并进 **`main`** 经 Pull Request（或总裁授权的 hotfix）。
 
+### `main` 分支保护（GitHub · 2026-07-14 起）
+
+| 规则 | 值 |
+|------|-----|
+| 直推 `main` | **禁止**（含管理员；`enforce_admins`） |
+| 合并方式 | 必须 PR；会话评论未解决不可合 |
+| 审批 | ≥ **1** 个 approving review；代码变更后旧审批作废 |
+| CI | **`qa`** 必绿，且 base 为最新 `main`（strict） |
+| 强推 / 删 `main` | 禁止 |
+
+**Agent 纪律**：默认只开/更新 PR，**不** `gh pr merge`；合 `main` 须总裁（或指定审批人）在 GitHub 上 Approve + Merge。  
+说明：GitHub 无法区分「总裁本人」与「使用总裁 token 的 Agent」——保护拦的是流程，审批仍须人审。
+
 ---
 
 ## QA / CI 命令
