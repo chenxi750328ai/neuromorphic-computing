@@ -1,7 +1,7 @@
 # 类脑计算 · QA 验收记录（Phase 4 · 推理 PoC）
 
 > **用途**：Phase4 合 main 前 VP QA 检索；`scripts/qa-neuro-phase-signoff.py` 可扩展 Phase4 块  
-> **方案**：[TR2_Phase4_轻评审草案](./TR2_Phase4_轻评审草案.md) · [phase4_inference_poc_plan.md](./phase4_inference_poc_plan.md)
+> **方案**：[TR2_Phase4_轻评审草案](./TR2_Phase4_轻评审草案.md) · [Phase4 技术报告·总裁评审](./Phase4_技术报告_总裁评审.md) · [phase4_inference_poc_plan.md](./phase4_inference_poc_plan.md)
 
 ---
 
