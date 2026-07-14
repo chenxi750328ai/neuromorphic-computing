@@ -1,13 +1,22 @@
 # 类脑计算项目 · 每日进展
 
+## 2026-07-14
+
+- **自驱唤醒**：核盘 P0 — **FPGA 路径 B PR #7 早已合 main**（看板 focus 已改，不再当作待办）。  
+- **技术报告**：补齐 [§10 Phase4.1 立项 B1–B3](../docs/Phase4_技术报告_总裁评审.md) + §8 增 R5；**未代总裁签字**。  
+- **PR #12**：规格门禁报告 · neuro-ci **绿** · 待人合 — https://github.com/chenxi750328ai/neuromorphic-computing/pull/12  
+- **阻塞**：Atlas `192.168.137.2` / PYNQ `192.168.137.3` ping 不通 → E2–E4 补数挂起。  
+- **TR2**：PL 栏已签；VP/总裁栏仍空。  
+- **纪律**：Phase4.1 未完成前不写「Phase4 已了结」。
+
 ## 2026-06-22
 
 - **真 SNN 上板**：`MnistSNNUnrolled` → `model_snn.onnx` → Atlas `mnist_snn.om` AclLite **PASS**（~3–16ms）。  
 - **数值对齐**：ORT vs 板端脉冲计数 **bit-exact**（`snn_board_align.json` diff=0）。  
 - **PR #5**：已合 main（`fe2ea78`）；问题记录见 `docs/phase4_snn_onboard_log.md`。  
 - **FPGA 路径 B v1**：**PR #7 已合 main**（`67c178b`）。  
-- **Phase4 技术报告**：[docs/Phase4_技术报告_总裁评审.md](../neuromorphic-computing/docs/Phase4_技术报告_总裁评审.md) — **待总裁 §8 评审**。  
-- **Phase4**：工程收工；剩总裁技术评审、TR2/VP_QA 签字。  
+- **Phase4 技术报告**：[docs/Phase4_技术报告_总裁评审.md](../docs/Phase4_技术报告_总裁评审.md) — **待总裁 §8/§10 评审**。  
+- **Phase4 v0**：单点 PoC 工程收工；**关口未关**（Phase4.1）。  
 
 ## 2026-06-22（早期）
 

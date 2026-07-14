@@ -17,10 +17,11 @@
 | **路径 A · Atlas** | ✅ **PASS** — 真 SNN OM 上板，ORT vs 板端脉冲计数 **bit-exact**（diff=0） |
 | **路径 B · FPGA** | ✅ **PASS v1** — 全网络 Q16.16 定点参考 97.27%（512 样本）；fixed↔Atlas 分类 **100% 一致**；板上脉冲演示 + HLS 参考核 |
 | **CI** | `neuro-ci` 全绿（含 PR #7） |
-| **未做（不阻塞收工）** | Vitis HLS 综合上 PL · 全量 MNIST 板上实时分类 · N-MNIST / 产线部署 |
-| **请总裁评审** | §8 勾选：**是否认可 Phase4 PoC 收工**；路径 A/B 分工是否同意 |
+| **未做（不阻塞 v0）** | Vitis HLS 综合上 PL · 全量 MNIST 板上实时分类 · N-MNIST / 产线部署 |
+| **Phase4 关口** | **未关闭** — 单点 PASS ≠ Phase4 PASS；须 Phase4.1 规格对照后场景化结论（见 §10） |
+| **请总裁评审** | §8（PoC / 路径）+ **§10 B1–B3**（Phase4.1 立项） |
 
-**一句话**：仿真 SNN 已在 Atlas 上 **bit-exact 跑通**；FPGA 侧已证明 **定点脉冲推理链路与 Atlas 分类一致**，并留 HLS 单步 LIF 参考核供后续 RTL。
+**一句话**：仿真 SNN 已在 Atlas 上 **bit-exact 跑通**；FPGA 路径 B **PR #7 已合 main**（定点+演示）；**整体关口仍在 Phase4.1**，禁止用单点过关。
 
 ---
 
@@ -172,16 +173,17 @@ python3 scripts/qa-neuro-baseline-run.py --tier ci
 
 ---
 
-## 8. 总裁评审栏（请勾选）
+## 8. 总裁评审栏 · PoC / TR2（请勾选）
 
 | # | 议题 | 选项 |
 |---|------|------|
-| R1 | **认可 Phase4 PoC 工程收工**（路径 A+B v1） | ☐ 同意 ☐ 修改后同意 ☐ 暂缓 |
-| R2 | **路径优先级**：Atlas 主部署 · FPGA 补充探索 | ☐ 同意 ☐ 调整：____ |
-| R3 | **允许关 Phase4 关口**，燃尽收尾 | ☐ 同意 ☐ 需补充：____ |
+| R1 | **认可 Phase4 v0 单点 PoC 工程收工**（路径 A PR#5 + 路径 B PR#7） | ☐ 同意 ☐ 修改后同意 ☐ 暂缓 |
+| R2 | **单点层面路径优先级**：Atlas 主部署 · FPGA 补充探索（**非正式分工定稿**） | ☐ 同意 ☐ 调整：____ |
+| R3 | **暂不同意关 Phase4 关口**（纪律：须先过 Phase4.1；见 §10） | ☐ 同意「先不关」 ☐ 坚持关口：____ |
 | R4 | **TR2 轻评审**（同 [TR2 草案](./TR2_Phase4_轻评审草案.md) §8） | ☐ 知情 ☐ 需拍板 |
+| R5 | **批准进入 / 继续 Phase4.1**（链路优先 · 规格裁判 · 路线不预锁） | ☐ 同意 ☐ 修改后同意 ☐ 暂缓 |
 
-**总裁签字**：________________ · 日期：________
+**总裁签字（§8）**：________________ · 日期：________
 
 **批注**：
 
@@ -194,9 +196,41 @@ python3 scripts/qa-neuro-baseline-run.py --tier ci
 | [phase4_inference_poc_plan.md](./phase4_inference_poc_plan.md) | PoC 计划 |
 | [phase4_snn_onboard_log.md](./phase4_snn_onboard_log.md) | Atlas 问题与解法 |
 | [phase4_fpga_path_b.md](./phase4_fpga_path_b.md) | FPGA 4R 与交付物 |
+| [phase4_distributed_inference_V1.md](./phase4_distributed_inference_V1.md) | Phase4.1 链路案 · B1–B3 |
+| [Phase4.1_探索规格与补数议程_V0.md](./Phase4.1_探索规格与补数议程_V0.md) | 全链路规格尺子 + E2–E4 |
 | [QA_验收记录_Phase4.md](./QA_验收记录_Phase4.md) | VP QA 追溯 |
 | [治理_Git合并审计.md](./治理_Git合并审计.md) | 合并审计 |
 
 ---
 
-*陈正共 · ChenZhengGong · 2026-06-22 · 供总裁技术评审*
+## 10. Phase4.1 · 分布式链路立项（待总裁拍板 B1–B3）
+
+> **真源细则**：[phase4_distributed_inference_V1.md §7](./phase4_distributed_inference_V1.md) · [探索规格 V0](./Phase4.1_探索规格与补数议程_V0.md)  
+> **纪律**：Atlas/FPGA/WSL 各自 PASS ≠ Phase4 PASS；链路优先：bench → 瓶颈 → 修订分工 → 再 bench。
+
+### 10.1 工程现状（2026-07-14 · 非关口宣称）
+
+| 项 | 状态 |
+|----|------|
+| FPGA 路径 B commit+PR | **已合** PR [#7](https://github.com/chenxi750328ai/neuromorphic-computing/pull/7) |
+| G1 SSH / daemon bench | 有数（ssh 不可用；daemon N=100 p50≈2.5ms / p95≈5.1ms） |
+| G3 瓶颈报告 + 分工 v0→v1 | 已出稿 |
+| 规格门禁报告脚本 | PR [#12](https://github.com/chenxi750328ai/neuromorphic-computing/pull/12) OPEN · neuro-ci 绿 |
+| 历史 daemon vs 标签 | G-ACC **未过**（暖机后 ~97.89%）；须网通后 **vs ORT** 重测 |
+| Atlas `192.168.137.2` / PYNQ `.3` | **ping 不通** → E2/E3/E4 硬件补数 blocked |
+
+### 10.2 立项勾选（B1–B3）
+
+| # | 议题 | 陈正共建议 | 总裁 |
+|---|------|------------|------|
+| **B1** | 是否同意 **链路优先、分工由瓶颈驱动**（禁止单点过关）？ | **同意** | ☐ 同意 ☐ 修改：____ ☐ 暂缓 |
+| **B2** | 端到端 PoC 线是否采纳探索规格 **G-LAT**（中位≤5 ms · 95 分位≤10 ms，可改）？ | **采纳为暂定尺子** | ☐ 同意 ☐ 调整：____ ☐ 暂缓 |
+| **B3** | 是否同意继续 bench/分支迭代，且 **不得**因双跳 daemon 单独关闭 Phase4.1？ | **同意继续 · 不关** | ☐ 同意 ☐ 修改：____ ☐ 暂缓 |
+
+**总裁签字（§10 / Phase4.1）**：________________ · 日期：________
+
+**批注**：
+
+---
+
+*陈正共 · ChenZhengGong · 2026-06-22 初稿 · 2026-07-14 补 §10 Phase4.1 立项栏*
