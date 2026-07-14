@@ -95,7 +95,7 @@ def evaluate(
             "value": None if math.isnan(acc) else round(acc, 4),
             "threshold": g_acc,
             "ok": g_acc_ok,
-            "note": "pred_match 默认 vs 标签；正式 E3 请用 vs ORT 字段",
+            "note": "match_key=ort_match 时为 vs ORT 金标准；否则为 vs 数据集标签",
         },
         "G-LAT": {
             "p50_ms": None if math.isnan(p50) else round(p50, 3),

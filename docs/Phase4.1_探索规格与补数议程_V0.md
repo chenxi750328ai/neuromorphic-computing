@@ -99,9 +99,9 @@
 
 | 拓扑 | 通信 | G-ACC | G-LAT 中位/95分位 (ms) | G-COMM | G-SCN | 备注 | 结论资格 |
 |------|------|-------|------------------------|--------|-------|------|----------|
-| 仅 Atlas · 历史 daemon | TCP | **97.89%**（暖机后 vs 标签；未达 98%） | 稳态 **2.45 / 4.82** | C1–C3 过（比值≈1.97）；1 帧离群~1009ms | MNIST·常驻 | 机器判定见 `docs/phase4_poc_evidence/spec_gate_report_daemon_n100.json`：**overall 未过（G-ACC）** | 仅参考 ≠ 定稿 |
-| 仅 Atlas · E3 | | | | | | 待测（须 vs ORT 金标准） | |
-| +FPGA M-pre | | | | | | 待测 | |
+| 仅 Atlas · 历史 daemon | TCP | **97.89%**（暖机后 vs 标签；未达 98%） | 稳态 **2.45 / 4.82** | C1–C3 过（比值≈1.97）；1 帧离群~1009ms | MNIST·常驻 | 历史试算：**overall 未过（G-ACC）** | 仅参考 ≠ 定稿 |
+| 仅 Atlas · **E3 现场 2026-07-14** | TCP daemon :9527 | **100%**（vs **ORT**） | 稳态 **5.06 / 8.01** | C1–C3 过（比值≈1.58）；离群 1/95≈1.1% | MNIST·常驻 | `runs/phase4_poc/distributed_bench_daemon_n100_vs_ort.json` + `spec_gate_report_daemon_n100_vs_ort.json`：**overall 未过（G-LAT p50 略超 5ms）** | 可填表 · **仍非关口定稿** |
+| +FPGA M-pre | | | | | | 待测（须类脑功能上 PL，点灯不算） | |
 | +FPGA M-lif | | | | | | 待测 | |
 | +FPGA M-bypass | | | | | | 待测 | |
 
@@ -122,7 +122,8 @@
 - [x] G-ACC 区分「对标签」与「对 ORT 金标准」  
 - [x] 暖机 / 离群规则写进规格  
 - [x] 旧文「暂不进链 / 分工定稿」与探索口径对齐（见同 PR 其它 md）  
-- [ ] Atlas 现场重测 E3（网络通后再做）  
+- [x] Atlas 现场重测 E3（vs ORT · 2026-07-14 网通后）  
+- [ ] E4：类脑算子 HLS/工具链上 PL + 规格/资源（点灯不算）  
 
 ---
 
@@ -133,6 +134,7 @@
 | 2026-07-14 | 初稿 |
 | 2026-07-14 | G-COMM 人话 |
 | 2026-07-14 | **自检**：统计口径、历史数据脚注、对照表修正 |
+| 2026-07-14 | **E3 现场**：daemon N=100 vs ORT 100%；G-LAT p50≈5.06 未过；E2 段时见 `comm_matrix_daemon_tcp_n100.json` |
 
 ---
 

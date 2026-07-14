@@ -236,12 +236,12 @@ python3 scripts/qa-neuro-baseline-run.py --tier ci
 
 | 项 | 状态 |
 |----|------|
-| FPGA 路径 B commit+PR | **已合** PR [#7](https://github.com/chenxi750328ai/neuromorphic-computing/pull/7) |
-| G1 SSH / daemon bench | 有数（ssh 不可用；daemon N=100 p50≈2.5ms / p95≈5.1ms） |
-| G3 瓶颈报告 + 分工 v0→v1 | 已出稿 |
-| 规格门禁报告脚本 | PR [#12](https://github.com/chenxi750328ai/neuromorphic-computing/pull/12) OPEN · neuro-ci 绿 |
-| 历史 daemon vs 标签 | G-ACC **未过**（暖机后 ~97.89%）；须网通后 **vs ORT** 重测 |
-| Atlas `192.168.137.2` / PYNQ `.3` | **ping 不通** → E2/E3/E4 硬件补数 blocked |
+| FPGA 路径 B | PR #7 已合 = **定点+点灯**；**类脑上 PL + 规格/资源数据仍缺**（总裁口径） |
+| E3 现场（2026-07-14） | daemon N=100：**vs ORT = 100%**；稳态 p50/p95≈**5.06/8.01 ms** → G-LAT **未过**（中位略超 5）；G-COMM 过 |
+| E2 通信段 | `runs/phase4_poc/comm_matrix_daemon_tcp_n100.json`（TCP 单 payload；多尺寸曲线待补） |
+| E4 FPGA 入链 | **未做**（合格线=工具链上 PL，点灯不算） |
+| 规格门禁报告脚本 | PR [#12](https://github.com/chenxi750328ai/neuromorphic-computing/pull/12) · neuro-ci 绿 |
+| Atlas `.2` / PYNQ `.3` | **已通**（ping+sshpass） |
 
 ### 10.2 立项勾选（B1–B3）
 

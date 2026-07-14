@@ -8,7 +8,8 @@
 - **阻塞**：Atlas `192.168.137.2` / PYNQ `192.168.137.3` ping 不通 → E2–E4 补数挂起。  
 - **TR2**：PL 栏已签；VP/总裁栏仍空。  
 - **纪律**：Phase4.1 未完成前不写「Phase4 已了结」。  
-- **17:16 再唤醒**：P0 仍卡人签 + 合 PR#12 + 以太网；本轮无新代码。Agent 聊天请用英文链 [Phase4_president_tech_report.md](/home/cx/neuromorphic-computing/docs/Phase4_president_tech_report.md)。
+- **17:16 再唤醒**：P0 仍卡人签 + 合 PR#12 + 以太网；本轮无新代码。Agent 聊天请用英文链 [Phase4_president_tech_report.md](/home/cx/neuromorphic-computing/docs/Phase4_president_tech_report.md)。  
+- **18:21 网通续作**：Atlas/PYNQ ping+ssh 通；`phase4_distributed_bench.py --daemon-port 9527 --vs-ort --samples 100` → `distributed_bench_daemon_n100_vs_ort.json`；**ort_match_rate=1.0**；规格门禁 overall **FAIL**（G-LAT p50 5.06>5.0；G-ACC/G-COMM 过）。E2：`comm_matrix_daemon_tcp_n100.json`。E4 未做（点灯≠上 PL）。
 
 ## 2026-06-22
 

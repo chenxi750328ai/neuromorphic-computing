@@ -315,6 +315,11 @@ def main() -> int:
     p.add_argument("--dry-run", action="store_true", help="WSL ORT only, no Atlas")
     p.add_argument("--batch-xfer", action="store_true", help="单次 batch scp+ssh（对比逐帧）")
     p.add_argument("--daemon-port", type=int, default=0, help="Atlas 常驻 daemon TCP 端口（如 9527）")
+    p.add_argument(
+        "--vs-ort",
+        action="store_true",
+        help="G-ACC 金标准：每帧与本机 ORT/onnx 预测比（写 ort_pred/ort_match；勿与仅比 label 混）",
+    )
     p.add_argument("--out", type=Path, default=None)
     args = p.parse_args()
 
@@ -342,11 +347,25 @@ def main() -> int:
     elif args.daemon_port:
         batch_agg = None
         per_sample = []
+        ort_sess = None
+        if args.vs_ort:
+            if not args.onnx.is_file():
+                print(f"missing onnx for --vs-ort: {args.onnx}", file=sys.stderr)
+                return 2
+            import onnxruntime as ort
+
+            ort_sess = ort.InferenceSession(str(args.onnx), providers=["CPUExecutionProvider"])
+            ort_in = ort_sess.get_inputs()[0].name
         for i in range(xs.shape[0]):
             row = bench_daemon_sample(args.host, args.daemon_port, xs[i : i + 1], i)
             row["label"] = int(ys[i])
             row["atlas_pred"] = int(np.asarray(row["atlas_counts"]).argmax())
             row["pred_match"] = row["atlas_pred"] == row["label"]
+            if ort_sess is not None:
+                sample = np.ascontiguousarray(xs[i : i + 1].astype(np.float32))
+                ort_out = ort_sess.run(None, {ort_in: sample})[0]
+                row["ort_pred"] = int(np.asarray(ort_out).reshape(-1).argmax())
+                row["ort_match"] = row["atlas_pred"] == row["ort_pred"]
             per_sample.append(row)
             if (i + 1) % 10 == 0:
                 print(f"daemon bench {i + 1}/{xs.shape[0]}", file=sys.stderr)
@@ -385,6 +404,9 @@ def main() -> int:
     if not args.dry_run:
         summary["pred_match_rate"] = float(np.mean([r.get("pred_match", False) for r in per_sample]))
         summary["dataset_load_ms"] = round(t_load_ms, 3)
+        if any("ort_match" in r for r in per_sample):
+            summary["ort_match_rate"] = float(np.mean([r.get("ort_match", False) for r in per_sample]))
+            summary["g_acc_reference"] = "vs_ort"
 
     report = {
         "schema": "phase4.1-distributed-bench-v1",
@@ -402,6 +424,7 @@ def main() -> int:
         "host": args.host,
         "daemon_port": args.daemon_port or None,
         "om": args.om,
+        "vs_ort": bool(getattr(args, "vs_ort", False)),
         "summary": summary,
         "per_sample": per_sample,
     }
