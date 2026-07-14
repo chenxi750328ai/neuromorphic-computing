@@ -68,7 +68,7 @@ t_atlas ░░░░░░░░░░░░░░░░░░░░░░░░
 | ssh 逐帧 | 5939 ms | 6018 ms | 3.4 ms | **99.94%** | `phase4_distributed_bench.py --atlas-only` |
 | **TCP daemon** | **5.1 ms** | **4.8 ms** | 1.8 ms | **~65%** | `phase4_atlas_infer_daemon.py` + `--daemon-port 9527` |
 
-**解读**：瓶颈从「SSH 编排」转为「TCP 会话 + NPU」；分工 v1（Atlas 常驻）**数据支持**，但仍须 N≥100 分布与 payload 对照后再定稿 G0。
+**解读**：瓶颈从「SSH 编排」转为「TCP + NPU」；**Atlas 常驻**有数据支持。FPGA 去留与最终拓扑 **仍证据不足**，见 [探索规格与补数议程](./Phase4.1_探索规格与补数议程_V0.md)。
 
 ---
 
