@@ -34,7 +34,8 @@ python3 scripts/phase4_fpga_toolchain_gate.py --gate   # full_pl 须 bitstream
 | 台阶 | 状态 |
 |------|------|
 | HLS `fpga/hls/lif_step.cpp` | ✅ |
-| RTL `fpga/rtl/lif_step.v` | ✅ |
+| RTL `fpga/rtl/lif_step.v` + `lif_step_axi_lite.v` | ✅ |
+| 一键 TCL `fpga/vivado/create_lif_overlay.tcl` | ✅ 待 Vivado 执行 |
 | RTL 语义 ≡ golden | ✅ `fpga_lif_rtl_sim.py` |
 | PYNQ ping/ssh | ✅ |
 | PYNQ **sudo** 加载 base Overlay（PL 可编程权限） | ✅ |

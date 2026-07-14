@@ -1,6 +1,8 @@
 # 类脑计算项目 · 每日进展
 
 ## 2026-07-14
+- **21:28 继续**：E4 仍卡 AMD 包；补 `lif_step_axi_lite.v` + 一键 Vivado TCL；陈东 LearnCycle×5 → **episodes=10**（SYS-M2 数量门槛过，7 日稳定未验）。
+- **20:58 Vivado 安装**：WSL `/tools/Xilinx` 与安装脚本已就位；**AMD 官网包需登录下载**，盘上无现成 `.bin`。等 `XILINX_EMAIL`/`XILINX_PASSWORD` 或把 Unified Lin64.bin 丢到 `~/Downloads/xilinx-install/`。
 - **18:34 唤醒**：全盘 Vivado 仍无；FPGA `chain_full_pl_ok=false`；Atlas/PYNQ ping 通；PR #12 OPEN qa SUCCESS。E4 等人给 Vivado 路径或批准安装。
 
 - **自驱唤醒**：核盘 P0 — **FPGA 路径 B PR #7 早已合 main**（看板 focus 已改，不再当作待办）。  
