@@ -1,0 +1,45 @@
+{
+  "schema": "phase4.1-spec-gate-v0",
+  "n_total": 100,
+  "warmup": 5,
+  "outlier_ms": 100.0,
+  "n_after_warmup": 95,
+  "n_outliers": 1,
+  "outlier_rate": 0.0105,
+  "n_steady": 94,
+  "outlier_max_e2e_ms": 1023.091,
+  "match_key": "ort_match",
+  "G-ACC": {
+    "value": 1.0,
+    "threshold": 0.98,
+    "ok": true,
+    "note": "match_key=ort_match 时为 vs ORT 金标准；否则为 vs 数据集标签"
+  },
+  "G-LAT": {
+    "p50_ms": 5.057,
+    "p95_ms": 8.009,
+    "threshold_p50_ms": 5.0,
+    "threshold_p95_ms": 10.0,
+    "ok": false
+  },
+  "G-COMM": {
+    "C1_segments_present": true,
+    "C2_not_per_frame_ssh": true,
+    "C3_p95_over_p50": 1.584,
+    "C3_threshold": 5.0,
+    "C3_ok": true,
+    "steady_outlier_rate_ok": true,
+    "ok": true
+  },
+  "overall_ok": false,
+  "source_bench": "runs/phase4_poc/distributed_bench_daemon_n100_vs_ort.json",
+  "source_summary": {
+    "p50_t_e2e_ms": 5.088,
+    "p95_t_e2e_ms": 9.243,
+    "avg_t_e2e_ms": 15.698,
+    "pred_match_rate": 0.98,
+    "mode": null
+  },
+  "generated_at": "2026-07-14T18:22:49.676683+08:00",
+  "agent": "ChenZhengGong"
+}
