@@ -1,0 +1,129 @@
+{
+  "schema": "phase4-fpga-lif-rtl-sim-v0",
+  "generated_at": "2026-07-14T18:33:45.304501+08:00",
+  "agent": "ChenZhengGong",
+  "rtl": "fpga/rtl/lif_step.v",
+  "n": 13,
+  "mismatches": 0,
+  "pass": true,
+  "rows": [
+    {
+      "cur": 0.0,
+      "cur_fp": 0,
+      "spk_golden": 0,
+      "spk_rtl": 0,
+      "mem_golden": 0,
+      "mem_rtl": 0,
+      "ok": true
+    },
+    {
+      "cur": 0.0,
+      "cur_fp": 0,
+      "spk_golden": 0,
+      "spk_rtl": 0,
+      "mem_golden": 0,
+      "mem_rtl": 0,
+      "ok": true
+    },
+    {
+      "cur": 1.2,
+      "cur_fp": 78643,
+      "spk_golden": 1,
+      "spk_rtl": 1,
+      "mem_golden": 78643,
+      "mem_rtl": 78643,
+      "ok": true
+    },
+    {
+      "cur": 0.0,
+      "cur_fp": 0,
+      "spk_golden": 0,
+      "spk_rtl": 0,
+      "mem_golden": 5242,
+      "mem_rtl": 5242,
+      "ok": true
+    },
+    {
+      "cur": 0.0,
+      "cur_fp": 0,
+      "spk_golden": 0,
+      "spk_rtl": 0,
+      "mem_golden": 4717,
+      "mem_rtl": 4717,
+      "ok": true
+    },
+    {
+      "cur": 1.1,
+      "cur_fp": 72090,
+      "spk_golden": 1,
+      "spk_rtl": 1,
+      "mem_golden": 76335,
+      "mem_rtl": 76335,
+      "ok": true
+    },
+    {
+      "cur": 1.1,
+      "cur_fp": 72090,
+      "spk_golden": 1,
+      "spk_rtl": 1,
+      "mem_golden": 75255,
+      "mem_rtl": 75255,
+      "ok": true
+    },
+    {
+      "cur": 0.0,
+      "cur_fp": 0,
+      "spk_golden": 0,
+      "spk_rtl": 0,
+      "mem_golden": 2193,
+      "mem_rtl": 2193,
+      "ok": true
+    },
+    {
+      "cur": 0.0,
+      "cur_fp": 0,
+      "spk_golden": 0,
+      "spk_rtl": 0,
+      "mem_golden": 1973,
+      "mem_rtl": 1973,
+      "ok": true
+    },
+    {
+      "cur": 1.05,
+      "cur_fp": 68813,
+      "spk_golden": 1,
+      "spk_rtl": 1,
+      "mem_golden": 70588,
+      "mem_rtl": 70588,
+      "ok": true
+    },
+    {
+      "cur": 0.5,
+      "cur_fp": 32768,
+      "spk_golden": 0,
+      "spk_rtl": 0,
+      "mem_golden": 30760,
+      "mem_rtl": 30760,
+      "ok": true
+    },
+    {
+      "cur": 2.0,
+      "cur_fp": 131072,
+      "spk_golden": 1,
+      "spk_rtl": 1,
+      "mem_golden": 158755,
+      "mem_rtl": 158755,
+      "ok": true
+    },
+    {
+      "cur": -0.1,
+      "cur_fp": -6554,
+      "spk_golden": 1,
+      "spk_rtl": 1,
+      "mem_golden": 70788,
+      "mem_rtl": 70788,
+      "ok": true
+    }
+  ],
+  "note": "Sim only · bitstream still needs Vivado/Vitis on xc7z020"
+}

@@ -1,0 +1,57 @@
+{
+  "schema": "phase4-fpga-toolchain-gate-v0",
+  "generated_at": "2026-07-14T18:34:10.827394+08:00",
+  "agent": "ChenZhengGong",
+  "definition": "类脑算子工具链综合→烧PL→规格+资源；点灯≠PASS",
+  "checks": {
+    "src_hls": {
+      "ok": true,
+      "path": "/home/cx/neuromorphic-computing/fpga/hls/lif_step.cpp"
+    },
+    "src_rtl": {
+      "ok": true,
+      "path": "/home/cx/neuromorphic-computing/fpga/rtl/lif_step.v"
+    },
+    "vivado_tcl": {
+      "ok": true,
+      "path": "/home/cx/neuromorphic-computing/fpga/vivado/create_lif_overlay.tcl"
+    },
+    "rtl_sim_vs_golden": {
+      "ok": true,
+      "exit": 0,
+      "report": "/home/cx/neuromorphic-computing/runs/phase4_poc/fpga_lif_rtl_sim.json"
+    },
+    "vivado_cli": {
+      "ok": false,
+      "path": null,
+      "note": "缺则无法综合/出 LUT 报告与 bitstream"
+    },
+    "vitis_hls_cli": {
+      "ok": false,
+      "path": null
+    },
+    "pynq_pl_sudo_overlay": {
+      "ok": true,
+      "exit": 0,
+      "snippet": "PL_ACCESS_OK 21\n[sudo] password for xilinx: "
+    },
+    "neuromorphic_bitstream": {
+      "ok": false,
+      "bit": null,
+      "hwh": null
+    },
+    "resource_report": {
+      "ok": false,
+      "path": null
+    }
+  },
+  "chain_board_and_sim_ok": true,
+  "chain_full_pl_ok": false,
+  "blocker": "本机未找到 vivado/vitis_hls；无法综合 lif_step → bitstream/资源报告",
+  "next": [
+    "在装有 Vivado 的机器: cd fpga/hls && vitis_hls -f run_lif_step.tcl",
+    "或: vivado -mode batch -source fpga/vivado/create_lif_overlay.tcl",
+    "把 .bit/.hwh/utilization.rpt 拷到 fpga/bitstreams/",
+    "再跑 scripts/phase4_fpga_pynq_lif_pl.py --gate"
+  ]
+}
