@@ -1,6 +1,6 @@
 {
   "schema": "phase4-fpga-toolchain-gate-v0",
-  "generated_at": "2026-07-14T18:34:10.827394+08:00",
+  "generated_at": "2026-07-14T18:35:44.589906+08:00",
   "agent": "ChenZhengGong",
   "definition": "类脑算子工具链综合→烧PL→规格+资源；点灯≠PASS",
   "checks": {

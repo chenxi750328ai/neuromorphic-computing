@@ -1,6 +1,7 @@
 # 类脑计算项目 · 每日进展
 
 ## 2026-07-14
+- **18:34 唤醒**：全盘 Vivado 仍无；FPGA `chain_full_pl_ok=false`；Atlas/PYNQ ping 通；PR #12 OPEN qa SUCCESS。E4 等人给 Vivado 路径或批准安装。
 
 - **自驱唤醒**：核盘 P0 — **FPGA 路径 B PR #7 早已合 main**（看板 focus 已改，不再当作待办）。  
 - **技术报告**：补齐 [§10 Phase4.1 立项 B1–B3](../docs/Phase4_技术报告_总裁评审.md) + §8 增 R5；**未代总裁签字**。  
