@@ -352,6 +352,8 @@ def render_board_md(ms: dict, live: dict) -> str:
 | 项 | URL |
 |----|-----|
 | TR1 网页看板 | http://127.0.0.1:18766/dashboard/neuromorphic-tr1.html |
+| **Wave-1 进展报告** | http://127.0.0.1:18766/dashboard/md-viewer.html?src=%2Fdocs%2Fneuromorphic-computing%2FPhase4.1_Wave1_%E8%BF%9B%E5%B1%95%E6%8A%A5%E5%91%8A_20260723.md&from=neuro |
+| 优势验证阶梯（计划真源） | http://127.0.0.1:18766/dashboard/md-viewer.html?src=%2Fdocs%2Fneuromorphic-computing%2F%E4%BC%98%E5%8A%BF%E9%AA%8C%E8%AF%81%E9%98%B6%E6%A2%AF%E4%B8%8E%E4%B8%93%E7%94%A8%E7%A1%AC%E4%BB%B6%E8%A7%84%E6%A0%BC_V1.md&from=neuro |
 | 每日计划 | http://127.0.0.1:18766/dashboard/md-viewer.html?src=%2Fdocs%2Fneuromorphic-computing%2F%E6%AF%8F%E6%97%A5%E8%AE%A1%E5%88%92.md |
 | 总裁汇报 | http://127.0.0.1:18766/dashboard/md-viewer.html?src=%2Fdocs%2Fneuromorphic-computing%2F%E6%80%BB%E8%A3%81%E6%B1%87%E6%8A%A5_%E6%9C%80%E6%96%B0.md&from=neuro |
 | Phase4 PoC | [phase4_inference_poc_plan.md](./phase4_inference_poc_plan.md) |

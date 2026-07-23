@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Thu Jul 23 10:13:49 2026
+# Process ID: 1010033
+# Current directory: /home/cx/neuromorphic-computing/fpga/vivado
+# Command line: vivado -mode batch -source create_lif_overlay.tcl -log logs/create_lif_overlay_r2.log -journal logs/create_lif_overlay_r2.jou
+# Log file: /home/cx/neuromorphic-computing/fpga/vivado/logs/create_lif_overlay_r2.log
+# Journal file: /home/cx/neuromorphic-computing/fpga/vivado/logs/create_lif_overlay_r2.jou
+# Running On: CXS1, OS: Linux, CPU Frequency: 3417.600 MHz, CPU Physical cores: 10, Host memory: 33654 MB
+#-----------------------------------------------------------
+source create_lif_overlay.tcl

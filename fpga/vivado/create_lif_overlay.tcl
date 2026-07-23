@@ -45,23 +45,27 @@ if {[catch {
   assign_bd_address
   validate_bd_design
   save_bd_design
-  make_wrapper -files [get_files design_1.bd] -top
-  add_files -norecurse [get_property DIR_HDSRC [get_filesets sources_1]]/../bd/design_1/hdl/design_1_wrapper.v
+  # make_wrapper writes under .gen/.../hdl/; return value is the file set to add
+  set wrapper_files [make_wrapper -files [get_files design_1.bd] -top]
+  add_files -norecurse $wrapper_files
   set_property top design_1_wrapper [current_fileset]
   update_compile_order -fileset sources_1
 
   launch_runs impl_1 -to_step write_bitstream -jobs 4
   wait_on_run impl_1
-  file copy -force \
-    [glob ./_vivado_lif_overlay.runs/impl_1/*.bit] \
-    [file join $OUT lif_step_overlay.bit]
-  # hwh from BD export
-  catch {
-    file copy -force \
-      [lindex [glob -nocomplain ./_vivado_lif_overlay.gen/sources_1/bd/design_1/hw_handoff/*.hwh] 0] \
-      [file join $OUT lif_step_overlay.hwh]
+  set bit_src [lindex [glob -nocomplain ./_vivado_lif_overlay/lif_overlay.runs/impl_1/*.bit] 0]
+  if {$bit_src eq ""} {
+    error "impl_1 produced no .bit"
   }
-  puts "BIT_OK [file join $OUT lif_step_overlay.nbit]"
+  file copy -force $bit_src [file join $OUT lif_step_overlay.bit]
+  # hwh from BD export / hw_handoff
+  set hwh_src [lindex [glob -nocomplain \
+    ./_vivado_lif_overlay/lif_overlay.gen/sources_1/bd/design_1/hw_handoff/*.hwh \
+    ./_vivado_lif_overlay/lif_overlay.srcs/sources_1/bd/design_1/hw_handoff/*.hwh] 0]
+  if {$hwh_src ne ""} {
+    file copy -force $hwh_src [file join $OUT lif_step_overlay.hwh]
+  }
+  puts "BIT_OK [file join $OUT lif_step_overlay.bit]"
 } err]} {
   puts "BD_BITSTREAM_SKIP: $err"
   puts "NOTE: utilization.rpt 仍可用；BD 失败时手工在 GUI 挂 AXI 即可"

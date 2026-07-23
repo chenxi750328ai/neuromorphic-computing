@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Thu Jul 23 10:23:40 2026
+# Process ID: 1020379
+# Current directory: /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.runs/impl_1
+# Command line: vivado -log design_1_wrapper.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source design_1_wrapper.tcl -notrace
+# Log file: /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.runs/impl_1/design_1_wrapper.vdi
+# Journal file: /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.runs/impl_1/vivado.jou
+# Running On: CXS1, OS: Linux, CPU Frequency: 3417.600 MHz, CPU Physical cores: 10, Host memory: 33654 MB
+#-----------------------------------------------------------
+source design_1_wrapper.tcl -notrace

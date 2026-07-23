@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Thu Jul 23 10:13:57 2026
+# Process ID: 1010248
+# Current directory: /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_overlay/lif_overlay.runs/synth_1
+# Command line: vivado -log lif_step_axi_lite.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source lif_step_axi_lite.tcl
+# Log file: /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_overlay/lif_overlay.runs/synth_1/lif_step_axi_lite.vds
+# Journal file: /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_overlay/lif_overlay.runs/synth_1/vivado.jou
+# Running On: CXS1, OS: Linux, CPU Frequency: 3417.600 MHz, CPU Physical cores: 10, Host memory: 33654 MB
+#-----------------------------------------------------------
+source lif_step_axi_lite.tcl -notrace

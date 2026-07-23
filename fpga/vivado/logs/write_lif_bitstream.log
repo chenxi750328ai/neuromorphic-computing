@@ -1,0 +1,1540 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Thu Jul 23 10:22:00 2026
+# Process ID: 1017130
+# Current directory: /home/cx/neuromorphic-computing/fpga/vivado
+# Command line: vivado -mode batch -source write_lif_bitstream.tcl -log logs/write_lif_bitstream.log -journal logs/write_lif_bitstream.jou
+# Log file: /home/cx/neuromorphic-computing/fpga/vivado/logs/write_lif_bitstream.log
+# Journal file: /home/cx/neuromorphic-computing/fpga/vivado/logs/write_lif_bitstream.jou
+# Running On: CXS1, OS: Linux, CPU Frequency: 3417.600 MHz, CPU Physical cores: 10, Host memory: 33654 MB
+#-----------------------------------------------------------
+source write_lif_bitstream.tcl
+# set PART xc7z020clg400-1
+# set REPO [file normalize [file join [pwd] ..]]
+# set RTL  [file join $REPO rtl]
+# set OUT  [file join $REPO bitstreams]
+# file mkdir $OUT
+# set PROJ ./_vivado_lif_bit
+# file delete -force $PROJ
+# create_project lif_bit $PROJ -part $PART -force
+# add_files [list \
+#   [file join $RTL lif_step.v] \
+#   [file join $RTL lif_step_axi_lite.v] \
+# ]
+# update_compile_order -fileset sources_1
+# create_bd_design "design_1"
+Wrote  : </home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.srcs/sources_1/bd/design_1/design_1.bd> 
+# create_bd_cell -type ip -vlnv xilinx.com:ip:processing_system7:5.5 processing_system7_0
+# apply_bd_automation -rule xilinx.com:bd_rule:processing_system7 \
+#   -config {make_external "FIXED_IO, DDR" Master "Disable" Slave "Disable"} \
+#   [get_bd_cells processing_system7_0]
+# set_property -dict [list CONFIG.PCW_USE_S_AXI_HP0 {0} CONFIG.PCW_FPGA0_PERIPHERAL_FREQMHZ {100}] \
+#   [get_bd_cells processing_system7_0]
+# create_bd_cell -type module -reference lif_step_axi_lite lif_step_0
+INFO: [IP_Flow 19-5107] Inferred bus interface 's_axi' of definition 'xilinx.com:interface:aximm:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 's_axi_aresetn' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 's_axi_aclk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-4728] Bus Interface 's_axi_aresetn': Added interface parameter 'POLARITY' with value 'ACTIVE_LOW'.
+INFO: [IP_Flow 19-4728] Bus Interface 's_axi_aclk': Added interface parameter 'ASSOCIATED_BUSIF' with value 's_axi'.
+INFO: [IP_Flow 19-4728] Bus Interface 's_axi_aclk': Added interface parameter 'ASSOCIATED_RESET' with value 's_axi_aresetn'.
+WARNING: [IP_Flow 19-11770] Clock interface 's_axi_aclk' has no FREQ_HZ parameter.
+# apply_bd_automation -rule xilinx.com:bd_rule:axi4 -config \
+#   {Master "/processing_system7_0/M_AXI_GP0" Clk "Auto"} \
+#   [get_bd_intf_pins lif_step_0/s_axi]
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+Slave segment '/lif_step_0/s_axi/reg0' is being assigned into address space '/processing_system7_0/Data' at <0x4000_0000 [ 4K ]>.
+# assign_bd_address
+# validate_bd_design
+# save_bd_design
+Wrote  : </home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.srcs/sources_1/bd/design_1/design_1.bd> 
+INFO: [BD 41-1662] The design 'design_1.bd' is already validated. Therefore parameter propagation will not be re-run.
+Verilog Output written to : /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/synth/design_1.v
+Verilog Output written to : /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/sim/design_1.v
+Verilog Output written to : /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/hdl/design_1_wrapper.v
+# set wrapper_files [make_wrapper -files [get_files design_1.bd] -top]
+# add_files -norecurse $wrapper_files
+# set_property top design_1_wrapper [current_fileset]
+# update_compile_order -fileset sources_1
+# generate_target all [get_files design_1.bd]
+INFO: [BD 41-1662] The design 'design_1.bd' is already validated. Therefore parameter propagation will not be re-run.
+Verilog Output written to : /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/synth/design_1.v
+Verilog Output written to : /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/sim/design_1.v
+Verilog Output written to : /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/hdl/design_1_wrapper.v
+INFO: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'M_AXI_GP0'. A default connection has been created.
+INFO: [BD 41-1029] Generation completed for the IP Integrator block processing_system7_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block lif_step_0 .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file '/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_auto_pc_0/design_1_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block ps7_0_axi_periph/s00_couplers/auto_pc .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block rst_ps7_0_100M .
+Exporting to file /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/hw_handoff/design_1.hwh
+Generated Hardware Definition File /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/synth/design_1.hwdef
+generate_target: Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1692.367 ; gain = 0.000 ; free physical = 17952 ; free virtual = 33095
+# export_ip_user_files -of_objects [get_files design_1.bd] -no_script -sync -force -quiet
+# launch_runs synth_1 -jobs 4
+INFO: [IP_Flow 19-6930] IPCACHE: runCacheChecks() number of threads = 8
+INFO: [IP_Flow 19-6921] IPCACHE: Adding cache check func to thread queue for IP design_1_auto_pc_0
+INFO: [IP_Flow 19-6921] IPCACHE: Adding cache check func to thread queue for IP design_1_lif_step_0_0
+INFO: [IP_Flow 19-6921] IPCACHE: Adding cache check func to thread queue for IP design_1_rst_ps7_0_100M_0
+INFO: [IP_Flow 19-8020] IPCACHE: runCacheChecks() calling threadPool finishWork()
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: design_1_auto_pc_0
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: design_1_lif_step_0_0
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: design_1_rst_ps7_0_100M_0
+WARNING: [Vivado 12-7122] Auto Incremental Compile:: No reference checkpoint was found in run synth_1. Auto-incremental flow will not be run, the standard flow will be run instead.
+[Thu Jul 23 10:22:21 2026] Launched design_1_rst_ps7_0_100M_0_synth_1, design_1_auto_pc_0_synth_1, design_1_lif_step_0_0_synth_1, design_1_processing_system7_0_0_synth_1...
+Run output will be captured here:
+design_1_rst_ps7_0_100M_0_synth_1: /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.runs/design_1_rst_ps7_0_100M_0_synth_1/runme.log
+design_1_auto_pc_0_synth_1: /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.runs/design_1_auto_pc_0_synth_1/runme.log
+design_1_lif_step_0_0_synth_1: /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.runs/design_1_lif_step_0_0_synth_1/runme.log
+design_1_processing_system7_0_0_synth_1: /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.runs/design_1_processing_system7_0_0_synth_1/runme.log
+[Thu Jul 23 10:22:21 2026] Launched synth_1...
+Run output will be captured here: /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.runs/synth_1/runme.log
+# wait_on_run synth_1
+[Thu Jul 23 10:22:21 2026] Waiting for synth_1 to finish...
+
+*** Running vivado
+    with args -log design_1_wrapper.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_1_wrapper.tcl
+
+
+****** Vivado v2023.2 (64-bit)
+  **** SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
+  **** IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+  **** SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source design_1_wrapper.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/Vivado/2023.2/data/ip'.
+Command: synth_design -top design_1_wrapper -part xc7z020clg400-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Device 21-403] Loading part xc7z020clg400-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 1019667
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2035.820 ; gain = 402.715 ; free physical = 16403 ; free virtual = 31555
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'design_1_wrapper' [/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/hdl/design_1_wrapper.v:13]
+INFO: [Synth 8-6157] synthesizing module 'design_1' [/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/synth/design_1.v:13]
+INFO: [Synth 8-6157] synthesizing module 'design_1_lif_step_0_0' [/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.runs/synth_1/.Xil/Vivado-1019462-CXS1/realtime/design_1_lif_step_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_lif_step_0_0' (0#1) [/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.runs/synth_1/.Xil/Vivado-1019462-CXS1/realtime/design_1_lif_step_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'design_1_processing_system7_0_0' [/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.runs/synth_1/.Xil/Vivado-1019462-CXS1/realtime/design_1_processing_system7_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_processing_system7_0_0' (0#1) [/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.runs/synth_1/.Xil/Vivado-1019462-CXS1/realtime/design_1_processing_system7_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'design_1_ps7_0_axi_periph_0' [/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/synth/design_1.v:292]
+INFO: [Synth 8-6157] synthesizing module 's00_couplers_imp_UYSKKA' [/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/synth/design_1.v:597]
+INFO: [Synth 8-6157] synthesizing module 'design_1_auto_pc_0' [/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.runs/synth_1/.Xil/Vivado-1019462-CXS1/realtime/design_1_auto_pc_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_auto_pc_0' (0#1) [/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.runs/synth_1/.Xil/Vivado-1019462-CXS1/realtime/design_1_auto_pc_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'm_axi_awprot' of module 'design_1_auto_pc_0' is unconnected for instance 'auto_pc' [/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/synth/design_1.v:832]
+WARNING: [Synth 8-7071] port 'm_axi_arprot' of module 'design_1_auto_pc_0' is unconnected for instance 'auto_pc' [/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/synth/design_1.v:832]
+WARNING: [Synth 8-7023] instance 'auto_pc' of module 'design_1_auto_pc_0' has 59 connections declared, but only 57 given [/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/synth/design_1.v:832]
+INFO: [Synth 8-6155] done synthesizing module 's00_couplers_imp_UYSKKA' (0#1) [/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/synth/design_1.v:597]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_ps7_0_axi_periph_0' (0#1) [/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/synth/design_1.v:292]
+INFO: [Synth 8-6157] synthesizing module 'design_1_rst_ps7_0_100M_0' [/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.runs/synth_1/.Xil/Vivado-1019462-CXS1/realtime/design_1_rst_ps7_0_100M_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_rst_ps7_0_100M_0' (0#1) [/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.runs/synth_1/.Xil/Vivado-1019462-CXS1/realtime/design_1_rst_ps7_0_100M_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'mb_reset' of module 'design_1_rst_ps7_0_100M_0' is unconnected for instance 'rst_ps7_0_100M' [/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/synth/design_1.v:283]
+WARNING: [Synth 8-7071] port 'bus_struct_reset' of module 'design_1_rst_ps7_0_100M_0' is unconnected for instance 'rst_ps7_0_100M' [/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/synth/design_1.v:283]
+WARNING: [Synth 8-7071] port 'peripheral_reset' of module 'design_1_rst_ps7_0_100M_0' is unconnected for instance 'rst_ps7_0_100M' [/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/synth/design_1.v:283]
+WARNING: [Synth 8-7071] port 'interconnect_aresetn' of module 'design_1_rst_ps7_0_100M_0' is unconnected for instance 'rst_ps7_0_100M' [/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/synth/design_1.v:283]
+WARNING: [Synth 8-7023] instance 'rst_ps7_0_100M' of module 'design_1_rst_ps7_0_100M_0' has 10 connections declared, but only 6 given [/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/synth/design_1.v:283]
+INFO: [Synth 8-6155] done synthesizing module 'design_1' (0#1) [/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/synth/design_1.v:13]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_wrapper' (0#1) [/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/hdl/design_1_wrapper.v:13]
+WARNING: [Synth 8-7129] Port M_ACLK in module s00_couplers_imp_UYSKKA is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M_ARESETN in module s00_couplers_imp_UYSKKA is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ACLK in module design_1_ps7_0_axi_periph_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ARESETN in module design_1_ps7_0_axi_periph_0 is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 2114.758 ; gain = 481.652 ; free physical = 16208 ; free virtual = 31361
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 2129.602 ; gain = 496.496 ; free physical = 16204 ; free virtual = 31357
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 2129.602 ; gain = 496.496 ; free physical = 16204 ; free virtual = 31357
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2129.602 ; gain = 0.000 ; free physical = 16202 ; free virtual = 31355
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc] for cell 'design_1_i/processing_system7_0'
+Finished Parsing XDC File [/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc] for cell 'design_1_i/processing_system7_0'
+Parsing XDC File [/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_lif_step_0_0/design_1_lif_step_0_0/design_1_lif_step_0_0_in_context.xdc] for cell 'design_1_i/lif_step_0'
+Finished Parsing XDC File [/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_lif_step_0_0/design_1_lif_step_0_0/design_1_lif_step_0_0_in_context.xdc] for cell 'design_1_i/lif_step_0'
+Parsing XDC File [/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_auto_pc_0/design_1_auto_pc_0/design_1_auto_pc_0_in_context.xdc] for cell 'design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc'
+Finished Parsing XDC File [/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_auto_pc_0/design_1_auto_pc_0/design_1_auto_pc_0_in_context.xdc] for cell 'design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc'
+Parsing XDC File [/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_rst_ps7_0_100M_0/design_1_rst_ps7_0_100M_0/design_1_rst_ps7_0_100M_0_in_context.xdc] for cell 'design_1_i/rst_ps7_0_100M'
+Finished Parsing XDC File [/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_rst_ps7_0_100M_0/design_1_rst_ps7_0_100M_0/design_1_rst_ps7_0_100M_0_in_context.xdc] for cell 'design_1_i/rst_ps7_0_100M'
+Parsing XDC File [/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.runs/synth_1/dont_touch.xdc]
+Finished Parsing XDC File [/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.runs/synth_1/dont_touch.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2202.539 ; gain = 0.000 ; free physical = 16368 ; free virtual = 31520
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2202.574 ; gain = 0.000 ; free physical = 16368 ; free virtual = 31520
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2202.574 ; gain = 569.469 ; free physical = 16458 ; free virtual = 31611
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg400-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2202.574 ; gain = 569.469 ; free physical = 16457 ; free virtual = 31610
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_addr[0]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 2).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_addr[0]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 3).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_addr[10]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 4).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_addr[10]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 5).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_addr[11]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 6).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_addr[11]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 7).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_addr[12]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 8).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_addr[12]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 9).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_addr[13]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 10).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_addr[13]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 11).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_addr[14]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 12).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_addr[14]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 13).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_addr[1]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 14).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_addr[1]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 15).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_addr[2]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 16).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_addr[2]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 17).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_addr[3]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 18).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_addr[3]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 19).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_addr[4]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 20).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_addr[4]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 21).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_addr[5]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 22).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_addr[5]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 23).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_addr[6]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 24).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_addr[6]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 25).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_addr[7]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 26).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_addr[7]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 27).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_addr[8]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 28).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_addr[8]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 29).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_addr[9]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 30).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_addr[9]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 31).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_ba[0]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 32).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_ba[0]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 33).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_ba[1]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 34).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_ba[1]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 35).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_ba[2]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 36).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_ba[2]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 37).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_cas_n. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 38).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_cas_n. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 39).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_cke. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 40).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_cke. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 41).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_cs_n. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 42).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_cs_n. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 43).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_ck_p. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 44).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_ck_p. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 45).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_ck_n. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 46).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_ck_n. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 47).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_dm[0]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 48).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_dm[0]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 49).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_dm[1]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 50).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_dm[1]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 51).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_dm[2]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 52).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_dm[2]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 53).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_dm[3]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 54).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_dm[3]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 55).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_dqs_p[0]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 56).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_dqs_p[0]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 57).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_dqs_p[1]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 58).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_dqs_p[1]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 59).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_dqs_p[2]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 60).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_dqs_p[2]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 61).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_dqs_p[3]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 62).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_dqs_p[3]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 63).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_dqs_n[0]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 64).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_dqs_n[0]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 65).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_dqs_n[1]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 66).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_dqs_n[1]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 67).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_dqs_n[2]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 68).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_dqs_n[2]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 69).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_dqs_n[3]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 70).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_dqs_n[3]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 71).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_dq[0]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 72).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_dq[0]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 73).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_dq[10]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 74).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_dq[10]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 75).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_dq[11]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 76).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_dq[11]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 77).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_dq[12]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 78).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_dq[12]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 79).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_dq[13]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 80).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_dq[13]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 81).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_dq[14]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 82).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_dq[14]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 83).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_dq[15]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 84).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_dq[15]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 85).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_dq[16]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 86).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_dq[16]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 87).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_dq[17]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 88).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_dq[17]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 89).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_dq[18]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 90).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_dq[18]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 91).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_dq[19]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 92).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_dq[19]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 93).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_dq[1]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 94).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_dq[1]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 95).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_dq[20]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 96).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_dq[20]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 97).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_dq[21]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 98).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_dq[21]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 99).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_dq[22]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 100).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_dq[22]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 101).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_dq[23]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 102).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_dq[23]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 103).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_dq[24]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 104).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_dq[24]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 105).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_dq[25]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 106).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_dq[25]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 107).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_dq[26]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 108).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_dq[26]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 109).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_dq[27]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 110).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_dq[27]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 111).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_dq[28]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 112).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_dq[28]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 113).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_dq[29]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 114).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_dq[29]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 115).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_dq[2]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 116).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_dq[2]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 117).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_dq[30]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 118).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_dq[30]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 119).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_dq[31]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 120).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_dq[31]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 121).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_dq[3]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 122).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_dq[3]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 123).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_dq[4]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 124).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_dq[4]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 125).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_dq[5]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 126).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_dq[5]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 127).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_dq[6]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 128).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_dq[6]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 129).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_dq[7]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 130).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_dq[7]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 131).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_dq[8]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 132).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_dq[8]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 133).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_dq[9]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 134).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_dq[9]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 135).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_reset_n. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 136).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_reset_n. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 137).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_odt. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 138).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_odt. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 139).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_ras_n. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 140).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_ras_n. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 141).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_ddr_vrn. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 142).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_ddr_vrn. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 143).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_ddr_vrp. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 144).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_ddr_vrp. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 145).
+Applied set_property IO_BUFFER_TYPE = NONE for DDR_we_n. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 146).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for DDR_we_n. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 147).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[0]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 148).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[0]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 149).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[10]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 150).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[10]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 151).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[11]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 152).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[11]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 153).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[12]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 154).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[12]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 155).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[13]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 156).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[13]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 157).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[14]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 158).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[14]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 159).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[15]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 160).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[15]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 161).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[16]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 162).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[16]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 163).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[17]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 164).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[17]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 165).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[18]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 166).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[18]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 167).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[19]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 168).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[19]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 169).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[1]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 170).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[1]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 171).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[20]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 172).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[20]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 173).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[21]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 174).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[21]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 175).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[22]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 176).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[22]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 177).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[23]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 178).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[23]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 179).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[24]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 180).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[24]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 181).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[25]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 182).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[25]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 183).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[26]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 184).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[26]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 185).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[27]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 186).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[27]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 187).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[28]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 188).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[28]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 189).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[29]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 190).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[29]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 191).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[2]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 192).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[2]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 193).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[30]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 194).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[30]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 195).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[31]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 196).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[31]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 197).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[32]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 198).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[32]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 199).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[33]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 200).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[33]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 201).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[34]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 202).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[34]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 203).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[35]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 204).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[35]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 205).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[36]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 206).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[36]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 207).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[37]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 208).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[37]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 209).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[38]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 210).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[38]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 211).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[39]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 212).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[39]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 213).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[3]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 214).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[3]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 215).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[40]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 216).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[40]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 217).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[41]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 218).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[41]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 219).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[42]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 220).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[42]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 221).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[43]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 222).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[43]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 223).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[44]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 224).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[44]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 225).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[45]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 226).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[45]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 227).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[46]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 228).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[46]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 229).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[47]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 230).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[47]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 231).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[48]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 232).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[48]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 233).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[49]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 234).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[49]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 235).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[4]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 236).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[4]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 237).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[50]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 238).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[50]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 239).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[51]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 240).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[51]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 241).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[52]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 242).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[52]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 243).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[53]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 244).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[53]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 245).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[5]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 246).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[5]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 247).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[6]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 248).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[6]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 249).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[7]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 250).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[7]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 251).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[8]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 252).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[8]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 253).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_mio[9]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 254).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_mio[9]. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 255).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_ps_clk. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 256).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_ps_clk. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 257).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_ps_porb. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 258).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_ps_porb. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 259).
+Applied set_property IO_BUFFER_TYPE = NONE for FIXED_IO_ps_srstb. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 260).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for FIXED_IO_ps_srstb. (constraint file  /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0/design_1_processing_system7_0_0_in_context.xdc, line 261).
+Applied set_property KEEP_HIERARCHY = SOFT for design_1_i. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for design_1_i/processing_system7_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for design_1_i/lif_step_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for design_1_i/ps7_0_axi_periph. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for design_1_i/rst_ps7_0_100M. (constraint file  auto generated constraint).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2202.574 ; gain = 569.469 ; free physical = 16452 ; free virtual = 31605
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2202.574 ; gain = 569.469 ; free physical = 16446 ; free virtual = 31600
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-7129] Port ACLK in module design_1_ps7_0_axi_periph_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ARESETN in module design_1_ps7_0_axi_periph_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M00_ACLK in module design_1_ps7_0_axi_periph_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M00_ARESETN in module design_1_ps7_0_axi_periph_0 is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 2202.574 ; gain = 569.469 ; free physical = 16416 ; free virtual = 31574
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2202.574 ; gain = 569.469 ; free physical = 16365 ; free virtual = 31524
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2202.574 ; gain = 569.469 ; free physical = 16365 ; free virtual = 31524
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2202.574 ; gain = 569.469 ; free physical = 16365 ; free virtual = 31524
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 2202.574 ; gain = 569.469 ; free physical = 16363 ; free virtual = 31521
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 2202.574 ; gain = 569.469 ; free physical = 16363 ; free virtual = 31521
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 2202.574 ; gain = 569.469 ; free physical = 16363 ; free virtual = 31521
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 2202.574 ; gain = 569.469 ; free physical = 16363 ; free virtual = 31521
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 2202.574 ; gain = 569.469 ; free physical = 16363 ; free virtual = 31521
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 2202.574 ; gain = 569.469 ; free physical = 16363 ; free virtual = 31521
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+--------------------------------+----------+
+|      |BlackBox name                   |Instances |
++------+--------------------------------+----------+
+|1     |design_1_auto_pc_0              |         1|
+|2     |design_1_lif_step_0_0           |         1|
+|3     |design_1_processing_system7_0_0 |         1|
+|4     |design_1_rst_ps7_0_100M_0       |         1|
++------+--------------------------------+----------+
+
+Report Cell Usage: 
++------+------------------------------+------+
+|      |Cell                          |Count |
++------+------------------------------+------+
+|1     |design_1_auto_pc              |     1|
+|2     |design_1_lif_step_0           |     1|
+|3     |design_1_processing_system7_0 |     1|
+|4     |design_1_rst_ps7_0_100M       |     1|
++------+------------------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 2202.574 ; gain = 569.469 ; free physical = 16363 ; free virtual = 31521
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 5 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 2202.574 ; gain = 496.496 ; free physical = 16362 ; free virtual = 31520
+Synthesis Optimization Complete : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 2202.574 ; gain = 569.469 ; free physical = 16362 ; free virtual = 31520
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2202.574 ; gain = 0.000 ; free physical = 16359 ; free virtual = 31517
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2202.574 ; gain = 0.000 ; free physical = 16647 ; free virtual = 31805
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: 7f5b9084
+INFO: [Common 17-83] Releasing license: Synthesis
+31 Infos, 17 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:17 ; elapsed = 00:00:16 . Memory (MB): peak = 2202.574 ; gain = 886.000 ; free physical = 16646 ; free virtual = 31804
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1814.752; main = 1486.431; forked = 377.689
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3153.371; main = 2170.523; forked = 982.848
+INFO: [Common 17-1381] The checkpoint '/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.runs/synth_1/design_1_wrapper.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file design_1_wrapper_utilization_synth.rpt -pb design_1_wrapper_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Thu Jul 23 10:23:26 2026...
+[Thu Jul 23 10:23:36 2026] synth_1 finished
+wait_on_runs: Time (s): cpu = 00:02:18 ; elapsed = 00:01:15 . Memory (MB): peak = 1823.418 ; gain = 0.000 ; free physical = 17915 ; free virtual = 33068
+# if {[get_property PROGRESS [get_runs synth_1]] != "100%"} {
+#   error "synth_1 failed"
+# }
+# launch_runs impl_1 -to_step write_bitstream -jobs 4
+[Thu Jul 23 10:23:39 2026] Launched impl_1...
+Run output will be captured here: /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.runs/impl_1/runme.log
+# wait_on_run impl_1
+[Thu Jul 23 10:23:39 2026] Waiting for impl_1 to finish...
+
+*** Running vivado
+    with args -log design_1_wrapper.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source design_1_wrapper.tcl -notrace
+
+
+****** Vivado v2023.2 (64-bit)
+  **** SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
+  **** IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+  **** SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source design_1_wrapper.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/Vivado/2023.2/data/ip'.
+Command: link_design -top design_1_wrapper -part xc7z020clg400-1
+Design is defaulting to srcset: sources_1
+Design is defaulting to constrset: constrs_1
+INFO: [Device 21-403] Loading part xc7z020clg400-1
+INFO: [Project 1-454] Reading design checkpoint '/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_lif_step_0_0/design_1_lif_step_0_0.dcp' for cell 'design_1_i/lif_step_0'
+INFO: [Project 1-454] Reading design checkpoint '/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0.dcp' for cell 'design_1_i/processing_system7_0'
+INFO: [Project 1-454] Reading design checkpoint '/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_rst_ps7_0_100M_0/design_1_rst_ps7_0_100M_0.dcp' for cell 'design_1_i/rst_ps7_0_100M'
+INFO: [Project 1-454] Reading design checkpoint '/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_auto_pc_0/design_1_auto_pc_0.dcp' for cell 'design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc'
+Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.01 . Memory (MB): peak = 1653.523 ; gain = 0.000 ; free physical = 17148 ; free virtual = 32302
+INFO: [Netlist 29-17] Analyzing 87 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2023.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Parsing XDC File [/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0.xdc] for cell 'design_1_i/processing_system7_0/inst'
+Finished Parsing XDC File [/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_processing_system7_0_0/design_1_processing_system7_0_0.xdc] for cell 'design_1_i/processing_system7_0/inst'
+Parsing XDC File [/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_rst_ps7_0_100M_0/design_1_rst_ps7_0_100M_0_board.xdc] for cell 'design_1_i/rst_ps7_0_100M/U0'
+Finished Parsing XDC File [/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_rst_ps7_0_100M_0/design_1_rst_ps7_0_100M_0_board.xdc] for cell 'design_1_i/rst_ps7_0_100M/U0'
+Parsing XDC File [/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_rst_ps7_0_100M_0/design_1_rst_ps7_0_100M_0.xdc] for cell 'design_1_i/rst_ps7_0_100M/U0'
+Finished Parsing XDC File [/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.gen/sources_1/bd/design_1/ip/design_1_rst_ps7_0_100M_0/design_1_rst_ps7_0_100M_0.xdc] for cell 'design_1_i/rst_ps7_0_100M/U0'
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1987.105 ; gain = 0.000 ; free physical = 17009 ; free virtual = 32193
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+14 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+link_design completed successfully
+link_design: Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 1987.105 ; gain = 672.957 ; free physical = 17011 ; free virtual = 32195
+Command: opt_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+Running DRC as a precondition to command opt_design
+
+Starting DRC Task
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Project 1-461] DRC finished with 0 Errors
+INFO: [Project 1-462] Please refer to the DRC report (report_drc) for more information.
+
+Time (s): cpu = 00:00:00.67 ; elapsed = 00:00:00.42 . Memory (MB): peak = 1987.105 ; gain = 0.000 ; free physical = 16984 ; free virtual = 32169
+
+Starting Cache Timing Information Task
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Ending Cache Timing Information Task | Checksum: 1512b57d5
+
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2454.660 ; gain = 467.555 ; free physical = 16576 ; free virtual = 31761
+
+Starting Logic Optimization Task
+
+Phase 1 Initialization
+
+Phase 1.1 Core Generation And Design Setup
+Phase 1.1 Core Generation And Design Setup | Checksum: 1512b57d5
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2759.496 ; gain = 0.000 ; free physical = 16270 ; free virtual = 31455
+
+Phase 1.2 Setup Constraints And Sort Netlist
+Phase 1.2 Setup Constraints And Sort Netlist | Checksum: 1512b57d5
+
+Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2759.496 ; gain = 0.000 ; free physical = 16270 ; free virtual = 31455
+Phase 1 Initialization | Checksum: 1512b57d5
+
+Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2759.496 ; gain = 0.000 ; free physical = 16270 ; free virtual = 31455
+
+Phase 2 Timer Update And Timing Data Collection
+
+Phase 2.1 Timer Update
+Phase 2.1 Timer Update | Checksum: 1512b57d5
+
+Time (s): cpu = 00:00:00.05 ; elapsed = 00:00:00.03 . Memory (MB): peak = 2759.496 ; gain = 0.000 ; free physical = 16270 ; free virtual = 31455
+
+Phase 2.2 Timing Data Collection
+Phase 2.2 Timing Data Collection | Checksum: 1512b57d5
+
+Time (s): cpu = 00:00:00.06 ; elapsed = 00:00:00.04 . Memory (MB): peak = 2759.496 ; gain = 0.000 ; free physical = 16269 ; free virtual = 31454
+Phase 2 Timer Update And Timing Data Collection | Checksum: 1512b57d5
+
+Time (s): cpu = 00:00:00.06 ; elapsed = 00:00:00.04 . Memory (MB): peak = 2759.496 ; gain = 0.000 ; free physical = 16269 ; free virtual = 31454
+
+Phase 3 Retarget
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Opt 31-49] Retargeted 0 cell(s).
+Phase 3 Retarget | Checksum: acebbd33
+
+Time (s): cpu = 00:00:00.16 ; elapsed = 00:00:00.08 . Memory (MB): peak = 2759.496 ; gain = 0.000 ; free physical = 16269 ; free virtual = 31454
+Retarget | Checksum: acebbd33
+INFO: [Opt 31-389] Phase Retarget created 4 cells and removed 29 cells
+
+Phase 4 Constant propagation
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Phase 4 Constant propagation | Checksum: c5a69ef2
+
+Time (s): cpu = 00:00:00.19 ; elapsed = 00:00:00.1 . Memory (MB): peak = 2759.496 ; gain = 0.000 ; free physical = 16269 ; free virtual = 31454
+Constant propagation | Checksum: c5a69ef2
+INFO: [Opt 31-389] Phase Constant propagation created 0 cells and removed 8 cells
+
+Phase 5 Sweep
+Phase 5 Sweep | Checksum: 11f1d37ff
+
+Time (s): cpu = 00:00:00.26 ; elapsed = 00:00:00.16 . Memory (MB): peak = 2759.496 ; gain = 0.000 ; free physical = 16269 ; free virtual = 31454
+Sweep | Checksum: 11f1d37ff
+INFO: [Opt 31-389] Phase Sweep created 0 cells and removed 227 cells
+
+Phase 6 BUFG optimization
+Phase 6 BUFG optimization | Checksum: 11f1d37ff
+
+Time (s): cpu = 00:00:00.28 ; elapsed = 00:00:00.18 . Memory (MB): peak = 2791.512 ; gain = 32.016 ; free physical = 16269 ; free virtual = 31454
+BUFG optimization | Checksum: 11f1d37ff
+INFO: [Opt 31-662] Phase BUFG optimization created 0 cells of which 0 are BUFGs and removed 0 cells.
+
+Phase 7 Shift Register Optimization
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/rd_data_fifo_0/memory_reg[31][0]_srl32 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/rd_data_fifo_0/memory_reg[31][10]_srl32 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/rd_data_fifo_0/memory_reg[31][11]_srl32 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/rd_data_fifo_0/memory_reg[31][12]_srl32 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/rd_data_fifo_0/memory_reg[31][13]_srl32 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/rd_data_fifo_0/memory_reg[31][14]_srl32 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/rd_data_fifo_0/memory_reg[31][15]_srl32 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/rd_data_fifo_0/memory_reg[31][16]_srl32 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/rd_data_fifo_0/memory_reg[31][17]_srl32 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/rd_data_fifo_0/memory_reg[31][18]_srl32 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/rd_data_fifo_0/memory_reg[31][19]_srl32 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/rd_data_fifo_0/memory_reg[31][1]_srl32 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/rd_data_fifo_0/memory_reg[31][20]_srl32 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/rd_data_fifo_0/memory_reg[31][21]_srl32 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/rd_data_fifo_0/memory_reg[31][22]_srl32 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/rd_data_fifo_0/memory_reg[31][23]_srl32 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/rd_data_fifo_0/memory_reg[31][24]_srl32 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/rd_data_fifo_0/memory_reg[31][25]_srl32 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/rd_data_fifo_0/memory_reg[31][26]_srl32 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/rd_data_fifo_0/memory_reg[31][27]_srl32 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/rd_data_fifo_0/memory_reg[31][28]_srl32 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/rd_data_fifo_0/memory_reg[31][29]_srl32 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/rd_data_fifo_0/memory_reg[31][2]_srl32 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/rd_data_fifo_0/memory_reg[31][30]_srl32 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/rd_data_fifo_0/memory_reg[31][31]_srl32 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/rd_data_fifo_0/memory_reg[31][9]_srl32 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/rd_data_fifo_0/memory_reg[31][8]_srl32 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/rd_data_fifo_0/memory_reg[31][3]_srl32 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/rd_data_fifo_0/memory_reg[31][4]_srl32 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/rd_data_fifo_0/memory_reg[31][5]_srl32 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/rd_data_fifo_0/memory_reg[31][6]_srl32 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/rd_data_fifo_0/memory_reg[31][7]_srl32 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/transaction_fifo_0/memory_reg[31][0]_srl32 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/transaction_fifo_0/memory_reg[31][10]_srl32 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/transaction_fifo_0/memory_reg[31][11]_srl32 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/transaction_fifo_0/memory_reg[31][12]_srl32 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/transaction_fifo_0/memory_reg[31][1]_srl32 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/transaction_fifo_0/memory_reg[31][2]_srl32 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/transaction_fifo_0/memory_reg[31][3]_srl32 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/transaction_fifo_0/memory_reg[31][4]_srl32 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/transaction_fifo_0/memory_reg[31][5]_srl32 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/transaction_fifo_0/memory_reg[31][6]_srl32 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/transaction_fifo_0/memory_reg[31][7]_srl32 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/transaction_fifo_0/memory_reg[31][8]_srl32 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/RD.r_channel_0/transaction_fifo_0/memory_reg[31][9]_srl32 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/WR.b_channel_0/bid_fifo_0/memory_reg[3][0]_srl4 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/WR.b_channel_0/bid_fifo_0/memory_reg[3][10]_srl4 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/WR.b_channel_0/bid_fifo_0/memory_reg[3][11]_srl4 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/WR.b_channel_0/bid_fifo_0/memory_reg[3][12]_srl4 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/WR.b_channel_0/bid_fifo_0/memory_reg[3][13]_srl4 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/WR.b_channel_0/bid_fifo_0/memory_reg[3][14]_srl4 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/WR.b_channel_0/bid_fifo_0/memory_reg[3][15]_srl4 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/WR.b_channel_0/bid_fifo_0/memory_reg[3][16]_srl4 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/WR.b_channel_0/bid_fifo_0/memory_reg[3][17]_srl4 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/WR.b_channel_0/bid_fifo_0/memory_reg[3][18]_srl4 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/WR.b_channel_0/bid_fifo_0/memory_reg[3][19]_srl4 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/WR.b_channel_0/bid_fifo_0/memory_reg[3][1]_srl4 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/WR.b_channel_0/bid_fifo_0/memory_reg[3][2]_srl4 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/WR.b_channel_0/bid_fifo_0/memory_reg[3][3]_srl4 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/WR.b_channel_0/bid_fifo_0/memory_reg[3][8]_srl4 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/WR.b_channel_0/bid_fifo_0/memory_reg[3][9]_srl4 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/WR.b_channel_0/bresp_fifo_0/memory_reg[3][0]_srl4 due to none static srl address bits
+WARNING: [Opt 31-1131] Can not pull register out from design_1_i/ps7_0_axi_periph/s00_couplers/auto_pc/inst/gen_axilite.gen_b2s_conv.axilite_b2s/WR.b_channel_0/bresp_fifo_0/memory_reg[3][1]_srl4 due to none static srl address bits
+INFO: [Opt 31-1064] SRL Remap converted 0 SRLs to 0 registers and converted 0 registers of register chains to 0 SRLs
+Phase 7 Shift Register Optimization | Checksum: 11f1d37ff
+
+Time (s): cpu = 00:00:00.28 ; elapsed = 00:00:00.18 . Memory (MB): peak = 2791.512 ; gain = 32.016 ; free physical = 16268 ; free virtual = 31453
+Shift Register Optimization | Checksum: 11f1d37ff
+INFO: [Opt 31-389] Phase Shift Register Optimization created 0 cells and removed 0 cells
+
+Phase 8 Post Processing Netlist
+Phase 8 Post Processing Netlist | Checksum: d04b8b17
+
+Time (s): cpu = 00:00:00.29 ; elapsed = 00:00:00.19 . Memory (MB): peak = 2791.512 ; gain = 32.016 ; free physical = 16268 ; free virtual = 31453
+Post Processing Netlist | Checksum: d04b8b17
+INFO: [Opt 31-389] Phase Post Processing Netlist created 0 cells and removed 0 cells
+
+Phase 9 Finalization
+
+Phase 9.1 Finalizing Design Cores and Updating Shapes
+Phase 9.1 Finalizing Design Cores and Updating Shapes | Checksum: 10e18c83f
+
+Time (s): cpu = 00:00:00.42 ; elapsed = 00:00:00.24 . Memory (MB): peak = 2791.512 ; gain = 32.016 ; free physical = 16268 ; free virtual = 31453
+
+Phase 9.2 Verifying Netlist Connectivity
+
+Starting Connectivity Check Task
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2791.512 ; gain = 0.000 ; free physical = 16268 ; free virtual = 31453
+Phase 9.2 Verifying Netlist Connectivity | Checksum: 10e18c83f
+
+Time (s): cpu = 00:00:00.42 ; elapsed = 00:00:00.24 . Memory (MB): peak = 2791.512 ; gain = 32.016 ; free physical = 16268 ; free virtual = 31453
+Phase 9 Finalization | Checksum: 10e18c83f
+
+Time (s): cpu = 00:00:00.42 ; elapsed = 00:00:00.24 . Memory (MB): peak = 2791.512 ; gain = 32.016 ; free physical = 16268 ; free virtual = 31453
+Opt_design Change Summary
+=========================
+
+
+-------------------------------------------------------------------------------------------------------------------------
+|  Phase                        |  #Cells created  |  #Cells Removed  |  #Constrained objects preventing optimizations  |
+-------------------------------------------------------------------------------------------------------------------------
+|  Retarget                     |               4  |              29  |                                              0  |
+|  Constant propagation         |               0  |               8  |                                              0  |
+|  Sweep                        |               0  |             227  |                                              0  |
+|  BUFG optimization            |               0  |               0  |                                              0  |
+|  Shift Register Optimization  |               0  |               0  |                                              0  |
+|  Post Processing Netlist      |               0  |               0  |                                              0  |
+-------------------------------------------------------------------------------------------------------------------------
+
+
+Ending Logic Optimization Task | Checksum: 10e18c83f
+
+Time (s): cpu = 00:00:00.42 ; elapsed = 00:00:00.25 . Memory (MB): peak = 2791.512 ; gain = 32.016 ; free physical = 16268 ; free virtual = 31453
+INFO: [Constraints 18-11670] Building netlist checker database with flags, 0x8
+Done building netlist checker database: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2791.512 ; gain = 0.000 ; free physical = 16268 ; free virtual = 31453
+
+Starting Power Optimization Task
+INFO: [Pwropt 34-132] Skipping clock gating for clocks with a period < 2.00 ns.
+Ending Power Optimization Task | Checksum: 10e18c83f
+
+Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2791.512 ; gain = 0.000 ; free physical = 16268 ; free virtual = 31453
+
+Starting Final Cleanup Task
+Ending Final Cleanup Task | Checksum: 10e18c83f
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2791.512 ; gain = 0.000 ; free physical = 16268 ; free virtual = 31453
+
+Starting Netlist Obfuscation Task
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2791.512 ; gain = 0.000 ; free physical = 16268 ; free virtual = 31453
+Ending Netlist Obfuscation Task | Checksum: 10e18c83f
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2791.512 ; gain = 0.000 ; free physical = 16268 ; free virtual = 31453
+INFO: [Common 17-83] Releasing license: Implementation
+32 Infos, 63 Warnings, 0 Critical Warnings and 0 Errors encountered.
+opt_design completed successfully
+opt_design: Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2791.512 ; gain = 804.406 ; free physical = 16268 ; free virtual = 31453
+INFO: [runtcl-4] Executing : report_drc -file design_1_wrapper_drc_opted.rpt -pb design_1_wrapper_drc_opted.pb -rpx design_1_wrapper_drc_opted.rpx
+Command: report_drc -file design_1_wrapper_drc_opted.rpt -pb design_1_wrapper_drc_opted.pb -rpx design_1_wrapper_drc_opted.rpx
+INFO: [IP_Flow 19-1839] IP Catalog is up to date.
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Vivado_Tcl 2-168] The results of DRC are in file /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.runs/impl_1/design_1_wrapper_drc_opted.rpt.
+report_drc completed successfully
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16252 ; free virtual = 31438
+Wrote PlaceDB: Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16252 ; free virtual = 31438
+Wrote PulsedLatchDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16252 ; free virtual = 31438
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Wrote RouteStorage: Time (s): cpu = 00:00:00.07 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16247 ; free virtual = 31433
+Wrote Netlist Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16247 ; free virtual = 31433
+Wrote Device Cache: Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16246 ; free virtual = 31433
+Write Physdb Complete: Time (s): cpu = 00:00:00.13 ; elapsed = 00:00:00.04 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16246 ; free virtual = 31433
+INFO: [Common 17-1381] The checkpoint '/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.runs/impl_1/design_1_wrapper_opt.dcp' has been generated.
+Command: place_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-83] Releasing license: Implementation
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+Running DRC as a precondition to command place_design
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+INFO: [Place 30-611] Multithreading enabled for place_design using a maximum of 8 CPUs
+
+Starting Placer Task
+
+Phase 1 Placer Initialization
+
+Phase 1.1 Placer Initialization Netlist Sorting
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16232 ; free virtual = 31420
+Phase 1.1 Placer Initialization Netlist Sorting | Checksum: 67a2bf9b
+
+Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16232 ; free virtual = 31420
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16232 ; free virtual = 31420
+
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device | Checksum: 5dcc635f
+
+Time (s): cpu = 00:00:00.53 ; elapsed = 00:00:00.24 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16226 ; free virtual = 31414
+
+Phase 1.3 Build Placer Netlist Model
+Phase 1.3 Build Placer Netlist Model | Checksum: a6fe1931
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.44 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16227 ; free virtual = 31416
+
+Phase 1.4 Constrain Clocks/Macros
+Phase 1.4 Constrain Clocks/Macros | Checksum: a6fe1931
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.45 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16227 ; free virtual = 31416
+Phase 1 Placer Initialization | Checksum: a6fe1931
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.45 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16227 ; free virtual = 31416
+
+Phase 2 Global Placement
+
+Phase 2.1 Floorplanning
+Phase 2.1 Floorplanning | Checksum: 1709227d4
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.56 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16205 ; free virtual = 31395
+
+Phase 2.2 Update Timing before SLR Path Opt
+Phase 2.2 Update Timing before SLR Path Opt | Checksum: b89ff32e
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.62 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16223 ; free virtual = 31413
+
+Phase 2.3 Post-Processing in Floorplanning
+Phase 2.3 Post-Processing in Floorplanning | Checksum: b89ff32e
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.63 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16223 ; free virtual = 31413
+
+Phase 2.4 Global Placement Core
+
+Phase 2.4.1 UpdateTiming Before Physical Synthesis
+Phase 2.4.1 UpdateTiming Before Physical Synthesis | Checksum: e9d380a3
+
+Time (s): cpu = 00:00:05 ; elapsed = 00:00:02 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16214 ; free virtual = 31405
+
+Phase 2.4.2 Physical Synthesis In Placer
+INFO: [Physopt 32-1035] Found 0 LUTNM shape to break, 62 LUT instances to create LUTNM shape
+INFO: [Physopt 32-1044] Break lutnm for timing: one critical 0, two critical 0, total 0, new lutff created 0
+INFO: [Physopt 32-1138] End 1 Pass. Optimized 29 nets or LUTs. Breaked 0 LUT, combined 29 existing LUTs and moved 0 existing LUT
+INFO: [Physopt 32-65] No nets found for high-fanout optimization.
+INFO: [Physopt 32-232] Optimized 0 net. Created 0 new instance.
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-670] No setup violation found.  DSP Register Optimization was not performed.
+INFO: [Physopt 32-670] No setup violation found.  Shift Register to Pipeline Optimization was not performed.
+INFO: [Physopt 32-670] No setup violation found.  Shift Register Optimization was not performed.
+INFO: [Physopt 32-670] No setup violation found.  BRAM Register Optimization was not performed.
+INFO: [Physopt 32-670] No setup violation found.  URAM Register Optimization was not performed.
+INFO: [Physopt 32-949] No candidate nets found for dynamic/static region interface net replication
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16213 ; free virtual = 31405
+
+Summary of Physical Synthesis Optimizations
+============================================
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+|  Optimization                                     |  Added Cells  |  Removed Cells  |  Optimized Cells/Nets  |  Dont Touch  |  Iterations  |  Elapsed   |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+|  LUT Combining                                    |            0  |             29  |                    29  |           0  |           1  |  00:00:00  |
+|  Retime                                           |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Very High Fanout                                 |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  DSP Register                                     |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  Shift Register to Pipeline                       |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  Shift Register                                   |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  BRAM Register                                    |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  URAM Register                                    |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  Dynamic/Static Region Interface Net Replication  |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Total                                            |            0  |             29  |                    29  |           0  |           4  |  00:00:00  |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Phase 2.4.2 Physical Synthesis In Placer | Checksum: 954afb8a
+
+Time (s): cpu = 00:00:06 ; elapsed = 00:00:02 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16213 ; free virtual = 31405
+Phase 2.4 Global Placement Core | Checksum: 4e88dbbf
+
+Time (s): cpu = 00:00:06 ; elapsed = 00:00:02 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16212 ; free virtual = 31405
+Phase 2 Global Placement | Checksum: 4e88dbbf
+
+Time (s): cpu = 00:00:06 ; elapsed = 00:00:02 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16212 ; free virtual = 31405
+
+Phase 3 Detail Placement
+
+Phase 3.1 Commit Multi Column Macros
+Phase 3.1 Commit Multi Column Macros | Checksum: 6f030bf4
+
+Time (s): cpu = 00:00:06 ; elapsed = 00:00:02 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16212 ; free virtual = 31405
+
+Phase 3.2 Commit Most Macros & LUTRAMs
+Phase 3.2 Commit Most Macros & LUTRAMs | Checksum: cd534975
+
+Time (s): cpu = 00:00:07 ; elapsed = 00:00:02 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16213 ; free virtual = 31406
+
+Phase 3.3 Area Swap Optimization
+Phase 3.3 Area Swap Optimization | Checksum: c0f70c83
+
+Time (s): cpu = 00:00:07 ; elapsed = 00:00:02 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16213 ; free virtual = 31406
+
+Phase 3.4 Pipeline Register Optimization
+Phase 3.4 Pipeline Register Optimization | Checksum: 16a61343f
+
+Time (s): cpu = 00:00:07 ; elapsed = 00:00:02 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16213 ; free virtual = 31406
+
+Phase 3.5 Fast Optimization
+Phase 3.5 Fast Optimization | Checksum: 1483b8607
+
+Time (s): cpu = 00:00:07 ; elapsed = 00:00:03 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16216 ; free virtual = 31409
+
+Phase 3.6 Small Shape Detail Placement
+Phase 3.6 Small Shape Detail Placement | Checksum: 11d148d58
+
+Time (s): cpu = 00:00:08 ; elapsed = 00:00:03 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16213 ; free virtual = 31406
+
+Phase 3.7 Re-assign LUT pins
+Phase 3.7 Re-assign LUT pins | Checksum: 10510e7ae
+
+Time (s): cpu = 00:00:08 ; elapsed = 00:00:03 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16213 ; free virtual = 31406
+
+Phase 3.8 Pipeline Register Optimization
+Phase 3.8 Pipeline Register Optimization | Checksum: 8f8a4e84
+
+Time (s): cpu = 00:00:08 ; elapsed = 00:00:03 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16213 ; free virtual = 31406
+
+Phase 3.9 Fast Optimization
+Phase 3.9 Fast Optimization | Checksum: 70efb7a9
+
+Time (s): cpu = 00:00:08 ; elapsed = 00:00:03 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16203 ; free virtual = 31396
+Phase 3 Detail Placement | Checksum: 70efb7a9
+
+Time (s): cpu = 00:00:08 ; elapsed = 00:00:03 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16203 ; free virtual = 31396
+
+Phase 4 Post Placement Optimization and Clean-Up
+
+Phase 4.1 Post Commit Optimization
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+
+Phase 4.1.1 Post Placement Optimization
+Post Placement Optimization Initialization | Checksum: 191034408
+
+Phase 4.1.1.1 BUFG Insertion
+
+Starting Physical Synthesis Task
+
+Phase 1 Physical Synthesis Initialization
+INFO: [Physopt 32-721] Multithreading enabled for phys_opt_design using a maximum of 8 CPUs
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-0.273 | TNS=-0.875 |
+Phase 1 Physical Synthesis Initialization | Checksum: 1722420cc
+
+Time (s): cpu = 00:00:00.08 ; elapsed = 00:00:00.04 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16205 ; free virtual = 31398
+INFO: [Place 46-56] BUFG insertion identified 0 candidate nets. Inserted BUFG: 0, Replicated BUFG Driver: 0, Skipped due to Placement/Routing Conflicts: 0, Skipped due to Timing Degradation: 0, Skipped due to netlist editing failed: 0.
+Ending Physical Synthesis Task | Checksum: 1722420cc
+
+Time (s): cpu = 00:00:00.09 ; elapsed = 00:00:00.06 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16205 ; free virtual = 31398
+Phase 4.1.1.1 BUFG Insertion | Checksum: 191034408
+
+Time (s): cpu = 00:00:09 ; elapsed = 00:00:04 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16205 ; free virtual = 31398
+
+Phase 4.1.1.2 Post Placement Timing Optimization
+INFO: [Place 30-746] Post Placement Timing Summary WNS=0.272. For the most accurate timing information please run report_timing.
+Phase 4.1.1.2 Post Placement Timing Optimization | Checksum: 18a801054
+
+Time (s): cpu = 00:00:14 ; elapsed = 00:00:10 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16212 ; free virtual = 31405
+
+Time (s): cpu = 00:00:14 ; elapsed = 00:00:10 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16212 ; free virtual = 31405
+Phase 4.1 Post Commit Optimization | Checksum: 18a801054
+
+Time (s): cpu = 00:00:14 ; elapsed = 00:00:10 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16212 ; free virtual = 31405
+
+Phase 4.2 Post Placement Cleanup
+Phase 4.2 Post Placement Cleanup | Checksum: 18a801054
+
+Time (s): cpu = 00:00:15 ; elapsed = 00:00:10 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16212 ; free virtual = 31405
+
+Phase 4.3 Placer Reporting
+
+Phase 4.3.1 Print Estimated Congestion
+INFO: [Place 30-612] Post-Placement Estimated Congestion 
+ ____________________________________________________
+|           | Global Congestion | Short Congestion  |
+| Direction | Region Size       | Region Size       |
+|___________|___________________|___________________|
+|      North|                1x1|                1x1|
+|___________|___________________|___________________|
+|      South|                1x1|                1x1|
+|___________|___________________|___________________|
+|       East|                1x1|                1x1|
+|___________|___________________|___________________|
+|       West|                1x1|                1x1|
+|___________|___________________|___________________|
+
+Phase 4.3.1 Print Estimated Congestion | Checksum: 18a801054
+
+Time (s): cpu = 00:00:15 ; elapsed = 00:00:10 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16212 ; free virtual = 31405
+Phase 4.3 Placer Reporting | Checksum: 18a801054
+
+Time (s): cpu = 00:00:15 ; elapsed = 00:00:10 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16212 ; free virtual = 31405
+
+Phase 4.4 Final Placement Cleanup
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16212 ; free virtual = 31405
+
+Time (s): cpu = 00:00:15 ; elapsed = 00:00:10 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16212 ; free virtual = 31405
+Phase 4 Post Placement Optimization and Clean-Up | Checksum: 17e9e8ecb
+
+Time (s): cpu = 00:00:15 ; elapsed = 00:00:10 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16212 ; free virtual = 31405
+Ending Placer Task | Checksum: 1626c8b6d
+
+Time (s): cpu = 00:00:15 ; elapsed = 00:00:10 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16212 ; free virtual = 31405
+67 Infos, 63 Warnings, 0 Critical Warnings and 0 Errors encountered.
+place_design completed successfully
+place_design: Time (s): cpu = 00:00:15 ; elapsed = 00:00:10 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16212 ; free virtual = 31405
+INFO: [runtcl-4] Executing : report_io -file design_1_wrapper_io_placed.rpt
+report_io: Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.08 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16207 ; free virtual = 31400
+INFO: [runtcl-4] Executing : report_utilization -file design_1_wrapper_utilization_placed.rpt -pb design_1_wrapper_utilization_placed.pb
+INFO: [runtcl-4] Executing : report_control_sets -verbose -file design_1_wrapper_control_sets_placed.rpt
+report_control_sets: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.03 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16204 ; free virtual = 31398
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16203 ; free virtual = 31397
+Wrote PlaceDB: Time (s): cpu = 00:00:00.18 ; elapsed = 00:00:00.04 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16203 ; free virtual = 31398
+Wrote PulsedLatchDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16202 ; free virtual = 31398
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Wrote RouteStorage: Time (s): cpu = 00:00:00.06 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16201 ; free virtual = 31396
+Wrote Netlist Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16201 ; free virtual = 31397
+Wrote Device Cache: Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16199 ; free virtual = 31396
+Write Physdb Complete: Time (s): cpu = 00:00:00.26 ; elapsed = 00:00:00.07 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16199 ; free virtual = 31396
+INFO: [Common 17-1381] The checkpoint '/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.runs/impl_1/design_1_wrapper_placed.dcp' has been generated.
+Command: phys_opt_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+
+Starting Initial Update Timing Task
+
+Time (s): cpu = 00:00:00.22 ; elapsed = 00:00:00.1 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16197 ; free virtual = 31392
+INFO: [Vivado_Tcl 4-383] Design worst setup slack (WNS) is greater than or equal to 0.000 ns. Skipping all physical synthesis optimizations.
+INFO: [Vivado_Tcl 4-232] No setup violation found. The netlist was not modified.
+INFO: [Common 17-83] Releasing license: Implementation
+76 Infos, 63 Warnings, 0 Critical Warnings and 0 Errors encountered.
+phys_opt_design completed successfully
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16193 ; free virtual = 31389
+Wrote PlaceDB: Time (s): cpu = 00:00:00.21 ; elapsed = 00:00:00.06 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16184 ; free virtual = 31381
+Wrote PulsedLatchDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16184 ; free virtual = 31381
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Wrote RouteStorage: Time (s): cpu = 00:00:00.05 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16183 ; free virtual = 31380
+Wrote Netlist Cache: Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16183 ; free virtual = 31380
+Wrote Device Cache: Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16182 ; free virtual = 31380
+Write Physdb Complete: Time (s): cpu = 00:00:00.29 ; elapsed = 00:00:00.09 . Memory (MB): peak = 2879.555 ; gain = 0.000 ; free physical = 16182 ; free virtual = 31380
+INFO: [Common 17-1381] The checkpoint '/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.runs/impl_1/design_1_wrapper_physopt.dcp' has been generated.
+Command: route_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+Running DRC as a precondition to command route_design
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+
+
+Starting Routing Task
+INFO: [Route 35-254] Multithreading enabled for route_design using a maximum of 8 CPUs
+
+Phase 1 Build RT Design
+Checksum: PlaceDB: dfeecb8e ConstDB: 0 ShapeSum: 827dbfdf RouteDB: 0
+Post Restoration Checksum: NetGraph: fc5561f8 | NumContArr: e82b21e9 | Constraints: c2a8fa9d | Timing: c2a8fa9d
+Phase 1 Build RT Design | Checksum: 369d2791b
+
+Time (s): cpu = 00:00:13 ; elapsed = 00:00:10 . Memory (MB): peak = 2961.969 ; gain = 72.945 ; free physical = 16019 ; free virtual = 31217
+
+Phase 2 Router Initialization
+
+Phase 2.1 Fix Topology Constraints
+Phase 2.1 Fix Topology Constraints | Checksum: 369d2791b
+
+Time (s): cpu = 00:00:13 ; elapsed = 00:00:10 . Memory (MB): peak = 2961.969 ; gain = 72.945 ; free physical = 16019 ; free virtual = 31218
+
+Phase 2.2 Pre Route Cleanup
+Phase 2.2 Pre Route Cleanup | Checksum: 369d2791b
+
+Time (s): cpu = 00:00:13 ; elapsed = 00:00:10 . Memory (MB): peak = 2961.969 ; gain = 72.945 ; free physical = 16018 ; free virtual = 31217
+ Number of Nodes with overlaps = 0
+
+Phase 2.3 Update Timing
+Phase 2.3 Update Timing | Checksum: 2883645c1
+
+Time (s): cpu = 00:00:14 ; elapsed = 00:00:11 . Memory (MB): peak = 2990.984 ; gain = 101.961 ; free physical = 15986 ; free virtual = 31186
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=0.279  | TNS=0.000  | WHS=-0.173 | THS=-15.280|
+
+
+Router Utilization Summary
+  Global Vertical Routing Utilization    = 0 %
+  Global Horizontal Routing Utilization  = 0 %
+  Routable Net Status*
+  *Does not include unroutable nets such as driverless and loadless.
+  Run report_route_status for detailed report.
+  Number of Failed Nets               = 1496
+    (Failed Nets is the sum of unrouted and partially routed nets)
+  Number of Unrouted Nets             = 1496
+  Number of Partially Routed Nets     = 0
+  Number of Node Overlaps             = 0
+
+Phase 2 Router Initialization | Checksum: 2ae21d36d
+
+Time (s): cpu = 00:00:14 ; elapsed = 00:00:11 . Memory (MB): peak = 2997.266 ; gain = 108.242 ; free physical = 15980 ; free virtual = 31180
+
+Phase 3 Initial Routing
+
+Phase 3.1 Global Routing
+Phase 3.1 Global Routing | Checksum: 2ae21d36d
+
+Time (s): cpu = 00:00:14 ; elapsed = 00:00:11 . Memory (MB): peak = 2997.266 ; gain = 108.242 ; free physical = 15980 ; free virtual = 31180
+
+Phase 3.2 Initial Net Routing
+Phase 3.2 Initial Net Routing | Checksum: 22d956f11
+
+Time (s): cpu = 00:00:14 ; elapsed = 00:00:11 . Memory (MB): peak = 2997.266 ; gain = 108.242 ; free physical = 15980 ; free virtual = 31180
+Phase 3 Initial Routing | Checksum: 22d956f11
+
+Time (s): cpu = 00:00:14 ; elapsed = 00:00:11 . Memory (MB): peak = 2997.266 ; gain = 108.242 ; free physical = 15980 ; free virtual = 31180
+
+Phase 4 Rip-up And Reroute
+
+Phase 4.1 Global Iteration 0
+ Number of Nodes with overlaps = 181
+ Number of Nodes with overlaps = 65
+ Number of Nodes with overlaps = 8
+ Number of Nodes with overlaps = 3
+ Number of Nodes with overlaps = 1
+ Number of Nodes with overlaps = 0
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=0.429  | TNS=0.000  | WHS=N/A    | THS=N/A    |
+
+Phase 4.1 Global Iteration 0 | Checksum: 2462e6d68
+
+Time (s): cpu = 00:00:15 ; elapsed = 00:00:12 . Memory (MB): peak = 2997.266 ; gain = 108.242 ; free physical = 15975 ; free virtual = 31175
+Phase 4 Rip-up And Reroute | Checksum: 2462e6d68
+
+Time (s): cpu = 00:00:15 ; elapsed = 00:00:12 . Memory (MB): peak = 2997.266 ; gain = 108.242 ; free physical = 15975 ; free virtual = 31175
+
+Phase 5 Delay and Skew Optimization
+
+Phase 5.1 Delay CleanUp
+
+Phase 5.1.1 Update Timing
+Phase 5.1.1 Update Timing | Checksum: 2376d8cb5
+
+Time (s): cpu = 00:00:16 ; elapsed = 00:00:12 . Memory (MB): peak = 2997.266 ; gain = 108.242 ; free physical = 15975 ; free virtual = 31175
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=0.544  | TNS=0.000  | WHS=N/A    | THS=N/A    |
+
+Phase 5.1 Delay CleanUp | Checksum: 2376d8cb5
+
+Time (s): cpu = 00:00:16 ; elapsed = 00:00:12 . Memory (MB): peak = 2997.266 ; gain = 108.242 ; free physical = 15975 ; free virtual = 31175
+
+Phase 5.2 Clock Skew Optimization
+Phase 5.2 Clock Skew Optimization | Checksum: 2376d8cb5
+
+Time (s): cpu = 00:00:16 ; elapsed = 00:00:12 . Memory (MB): peak = 2997.266 ; gain = 108.242 ; free physical = 15975 ; free virtual = 31175
+Phase 5 Delay and Skew Optimization | Checksum: 2376d8cb5
+
+Time (s): cpu = 00:00:16 ; elapsed = 00:00:12 . Memory (MB): peak = 2997.266 ; gain = 108.242 ; free physical = 15975 ; free virtual = 31175
+
+Phase 6 Post Hold Fix
+
+Phase 6.1 Hold Fix Iter
+
+Phase 6.1.1 Update Timing
+Phase 6.1.1 Update Timing | Checksum: 1daa4ca46
+
+Time (s): cpu = 00:00:16 ; elapsed = 00:00:12 . Memory (MB): peak = 2997.266 ; gain = 108.242 ; free physical = 15975 ; free virtual = 31175
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=0.544  | TNS=0.000  | WHS=0.040  | THS=0.000  |
+
+Phase 6.1 Hold Fix Iter | Checksum: 24b004368
+
+Time (s): cpu = 00:00:16 ; elapsed = 00:00:12 . Memory (MB): peak = 2997.266 ; gain = 108.242 ; free physical = 15975 ; free virtual = 31175
+Phase 6 Post Hold Fix | Checksum: 24b004368
+
+Time (s): cpu = 00:00:16 ; elapsed = 00:00:12 . Memory (MB): peak = 2997.266 ; gain = 108.242 ; free physical = 15975 ; free virtual = 31175
+
+Phase 7 Route finalize
+
+Router Utilization Summary
+  Global Vertical Routing Utilization    = 0.202444 %
+  Global Horizontal Routing Utilization  = 0.290652 %
+  Routable Net Status*
+  *Does not include unroutable nets such as driverless and loadless.
+  Run report_route_status for detailed report.
+  Number of Failed Nets               = 0
+    (Failed Nets is the sum of unrouted and partially routed nets)
+  Number of Unrouted Nets             = 0
+  Number of Partially Routed Nets     = 0
+  Number of Node Overlaps             = 0
+
+Phase 7 Route finalize | Checksum: 24b004368
+
+Time (s): cpu = 00:00:16 ; elapsed = 00:00:12 . Memory (MB): peak = 2997.266 ; gain = 108.242 ; free physical = 15975 ; free virtual = 31175
+
+Phase 8 Verifying routed nets
+
+ Verification completed successfully
+Phase 8 Verifying routed nets | Checksum: 24b004368
+
+Time (s): cpu = 00:00:16 ; elapsed = 00:00:12 . Memory (MB): peak = 2997.266 ; gain = 108.242 ; free physical = 15975 ; free virtual = 31175
+
+Phase 9 Depositing Routes
+Phase 9 Depositing Routes | Checksum: 20d72b204
+
+Time (s): cpu = 00:00:16 ; elapsed = 00:00:12 . Memory (MB): peak = 2997.266 ; gain = 108.242 ; free physical = 15975 ; free virtual = 31175
+
+Phase 10 Post Router Timing
+INFO: [Route 35-57] Estimated Timing Summary | WNS=0.544  | TNS=0.000  | WHS=0.040  | THS=0.000  |
+
+INFO: [Route 35-327] The final timing numbers are based on the router estimated timing analysis. For a complete and accurate timing signoff, please run report_timing_summary.
+Phase 10 Post Router Timing | Checksum: 20d72b204
+
+Time (s): cpu = 00:00:16 ; elapsed = 00:00:12 . Memory (MB): peak = 2997.266 ; gain = 108.242 ; free physical = 15975 ; free virtual = 31175
+INFO: [Route 35-16] Router Completed Successfully
+
+Phase 11 Post-Route Event Processing
+Phase 11 Post-Route Event Processing | Checksum: 12e584bfe
+
+Time (s): cpu = 00:00:16 ; elapsed = 00:00:12 . Memory (MB): peak = 2997.266 ; gain = 108.242 ; free physical = 15975 ; free virtual = 31175
+Ending Routing Task | Checksum: 12e584bfe
+
+Time (s): cpu = 00:00:16 ; elapsed = 00:00:12 . Memory (MB): peak = 2997.266 ; gain = 108.242 ; free physical = 15975 ; free virtual = 31175
+
+Routing Is Done.
+INFO: [Common 17-83] Releasing license: Implementation
+91 Infos, 63 Warnings, 0 Critical Warnings and 0 Errors encountered.
+route_design completed successfully
+route_design: Time (s): cpu = 00:00:17 ; elapsed = 00:00:12 . Memory (MB): peak = 2997.266 ; gain = 117.711 ; free physical = 15975 ; free virtual = 31175
+INFO: [runtcl-4] Executing : report_drc -file design_1_wrapper_drc_routed.rpt -pb design_1_wrapper_drc_routed.pb -rpx design_1_wrapper_drc_routed.rpx
+Command: report_drc -file design_1_wrapper_drc_routed.rpt -pb design_1_wrapper_drc_routed.pb -rpx design_1_wrapper_drc_routed.rpx
+INFO: [IP_Flow 19-1839] IP Catalog is up to date.
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Vivado_Tcl 2-168] The results of DRC are in file /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.runs/impl_1/design_1_wrapper_drc_routed.rpt.
+report_drc completed successfully
+INFO: [runtcl-4] Executing : report_methodology -file design_1_wrapper_methodology_drc_routed.rpt -pb design_1_wrapper_methodology_drc_routed.pb -rpx design_1_wrapper_methodology_drc_routed.rpx
+Command: report_methodology -file design_1_wrapper_methodology_drc_routed.rpt -pb design_1_wrapper_methodology_drc_routed.pb -rpx design_1_wrapper_methodology_drc_routed.rpx
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [DRC 23-133] Running Methodology with 8 threads
+INFO: [Vivado_Tcl 2-1520] The results of Report Methodology are in file /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.runs/impl_1/design_1_wrapper_methodology_drc_routed.rpt.
+report_methodology completed successfully
+INFO: [runtcl-4] Executing : report_power -file design_1_wrapper_power_routed.rpt -pb design_1_wrapper_power_summary_routed.pb -rpx design_1_wrapper_power_routed.rpx
+Command: report_power -file design_1_wrapper_power_routed.rpt -pb design_1_wrapper_power_summary_routed.pb -rpx design_1_wrapper_power_routed.rpx
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Running Vector-less Activity Propagation...
+
+Finished Running Vector-less Activity Propagation
+101 Infos, 63 Warnings, 0 Critical Warnings and 0 Errors encountered.
+report_power completed successfully
+INFO: [runtcl-4] Executing : report_route_status -file design_1_wrapper_route_status.rpt -pb design_1_wrapper_route_status.pb
+INFO: [runtcl-4] Executing : report_timing_summary -max_paths 10 -report_unconstrained -file design_1_wrapper_timing_summary_routed.rpt -pb design_1_wrapper_timing_summary_routed.pb -rpx design_1_wrapper_timing_summary_routed.rpx -warn_on_violation 
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 8 CPUs
+INFO: [runtcl-4] Executing : report_incremental_reuse -file design_1_wrapper_incremental_reuse_routed.rpt
+INFO: [Vivado_Tcl 4-1062] Incremental flow is disabled. No incremental reuse Info to report.
+INFO: [runtcl-4] Executing : report_clock_utilization -file design_1_wrapper_clock_utilization_routed.rpt
+INFO: [runtcl-4] Executing : report_bus_skew -warn_on_violation -file design_1_wrapper_bus_skew_routed.rpt -pb design_1_wrapper_bus_skew_routed.pb -rpx design_1_wrapper_bus_skew_routed.rpx
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 8 CPUs
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3089.086 ; gain = 0.000 ; free physical = 15947 ; free virtual = 31149
+Wrote PlaceDB: Time (s): cpu = 00:00:00.22 ; elapsed = 00:00:00.06 . Memory (MB): peak = 3089.086 ; gain = 0.000 ; free physical = 15947 ; free virtual = 31151
+Wrote PulsedLatchDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3089.086 ; gain = 0.000 ; free physical = 15947 ; free virtual = 31151
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Wrote RouteStorage: Time (s): cpu = 00:00:00.06 ; elapsed = 00:00:00.03 . Memory (MB): peak = 3089.086 ; gain = 0.000 ; free physical = 15946 ; free virtual = 31151
+Wrote Netlist Cache: Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 3089.086 ; gain = 0.000 ; free physical = 15946 ; free virtual = 31151
+Wrote Device Cache: Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3089.086 ; gain = 0.000 ; free physical = 15945 ; free virtual = 31151
+Write Physdb Complete: Time (s): cpu = 00:00:00.3 ; elapsed = 00:00:00.1 . Memory (MB): peak = 3089.086 ; gain = 0.000 ; free physical = 15945 ; free virtual = 31151
+INFO: [Common 17-1381] The checkpoint '/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_bit/lif_bit.runs/impl_1/design_1_wrapper_routed.dcp' has been generated.
+Command: write_bitstream -force design_1_wrapper.bit
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+Running DRC as a precondition to command write_bitstream
+INFO: [IP_Flow 19-1839] IP Catalog is up to date.
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Vivado 12-3199] DRC finished with 0 Errors
+INFO: [Vivado 12-3200] Please refer to the DRC report (report_drc) for more information.
+INFO: [Designutils 20-2272] Running write_bitstream with 8 threads.
+Loading data files...
+Loading site data...
+Loading route data...
+Processing options...
+Creating bitmap...
+Creating bitstream...
+Writing bitstream ./design_1_wrapper.bit...
+INFO: [Vivado 12-1842] Bitgen Completed Successfully.
+INFO: [Project 1-1876] WebTalk data collection is mandatory when using a ULT device. To see the specific WebTalk data collected for your design, open the usage_statistics_webtalk.html or usage_statistics_webtalk.xml file in the implementation directory.
+INFO: [Common 17-83] Releasing license: Implementation
+14 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+write_bitstream completed successfully
+write_bitstream: Time (s): cpu = 00:00:07 ; elapsed = 00:00:15 . Memory (MB): peak = 3336.047 ; gain = 246.961 ; free physical = 15653 ; free virtual = 30865
+INFO: [Common 17-206] Exiting Vivado at Thu Jul 23 10:24:39 2026...
+[Thu Jul 23 10:24:40 2026] impl_1 finished
+wait_on_runs: Time (s): cpu = 00:01:06 ; elapsed = 00:01:01 . Memory (MB): peak = 1823.418 ; gain = 0.000 ; free physical = 17850 ; free virtual = 33062
+# if {[get_property PROGRESS [get_runs impl_1]] != "100%"} {
+#   error "impl_1 failed: [get_property STATUS [get_runs impl_1]]"
+# }
+# set bit_src [lindex [glob -nocomplain $PROJ/lif_bit.runs/impl_1/*.bit] 0]
+# if {$bit_src eq ""} {
+#   # project name may nest differently
+#   set bit_src [lindex [glob -nocomplain $PROJ/*.runs/impl_1/*.bit $PROJ/*/*.runs/impl_1/*.bit] 0]
+# }
+# if {$bit_src eq ""} {
+#   set bit_src [lindex [glob -nocomplain **/*.bit] 0]
+# }
+# if {$bit_src eq ""} {
+#   error "no .bit produced under $PROJ"
+# }
+# file copy -force $bit_src [file join $OUT lif_step_overlay.bit]
+# puts "BIT_OK [file join $OUT lif_step_overlay.bit]"
+BIT_OK /home/cx/neuromorphic-computing/fpga/bitstreams/lif_step_overlay.bit
+# set hwh_src [lindex [glob -nocomplain \
+#   $PROJ/lif_bit.gen/sources_1/bd/design_1/hw_handoff/*.hwh \
+#   $PROJ/*/sources_1/bd/design_1/hw_handoff/*.hwh \
+#   $PROJ/**/hw_handoff/*.hwh] 0]
+# if {$hwh_src ne ""} {
+#   file copy -force $hwh_src [file join $OUT lif_step_overlay.hwh]
+#   puts "HWH_OK [file join $OUT lif_step_overlay.hwh]"
+# } else {
+#   puts "HWH_MISSING"
+# }
+HWH_OK /home/cx/neuromorphic-computing/fpga/bitstreams/lif_step_overlay.hwh
+# puts "DONE"
+DONE
+# exit 0
+INFO: [Common 17-206] Exiting Vivado at Thu Jul 23 10:24:40 2026...

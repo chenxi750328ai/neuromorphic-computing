@@ -1,3 +1,9 @@
+## 2026-07-23
+- **E4 闭环（总裁授权）**：Vivado 2023.2 综合 `write_lif_bitstream.tcl` → `fpga/bitstreams/lif_step_overlay.{bit,hwh}`；PYNQ 烧 PL，脉冲序列 `[0,0,1,0,0,1,1,0,0,1]` **≡ golden**；`chain_full_pl_ok=true`。
+- **进展报告**：[`docs/Phase4.1_Wave1_进展报告_20260723.md`](../docs/Phase4.1_Wave1_进展报告_20260723.md)——Stage B×4 **不依赖** FPGA；路径 B/E4 **依赖**并已用实测定稿。
+- **设计文档刷新**：优势阶梯 §3.1、技术报告路径 B、`phase4_fpga_toolchain_V0.md`、milestones、看板 sync。
+- **纪律**：未写「Phase4/愿景了结」；人签（§8/§10、PR#12、TR2）仍待。
+
 ## 2026-07-15
 - **09:30 唤醒**：核盘无变化——无 Vivado、无 AMD `.bin`；P0 人签/合 PR#12 仍待人。
 

@@ -21,11 +21,13 @@
   → MnistSNNUnrolled 展开图（25 步 LIF）
   → [WSL] phase4_fpga_snn_fixedpoint.py 全网络 Q16.16
   → [WSL] phase4_fpga_tri_compare.py ORT/Atlas/定点 三路对照
-  → [PYNQ] phase4_fpga_pynq_spike_demo.py 脉冲闪灯
-  → [HLS] fpga/hls/lif_step.cpp（待综合）
-  → runs/phase4_poc/fpga_fixedpoint_snn.json · fpga_tri_compare.json
+  → [PYNQ] phase4_fpga_pynq_spike_demo.py 脉冲闪灯（≠类脑上PL）
+  → [RTL] fpga/rtl/lif_step*.v + write_lif_bitstream.tcl
+  → [PYNQ] phase4_fpga_pynq_lif_pl.py  **E4 PASS 2026-07-23**
+  → runs/phase4_poc/fpga_lif_pl_run.json · fpga_toolchain_gate.json
 ```
 
+> 详细：[Phase4.1_Wave1_进展报告_20260723.md](./Phase4.1_Wave1_进展报告_20260723.md) · [phase4_fpga_toolchain_V0.md](./phase4_fpga_toolchain_V0.md)
 ### owners
 
 | 站 | 责任人 | PASS 信号 |

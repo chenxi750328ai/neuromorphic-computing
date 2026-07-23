@@ -15,13 +15,13 @@
 |----|------|
 | **Phase4 目标** | 验证训练好的 MNIST SNN（96.97%）能否迁移到 **边缘 AI 芯片（Atlas）** 与 **可编程逻辑（FPGA）** |
 | **路径 A · Atlas** | ✅ **PASS** — 真 SNN OM 上板，ORT vs 板端脉冲计数 **bit-exact**（diff=0） |
-| **路径 B · FPGA** | ⚠ **部分** — WSL 定点对齐 ✅；**点灯 ≠ 类脑上 PL**；HLS 综合部署+资源数据 **未做** |
+| **路径 B · FPGA** | ✅ **E4 工具链闭环（2026-07-23）** — WSL 定点 ✅；Vivado→`.bit`→PYNQ PL LIF **PASS**（脉冲≡golden）；**仍 ≠** 全网分类上 FPGA / 产品低功耗。详见 [Wave-1 进展报告](./Phase4.1_Wave1_进展报告_20260723.md) §2 |
 | **CI** | `neuro-ci` 全绿（含 PR #7） |
 | **未做（不阻塞 v0）** | Vitis HLS 综合上 PL · 全量 MNIST 板上实时分类 · N-MNIST / 产线部署 |
 | **Phase4 关口** | **未关闭** — 单点 PASS ≠ Phase4 PASS；须 Phase4.1 规格对照后场景化结论（见 §10） |
 | **请总裁评审** | §8（PoC / 路径）+ **§10 B1–B3**（Phase4.1 立项） |
 
-**一句话**：Atlas 上 **真 SNN bit-exact 已跑通**；FPGA 侧目前只有 **WSL 定点对照 + 点灯**——**点灯不能算类脑上 FPGA**；要 Vitis/HLS 综合烧 PL、出规格与资源占用才算路径 B 打通。Phase4.1 关口未关。
+**一句话**：Atlas 上 **真 SNN bit-exact 已跑通**；FPGA 侧 **E4（类脑 LIF 上 PL + 资源报告）已于 2026-07-23 闭环**——此前「仅点灯」阶段作废为合格定义；**全网分类上 FPGA / 愿景低功耗仍未证**。Phase4.1 关口未关（规格对照与人签）。
 
 ---
 
@@ -119,8 +119,8 @@ checkpoint → MnistSNNUnrolled
 | B5 · 定点 vs float 分类一致（WSL） | **100%** pred match；acc **97.27%**/512 | `runs/phase4_poc/fpga_fixedpoint_snn.json` |
 | B6 · 定点 vs Atlas 分类一致（WSL） | **100%**（8 样本探针） | `runs/phase4_poc/fpga_tri_compare.json` |
 | 板上点灯/闪灯 | PASS · **≠ 类脑功能上 PL** | `fpga_board_spike_demo.json` |
-| HLS 综合上 PL + 规格/资源数据 | ❌ 未交付 | `fpga/hls/lif_step.cpp` 仅源码 |
-| 合 main | **PR #7**（含上表如实范围） | `67c178b` |
+| HLS/RTL 综合上 PL + 规格/资源数据 | ✅ **2026-07-23** · 脉冲≡golden · `chain_full_pl_ok` | `fpga_lif_pl_run.json` · `lif_step_overlay.*` · [进展报告](./Phase4.1_Wave1_进展报告_20260723.md) |
+| 合 main | **PR #7**（含上表如实范围；E4 闭环证据待另 PR） | `67c178b` |
 
 ### 4.4 定点要点
 

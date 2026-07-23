@@ -93,12 +93,16 @@ def main() -> int:
         return 2 if args.gate else 0
 
     remote_bit = "/tmp/lif_step_overlay.bit"
+    remote_hwh = "/tmp/lif_step_overlay.hwh"
     remote_py = "/tmp/phase4_fpga_pynq_lif_pl_board.py"
+    hwh = args.bit.with_suffix(".hwh")
     target = f"{args.user}@{args.host}"
     ssh = ["sshpass", "-p", args.password, "ssh", "-o", "StrictHostKeyChecking=no", target]
     scp = ["sshpass", "-p", args.password, "scp", "-o", "StrictHostKeyChecking=no"]
 
     subprocess.run(scp + [str(args.bit), f"{target}:{remote_bit}"], check=True)
+    if hwh.is_file():
+        subprocess.run(scp + [str(hwh), f"{target}:{remote_hwh}"], check=True)
     Path("/tmp/_lif_pl_board.py").write_text(BOARD_SCRIPT, encoding="utf-8")
     subprocess.run(scp + ["/tmp/_lif_pl_board.py", f"{target}:{remote_py}"], check=True)
 

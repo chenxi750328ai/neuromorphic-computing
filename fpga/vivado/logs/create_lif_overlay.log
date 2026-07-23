@@ -1,0 +1,419 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Thu Jul 23 10:10:33 2026
+# Process ID: 1007452
+# Current directory: /home/cx/neuromorphic-computing/fpga/vivado
+# Command line: vivado -mode batch -source create_lif_overlay.tcl -log logs/create_lif_overlay.log -journal logs/create_lif_overlay.jou
+# Log file: /home/cx/neuromorphic-computing/fpga/vivado/logs/create_lif_overlay.log
+# Journal file: /home/cx/neuromorphic-computing/fpga/vivado/logs/create_lif_overlay.jou
+# Running On: CXS1, OS: Linux, CPU Frequency: 3417.600 MHz, CPU Physical cores: 10, Host memory: 33654 MB
+#-----------------------------------------------------------
+source create_lif_overlay.tcl
+# set PART xc7z020clg400-1
+# set REPO [file normalize [file join [pwd] ..]]
+# set RTL  [file join $REPO rtl]
+# set OUT  [file join $REPO bitstreams]
+# file mkdir $OUT
+# create_project lif_overlay ./_vivado_lif_overlay -part $PART -force
+# add_files [list \
+#   [file join $RTL lif_step.v] \
+#   [file join $RTL lif_step_axi_lite.v] \
+# ]
+# set_property top lif_step_axi_lite [current_fileset]
+# update_compile_order -fileset sources_1
+# launch_runs synth_1 -jobs 4
+WARNING: [Vivado 12-7122] Auto Incremental Compile:: No reference checkpoint was found in run synth_1. Auto-incremental flow will not be run, the standard flow will be run instead.
+[Thu Jul 23 10:10:41 2026] Launched synth_1...
+Run output will be captured here: /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_overlay/lif_overlay.runs/synth_1/runme.log
+# wait_on_run synth_1
+[Thu Jul 23 10:10:41 2026] Waiting for synth_1 to finish...
+
+*** Running vivado
+    with args -log lif_step_axi_lite.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source lif_step_axi_lite.tcl
+
+
+****** Vivado v2023.2 (64-bit)
+  **** SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
+  **** IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+  **** SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source lif_step_axi_lite.tcl -notrace
+Command: synth_design -top lif_step_axi_lite -part xc7z020clg400-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 1007822
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 1679.809 ; gain = 364.691 ; free physical = 17617 ; free virtual = 32522
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'lif_step_axi_lite' [/home/cx/neuromorphic-computing/fpga/rtl/lif_step_axi_lite.v:9]
+INFO: [Synth 8-6157] synthesizing module 'lif_step' [/home/cx/neuromorphic-computing/fpga/rtl/lif_step.v:4]
+INFO: [Synth 8-6155] done synthesizing module 'lif_step' (0#1) [/home/cx/neuromorphic-computing/fpga/rtl/lif_step.v:4]
+INFO: [Synth 8-6155] done synthesizing module 'lif_step_axi_lite' (0#1) [/home/cx/neuromorphic-computing/fpga/rtl/lif_step_axi_lite.v:9]
+WARNING: [Synth 8-7129] Port s_axi_wstrb[3] in module lif_step_axi_lite is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wstrb[2] in module lif_step_axi_lite is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wstrb[1] in module lif_step_axi_lite is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wstrb[0] in module lif_step_axi_lite is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1753.777 ; gain = 438.660 ; free physical = 17522 ; free virtual = 32430
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1771.590 ; gain = 456.473 ; free physical = 17522 ; free virtual = 32430
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg400-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1779.594 ; gain = 464.477 ; free physical = 17522 ; free virtual = 32429
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7z020clg400-1
+INFO: [Synth 8-802] inferred FSM for state register 'st_reg' in module 'lif_step'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  iSTATE |                              001 |                               00
+                 iSTATE0 |                              010 |                               01
+                 iSTATE1 |                              100 |                               10
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'st_reg' using encoding 'one-hot' in module 'lif_step'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1788.500 ; gain = 473.383 ; free physical = 17496 ; free virtual = 32406
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   4 Input   32 Bit       Adders := 1     
++---Registers : 
+	               64 Bit    Registers := 1     
+	               32 Bit    Registers := 5     
+	                2 Bit    Registers := 2     
+	                1 Bit    Registers := 9     
++---Multipliers : 
+	              17x32  Multipliers := 1     
++---Muxes : 
+	   2 Input   32 Bit        Muxes := 1     
+	   3 Input    1 Bit        Muxes := 3     
+	   2 Input    1 Bit        Muxes := 6     
+	   4 Input    1 Bit        Muxes := 3     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-7129] Port s_axi_wstrb[3] in module lif_step_axi_lite is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wstrb[2] in module lif_step_axi_lite is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wstrb[1] in module lif_step_axi_lite is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s_axi_wstrb[0] in module lif_step_axi_lite is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1945.734 ; gain = 630.617 ; free physical = 17306 ; free virtual = 32251
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1945.734 ; gain = 630.617 ; free physical = 17306 ; free virtual = 32250
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1945.734 ; gain = 630.617 ; free physical = 17304 ; free virtual = 32248
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1945.734 ; gain = 630.617 ; free physical = 17421 ; free virtual = 32366
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1945.734 ; gain = 630.617 ; free physical = 17421 ; free virtual = 32366
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1945.734 ; gain = 630.617 ; free physical = 17421 ; free virtual = 32365
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1945.734 ; gain = 630.617 ; free physical = 17421 ; free virtual = 32365
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1945.734 ; gain = 630.617 ; free physical = 17421 ; free virtual = 32365
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1945.734 ; gain = 630.617 ; free physical = 17421 ; free virtual = 32365
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |BUFG   |     1|
+|2     |CARRY4 |    69|
+|3     |LUT1   |    14|
+|4     |LUT2   |   191|
+|5     |LUT3   |    67|
+|6     |LUT4   |    55|
+|7     |LUT5   |    37|
+|8     |LUT6   |   101|
+|9     |FDCE   |   203|
+|10    |FDPE   |     1|
+|11    |IBUF   |    55|
+|12    |OBUF   |    41|
++------+-------+------+
+
+Report Instance Areas: 
++------+---------+---------+------+
+|      |Instance |Module   |Cells |
++------+---------+---------+------+
+|1     |top      |         |   835|
+|2     |  u_lif  |lif_step |   626|
++------+---------+---------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1945.734 ; gain = 630.617 ; free physical = 17421 ; free virtual = 32365
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 9 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1945.734 ; gain = 630.617 ; free physical = 17421 ; free virtual = 32365
+Synthesis Optimization Complete : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1945.742 ; gain = 630.617 ; free physical = 17421 ; free virtual = 32365
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1952.672 ; gain = 0.000 ; free physical = 17417 ; free virtual = 32365
+INFO: [Netlist 29-17] Analyzing 69 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 2 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2094.387 ; gain = 0.000 ; free physical = 17618 ; free virtual = 32580
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: 945d90fc
+INFO: [Common 17-83] Releasing license: Synthesis
+18 Infos, 9 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:12 ; elapsed = 00:00:11 . Memory (MB): peak = 2094.422 ; gain = 779.305 ; free physical = 17617 ; free virtual = 32579
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1366.994; main = 1366.994; forked = 0.000
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 2094.387; main = 2094.387; forked = 0.000
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2118.398 ; gain = 0.000 ; free physical = 17617 ; free virtual = 32580
+INFO: [Common 17-1381] The checkpoint '/home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_overlay/lif_overlay.runs/synth_1/lif_step_axi_lite.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file lif_step_axi_lite_utilization_synth.rpt -pb lif_step_axi_lite_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Thu Jul 23 10:10:59 2026...
+[Thu Jul 23 10:11:10 2026] synth_1 finished
+wait_on_runs: Time (s): cpu = 00:00:19 ; elapsed = 00:00:28 . Memory (MB): peak = 1280.160 ; gain = 0.000 ; free physical = 18752 ; free virtual = 33712
+# open_run synth_1
+Design is defaulting to impl run constrset: constrs_1
+Design is defaulting to synth run part: xc7z020clg400-1
+INFO: [Device 21-403] Loading part xc7z020clg400-1
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1636.566 ; gain = 0.000 ; free physical = 18408 ; free virtual = 33368
+INFO: [Netlist 29-17] Analyzing 69 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2023.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1784.219 ; gain = 0.000 ; free physical = 18312 ; free virtual = 33272
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+# report_utilization -file [file join $OUT lif_step_utilization.rpt]
+# report_timing_summary -file [file join $OUT lif_step_timing.rpt]
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 8 CPUs
+# puts "UTIL_OK [file join $OUT lif_step_utilization.rpt]"
+UTIL_OK /home/cx/neuromorphic-computing/fpga/bitstreams/lif_step_utilization.rpt
+# if {[catch {
+#   create_bd_design "design_1"
+#   create_bd_cell -type ip -vlnv xilinx.com:ip:processing_system7:5.5 processing_system7_0
+#   apply_bd_automation -rule xilinx.com:bd_rule:processing_system7 \
+#     -config {make_external "FIXED_IO, DDR" Master "Disable" Slave "Disable"} \
+#     [get_bd_cells processing_system7_0]
+#   set_property -dict [list CONFIG.PCW_USE_S_AXI_HP0 {0} CONFIG.PCW_FPGA0_PERIPHERAL_FREQMHZ {100}] \
+#     [get_bd_cells processing_system7_0]
+# 
+#   create_bd_cell -type module -reference lif_step_axi_lite lif_step_0
+#   apply_bd_automation -rule xilinx.com:bd_rule:axi4 -config \
+#     {Master "/processing_system7_0/M_AXI_GP0" Clk "Auto"} \
+#     [get_bd_intf_pins lif_step_0/s_axi]
+# 
+#   assign_bd_address
+#   validate_bd_design
+#   save_bd_design
+#   make_wrapper -files [get_files design_1.bd] -top
+#   add_files -norecurse [get_property DIR_HDSRC [get_filesets sources_1]]/../bd/design_1/hdl/design_1_wrapper.v
+#   set_property top design_1_wrapper [current_fileset]
+#   update_compile_order -fileset sources_1
+# 
+#   launch_runs impl_1 -to_step write_bitstream -jobs 4
+#   wait_on_run impl_1
+#   file copy -force \
+#     [glob ./_vivado_lif_overlay.runs/impl_1/*.bit] \
+#     [file join $OUT lif_step_overlay.bit]
+#   # hwh from BD export
+#   catch {
+#     file copy -force \
+#       [lindex [glob -nocomplain ./_vivado_lif_overlay.gen/sources_1/bd/design_1/hw_handoff/*.hwh] 0] \
+#       [file join $OUT lif_step_overlay.hwh]
+#   }
+#   puts "BIT_OK [file join $OUT lif_step_overlay.nbit]"
+# } err]} {
+#   puts "BD_BITSTREAM_SKIP: $err"
+#   puts "NOTE: utilization.rpt 仍可用；BD 失败时手工在 GUI 挂 AXI 即可"
+# }
+Wrote  : </home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_overlay/lif_overlay.srcs/sources_1/bd/design_1/design_1.bd> 
+INFO: [IP_Flow 19-5107] Inferred bus interface 's_axi' of definition 'xilinx.com:interface:aximm:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 's_axi_aresetn' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 's_axi_aclk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-4728] Bus Interface 's_axi_aresetn': Added interface parameter 'POLARITY' with value 'ACTIVE_LOW'.
+INFO: [IP_Flow 19-4728] Bus Interface 's_axi_aclk': Added interface parameter 'ASSOCIATED_BUSIF' with value 's_axi'.
+INFO: [IP_Flow 19-4728] Bus Interface 's_axi_aclk': Added interface parameter 'ASSOCIATED_RESET' with value 's_axi_aresetn'.
+WARNING: [IP_Flow 19-11770] Clock interface 's_axi_aclk' has no FREQ_HZ parameter.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+WARNING: [IP_Flow 19-240] Unknown architecture 'versal' detected.
+Slave segment '/lif_step_0/s_axi/reg0' is being assigned into address space '/processing_system7_0/Data' at <0x4000_0000 [ 4K ]>.
+Wrote  : </home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_overlay/lif_overlay.srcs/sources_1/bd/design_1/design_1.bd> 
+INFO: [BD 41-1662] The design 'design_1.bd' is already validated. Therefore parameter propagation will not be re-run.
+Verilog Output written to : /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_overlay/lif_overlay.gen/sources_1/bd/design_1/synth/design_1.v
+Verilog Output written to : /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_overlay/lif_overlay.gen/sources_1/bd/design_1/sim/design_1.v
+Verilog Output written to : /home/cx/neuromorphic-computing/fpga/vivado/_vivado_lif_overlay/lif_overlay.gen/sources_1/bd/design_1/hdl/design_1_wrapper.v
+INFO: [Project 1-1716] Could not find the wrapper file /../bd/design_1/hdl/design_1_wrapper.v, checking in project .gen location instead.
+BD_BITSTREAM_SKIP: ERROR: [Vivado 12-172] File or Directory '/../bd/design_1/hdl/design_1_wrapper.v' does not exist
+
+NOTE: utilization.rpt 仍可用；BD 失败时手工在 GUI 挂 AXI 即可
+# puts "DONE outputs in $OUT"
+DONE outputs in /home/cx/neuromorphic-computing/fpga/bitstreams
+# exit 0
+INFO: [Common 17-206] Exiting Vivado at Thu Jul 23 10:11:18 2026...
