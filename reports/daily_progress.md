@@ -1,3 +1,25 @@
+## 2026-07-24
+- **14:52 纪律+G-LAT 计划**：澄清 PR#12≠门禁过关；`CONTRIBUTING.md` 增「计划先行（分支/PR）」；落盘 `docs/plans/2026-07-24-phase41-g-lat.md`（预定分支 `feature/phase4.1-g-lat`、拟 PR 标题、gstack 自评有条件 GO）；**未临时开 PR**。下一步按计划 Task 0–1 复测。
+- **14:42 总裁勾选 §8/§10 + 合 PR#12**：Cursor 明示「同意 8 10，继续吧」→ 技术报告 R1–R5、B1–B3 全数按建议勾选并落盘签字；正文纠偏 E4（单步 LIF 上 PL 已做，勿再写未做）；TR2 总裁知情；PR [#12](https://github.com/chenxi750328ai/neuromorphic-computing/pull/12) **MERGED**（`743ecbc`）；milestones G0=PASS · phase4.1→90%；解除 `pause_agent_wake`。下一断点：**G-LAT**（daemon p50 略超 5ms）。**未写 Phase4 了结**。
+- **10:19 BON 评审回收 · 统一修订**：两路 Opus 独立评审完成——业务内容评审判定「部分站得住脚」（process 纪律强、独立业务判断薄弱）；系统设计评审判定「方向对但需细化」（§2/§6 停留文献综述层，非可执行规格）。**已按两份评审做一次统一修订**（非分两次改）：`requirements_v2.md` 新增 §3.3 价值假设 V-H1/V-H2 + 止损判据 K1–K3、§4 修正商业化措辞尾巴 + 正面承认稀释效应、§5 场景优先级排序（标注"写PPT"与本项目 US-SL 结论矛盾，不推荐）、§6 新增优先级正面回答（Phase4.1 优先于本评审注意力）、§7 新增 G6；`NEURO-V1-架构设计说明书.md` 重画 §2.4 与 §1.4 自相矛盾的三轨合并示意图、新增 §2.5 落地绑定规格（拓扑绑定/tick↔ms映射/Δw量化/无监督读出打分）、§4 新增单人研发约束风险 + §4.1 单人可行性与 FPGA 资源预算（路径收窄决策）、§6 补验证契约（command+evidence+阈值）+ 3 道新增门禁（STDP收敛门/弱引导ablation门/RTL≡golden等价门）；`TR1v2` 新增 §7 BON 评审记录摘要 + C6 勾选项。三份文档均已留修订记录，评审过程未被跳过，可供总裁核对。
+- **09:45 目标/系统设计刷新 · 重开 TR1v2**：总裁提供 3 份行业研究报告（赫布理论溯源、类脑技术路线/EDA 选型、技术难点攻坚），结合 Phase1–4.1 进展落盘三份文档：`NEURO-V1-架构设计说明书.md`（补齐此前缺失的系统设计真源，Phase8 候选架构=STDP+稳态可塑性+弱引导种群进化）、`requirements_v2.md`（目标刷新草案，**不改** v1 已拍板决议）、`TR1v2_技术路线深化评审_总裁评审.md`（**不推翻**原 TR1，**不改**Phase4.1 §8/§10/PR#12/TR2 人签断点，二者并行）。同步更新 GWT 文档 §4.6、README、项目看板链接。**纪律确认**：Stage B「更差/种子敏感」未改写；Phase8 未派工；报告理论推导数字（100代/周等）不作本项目验收指标。
+- **09:09 自驱唤醒核盘**：相对 09:04 **无变化**（人签 ☐×21 / PR#12 OPEN·MERGEABLE / 陈东 growth 7d 未过）。`pause_agent_wake=true`。机尽 · 不代签不合 · wake consume。
+- **09:06 整理+保存记忆**：近期记忆 / MEMORY / 恢复记忆落盘（agentfuture + 类脑仓）；日流水 `agentfuture/memory/2026-07-24.md`。
+- **09:04 自驱唤醒核盘**：相对 07-23 **无变化**。技术报告 §8/§10 ☐×21；TR2 VP/总裁 ☐；PR [#12](https://github.com/chenxi750328ai/neuromorphic-computing/pull/12) OPEN·MERGEABLE·qa SUCCESS。陈东 ep=11 · growth 活跃日 3→**7d 未过**。**未代签、未合 PR**；未写「Phase4 了结」。机尽 · wake consume。
+
+## 2026-07-23
+- **15:31 自驱唤醒**：人签仍无变化。修小脑：① 标题含「等人/待人」不进 Agent wake；② `pause_agent_wake=true`（等人签期间整段不唤醒，解锁改 false）；③ `min_wake_interval_sec=7200`。收工 consume。
+- **15:12 自驱唤醒核盘**：相对 15:08 **无变化**（人签 ☐ / PR#12 OPEN·MERGEABLE / 陈东 growth 7d 未过）。机尽 · 不代签不合 · wake consume。
+- **15:08 自驱唤醒核盘**：P0 仍全为人签——§8/§10 ☐×21；TR2 VP/总裁 ☐；PR [#12](https://github.com/chenxi750328ai/neuromorphic-computing/pull/12) OPEN·MERGEABLE·qa SUCCESS。**未代签、未合 PR**。陈东 ep=11 · growth 活跃日仍 3→**7d 未过**。headline 未写了结。wake consume。
+- **15:03 整理+保存记忆**：近期记忆/MEMORY/恢复记忆落盘。
+- **14:35 看板对齐修复**：根因① 18766 `/data/neuro*` 读 integration 陈旧副本（无 Stage B/US）；② md-viewer 依赖 jsDelivr 超时「打不开」。已改 serve 转发 `VCOMPANY_DATA_ROOT`、本地 `vendor/marked.min.js`、看板增 Stage B×4 + 七件套进度表、Wave-1 ASCII 链 `Phase4.1_Wave1_progress_20260723.md`。
+- **14:13 自驱唤醒核盘**：P0 全为人签——技术报告 §8/§10 勾选框仍 ☐（约 21 个未勾）；TR2 §8 VP/总裁栏仍 ☐；PR [#12](https://github.com/chenxi750328ai/neuromorphic-computing/pull/12) OPEN·MERGEABLE·qa SUCCESS。**未代签、未合 PR**。P1 陈东 SYS-M2：`learning-episodes.jsonl` **11** 条（≥10）· 活跃日仅 `06-23/07-14/07-22` → **growth 7d 未过**。纪律：禁止单点过关；未写「Phase4 已了结」。wake consume。
+- **13:26 自驱唤醒核盘**：复读 Wave-1；Stage B×4 与 E4 证据在盘（`fpga_toolchain_gate.json` `chain_full_pl_ok=true` · `fpga_lif_pl_run.json` `golden_match=true` · bit/hwh/utilization 齐）。PR [#12](https://github.com/chenxi750328ai/neuromorphic-computing/pull/12) 仍 OPEN·MERGEABLE·neuro-ci SUCCESS。**未代签 §8/§10、未合 PR、未代签 TR2**；US-EN 仍等人裁定。focus 改为人签断点；E4/SYS-M5 移出 backlog。wake 已 consume。
+- **E4 闭环（总裁授权）**：Vivado 2023.2 综合 `write_lif_bitstream.tcl` → `fpga/bitstreams/lif_step_overlay.{bit,hwh}`；PYNQ 烧 PL，脉冲序列 `[0,0,1,0,0,1,1,0,0,1]` **≡ golden**；`chain_full_pl_ok=true`。
+- **进展报告**：[`docs/Phase4.1_Wave1_进展报告_20260723.md`](../docs/Phase4.1_Wave1_进展报告_20260723.md)——Stage B×4 **不依赖** FPGA；路径 B/E4 **依赖**并已用实测定稿。
+- **设计文档刷新**：优势阶梯 §3.1、技术报告路径 B、`phase4_fpga_toolchain_V0.md`、milestones、看板 sync。
+- **纪律**：未写「Phase4/愿景了结」；人签（§8/§10、PR#12、TR2）仍待。
+
 ## 2026-07-15
 - **09:30 唤醒**：核盘无变化——无 Vivado、无 AMD `.bin`；P0 人签/合 PR#12 仍待人。
 
