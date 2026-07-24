@@ -1,0 +1,45 @@
+{
+  "schema": "phase4.1-spec-gate-v0",
+  "n_total": 100,
+  "warmup": 5,
+  "outlier_ms": 100.0,
+  "n_after_warmup": 95,
+  "n_outliers": 1,
+  "outlier_rate": 0.0105,
+  "n_steady": 94,
+  "outlier_max_e2e_ms": 1009.428,
+  "match_key": "pred_match",
+  "G-ACC": {
+    "value": 0.9789,
+    "threshold": 0.98,
+    "ok": false,
+    "note": "pred_match 默认 vs 标签；正式 E3 请用 vs ORT 字段"
+  },
+  "G-LAT": {
+    "p50_ms": 2.447,
+    "p95_ms": 4.819,
+    "threshold_p50_ms": 5.0,
+    "threshold_p95_ms": 10.0,
+    "ok": true
+  },
+  "G-COMM": {
+    "C1_segments_present": true,
+    "C2_not_per_frame_ssh": true,
+    "C3_p95_over_p50": 1.969,
+    "C3_threshold": 5.0,
+    "C3_ok": true,
+    "steady_outlier_rate_ok": true,
+    "ok": true
+  },
+  "overall_ok": false,
+  "source_bench": "/home/cx/neuromorphic-computing/runs/phase4_poc/distributed_bench_daemon_n100.json",
+  "source_summary": {
+    "p50_t_e2e_ms": 2.458,
+    "p95_t_e2e_ms": 5.063,
+    "avg_t_e2e_ms": 12.943,
+    "pred_match_rate": 0.98,
+    "mode": null
+  },
+  "generated_at": "2026-07-14T15:22:07.451462+08:00",
+  "agent": "ChenZhengGong"
+}

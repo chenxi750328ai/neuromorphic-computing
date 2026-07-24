@@ -1,0 +1,30 @@
+{
+  "schema": "phase4.1-distributed-bench-v1",
+  "generated_at": "2026-07-14T18:21:31.772622+08:00",
+  "agent": "ChenZhengGong",
+  "mode": "atlas_daemon",
+  "host": "192.168.137.2",
+  "daemon_port": 9527,
+  "om": "/tmp/phase4_snn/mnist_snn.om",
+  "vs_ort": true,
+  "summary": {
+    "samples": 100,
+    "avg_t_preprocess_ms": 0.0,
+    "avg_t_xfer_in_ms": 0.0,
+    "avg_t_atlas_ms": 1.658,
+    "avg_t_xfer_out_ms": 14.039,
+    "avg_t_connect_ms": 14.039,
+    "avg_t_e2e_ms": 15.698,
+    "p50_t_e2e_ms": 5.088,
+    "p95_t_e2e_ms": 9.243,
+    "comm_ms": 14.04,
+    "comm_ratio": 0.8944,
+    "bottleneck_hint": "communication",
+    "pred_match_rate": 0.98,
+    "dataset_load_ms": 87.539,
+    "ort_match_rate": 1.0,
+    "g_acc_reference": "vs_ort"
+  },
+  "per_sample_count": 100,
+  "note": "full per_sample on disk runs/phase4_poc/ (gitignored); PR 留 summary+gate"
+}

@@ -1,4 +1,23 @@
+## 2026-07-15
+- **09:30 唤醒**：核盘无变化——无 Vivado、无 AMD `.bin`；P0 人签/合 PR#12 仍待人。
+
+- **09:12 唤醒**：E4 仍断在 **AMD 官网账号/安装包**（我侧无密码）；脚本与 AXI/TCL 已就绪。PR #12 待人合；§8/§10、TR2 待人签。陈东 ep=10，SYS-M2 的 7 日稳定未验。
+
 # 类脑计算项目 · 每日进展
+
+## 2026-07-14
+- **21:28 继续**：E4 仍卡 AMD 包；补 `lif_step_axi_lite.v` + 一键 Vivado TCL；陈东 LearnCycle×5 → **episodes=10**（SYS-M2 数量门槛过，7 日稳定未验）。
+- **20:58 Vivado 安装**：WSL `/tools/Xilinx` 与安装脚本已就位；**AMD 官网包需登录下载**，盘上无现成 `.bin`。等 `XILINX_EMAIL`/`XILINX_PASSWORD` 或把 Unified Lin64.bin 丢到 `~/Downloads/xilinx-install/`。
+- **18:34 唤醒**：全盘 Vivado 仍无；FPGA `chain_full_pl_ok=false`；Atlas/PYNQ ping 通；PR #12 OPEN qa SUCCESS。E4 等人给 Vivado 路径或批准安装。
+
+- **自驱唤醒**：核盘 P0 — **FPGA 路径 B PR #7 早已合 main**（看板 focus 已改，不再当作待办）。  
+- **技术报告**：补齐 [§10 Phase4.1 立项 B1–B3](../docs/Phase4_技术报告_总裁评审.md) + §8 增 R5；**未代总裁签字**。  
+- **PR #12**：规格门禁报告 · neuro-ci **绿** · 待人合 — https://github.com/chenxi750328ai/neuromorphic-computing/pull/12  
+- **阻塞**：Atlas `192.168.137.2` / PYNQ `192.168.137.3` ping 不通 → E2–E4 补数挂起。  
+- **TR2**：PL 栏已签；VP/总裁栏仍空。  
+- **纪律**：Phase4.1 未完成前不写「Phase4 已了结」。  
+- **17:16 再唤醒**：P0 仍卡人签 + 合 PR#12 + 以太网；本轮无新代码。Agent 聊天请用英文链 [Phase4_president_tech_report.md](/home/cx/neuromorphic-computing/docs/Phase4_president_tech_report.md)。  
+- **18:21 网通续作**：Atlas/PYNQ ping+ssh 通；`phase4_distributed_bench.py --daemon-port 9527 --vs-ort --samples 100` → `distributed_bench_daemon_n100_vs_ort.json`；**ort_match_rate=1.0**；规格门禁 overall **FAIL**（G-LAT p50 5.06>5.0；G-ACC/G-COMM 过）。E2：`comm_matrix_daemon_tcp_n100.json`。E4 未做（点灯≠上 PL）。
 
 ## 2026-06-22
 
@@ -6,8 +25,8 @@
 - **数值对齐**：ORT vs 板端脉冲计数 **bit-exact**（`snn_board_align.json` diff=0）。  
 - **PR #5**：已合 main（`fe2ea78`）；问题记录见 `docs/phase4_snn_onboard_log.md`。  
 - **FPGA 路径 B v1**：**PR #7 已合 main**（`67c178b`）。  
-- **Phase4 技术报告**：[docs/Phase4_技术报告_总裁评审.md](../neuromorphic-computing/docs/Phase4_技术报告_总裁评审.md) — **待总裁 §8 评审**。  
-- **Phase4**：工程收工；剩总裁技术评审、TR2/VP_QA 签字。  
+- **Phase4 技术报告**：[docs/Phase4_技术报告_总裁评审.md](../docs/Phase4_技术报告_总裁评审.md) — **待总裁 §8/§10 评审**。  
+- **Phase4 v0**：单点 PoC 工程收工；**关口未关**（Phase4.1）。  
 
 ## 2026-06-22（早期）
 
