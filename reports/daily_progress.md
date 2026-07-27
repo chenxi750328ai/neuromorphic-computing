@@ -1,3 +1,6 @@
+## 2026-07-27
+- **10:48 外部 STDP MD 摄入 + 计划刷新**：读 `neu/docs` 新 MD《无目标函数、无监督条件下：STDP权重优化…》；落盘摄入笔记（部分 DOI 待核）；**不影响 G-LAT**；强化 Phase8 读出+弱引导、首版不做联邦/静默突触。G-LAT 计划补测试用例白话；新建 Phase8 文献刷新计划。下一工程刀仍是 G-LAT 连接复用→r2。
+
 ## 2026-07-24
 - **15:05 G-LAT Task2 归因 r1**：稳态分段 p50 — preprocess 0.001 · atlas 1.679 · xfer_out 2.959 · **e2e 5.513 FAIL（+0.513ms）**；主因每帧 TCP 连接队列段；bench 代码无 sleep、ORT 单 session；**未做 r2 代码优化** · 证据 `docs/phase4_poc_evidence/g_lat_attribution_20260724_r1.md` · **未开 PR**。
 - **14:54 G-LAT r1 复测**：分支 `feature/phase4.1-g-lat` · Atlas 192.168.137.2 ping/ssh OK · daemon TCP **9527** · WSL `phase4_distributed_bench.py` N=100 `--vs-ort` · 门禁 `phase4_spec_gate_report.py --gate` → **G-ACC=1.0** · **G-LAT p50=5.513/p95=9.339 FAIL** · **G-COMM ok** · **overall_ok=false** · 证据 `docs/phase4_poc_evidence/spec_gate_report_daemon_n100_vs_ort_20260724_r1.json` + `distributed_bench_daemon_n100_vs_ort_20260724_r1_summary.json` · **未开 PR** · 下一 **Task 2**。
