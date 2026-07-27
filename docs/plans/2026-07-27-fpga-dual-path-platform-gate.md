@@ -79,7 +79,7 @@ Phase8（STDP 等）**排在本闸门之后**（或总裁书面授权并行，�
 - [x] `docs/Phase4.1_FPGA双路线平台可用性_总裁一页.md`（阶段结论；Phase8 仍默认不开）
 
 ### Task 4 · PR
-- [ ] 按登记标题开 PR；**不代合**；Summary 禁止写「Phase4.1 了结」
+- [x] PR **#14** 已开；**不代合**；Summary 禁止写「Phase4.1 了结」
 
 ---
 
