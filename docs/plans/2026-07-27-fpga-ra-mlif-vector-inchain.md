@@ -58,7 +58,7 @@
 - [x] 更新 §4 / 一页
 
 ### Task 3 · PR
-- [ ] push + `gh pr create`；不代合
+- [x] push + `gh pr create`；不代合
 
 ---
 
