@@ -1,0 +1,34 @@
+{
+  "schema": "phase4.1-fpga-rb-fullnet-platform-v0",
+  "generated_at": "2026-07-27T16:30:48.595427+08:00",
+  "agent": "ChenZhengGong",
+  "route": "R-B FPGA full network",
+  "checkpoint": "/home/cx/neuromorphic-computing/runs/20260527T092534Z/checkpoint.pt",
+  "algorithm_host_fixedpoint": {
+    "n": 100,
+    "correct": 98,
+    "acc": 0.98,
+    "avg_e2e_ms_host": 3.57,
+    "hidden": 256,
+    "timesteps": 25,
+    "note": "host Q16.16 full net — not on PL"
+  },
+  "resource": {
+    "lut_per_neuron_measured_or_assumed": 379,
+    "hidden": 256,
+    "timesteps": 25,
+    "parallel_instances_lut": 97024,
+    "z2_lut_budget": 53200,
+    "parallel_fits_z2": false,
+    "time_mux_single_core_lut": 379,
+    "time_mux_fits_z2": true,
+    "verdict": "fullnet_parallel_not_on_z2",
+    "note": "并行整网 LIF 阵列按单核 LUT×hidden 外推；时分复用理论上 LUT 够，但需新 RTL 调度器+权重 BRAM，本闸记为「本板并行整网不可用」"
+  },
+  "platform_available_rb_on_pynq_z2_parallel": false,
+  "conclusion": "FAIL_parallel_fullnet_on_z2_resource_wall",
+  "followups": [
+    "若要坚持整网 FPGA：换更大器件，或实现时分复用调度 RTL（新工作量）",
+    "R-A 加速（单核/少量 LIF IP）与 Z2 资源匹配，优先作为近端可行路径"
+  ]
+}
