@@ -1,4 +1,5 @@
 ## 2026-07-27
+- **11:17 G-LAT r2（connection_reuse）**：分支 `feature/phase4.1-g-lat` · 部署/重启 Atlas daemon:9527 · WSL `phase4_distributed_bench.py --daemon-reuse-conn --vs-ort --samples 100` · 门禁 `--gate` **exit 0** → **G-ACC=1.0** · **G-LAT p50=3.501/p95=4.036 PASS** · **G-COMM ok** · **overall_ok=true** · 对照 r1 p50=5.513 → r2 3.501 · 证据 `docs/phase4_poc_evidence/spec_gate_report_daemon_n100_vs_ort_20260727_r2.json` + summary + `g_lat_r1_vs_r2_20260727.md` · **未开 PR**（G-LAT 过≠Phase4.1 关口关闭）。
 - **10:48 外部 STDP MD 摄入 + 计划刷新**：读 `neu/docs` 新 MD《无目标函数、无监督条件下：STDP权重优化…》；落盘摄入笔记（部分 DOI 待核）；**不影响 G-LAT**；强化 Phase8 读出+弱引导、首版不做联邦/静默突触。G-LAT 计划补测试用例白话；新建 Phase8 文献刷新计划。下一工程刀仍是 G-LAT 连接复用→r2。
 
 ## 2026-07-24

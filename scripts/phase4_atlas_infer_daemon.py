@@ -6,9 +6,10 @@
   export PYTHONPATH=/usr/local/Ascend/thirdpart/aarch64/acllite:$PYTHONPATH
   python3 phase4_atlas_infer_daemon.py --model /tmp/phase4_snn/mnist_snn.om --port 9527
 
-协议（每请求一连接）:
+协议（同一 TCP 连接可连续多请求；客户端断开则结束）:
   客户端 → 8B magic b'PH41INFR' + uint32_le payload_bytes + float32 ndarray (C-order)
   服务端 → uint32_le json_len + UTF-8 JSON {"ok":true,"infer_ms":..,"atlas_counts":[...]}
+  兼容：旧客户端「每请求一连接」仍可用（处理完一帧后对端关闭即可）。
 """
 from __future__ import annotations
 
@@ -46,7 +47,7 @@ def _send_json(conn: socket.socket, payload: dict[str, Any]) -> None:
     conn.sendall(struct.pack("<I", len(raw)) + raw)
 
 
-def handle_client(conn: socket.socket, model: AclLiteModel) -> None:
+def _handle_one_request(conn: socket.socket, model: AclLiteModel) -> None:
     header = _recv_exact(conn, 8)
     if header != MAGIC:
         _send_json(conn, {"ok": False, "error": f"bad magic {header!r}"})
@@ -77,6 +78,15 @@ def handle_client(conn: socket.socket, model: AclLiteModel) -> None:
             "shape": list(sample.shape),
         },
     )
+
+
+def handle_client(conn: socket.socket, model: AclLiteModel) -> None:
+    """长连接：循环处理请求直至对端关闭。"""
+    while True:
+        try:
+            _handle_one_request(conn, model)
+        except ConnectionError:
+            return
 
 
 def serve(model_path: str, host: str, port: int) -> None:
