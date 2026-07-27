@@ -1,0 +1,16 @@
+{
+  "schema": "phase4.1-distributed-bench-summary-v1",
+  "generated_at": "2026-07-24T14:54:21.647832+08:00",
+  "agent": "ChenZhengGong",
+  "mode": "atlas_daemon",
+  "host": "192.168.137.2",
+  "daemon_port": 9527,
+  "vs_ort": true,
+  "p50_t_e2e_ms": 5.638,
+  "p95_t_e2e_ms": 11.895,
+  "ort_match_rate": 1.0,
+  "pred_match_rate": 0.98,
+  "note": "G-LAT retest r1; overall_ok=false",
+  "source_bench": "runs/phase4_poc/distributed_bench_daemon_n100_vs_ort_20260724_r1.json",
+  "source_gate": "docs/phase4_poc_evidence/spec_gate_report_daemon_n100_vs_ort_20260724_r1.json"
+}

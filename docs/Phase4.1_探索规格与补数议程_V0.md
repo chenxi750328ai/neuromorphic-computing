@@ -101,6 +101,7 @@
 |------|------|-------|------------------------|--------|-------|------|----------|
 | 仅 Atlas · 历史 daemon | TCP | **97.89%**（暖机后 vs 标签；未达 98%） | 稳态 **2.45 / 4.82** | C1–C3 过（比值≈1.97）；1 帧离群~1009ms | MNIST·常驻 | 历史试算：**overall 未过（G-ACC）** | 仅参考 ≠ 定稿 |
 | 仅 Atlas · **E3 现场 2026-07-14** | TCP daemon :9527 | **100%**（vs **ORT**） | 稳态 **5.06 / 8.01** | C1–C3 过（比值≈1.58）；离群 1/95≈1.1% | MNIST·常驻 | `runs/phase4_poc/distributed_bench_daemon_n100_vs_ort.json` + `spec_gate_report_daemon_n100_vs_ort.json`：**overall 未过（G-LAT p50 略超 5ms）** | 可填表 · **仍非关口定稿** |
+| 仅 Atlas · **E3 r2 2026-07-27** | TCP daemon :9527 · **单连接多帧** | **100%**（vs **ORT**） | 稳态 **3.50 / 4.04** | C1–C3 过 | MNIST·常驻 | `spec_gate_report_daemon_n100_vs_ort_20260727_r2.json`：**overall_ok=true**（`--daemon-reuse-conn`）；**≠ Phase4.1 关口关闭** | 可填表 · **仍非关口定稿** |
 | +FPGA M-pre | | | | | | 待测（须类脑功能上 PL，点灯不算） | |
 | +FPGA M-lif | | | | | | 待测 | |
 | +FPGA M-bypass | | | | | | 待测 | |

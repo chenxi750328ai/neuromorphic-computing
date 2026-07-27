@@ -74,14 +74,24 @@ def ensure_atlas_probe(host: str, password: str, om: str) -> None:
 MAGIC = b"PH41INFR"
 
 
-def _daemon_infer(host: str, port: int, sample: np.ndarray, timeout: float = 30.0) -> dict:
+def _recv_exact(conn: socket.socket, n: int) -> bytes:
+    buf = bytearray()
+    while len(buf) < n:
+        chunk = conn.recv(n - len(buf))
+        if not chunk:
+            raise ConnectionError("daemon closed")
+        buf.extend(chunk)
+    return bytes(buf)
+
+
+def _daemon_infer_on_conn(conn: socket.socket, sample: np.ndarray) -> dict:
+    """在已建立的连接上发一帧（不含 TCP connect）。"""
     arr = np.ascontiguousarray(sample.astype(np.float32)).reshape(-1)
     payload = arr.tobytes()
     t0 = time.perf_counter()
-    with socket.create_connection((host, port), timeout=timeout) as conn:
-        conn.sendall(MAGIC + struct.pack("<I", len(payload)) + payload)
-        (json_len,) = struct.unpack("<I", _recv_exact(conn, 4))
-        raw = _recv_exact(conn, json_len)
+    conn.sendall(MAGIC + struct.pack("<I", len(payload)) + payload)
+    (json_len,) = struct.unpack("<I", _recv_exact(conn, 4))
+    raw = _recv_exact(conn, json_len)
     t_rtt = (time.perf_counter() - t0) * 1000
     data = json.loads(raw.decode("utf-8"))
     if not data.get("ok"):
@@ -95,21 +105,37 @@ def _daemon_infer(host: str, port: int, sample: np.ndarray, timeout: float = 30.
     }
 
 
-def _recv_exact(conn: socket.socket, n: int) -> bytes:
-    buf = bytearray()
-    while len(buf) < n:
-        chunk = conn.recv(n - len(buf))
-        if not chunk:
-            raise ConnectionError("daemon closed")
-        buf.extend(chunk)
-    return bytes(buf)
+def _daemon_infer(host: str, port: int, sample: np.ndarray, timeout: float = 30.0) -> dict:
+    """每帧新建连接（r1 口径）。"""
+    t_c0 = time.perf_counter()
+    with socket.create_connection((host, port), timeout=timeout) as conn:
+        t_connect = (time.perf_counter() - t_c0) * 1000
+        resp = _daemon_infer_on_conn(conn, sample)
+    resp["t_connect_ms"] = round(t_connect, 3)
+    # 兼容旧字段：queue 含 connect；e2e 用 rtt（含 connect）
+    resp["t_rtt_ms"] = round(float(resp["t_rtt_ms"]) + t_connect, 3)
+    resp["t_queue_ms"] = round(float(resp["t_queue_ms"]) + t_connect, 3)
+    return resp
 
 
-def bench_daemon_sample(host: str, port: int, sample: np.ndarray, idx: int) -> dict:
+def bench_daemon_sample(
+    host: str,
+    port: int,
+    sample: np.ndarray,
+    idx: int,
+    *,
+    conn=None,
+    reuse: bool = False,
+) -> dict:
     t_pre0 = time.perf_counter()
     x = np.ascontiguousarray(sample)
     t_preprocess = (time.perf_counter() - t_pre0) * 1000
-    resp = _daemon_infer(host, port, x)
+    if conn is not None:
+        resp = _daemon_infer_on_conn(conn, x)
+        t_connect = 0.0
+    else:
+        resp = _daemon_infer(host, port, x)
+        t_connect = float(resp.get("t_connect_ms") or 0.0)
     t_rtt = float(resp["t_rtt_ms"])
     t_atlas = float(resp["infer_ms"])
     t_queue = float(resp["t_queue_ms"])
@@ -119,11 +145,12 @@ def bench_daemon_sample(host: str, port: int, sample: np.ndarray, idx: int) -> d
         "t_xfer_in_ms": 0.0,
         "t_atlas_ms": round(t_atlas, 3),
         "t_xfer_out_ms": round(t_queue, 3),
-        "t_connect_ms": round(t_queue, 3),
+        "t_connect_ms": round(t_connect, 3),
         "t_e2e_ms": round(t_preprocess + t_rtt, 3),
         "atlas_counts": resp.get("atlas_counts"),
         "payload_bytes": int(x.nbytes),
         "daemon": True,
+        "connection_reuse": bool(reuse),
     }
 
 
@@ -316,6 +343,11 @@ def main() -> int:
     p.add_argument("--batch-xfer", action="store_true", help="单次 batch scp+ssh（对比逐帧）")
     p.add_argument("--daemon-port", type=int, default=0, help="Atlas 常驻 daemon TCP 端口（如 9527）")
     p.add_argument(
+        "--daemon-reuse-conn",
+        action="store_true",
+        help="G-LAT 优化：单 TCP 连接多帧（须 Atlas daemon 支持长连接；报告 connection_reuse=true）",
+    )
+    p.add_argument(
         "--vs-ort",
         action="store_true",
         help="G-ACC 金标准：每帧与本机 ORT/onnx 预测比（写 ort_pred/ort_match；勿与仅比 label 混）",
@@ -356,19 +388,38 @@ def main() -> int:
 
             ort_sess = ort.InferenceSession(str(args.onnx), providers=["CPUExecutionProvider"])
             ort_in = ort_sess.get_inputs()[0].name
-        for i in range(xs.shape[0]):
-            row = bench_daemon_sample(args.host, args.daemon_port, xs[i : i + 1], i)
-            row["label"] = int(ys[i])
-            row["atlas_pred"] = int(np.asarray(row["atlas_counts"]).argmax())
-            row["pred_match"] = row["atlas_pred"] == row["label"]
-            if ort_sess is not None:
-                sample = np.ascontiguousarray(xs[i : i + 1].astype(np.float32))
-                ort_out = ort_sess.run(None, {ort_in: sample})[0]
-                row["ort_pred"] = int(np.asarray(ort_out).reshape(-1).argmax())
-                row["ort_match"] = row["atlas_pred"] == row["ort_pred"]
-            per_sample.append(row)
-            if (i + 1) % 10 == 0:
-                print(f"daemon bench {i + 1}/{xs.shape[0]}", file=sys.stderr)
+        reuse = bool(args.daemon_reuse_conn)
+        conn = None
+        if reuse:
+            conn = socket.create_connection((args.host, args.daemon_port), timeout=30.0)
+            print(
+                f"daemon reuse-conn: connected {args.host}:{args.daemon_port}",
+                file=sys.stderr,
+            )
+        try:
+            for i in range(xs.shape[0]):
+                row = bench_daemon_sample(
+                    args.host,
+                    args.daemon_port,
+                    xs[i : i + 1],
+                    i,
+                    conn=conn,
+                    reuse=reuse,
+                )
+                row["label"] = int(ys[i])
+                row["atlas_pred"] = int(np.asarray(row["atlas_counts"]).argmax())
+                row["pred_match"] = row["atlas_pred"] == row["label"]
+                if ort_sess is not None:
+                    sample = np.ascontiguousarray(xs[i : i + 1].astype(np.float32))
+                    ort_out = ort_sess.run(None, {ort_in: sample})[0]
+                    row["ort_pred"] = int(np.asarray(ort_out).reshape(-1).argmax())
+                    row["ort_match"] = row["atlas_pred"] == row["ort_pred"]
+                per_sample.append(row)
+                if (i + 1) % 10 == 0:
+                    print(f"daemon bench {i + 1}/{xs.shape[0]}", file=sys.stderr)
+        finally:
+            if conn is not None:
+                conn.close()
     else:
         subprocess.run(
             _ssh_cmd(args.host, args.atlas_pass, "mkdir -p /tmp/phase4_snn/bench"),
@@ -423,6 +474,7 @@ def main() -> int:
         ),
         "host": args.host,
         "daemon_port": args.daemon_port or None,
+        "daemon_reuse_conn": bool(getattr(args, "daemon_reuse_conn", False)),
         "om": args.om,
         "vs_ort": bool(getattr(args, "vs_ort", False)),
         "summary": summary,

@@ -1,0 +1,19 @@
+{
+  "schema": "phase4.1-distributed-bench-summary-v1",
+  "generated_at": "2026-07-27T11:17:57.729882+08:00",
+  "agent": "ChenZhengGong",
+  "mode": "atlas_daemon",
+  "host": "192.168.137.2",
+  "daemon_port": 9527,
+  "daemon_reuse_conn": true,
+  "vs_ort": true,
+  "p50_t_e2e_ms": 3.502,
+  "p95_t_e2e_ms": 4.095,
+  "ort_match_rate": 1.0,
+  "pred_match_rate": 0.98,
+  "gate_steady_p50_ms": 3.501,
+  "gate_steady_p95_ms": 4.036,
+  "note": "G-LAT r2 with --daemon-reuse-conn; connection_reuse=true; overall_ok=true (GATE_EXIT=0). G-ACC/G-LAT/G-COMM all ok. Does NOT close Phase4.1 gate.",
+  "source_bench": "runs/phase4_poc/distributed_bench_daemon_n100_vs_ort_20260727_r2.json",
+  "source_gate": "docs/phase4_poc_evidence/spec_gate_report_daemon_n100_vs_ort_20260727_r2.json"
+}
