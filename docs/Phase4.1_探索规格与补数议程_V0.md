@@ -103,7 +103,9 @@
 | 仅 Atlas · **E3 现场 2026-07-14** | TCP daemon :9527 | **100%**（vs **ORT**） | 稳态 **5.06 / 8.01** | C1–C3 过（比值≈1.58）；离群 1/95≈1.1% | MNIST·常驻 | `runs/phase4_poc/distributed_bench_daemon_n100_vs_ort.json` + `spec_gate_report_daemon_n100_vs_ort.json`：**overall 未过（G-LAT p50 略超 5ms）** | 可填表 · **仍非关口定稿** |
 | 仅 Atlas · **E3 r2 2026-07-27** | TCP daemon :9527 · **单连接多帧** | **100%**（vs **ORT**） | 稳态 **3.50 / 4.04** | C1–C3 过 | MNIST·常驻 | `spec_gate_report_daemon_n100_vs_ort_20260727_r2.json`：**overall_ok=true**（`--daemon-reuse-conn`）；**≠ Phase4.1 关口关闭** | 可填表 · **仍非关口定稿** |
 | +FPGA M-pre | | | | | | 待测（须类脑功能上 PL，点灯不算） | |
-| +FPGA M-lif | | | | | | 待测 | |
+| +FPGA M-lif · **R-A host_proxy 2026-07-27** | （切分账·非板上） | **98%**（定点 vs 标签·N=100；ckpt `20260527T092534Z`） | host≈3.7ms（非 G-LAT） | — | MNIST·定点 | `fpga_ra_mlif_platform_gate.json` | 切分语义可对 |
+| +FPGA M-lif · **R-A board_pl 2026-07-27** | SSH→PYNQ PL | 单算子序列（非整网 acc） | 10step≈**2.2ms**（板上） | — | LIF IP | `lif_step_overlay.bit` + `fpga_lif_pl_run_ra.json`：**LIF_PL_OK**；**≠** 256 向量化入链 | **单算子平台可用** · **≠** 关口定稿 |
+| +FPGA **整网并行** · **R-B 2026-07-27** | （资源外推） | host 定点 **98%**（非板上） | — | — | MNIST | `fpga_rb_fullnet_platform_gate.json`：LUT/神经元≈379×256=97024 > Z2 53200 | **本板并行整网不可用**（资源墙·合法结论） |
 | +FPGA M-bypass | | | | | | 待测 | |
 
 ---
@@ -136,6 +138,7 @@
 | 2026-07-14 | G-COMM 人话 |
 | 2026-07-14 | **自检**：统计口径、历史数据脚注、对照表修正 |
 | 2026-07-14 | **E3 现场**：daemon N=100 vs ORT 100%；G-LAT p50≈5.06 未过；E2 段时见 `comm_matrix_daemon_tcp_n100.json` |
+| 2026-07-27 | **FPGA 双路线**：R-A host_proxy（M-lif）+ R-B 资源墙填表；board_pl 等 bit |
 
 ---
 
