@@ -63,7 +63,7 @@ Phase4.1 **不是**再刷一个 MNIST 准确率，而是在长线（Phase8 / 定
 - [x] Vivado `lif_step_overlay.{bit,hwh}` + PYNQ `board_pl`  
 - [x] PR **#14** 已开（neuro-ci 绿）；**不代合**；≠ Phase4.1 了结  
 - [x] 本页 §0：Phase4.1 意义（平台可行性 · 并行 vs 分时）已钉死  
-- [x] **续批**：R-A **向量化入链** PASS（单核分时）· 证据 `fpga_ra_mlif_vector_inchain_gate.json` · 待开 PR
+- [x] **续批**：R-A **向量化入链** PASS（单核分时）· 证据 JSON · PR **#16**（不代合）
 
 ---
 
