@@ -43,7 +43,7 @@ Phase4.1 **不是**再刷一个 MNIST 准确率，而是在长线（Phase8 / 定
 
 | 路线 | 平台可用？ | 证据 | 人话 |
 |------|------------|------|------|
-| **R-A 加速（M-lif）** | **单算子 PL 可用**；整层入链仍待 | `fpga_ra_mlif_platform_gate.json` + `lif_step_overlay.{bit,hwh}` | host_proxy 定点 **98%**/100；PYNQ **board_pl PASS**（`lif_step_0`）。**≠** Atlas↔FPGA 整层入链；**≠** 关口关闭。 |
+| **R-A 加速（M-lif）** | **单算子 + 向量化入链（分时）可用** | `fpga_ra_mlif_*_gate.json` + overlay | 单核 PL PASS；**向量化入链** N=20：与 host pred **100% 一致**、标签 acc **95%**；lif1 板上≈**923ms/样本**（MMIO 分时，远逊 G-LAT）。**≠** Atlas 以太网入链；**≠** 并行 RTL；**≠** 关口关闭。 |
 | **R-B 整网 FPGA** | **本板并行不可用**（合法结论） | `fpga_rb_fullnet_platform_gate.json` + `lif_step_utilization.rpt` | host 定点 **98%**；并行 379×256≈**97k LUT** > Z2 **53.2k**。分时复用另立项。 |
 
 对照表：[`Phase4.1_探索规格与补数议程_V0.md`](./Phase4.1_探索规格与补数议程_V0.md) §0 / §4。
@@ -58,11 +58,12 @@ Phase4.1 **不是**再刷一个 MNIST 准确率，而是在长线（Phase8 / 定
 
 ---
 
-## 3. 仍在进行
+## 3. 仍在进行 / 续批
 
 - [x] Vivado `lif_step_overlay.{bit,hwh}` + PYNQ `board_pl`  
 - [x] PR **#14** 已开（neuro-ci 绿）；**不代合**；≠ Phase4.1 了结  
 - [x] 本页 §0：Phase4.1 意义（平台可行性 · 并行 vs 分时）已钉死  
+- [x] **续批**：R-A **向量化入链** PASS（单核分时）· 证据 JSON · PR **#16**（不代合）
 
 ---
 
