@@ -12,6 +12,10 @@
 
 **Phase4.1 意义（2026-07-27 口头确认 · 已落盘一页 §0）**：平台可行性闸门——通/不通/在什么条件下通；**不是**再刷 MNIST 分。
 
+**续批（2026-07-27）**：同意推进 **R-A 向量化入链**（整层 lif1 经 FPGA 入链）→ 计划 → 开发验证 → 再 PR。  
+计划：[`docs/plans/2026-07-27-fpga-ra-mlif-vector-inchain.md`](./plans/2026-07-27-fpga-ra-mlif-vector-inchain.md)。  
+形态钉死：现 `lif_step` **单核分时扫 256**（非并行新 RTL）。
+
 详细任务与验收见计划：  
 [`docs/plans/2026-07-27-fpga-dual-path-platform-gate.md`](./plans/2026-07-27-fpga-dual-path-platform-gate.md)
 

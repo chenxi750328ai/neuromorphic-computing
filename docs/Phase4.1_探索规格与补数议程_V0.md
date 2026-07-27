@@ -38,7 +38,7 @@
 | **已否证** | 逐帧 `scp+ssh` 当正经编排 | ssh 约 N=10：通信占比约 99.9%，端到端约 **6 秒/张** |
 | **已部分证实** | 4090↔Atlas **TCP 常驻** 后，双跳延迟可到毫秒级 | 见下表「历史 daemon」；**不等于**全链路规格已过、**不等于**可定 FPGA 去留 |
 | **未证** | H1 可不用 FPGA（含场景边界） | 缺按本页尺子的对照表 |
-| **未证** | H2 某种切分使 FPGA 有益（整层入链） | R-A 仅单算子 PL；缺 Atlas↔FPGA 向量化入链 |
+| **已部分证实** | H2：M-lif 整层经 PL 入链（同板 PS+PL 分时） | `fpga_ra_mlif_vector_inchain_gate.json`；缺 Atlas 以太网入链 |
 | **已证（条件）** | H2′：本板 **并行**整网 LIF 阵列不可用 | R-B：379×256 LUT 墙；见 `fpga_rb_fullnet_platform_gate.json` |
 | **未证** | H2″：分时复用整网在 Z2 上可用 | 需新 RTL；资源外推「可能」≠ 已通 |
 | **未证** | H3 更强/其它通信机制 | 缺通信矩阵（不止「ssh vs 某次 daemon」） |
@@ -129,7 +129,8 @@
 | 仅 Atlas · **E3 r2 2026-07-27** | TCP daemon :9527 · **单连接多帧** | **100%**（vs **ORT**） | 稳态 **3.50 / 4.04** | C1–C3 过 | MNIST·常驻 | `spec_gate_report_daemon_n100_vs_ort_20260727_r2.json`：**overall_ok=true**（`--daemon-reuse-conn`）；**≠ Phase4.1 关口关闭** | 可填表 · **仍非关口定稿** |
 | +FPGA M-pre | | | | | | 待测（须类脑功能上 PL，点灯不算） | |
 | +FPGA M-lif · **R-A host_proxy 2026-07-27** | （切分账·非板上） | **98%**（定点 vs 标签·N=100；ckpt `20260527T092534Z`） | host≈3.7ms（非 G-LAT） | — | MNIST·定点 | `fpga_ra_mlif_platform_gate.json` | 切分语义可对 |
-| +FPGA M-lif · **R-A board_pl 2026-07-27** | SSH→PYNQ PL | 单算子序列（非整网 acc） | 10step≈**2.2ms**（板上） | — | LIF IP | `lif_step_overlay.bit` + `fpga_lif_pl_run_ra.json`：**LIF_PL_OK**；**≠** 256 向量化入链 | **单算子平台可用** · **≠** 关口定稿 |
+| +FPGA M-lif · **R-A board_pl 2026-07-27** | SSH→PYNQ PL | 单算子序列（非整网 acc） | 10step≈**2.2ms**（板上） | — | LIF IP | `lif_step_overlay.bit` + `fpga_lif_pl_run_ra.json`：**LIF_PL_OK** | **单算子平台可用** |
+| +FPGA M-lif · **R-A 向量化入链 2026-07-27** | PS+PL 同板 | vs host pred **100%**（N=20）；标签 **95%** | lif1≈**923ms**/样本（MMIO 分时） | — | MNIST·M-lif | `fpga_ra_mlif_vector_inchain_gate.json`：**PASS**；破尺在分时 MMIO，**≠** Atlas 链、**≠** 并行 RTL | **有条件可用** · **≠** 关口定稿 |
 | +FPGA **整网并行** · **R-B 2026-07-27** | （资源外推） | host 定点 **98%**（非板上） | — | — | MNIST | `fpga_rb_fullnet_platform_gate.json`：LUT/神经元≈379×256=97024 > Z2 53200 | **本板并行整网不可用**（资源墙·合法结论） |
 | +FPGA M-bypass | | | | | | 待测 | |
 
