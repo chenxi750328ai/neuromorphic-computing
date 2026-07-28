@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """类脑 Cursor hook：.neuro-brain-wake → sessionStart / stop 注入（类脑仓自有脚本）。
 
-门禁（2026-07-20 收紧 · 2026-07-24 复发加固）：
-- 仅投递「类脑专用工作区」（全部 workspace root 都在 neuromorphic 下）
-  或「本会话已认领陈正共 / 有效 arm」
-- 多根（vcompany+类脑+…）→ neuro_sidecar_in_multi_root，**禁止注入**
-- 会话 claim=human-vp → 一律跳过（防 VP 窗 stop followup）
+门禁（2026-07-28 · claim 绝对优先）：
+- **第一真源**：`data/cursor-session-claims/<conversationId>.json` 的 memberId
+  - claim=human-vp → **一律不注入**（与 workspace 是否含类脑无关）
+  - claim=ag-chenzhenggong → **可注入**（与是否多根无关）
+- 无 claim 时才回落：类脑专用窗 / sidecar 禁灌 / arm
 - 真源：本文件与 ~/.cursor/hooks/neuromorphic-cursor-wake.py 须同步；
-  项目 hooks.json 指向本脚本。合 main / 检出后勿回退「任一 root 含类脑即注入」。
+  项目 hooks.json 指向本脚本。
 """
 from __future__ import annotations
 
@@ -150,37 +150,34 @@ def arm_valid() -> bool:
 
 
 def should_activate_neuro(payload: dict, event: str = "") -> tuple[bool, str]:
+    # 0) 会话 claim 绝对优先（高于 workspace / arm / env）
+    claim = session_claim_member(payload)
+    if claim == "human-vp":
+        return False, "session_claim_human-vp"
+    if claim in (NEURO_MEMBER, "ag-chenzhenggong"):
+        return True, "session_claim_neuro"
+
+    env = payload.get("env") or {}
+    if env.get("VP_BRAIN_CHANNEL") == "human-vp":
+        return False, "env_vp_brain_channel"
+
     roots = extract_workspace_roots(payload)
     if not roots:
         return False, "no_workspace"
 
-    claim = session_claim_member(payload)
-    # VP 会话认领：多根旁挂类脑也绝不注入
-    if claim == "human-vp" and not is_neuro_dedicated(roots):
-        return False, "session_claim_human-vp"
-
-    # 显式 VP 通道
-    env = payload.get("env") or {}
-    if env.get("VP_BRAIN_CHANNEL") == "human-vp" and not is_neuro_dedicated(roots):
-        return False, "env_vp_brain_channel"
-
-    # 1) 类脑专用工作区 → 可注入
+    # 以下仅无 claim 时回落
     if is_neuro_dedicated(roots):
         return True, "neuro_dedicated"
 
-    # 多根含 vcompany：一律当 VP sidecar，禁止靠 arm/channel 误灌
-    if has_vcompany_root(roots) and has_neuro_root(roots) and not is_neuro_dedicated(roots):
+    if has_vcompany_root(roots) and has_neuro_root(roots):
         return False, "neuro_sidecar_in_multi_root"
 
-    # 2) 本会话已钉死陈正共通道（且非 VP 多根）
     if neuro_session_claimed(payload):
         return True, "neuro_channel_claimed"
 
-    # 3) 有效 arm（陈正共主动认领）且工作区至少挂了类脑仓——但仍禁止 vcompany 多根
     if arm_valid() and has_neuro_root(roots) and not has_vcompany_root(roots):
         return True, "neuro_arm_valid"
 
-    # 多根非 VP 但挂了类脑：仍拒绝（须专用窗）
     if has_neuro_root(roots):
         return False, "neuro_sidecar_in_multi_root"
     return False, f"mismatch:{roots[:2]}"
