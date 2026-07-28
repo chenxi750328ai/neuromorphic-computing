@@ -63,7 +63,7 @@
 - [x] 门禁 N=20：match=1.0 · acc=0.95 · `fpga_ra_atlas_mlif_inchain_gate.json`  
 
 ### Task 3 · 双通汇总 PR
-- [ ] 一页「双通」勾选；开 PR；**不代合**；Summary 禁止写关口关闭  
+- [x] PR **#17** 已开；**不代合**；Summary 禁止写关口关闭  
 
 ---
 
