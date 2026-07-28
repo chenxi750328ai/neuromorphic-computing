@@ -1,6 +1,6 @@
 {
   "schema": "phase4.1-fpga-s1-impl-chain-gate-v0",
-  "generated_at": "2026-07-28T15:42:12.261551+08:00",
+  "generated_at": "2026-07-28T16:00:08.032596+08:00",
   "agent": "ChenZhengGong",
   "phase": "F6-S1",
   "yosys_synth": {
@@ -23,6 +23,7 @@
   },
   "vivado_pin": {
     "ok": true,
+    "status": "pinned",
     "pinned": "2023.2",
     "install_root": "/tools/Xilinx/Vivado/2023.2",
     "version_head": "vivado v2023.2 (64-bit)\nTool Version Limit: 2023.10\nSW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023\nIP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023\nSharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023",
@@ -31,7 +32,8 @@
       "/tools/Xilinx/Vivado/2023.2/settings64.sh": "219c49eb0cb3146a57bdea705b24238d"
     },
     "policy": "辅证/出 bit 后端；不得替代 Verilator 主门",
-    "license_note": "使用本机已授权安装；禁止把 license/密钥写入 Git"
+    "license_note": "使用本机已授权安装；禁止把 license/密钥写入 Git",
+    "note": null
   },
   "batch_tcl": {
     "ok": true,
@@ -48,5 +50,6 @@
   },
   "compare_note": "Yosys generic cells vs Vivado Slice LUTs are not 1:1; S1 proves open-source synth path exists + Vivado remains pinned aux backend.",
   "pass": true,
-  "ci_vivado_optional": true
+  "ci_vivado_optional": true,
+  "vivado_status": "pinned"
 }

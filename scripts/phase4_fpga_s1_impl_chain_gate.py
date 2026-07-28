@@ -89,6 +89,7 @@ def parse_vivado_util() -> dict | None:
 
 
 def vivado_pin() -> dict:
+    """status: pinned | absent | unpinned — unpinned 必须红；absent 仅 CI 可过。"""
     root = None
     for p in CANDIDATE_VIVADO:
         if (p / "bin" / "vivado").is_file():
@@ -100,11 +101,12 @@ def vivado_pin() -> dict:
     if not root:
         which = shutil.which("vivado")
         return {
-            "ok": False,
+            "ok": True,
+            "status": "absent",
             "pinned": PINNED_VIVADO,
             "found": None,
             "which": which,
-            "note": "本机未找到钉版本安装；CI 不要求 Vivado",
+            "note": "本机未找到 Vivado 安装；CI 不要求 Vivado",
         }
     vivado_bin = root / "bin" / "vivado"
     settings = root / "settings64.sh"
@@ -119,15 +121,22 @@ def vivado_pin() -> dict:
         ver_out = (vr.stdout or "") + (vr.stderr or "")
     except (subprocess.SubprocessError, OSError) as e:
         ver_out = str(e)
-    version_ok = PINNED_VIVADO in ver_out or root.name == PINNED_VIVADO
+    version_ok = bool(vivado_bin.is_file()) and (
+        PINNED_VIVADO in ver_out or root.name == PINNED_VIVADO
+    )
+    status = "pinned" if version_ok else "unpinned"
     return {
-        "ok": version_ok and vivado_bin.is_file(),
+        "ok": version_ok,
+        "status": status,
         "pinned": PINNED_VIVADO,
         "install_root": str(root),
         "version_head": "\n".join(ver_out.splitlines()[:5]),
         "fingerprints_md5": fingerprints,
         "policy": "辅证/出 bit 后端；不得替代 Verilator 主门",
         "license_note": "使用本机已授权安装；禁止把 license/密钥写入 Git",
+        "note": None
+        if version_ok
+        else f"发现 Vivado 但非钉版本 {PINNED_VIVADO}；须对齐或清 XILINX_VIVADO",
     }
 
 
@@ -155,9 +164,10 @@ def main() -> int:
     tcl = batch_tcl()
     util = parse_vivado_util()
 
-    # S1 gate: Yosys + TCL 必过；Vivado 钉版本本机有则过，无则 WARN（CI 无 Vivado 不红）
-    ci_like = not viv["ok"]
-    checks_ok = bool(yosys.get("ok") and tcl.get("ok") and (viv.get("ok") or ci_like))
+    # S1: Yosys+TCL 必过；Vivado absent=CI 可过；pinned=过；unpinned=红
+    viv_status = viv.get("status") or "absent"
+    viv_gate_ok = viv_status in ("pinned", "absent")
+    checks_ok = bool(yosys.get("ok") and tcl.get("ok") and viv_gate_ok)
     report = {
         "schema": "phase4.1-fpga-s1-impl-chain-gate-v0",
         "generated_at": datetime.now(timezone.utc).astimezone().isoformat(),
@@ -173,12 +183,13 @@ def main() -> int:
         ),
         "pass": checks_ok,
         "ci_vivado_optional": True,
+        "vivado_status": viv_status,
     }
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print("PASS" if checks_ok else "FAIL", "phase4_fpga_s1_impl_chain_gate")
     print(f"  yosys: {'ok' if yosys.get('ok') else 'FAIL'} cells={yosys.get('cells_total')}")
-    print(f"  vivado_pin: {'ok' if viv.get('ok') else 'absent/optional'} root={viv.get('install_root')}")
+    print(f"  vivado_pin: {viv_status} root={viv.get('install_root')}")
     print(f"  batch_tcl: {'ok' if tcl.get('ok') else 'FAIL'}")
     if util:
         print(f"  vivado_util_aux: LUTs={util.get('slice_luts')} regs={util.get('slice_registers')}")
