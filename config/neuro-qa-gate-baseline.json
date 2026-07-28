@@ -77,6 +77,20 @@
       "note": "F6：Vivado 不得替代本门；runner 须 apt install verilator"
     },
     {
+      "id": "N-CI-YOSYS-S1",
+      "label": "FPGA LIF Yosys 开源综合对照（F6 S1）",
+      "tier": "ci",
+      "script": "scripts/qa-neuro-baseline-run.py",
+      "args": [
+        "--only",
+        "N-CI-YOSYS-S1"
+      ],
+      "owner": "陈正共",
+      "blockMerge": true,
+      "tailoring": "FORBIDDEN",
+      "note": "F6 S1：generic synth 路径；Vivado 在 CI 可选；runner 须 apt install yosys"
+    },
+    {
       "id": "N-PRE-MERGE-QA",
       "label": "VP QA 阶段验收签字",
       "tier": "pre_merge",
