@@ -1,0 +1,29 @@
+{
+  "schema": "phase4.1-f4-qa-integration-review-v0",
+  "generated_at": "2026-07-28T10:24:00+08:00",
+  "reviewer": "陈正孤",
+  "member_id": "ag-chenzhenggu",
+  "scope": "Phase4.1 F4 dual-route evidence (A2 + B1)",
+  "integrationVerdict": "PASS_WITH_NOTE",
+  "block_items": [],
+  "notes": [
+    "F4-CI neuro-ci pending before merge",
+    "F4-TE test plan md not yet on disk",
+    "Latency ~993ms (A2) / ~1450ms (B1) per sample — far below G-LAT ~3.5ms; disclosed",
+    "VP/总裁 signoff still PENDING in QA_验收记录"
+  ],
+  "evidence": {
+    "a2": "docs/phase4_poc_evidence/fpga_ra_atlas_mlif_inchain_gate.json",
+    "b1": "docs/phase4_poc_evidence/fpga_rb_fullnet_runthrough_gate.json",
+    "parallel_wall": "docs/phase4_poc_evidence/fpga_rb_fullnet_platform_gate.json",
+    "qa_record": "docs/QA_验收记录_Phase4.1_FPGA双通.md"
+  },
+  "checks": {
+    "a2_pass": true,
+    "b1_pass": true,
+    "numbers_consistent": true,
+    "latency_disclosed_not_glat": true,
+    "parallel_wall_fail_preserved": true,
+    "evidence_gate_local": "PASS"
+  }
+}
