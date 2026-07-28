@@ -50,19 +50,17 @@
 ### Task 0 · 批注 + 分支
 - [x] 裁决页写入「双通」批注  
 - [x] 建 `feature/phase4.1-fpga-both-runthrough`  
-- [ ] 总裁确认 A2（Atlas 入链）是否本里程碑必做  
+- [x] 总裁确认：**A2 必做**（2026-07-28「必做」）  
 
 ### Task 1 · R-B 整网分时跑通（主缺口）
-- [ ] 板侧脚本/RTL：整网前向（lif 全走现 `lif_step` 分时；fc 可先 PS 定点——**须在报告标明「计算切分」**）  
-  - **严格整网 PL**：fc 也上 PL → 工作量大，单列 Task 1b  
-  - **本里程碑默认可接受**：LIF 全层 PL 分时 + fc 在 PS（整网仍在板子上跑完，无 Atlas）  
-- [ ] 门禁脚本 + N=20 证据  
-- [ ] §4 / 一页更新  
+- [x] LIF 全层 PL 分时 + fc 在 PS（板内跑完）  
+- [x] 门禁 N=20：match=1.0 · acc=0.95 · `fpga_rb_fullnet_runthrough_gate.json`  
+- [x] §4 / 一页更新  
 
 ### Task 2 · R-A 补全（Atlas 入链）
-- [ ] Atlas↔PYNQ 通信最小协议（或复用现有 TCP 模式）  
-- [ ] M-lif：Atlas 跑 fc*；PYNQ 跑 lif1 向量分时；拼回分类  
-- [ ] 门禁 JSON + 延迟分段  
+- [x] PYNQ lif1 TCP daemon `:9530`  
+- [x] Atlas 客户端 fc*/lif2 + RPC lif1  
+- [x] 门禁 N=20：match=1.0 · acc=0.95 · `fpga_ra_atlas_mlif_inchain_gate.json`  
 
 ### Task 3 · 双通汇总 PR
 - [ ] 一页「双通」勾选；开 PR；**不代合**；Summary 禁止写关口关闭  
