@@ -1,0 +1,57 @@
+{
+  "schema": "phase4.1-fpga-ra-mlif-platform-v0",
+  "generated_at": "2026-07-27T16:36:41.402157+08:00",
+  "agent": "ChenZhengGong",
+  "route": "R-A FPGA accelerate M-lif",
+  "checkpoint": "/home/cx/neuromorphic-computing/runs/20260527T092534Z/checkpoint.pt",
+  "mode": "both",
+  "host_proxy": {
+    "n": 50,
+    "correct": 49,
+    "acc": 0.98,
+    "avg_e2e_ms": 3.6,
+    "split": "M-lif: host_proxy runs lif1 with Q16.16≡RTL semantics; fc* on host",
+    "platform_available": false,
+    "verdict": "split_logic_ok"
+  },
+  "board_pl": {
+    "ok": true,
+    "returncode": 0,
+    "stdout_tail": "{\"ok\": true, \"out\": \"/home/cx/neuromorphic-computing/runs/phase4_poc/fpga_lif_pl_run_ra.json\"}\n",
+    "stderr_tail": "",
+    "run_json": "/home/cx/neuromorphic-computing/runs/phase4_poc/fpga_lif_pl_run_ra.json",
+    "run": {
+      "ok": true,
+      "wall_ms": 16787.564,
+      "stdout": "IP_KEYS ['lif_step_0', 'processing_system7_0']\nLIF_PL_OK\n{\"spikes\": [0, 0, 1, 0, 0, 1, 1, 0, 0, 1], \"spike_total\": 4, \"t_sequence_ms\": 1.581}\n",
+      "stderr": "[sudo] password for xilinx: ",
+      "generated_at": "2026-07-27T16:37:05.601090+08:00",
+      "agent": "ChenZhengGong",
+      "bit": "/home/cx/neuromorphic-computing/fpga/bitstreams/lif_step_overlay.bit",
+      "board": {
+        "spikes": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1
+        ],
+        "spike_total": 4,
+        "t_sequence_ms": 1.581
+      }
+    },
+    "platform_available": true,
+    "note": "board_pl 仅验证单神经元 lif_step IP 上 PL；hidden=256 向量化 LIF 层仍未实现——R-A「整层入链」需后续 bitstream"
+  },
+  "platform_available_ra": true,
+  "summary": {
+    "host_proxy_acc": 0.98,
+    "board_pl_ok": true,
+    "blocker": null
+  }
+}

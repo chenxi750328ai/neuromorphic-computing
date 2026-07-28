@@ -6,3 +6,11 @@ runs/
 reports/cron.log
 *.pyc
 __pycache__/
+# Vivado project scratch (bitstreams/ 保留 .bit/.hwh/.rpt 交付)
+fpga/vivado/_vivado_*/
+fpga/vivado/*.jou
+fpga/vivado/*.log
+fpga/vivado/*.backup.jou
+fpga/vivado/*.backup.log
+.neuro-cursor-hook.log
+third_party/
