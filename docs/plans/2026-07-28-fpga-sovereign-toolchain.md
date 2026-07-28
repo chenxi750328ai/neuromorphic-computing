@@ -53,9 +53,10 @@ Vivado **禁止**单独充当：「RTL 已检视」「功能已验证」「安�
 
 ### Phase S1 · 实现链降依赖（评估+试点）
 
-- [ ] 评估 Yosys 等对 LIF 核的综合对照（利用率数量级）
-- [ ] Vivado 固定版本、安装包哈希、授权/联网策略（安全基线一页）
-- [ ] 脚本化 batch 出 bit（已有 TCL）保持；开发默认不依赖 GUI
+- [x] 评估 Yosys 等对 LIF 核的综合对照（利用率数量级）
+- [x] Vivado 固定版本、安装包哈希、授权/联网策略（安全基线一页）
+- [x] 脚本化 batch 出 bit（已有 TCL）保持；开发默认不依赖 GUI
+- [x] 机读：`scripts/phase4_fpga_s1_impl_chain_gate.py --gate`
 
 ### Phase S2 · 全链路可控（产品级选项）
 

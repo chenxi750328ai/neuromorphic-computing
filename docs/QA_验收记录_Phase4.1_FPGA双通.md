@@ -67,7 +67,8 @@
 | F6-SIM | Verilator 开源仿真 | `phase4_fpga_lif_verilator_gate.py --gate` | **PASS** | `fpga_lif_verilator_gate.json` |
 | F6-CR | RTL 人工检视 | 无未关闭 Critical | **PASS_WITH_NOTE** | `ipd/F6-RTL-CR-检视清单与意见.md` |
 | F6-POL | 工具链策略 | Vivado=辅证 | **落盘** | `docs/FPGA_工具链安全可控策略_V0.md` |
-| F6-CI | N-CI-VERILATOR | CI BLOCK | 本 PR 挂基线 | `neuro-qa-gate-baseline.json` |
+| F6-CI | N-CI-VERILATOR | CI BLOCK | 已随 #17 合入 | `neuro-qa-gate-baseline.json` |
+| F6-S1 | Yosys+钉版本+batch TCL | `phase4_fpga_s1_impl_chain_gate.py --gate` | **PASS**（Yosys cells=2522；Vivado util 辅 379 LUT） | `fpga_s1_impl_chain_gate.json` |
 
 ---
 

@@ -91,12 +91,28 @@ def gate_verilator() -> tuple[str, str]:
     return "fail", snippet[:400]
 
 
+def gate_yosys_s1() -> tuple[str, str]:
+    """F6 S1 · open-source synth path; Vivado pin optional on CI."""
+    r = subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "phase4_fpga_s1_impl_chain_gate.py"), "--gate"],
+        cwd=str(ROOT),
+        capture_output=True,
+        text=True,
+    )
+    out = ((r.stdout or "") + (r.stderr or "")).strip()
+    snippet = out.splitlines()[-1] if out else f"exit={r.returncode}"
+    if r.returncode == 0:
+        return "pass", snippet[:200]
+    return "fail", snippet[:400]
+
+
 RUNNERS = {
     "N-CI-SYNTAX": gate_syntax,
     "N-CI-SMOKE": gate_smoke,
     "N-CI-SHELL": gate_shell,
     "N-CI-DOCS": gate_docs,
     "N-CI-VERILATOR": gate_verilator,
+    "N-CI-YOSYS-S1": gate_yosys_s1,
 }
 
 
