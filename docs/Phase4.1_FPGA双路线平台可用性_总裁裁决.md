@@ -12,12 +12,16 @@
 
 **Phase4.1 意义（2026-07-27 口头确认 · 已落盘一页 §0）**：平台可行性闸门——通/不通/在什么条件下通；**不是**再刷 MNIST 分。
 
-**续批（2026-07-27）**：同意推进 **R-A 向量化入链**（整层 lif1 经 FPGA 入链）→ 计划 → 开发验证 → 再 PR。  
-计划：[`docs/plans/2026-07-27-fpga-ra-mlif-vector-inchain.md`](./plans/2026-07-27-fpga-ra-mlif-vector-inchain.md)。  
-形态钉死：现 `lif_step` **单核分时扫 256**（非并行新 RTL）。
+**续批（2026-07-27）**：同意推进 **R-A 向量化入链** → 已合 **PR #16**（同板分时）。  
+
+**续批（2026-07-28）**：**FPGA 加速和 FPGA 整网都要跑通**（非只留资源墙结论）。  
+计划：[`docs/plans/2026-07-28-fpga-both-routes-runthrough.md`](./plans/2026-07-28-fpga-both-routes-runthrough.md)。  
+- R-B 跑通形态钉死：**分时整网**（禁止再赌并行 256 核）。  
+- R-A：同板向量入链已有；默认补 **Atlas↔FPGA 入链（A2）**，除非改口豁免。
 
 详细任务与验收见计划：  
-[`docs/plans/2026-07-27-fpga-dual-path-platform-gate.md`](./plans/2026-07-27-fpga-dual-path-platform-gate.md)
+[`docs/plans/2026-07-27-fpga-dual-path-platform-gate.md`](./plans/2026-07-27-fpga-dual-path-platform-gate.md) ·  
+[`docs/plans/2026-07-28-fpga-both-routes-runthrough.md`](./plans/2026-07-28-fpga-both-routes-runthrough.md)
 
 ## 勾选
 
@@ -26,16 +30,17 @@
 | F1 | 双路线都要做平台可用性验证 | ☑ **同意** ☐ 修改：____ |
 | F2 | Phase8 等本闸门后再开 | ☑ **同意** ☐ 授权并行：____ |
 | F3 | R-A 首刀默认 M-lif 切分 | ☑ **同意** ☐ 改为：____ |
+| F4 | **加速 + 整网都要跑通**（整网=分时，非并行） | ☑ **同意**（2026-07-28 明示） ☐ 修改：____ |
 
-**签字**：陈菩提（Cursor 明示「同意，继续」） · 日期：**2026-07-27** · 批注：按计划开工 R-A（M-lif）→ R-B
+**签字**：陈菩提 · **2026-07-28** ·「FPGA加速和FPGA整网都要跑通」
 
 ## 执行回执（阶段 · 非关口关闭）
 
 见 [`Phase4.1_FPGA双路线平台可用性_总裁一页.md`](./Phase4.1_FPGA双路线平台可用性_总裁一页.md)：
 
-- **R-B**：Z2 **并行整网不可用**（资源墙）已落盘。  
-- **R-A**：host_proxy **98%** + PYNQ **board_pl PASS**（单神经元 IP；非整层入链）。  
-- **Phase8**：F2 默认仍阻塞，解除需你书面一句。
+- **R-A**：同板向量化入链 **PASS**（#16）；Atlas 入链 **待做（A2）**。  
+- **R-B**：并行资源墙仍成立；**分时整网跑通 待做（B1）**。  
+- **Phase8**：F2 默认仍阻塞，至少等到双通门禁有结论。
 
 ---
 
