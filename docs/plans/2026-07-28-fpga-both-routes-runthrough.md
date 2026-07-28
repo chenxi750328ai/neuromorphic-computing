@@ -4,7 +4,8 @@
 > **总裁批注（2026-07-28）**：**FPGA 加速和 FPGA 整网都要跑通。**  
 > **负责人**：陈正共 · ChenZhengGong  
 > **分支**：`feature/phase4.1-fpga-both-runthrough`  
-> **纪律**：合 PR ≠ Phase4.1 关口关闭；Phase8 仍默认等双通验收后再议。
+> **纪律**：合 PR ≠ Phase4.1 关口关闭；Phase8 仍默认等双通验收后再议。  
+> **关联 F6（2026-07-28）**：安全可控优先 → [`2026-07-28-fpga-sovereign-toolchain.md`](./2026-07-28-fpga-sovereign-toolchain.md)；双通功能 PASS **不豁免** RTL 开源仿真/检视。
 
 ---
 

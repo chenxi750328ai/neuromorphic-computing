@@ -51,6 +51,17 @@
 
 **禁止假绿**：不得把「pred 一致」写成「G-LAT 过」；不得把「分时整网 PASS」写成「并行整网可用」。
 
+### 2.1 F6 补洞（2026-07-28 总裁：安全可控优先）
+
+研究轨原裁剪 **未强制 RTL 开源门禁** → 属流程缺口。F6 起：
+
+| 项 | 要求 |
+|----|------|
+| 信任根 | 开源仿真（Verilator 等）+ RTL 检视；**先于** Vivado |
+| Vivado | 仅质量对照 / 快速出 bit；**不得**单独证明「逻辑已验证」 |
+| 计划 | [`plans/2026-07-28-fpga-sovereign-toolchain.md`](./plans/2026-07-28-fpga-sovereign-toolchain.md) |
+| 与 F4 | 双通功能 PASS **不豁免** S0（Verilator 门 + RTL-CR） |
+
 ---
 
 ## 3. 审批签字
