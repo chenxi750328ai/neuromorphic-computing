@@ -130,8 +130,10 @@
 | +FPGA M-pre | | | | | | 待测（须类脑功能上 PL，点灯不算） | |
 | +FPGA M-lif · **R-A host_proxy 2026-07-27** | （切分账·非板上） | **98%**（定点 vs 标签·N=100；ckpt `20260527T092534Z`） | host≈3.7ms（非 G-LAT） | — | MNIST·定点 | `fpga_ra_mlif_platform_gate.json` | 切分语义可对 |
 | +FPGA M-lif · **R-A board_pl 2026-07-27** | SSH→PYNQ PL | 单算子序列（非整网 acc） | 10step≈**2.2ms**（板上） | — | LIF IP | `lif_step_overlay.bit` + `fpga_lif_pl_run_ra.json`：**LIF_PL_OK** | **单算子平台可用** |
-| +FPGA M-lif · **R-A 向量化入链 2026-07-27** | PS+PL 同板 | vs host pred **100%**（N=20）；标签 **95%** | lif1≈**923ms**/样本（MMIO 分时） | — | MNIST·M-lif | `fpga_ra_mlif_vector_inchain_gate.json`：**PASS**；破尺在分时 MMIO，**≠** Atlas 链、**≠** 并行 RTL | **有条件可用** · **≠** 关口定稿 |
-| +FPGA **整网并行** · **R-B 2026-07-27** | （资源外推） | host 定点 **98%**（非板上） | — | — | MNIST | `fpga_rb_fullnet_platform_gate.json`：LUT/神经元≈379×256=97024 > Z2 53200 | **本板并行整网不可用**（资源墙·合法结论） |
+| +FPGA M-lif · **R-A 向量化入链 2026-07-27** | PS+PL 同板 | vs host pred **100%**（N=20）；标签 **95%** | lif1≈**923ms**/样本（MMIO 分时） | — | MNIST·M-lif | `fpga_ra_mlif_vector_inchain_gate.json`：**PASS** | 同板加速半通 |
+| +FPGA M-lif · **R-A A2 Atlas↔PYNQ 2026-07-28** | Atlas↔TCP↔PYNQ | pred **100%**（N=20）；标签 **95%** | 破尺在 PL 分时+RPC | — | MNIST·M-lif | `fpga_ra_atlas_mlif_inchain_gate.json`：**PASS** | **加速跑通** · ≠关口定稿 |
+| +FPGA **整网并行** · **R-B 2026-07-27** | （资源外推） | host 定点 **98%**（非板上） | — | — | MNIST | `fpga_rb_fullnet_platform_gate.json`：379×256>53200 | **并行不可用**（墙） |
+| +FPGA **整网分时** · **R-B TMD 2026-07-28** | PS+PL 同板 | pred **100%**（N=20）；标签 **95%** | 分时 MMIO 秒级内/样本 | — | MNIST | `fpga_rb_fullnet_runthrough_gate.json`：**PASS**；lif1+lif2 上 PL、fc 在 PS | **整网跑通（分时）** · ≠关口定稿 |
 | +FPGA M-bypass | | | | | | 待测 | |
 
 ---
@@ -165,6 +167,7 @@
 | 2026-07-14 | **自检**：统计口径、历史数据脚注、对照表修正 |
 | 2026-07-14 | **E3 现场**：daemon N=100 vs ORT 100%；G-LAT p50≈5.06 未过；E2 段时见 `comm_matrix_daemon_tcp_n100.json` |
 | 2026-07-27 | **FPGA 双路线**：R-A board_pl PASS + R-B 并行资源墙；§0 钉死 Phase4.1=平台可行性（并行 vs 分时） |
+| 2026-07-28 | **F4 双通**：R-A A2 Atlas↔PYNQ PASS + R-B 分时整网 PASS（A2 总裁必做） |
 
 ---
 
