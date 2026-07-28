@@ -1,0 +1,26 @@
+{
+  "schema": "phase4.1-fpga-lif-verilator-gate-v0",
+  "generated_at": "2026-07-28T11:28:10.164362+08:00",
+  "agent": "ChenZhengGong",
+  "policy": "F6 S0 open-source sim is trust root; Vivado not required",
+  "verilator": "Verilator 5.020 2024-01-01 rev (Debian 5.020-1)",
+  "results": [
+    {
+      "module": "lif_step",
+      "build_ok": true,
+      "build_stderr_tail": "",
+      "run_exit": 0,
+      "run_out": "PASS verilator lif_step n=13 mismatches=0",
+      "pass": true
+    },
+    {
+      "module": "lif_step_axi_lite",
+      "build_ok": true,
+      "build_stderr_tail": "",
+      "run_exit": 0,
+      "run_out": "PASS verilator lif_step_axi_lite spk=1 mem_out=78643",
+      "pass": true
+    }
+  ],
+  "pass": true
+}

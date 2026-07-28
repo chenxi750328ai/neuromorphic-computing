@@ -37,7 +37,7 @@
 1. 推理产品主链仍可优先 **Atlas 整网**；FPGA 加速路径（A2）与板内整网分时路径均已证明「能跑对」。  
 2. 若要逼近 G-LAT：须片上调度/批量 MMIO/更大器件——另立项。  
 3. **Phase8**：F2 默认仍开；双通已齐，是否解除 → 请你书面一句。  
-4. **F6 安全可控优先**（2026-07-28）：验证主链走开源（Verilator 等）；**Vivado 仅快验/对照出 bit**。计划：[`plans/2026-07-28-fpga-sovereign-toolchain.md`](./plans/2026-07-28-fpga-sovereign-toolchain.md)。
+4. **F6 安全可控优先**（2026-07-28）：验证主链走开源（Verilator 等）；**Vivado 仅快验/对照出 bit**。策略：[`FPGA_工具链安全可控策略_V0.md`](./FPGA_工具链安全可控策略_V0.md)；计划：[`plans/2026-07-28-fpga-sovereign-toolchain.md`](./plans/2026-07-28-fpga-sovereign-toolchain.md)。S0：Verilator 门 + RTL-CR 已绿（CI `N-CI-VERILATOR`）。
 
 ---
 
@@ -47,7 +47,7 @@
 - [x] B1 分时整网跑通  
 - [x] A2 Atlas↔FPGA 加速入链  
 - [x] 双通汇总 PR **#17**（不代合）  
-- [x] F6 安全可控优先 · 计划已落盘（S0 待开工）  
+- [x] F6 安全可控优先 · S0 验证链可控（Verilator + RTL-CR + 策略 V0）  
 
 ---
 

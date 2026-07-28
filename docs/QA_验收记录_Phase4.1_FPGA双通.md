@@ -62,6 +62,13 @@
 | 计划 | [`plans/2026-07-28-fpga-sovereign-toolchain.md`](./plans/2026-07-28-fpga-sovereign-toolchain.md) |
 | 与 F4 | 双通功能 PASS **不豁免** S0（Verilator 门 + RTL-CR） |
 
+| ID | 项 | 标准 | 结果 | 证据 |
+|----|----|------|------|------|
+| F6-SIM | Verilator 开源仿真 | `phase4_fpga_lif_verilator_gate.py --gate` | **PASS** | `fpga_lif_verilator_gate.json` |
+| F6-CR | RTL 人工检视 | 无未关闭 Critical | **PASS_WITH_NOTE** | `ipd/F6-RTL-CR-检视清单与意见.md` |
+| F6-POL | 工具链策略 | Vivado=辅证 | **落盘** | `docs/FPGA_工具链安全可控策略_V0.md` |
+| F6-CI | N-CI-VERILATOR | CI BLOCK | 本 PR 挂基线 | `neuro-qa-gate-baseline.json` |
+
 ---
 
 ## 3. 审批签字
@@ -73,7 +80,7 @@ QA_INTEGRATION: PASS_WITH_NOTE (陈正孤 · 见 F4-QA-评审意见)
 QA_VP: PENDING
 PRESIDENT: PENDING
 SIGNED_AT:
-NOTE: 功能双通证据机读门绿；延迟远逊 G-LAT 已披露；待 VP QA 签字与总裁确认后合 PR#17
+NOTE: 功能双通+F6 S0(Verilator/RTL-CR)证据已落；延迟远逊 G-LAT 已披露；待 VP QA 签字与总裁确认后合
 ```
 <!-- SIGNOFF-END -->
 
