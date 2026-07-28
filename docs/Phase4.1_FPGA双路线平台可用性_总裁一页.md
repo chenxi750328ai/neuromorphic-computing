@@ -48,7 +48,8 @@
 - [x] A2 Atlas↔FPGA 加速入链  
 - [x] 双通汇总 PR **#17**（不代合）  
 - [x] F6 安全可控优先 · S0 验证链可控（Verilator + RTL-CR + 策略 V0）
-- [x] F6 S1 实现链降依赖（Yosys 对照 + Vivado 钉版本指纹 + batch TCL；PR 待审）  
+- [x] F6 S1 实现链降依赖（Yosys 对照 + Vivado 钉版本指纹 + batch TCL；已合 #19）
+- [x] F6 S2 迁移评估落盘（默认仍 Z2；硬主权再 ECP5 PoC）  
 
 ---
 

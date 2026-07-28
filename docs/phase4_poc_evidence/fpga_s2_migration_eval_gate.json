@@ -1,0 +1,9 @@
+{
+  "schema": "phase4.1-fpga-s2-migration-eval-gate-v0",
+  "generated_at": "2026-07-28T16:13:25.810312+08:00",
+  "agent": "ChenZhengGong",
+  "doc": "docs/FPGA_S2_开源友好器件迁移评估_V0.md",
+  "missing_markers": [],
+  "pass": true,
+  "note": "评估门禁；PoC/采购须总裁硬主权触发"
+}
