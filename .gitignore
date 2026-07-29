@@ -1,16 +1,17 @@
+# Vivado project scratch (bitstreams/ 保留 .bit/.hwh/.rpt 交付)
+*.pyc
 .env
 .neuro-brain-wake
+.neuro-cursor-hook.log
 .venv/
-data/
-runs/
-reports/cron.log
-*.pyc
 __pycache__/
-# Vivado project scratch (bitstreams/ 保留 .bit/.hwh/.rpt 交付)
-fpga/vivado/_vivado_*/
-fpga/vivado/*.jou
-fpga/vivado/*.log
+data/
+fpga/openxc7_try/build/
 fpga/vivado/*.backup.jou
 fpga/vivado/*.backup.log
-.neuro-cursor-hook.log
+fpga/vivado/*.jou
+fpga/vivado/*.log
+fpga/vivado/_vivado_*/
+reports/cron.log
+runs/
 third_party/

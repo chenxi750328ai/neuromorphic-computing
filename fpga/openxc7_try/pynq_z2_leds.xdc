@@ -1,0 +1,11 @@
+# PYNQ-Z2 user LEDs + board clock (same package pins as Arty Z7-20)
+set_property PACKAGE_PIN H16 [get_ports clk]
+set_property IOSTANDARD LVCMOS33 [get_ports clk]
+set_property PACKAGE_PIN R14 [get_ports led0]
+set_property IOSTANDARD LVCMOS33 [get_ports led0]
+set_property PACKAGE_PIN P14 [get_ports led1]
+set_property IOSTANDARD LVCMOS33 [get_ports led1]
+set_property PACKAGE_PIN N16 [get_ports led2]
+set_property IOSTANDARD LVCMOS33 [get_ports led2]
+set_property PACKAGE_PIN M14 [get_ports led3]
+set_property IOSTANDARD LVCMOS33 [get_ports led3]
