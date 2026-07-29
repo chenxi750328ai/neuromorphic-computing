@@ -32,14 +32,16 @@ S2 回答：**若要把「出 bit」也迁出 Vivado，候选是什么、代价�
 | chipdb xc7z020clg400-1 | PASS（缓存） | PASS | PASS |
 | nextpnr-xilinx → fasm | **PASS** | **FAIL route** | **FAIL route**（同型 CARRY） |
 | fasm2frames → xc7frames2bit | **PASS → `.bit` ~4.0 MB** | — | — |
-| 板上加载 | 未做 | — | — |
+| 板上加载（PYNQ Overlay/PCAP） | **PASS**（`soft_ps7` → `blinky_openxc7.bin`，fpga_manager=operating） | — | — |
+| LED 人眼 | 待现场确认 LD0–LD3 ~2s 节拍 | — | — |
 
 **结论（机械）**：
 
-1. **Z2 可以开源出 bit**（至少 PL 软逻辑 smoke）：`pass_full_open_bit=true`，证据见 JSON。  
-2. **不能 pen 说「Zynq-7000 开源后端无闭环」**——闭环在 blinky 级已通。  
+1. **Z2 可以开源出 bit 并加载到板**（PL 软逻辑 + PS7 keep）：`pass_full_open_bit` + `pass_board_load`，见 `fpga_z2_openxc7_try.json` / `fpga_z2_openxc7_board_load.json`。  
+2. **不能 pen 说「Zynq-7000 开源后端无闭环」**——blinky 级综合→bit→PCAP 已通。  
 3. **加法器/CARRY4 路径当前阻塞**（本构建 nextpnr 路由失败；官方计数示例同样失败）。`lif_step` 含算术，**尚未**证明开源可实现。  
-4. Vivado 钉版本仍是 **LIF/生产辅证** 默认，直到 CARRY/整网开源 P&R 绿 + 板上 gate。
+4. Vivado 钉版本仍是 **LIF/生产辅证** 默认，直到 CARRY/整网开源 P&R 绿。  
+5. LED 功能以人眼为准；脚本不摄录。
 
 复现 RTL：`fpga/openxc7_try/blinky_z2_soft.v` + `pynq_z2_leds.xdc`。  
 大体积工具链在 `third_party/openxc7-try/`（已 gitignore）。
