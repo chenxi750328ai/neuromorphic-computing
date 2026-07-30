@@ -1,6 +1,6 @@
 {
   "schema": "phase4.1-fpga-z2-openxc7-board-load-v0",
-  "generated_at": "2026-07-29T09:47:55.662520+08:00",
+  "generated_at": "2026-07-30T09:47:37.985647+08:00",
   "agent": "ChenZhengGong",
   "board": "PYNQ-Z2",
   "host": "192.168.137.3",
@@ -23,8 +23,8 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 1.0,
-      "stdout_tail": "PING 192.168.137.3 (192.168.137.3) 56(84) bytes of data.\n64 bytes from 192.168.137.3: icmp_seq=1 ttl=63 time=1.39 ms\n64 bytes from 192.168.137.3: icmp_seq=2 ttl=63 time=1.28 ms\n\n--- 192.168.137.3 ping statistics ---\n2 packets transmitted, 2 received, 0% packet loss, time 1092ms\nrtt min/avg/max/mdev = 1.278/1.334/1.390/0.056 ms\n",
+      "seconds": 3.59,
+      "stdout_tail": "PING 192.168.137.3 (192.168.137.3) 56(84) bytes of data.\n64 bytes from 192.168.137.3: icmp_seq=1 ttl=63 time=1.30 ms\n64 bytes from 192.168.137.3: icmp_seq=2 ttl=63 time=1.83 ms\n\n--- 192.168.137.3 ping statistics ---\n2 packets transmitted, 2 received, 0% packet loss, time 1002ms\nrtt min/avg/max/mdev = 1.304/1.567/1.831/0.263 ms\n",
       "stderr_tail": ""
     },
     "scp_bit": {
@@ -41,7 +41,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 3.77,
+      "seconds": 4.18,
       "stdout_tail": "",
       "stderr_tail": ""
     },
@@ -59,15 +59,15 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 2.14,
+      "seconds": 2.17,
       "stdout_tail": "",
       "stderr_tail": ""
     },
     "download": {
       "exit": 0,
       "ok": true,
-      "seconds": 17.39,
-      "stdout_tail": "{\"bit\": \"/tmp/blinky_openxc7.bit\", \"methods\": [{\"name\": \"pynq.Bitstream.download\", \"ok\": true}], \"/sys/class/fpga_manager/fpga0/state\": \"operating\", \"/sys/class/fpga_manager/fpga0/name\": \"Xilinx Zynq FPGA Manager\", \"dmesg_fpga_tail\": [\"[772924.126102] fpga_manager fpga0: writing lif_step_overlay.bin to Xilinx Zynq FPGA Manager\", \"[772972.464506] fpga_manager fpga0: writing lif_step_overlay.bin to Xilinx Zynq FPGA Manager\", \"[773040.673857] fpga_manager fpga0: writing lif_step_overlay.bin to Xilinx Zynq FPGA Manager\", \"[773087.825147] fpga_manager fpga0: writing lif_step_overlay.bin to Xilinx Zynq FPGA Manager\", \"[857767.333908] fpga_manager fpga0: writing blinky_openxc7.bin to Xilinx Zynq FPGA Manager\"], \"ok\": true, \"error\": null}\n",
+      "seconds": 14.89,
+      "stdout_tail": "{\"bit\": \"/tmp/blinky_openxc7.bit\", \"methods\": [{\"name\": \"pynq.Bitstream.download\", \"ok\": true}], \"/sys/class/fpga_manager/fpga0/state\": \"operating\", \"/sys/class/fpga_manager/fpga0/name\": \"Xilinx Zynq FPGA Manager\", \"dmesg_fpga_tail\": [\"[772972.464506] fpga_manager fpga0: writing lif_step_overlay.bin to Xilinx Zynq FPGA Manager\", \"[773040.673857] fpga_manager fpga0: writing lif_step_overlay.bin to Xilinx Zynq FPGA Manager\", \"[773087.825147] fpga_manager fpga0: writing lif_step_overlay.bin to Xilinx Zynq FPGA Manager\", \"[857767.333908] fpga_manager fpga0: writing blinky_openxc7.bin to Xilinx Zynq FPGA Manager\", \"[944152.306511] fpga_manager fpga0: writing blinky_openxc7.bin to Xilinx Zynq FPGA Manager\"], \"ok\": true, \"error\": null}\n",
       "stderr_tail": "[sudo] password for xilinx: ",
       "board_json": {
         "bit": "/tmp/blinky_openxc7.bit",
@@ -80,11 +80,11 @@
         "/sys/class/fpga_manager/fpga0/state": "operating",
         "/sys/class/fpga_manager/fpga0/name": "Xilinx Zynq FPGA Manager",
         "dmesg_fpga_tail": [
-          "[772924.126102] fpga_manager fpga0: writing lif_step_overlay.bin to Xilinx Zynq FPGA Manager",
           "[772972.464506] fpga_manager fpga0: writing lif_step_overlay.bin to Xilinx Zynq FPGA Manager",
           "[773040.673857] fpga_manager fpga0: writing lif_step_overlay.bin to Xilinx Zynq FPGA Manager",
           "[773087.825147] fpga_manager fpga0: writing lif_step_overlay.bin to Xilinx Zynq FPGA Manager",
-          "[857767.333908] fpga_manager fpga0: writing blinky_openxc7.bin to Xilinx Zynq FPGA Manager"
+          "[857767.333908] fpga_manager fpga0: writing blinky_openxc7.bin to Xilinx Zynq FPGA Manager",
+          "[944152.306511] fpga_manager fpga0: writing blinky_openxc7.bin to Xilinx Zynq FPGA Manager"
         ],
         "ok": true,
         "error": null
@@ -92,7 +92,7 @@
     },
     "observe": {
       "ok": true,
-      "seconds": 8.0,
+      "seconds": 6.0,
       "note": "人眼确认 LD0–LD3 是否按 ~2s 节拍闪烁；本脚本不摄录"
     }
   },

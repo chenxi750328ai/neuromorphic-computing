@@ -1,6 +1,6 @@
 {
   "schema": "phase4.1-fpga-z2-openxc7-try-v0",
-  "generated_at": "2026-07-28T18:31:38.327333+08:00",
+  "generated_at": "2026-07-30T09:39:44.608617+08:00",
   "agent": "ChenZhengGong",
   "part": "xc7z020clg400-1",
   "board": "PYNQ-Z2",
@@ -39,8 +39,8 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 2.37,
-      "stdout_tail": "                 1\n     CARRY4                          7\n     FDRE                           28\n     IBUF                            1\n     INV                             1\n     OBUF                            4\n\n   Estimated number of LCs:          0\n\n2.53. Executing CHECK pass (checking for obvious problems).\nChecking module blinky...\nFound and reported 0 problems.\n\n3. Executing JSON backend.\n\nEnd of script. Logfile hash: b92a967483, CPU: user 2.40s system 0.03s, MEM: 175.68 MB peak\nYosys 0.33 (git sha1 2584903a060)\nTime spent: 50% 27x read_verilog (1 sec), 9% 1x synth_xilinx (0 sec), ...\n",
+      "seconds": 2.46,
+      "stdout_tail": "                 1\n     CARRY4                          7\n     FDRE                           28\n     IBUF                            1\n     INV                             1\n     OBUF                            4\n\n   Estimated number of LCs:          0\n\n2.53. Executing CHECK pass (checking for obvious problems).\nChecking module blinky...\nFound and reported 0 problems.\n\n3. Executing JSON backend.\n\nEnd of script. Logfile hash: b92a967483, CPU: user 2.55s system 0.06s, MEM: 175.80 MB peak\nYosys 0.33 (git sha1 2584903a060)\nTime spent: 47% 27x read_verilog (1 sec), 9% 1x synth_xilinx (0 sec), ...\n",
       "stderr_tail": "",
       "netlist": "/home/cx/neuromorphic-computing/fpga/openxc7_try/build/blinky_carry.json",
       "rtl": "/home/cx/neuromorphic-computing/fpga/openxc7_try/blinky_z2_nops.v"
@@ -67,7 +67,7 @@
       ],
       "exit": 255,
       "ok": false,
-      "seconds": 7.21,
+      "seconds": 9.09,
       "stdout_tail": "",
       "stderr_tail": ",  82695) | \nInfo: [ 82695,  82992) |* \nInfo: Checksum: 0xd9b102fd\nInfo: Running post-placement legalisation...\nInfo: post-place repair: relocated 1 stranded cluster(s)/cell(s) to valid bels\nInfo: Routing global clocks...\nInfo:     routing clock '$auto$clkbufmap.cc:262:execute$2584'\nInfo:     routing clock '$abc$2577$iopadmap$clk'\nInfo: Running router2...\nInfo: Setting up routing resources...\nInfo: Running main router loop...\nERROR: Failed to route arc 1 of net '$auto$alumacc.cc:485:replace_alu$1614.Y[0]', from SITEWIRE/SLICE_X112Y99/A6LUT_O6 to SITEWIRE/SLICE_X112Y105/A1.\n0 warnings, 1 error\n",
       "fasm": null,

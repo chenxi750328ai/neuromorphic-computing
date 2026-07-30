@@ -1,0 +1,44 @@
+{
+  "schema": "phase4.1-fpga-z2-openxc7-lif-probe-v0",
+  "generated_at": "2026-07-30T09:41:13.083711+08:00",
+  "agent": "ChenZhengGong",
+  "purpose": "P0 root-cause probe: run real lif_step datapath through openXC7 nextpnr (5-pin wrapper)",
+  "part": "xc7z020clg400-1",
+  "stages": {
+    "synth": {
+      "cmd": [
+        "/usr/bin/yosys",
+        "-p",
+        "synth_xilinx -flatten -abc9 -arch xc7 -top blinky; write_json /home/cx/neuromorphic-computing/fpga/openxc7_try/build/lif_probe.json",
+        "/home/cx/neuromorphic-computing/fpga/openxc7_try/lif_probe_z2.v",
+        "/home/cx/neuromorphic-computing/fpga/rtl/lif_step.v"
+      ],
+      "exit": 0,
+      "ok": true,
+      "seconds": 2.84,
+      "stdout_tail": "0].\nRemoved 0 unused cells and 229 unused wires.\n\n3.51. Executing HIERARCHY pass (managing design hierarchy).\n\n3.51.1. Analyzing design hierarchy..\nTop module:  \\blinky\n\n3.51.2. Analyzing design hierarchy..\nTop module:  \\blinky\nRemoved 0 unused modules.\n\n3.52. Printing statistics.\n\n=== blinky ===\n\n   Number of wires:                282\n   Number of wire bits:            964\n   Number of public wires:          23\n   Number of public wire bits:     326\n   Number of memories:               0\n   Number of memory bits:            0\n   Number of processes:              0\n   Number of cells:                333\n     BUFG                            1\n     CARRY4                         26\n     DSP48E1                         2\n     FDCE                          101\n     FDRE                           90\n     IBUF                            1\n     INV                             7\n     LUT2                           45\n     LUT3                           31\n     LUT4                            6\n     LUT5                            7\n     LUT6                           12\n     OBUF                            4\n\n   Estimated number of LCs:         60\n\n3.53. Executing CHECK pass (checking for obvious problems).\nChecking module blinky...\nFound and reported 0 problems.\n\n4. Executing JSON backend.\n\nEnd of script. Logfile hash: 986a4aff67, CPU: user 2.92s system 0.07s, MEM: 195.30 MB peak\nYosys 0.33 (git sha1 2584903a060)\nTime spent: 40% 29x read_verilog (1 sec), 9% 12x techmap (0 sec), ...\n",
+      "stderr_tail": ""
+    },
+    "pnr": {
+      "cmd": [
+        "/home/cx/neuromorphic-computing/third_party/openxc7-try/nextpnr-xilinx/build/nextpnr-xilinx",
+        "--chipdb",
+        "/home/cx/neuromorphic-computing/third_party/openxc7-try/chipdb/xc7z020clg400-1.bin",
+        "--xdc",
+        "/home/cx/neuromorphic-computing/fpga/openxc7_try/pynq_z2_leds.xdc",
+        "--json",
+        "/home/cx/neuromorphic-computing/fpga/openxc7_try/build/lif_probe.json",
+        "--write",
+        "/home/cx/neuromorphic-computing/fpga/openxc7_try/build/lif_probe_routed.json",
+        "--fasm",
+        "/home/cx/neuromorphic-computing/fpga/openxc7_try/build/lif_probe.fasm"
+      ],
+      "exit": 255,
+      "ok": false,
+      "seconds": 8.87,
+      "stdout_tail": "",
+      "stderr_tail": " cost = 18, wirelen = 3522 \nInfo: SA placement time 0.05s\n\nInfo: Max frequency for clock 'u_lif.clk': 135.87 MHz (PASS at 12.00 MHz)\n\nInfo: Slack histogram:\nInfo:  legend: * represents 1 endpoint(s)\nInfo:          + represents [1,1) endpoint(s)\nInfo: [ 75973,  76325) |**+\nInfo: [ 76325,  76677) |*+\nInfo: [ 76677,  77029) |**+\nInfo: [ 77029,  77381) |**+\nInfo: [ 77381,  77733) |***+\nInfo: [ 77733,  78085) |***+\nInfo: [ 78085,  78437) |**+\nInfo: [ 78437,  78789) |***+\nInfo: [ 78789,  79141) |***+\nInfo: [ 79141,  79493) |***+\nInfo: [ 79493,  79845) |***+\nInfo: [ 79845,  80197) |****+\nInfo: [ 80197,  80549) |*************+\nInfo: [ 80549,  80901) |***********+\nInfo: [ 80901,  81253) |***********+\nInfo: [ 81253,  81605) |******************+\nInfo: [ 81605,  81957) |************************************************************ \nInfo: [ 81957,  82309) |*****************************************+\nInfo: [ 82309,  82661) |***********************************+\nInfo: [ 82661,  83013) |*******+\nInfo: Checksum: 0xca40c4a7\nInfo: Running post-placement legalisation...\nInfo: post-place repair: relocated 4 stranded cluster(s)/cell(s) to valid bels\nInfo: Routing global clocks...\nInfo:     routing clock '$auto$clkbufmap.cc:262:execute$6962'\nInfo:     routing clock 'u_lif.clk'\nInfo: Running router2...\nInfo: Setting up routing resources...\nInfo: Running main router loop...\nERROR: Failed to route arc 1 of net 'r_cur[3]', from SITEWIRE/SLICE_X110Y103/DQ to SITEWIRE/SLICE_X108Y104/A1.\n0 warnings, 1 error\n"
+    }
+  },
+  "pass": false
+}
