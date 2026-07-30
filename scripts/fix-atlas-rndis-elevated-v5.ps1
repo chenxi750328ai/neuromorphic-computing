@@ -61,6 +61,6 @@ if (-not $adapters) {
 Log "ping 192.168.0.2"
 ping.exe -n 3 192.168.0.2 2>&1 | ForEach-Object { Log $_ }
 if (Select-String -Path $Log -Pattern 'TTL=' -Quiet) {
-    ssh -o StrictHostKeyChecking=no -o ConnectTimeout=8 -o BatchMode=yes root@192.168.0.2 "hostname; npu-smi info 2>/dev/null | head -6" 2>&1 | ForEach-Object { Log $_ }
+    ssh -o StrictHostKeyChecking=accept-new -o ConnectTimeout=8 -o BatchMode=yes root@192.168.0.2 "hostname; npu-smi info 2>/dev/null | head -6" 2>&1 | ForEach-Object { Log $_ }
 }
 Log "=== v5 done ==="

@@ -75,7 +75,12 @@ def run(
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--out", type=Path, default=OUT_DEFAULT)
+    ap.add_argument(
+        "--out",
+        type=Path,
+        default=None,
+        help="默认按 design 分文件，避免互相覆盖",
+    )
     ap.add_argument("--workdir", type=Path, default=TRY / "build")
     ap.add_argument("--gate", action="store_true", help="require full .bit success")
     ap.add_argument(
@@ -86,6 +91,17 @@ def main() -> int:
     )
     ap.add_argument("--skip-pnr", action="store_true")
     args = ap.parse_args()
+    if args.out is None:
+        # soft_ps7 兼容旧路径 fpga_z2_openxc7_try.json；其余按 design 派生
+        if args.design == "soft_ps7":
+            args.out = OUT_DEFAULT
+        else:
+            args.out = (
+                ROOT
+                / "docs"
+                / "phase4_poc_evidence"
+                / f"fpga_z2_openxc7_try_{args.design}.json"
+            )
 
     work = args.workdir
     work.mkdir(parents=True, exist_ok=True)

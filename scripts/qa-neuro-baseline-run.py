@@ -106,6 +106,42 @@ def gate_yosys_s1() -> tuple[str, str]:
     return "fail", snippet[:400]
 
 
+def gate_s2_eval() -> tuple[str, str]:
+    r = subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "phase4_fpga_s2_migration_eval_gate.py"), "--gate"],
+        cwd=str(ROOT),
+        capture_output=True,
+        text=True,
+    )
+    out = ((r.stdout or "") + (r.stderr or "")).strip()
+    snippet = out.splitlines()[-1] if out else f"exit={r.returncode}"
+    return ("pass", snippet[:200]) if r.returncode == 0 else ("fail", snippet[:400])
+
+
+def gate_both_evidence() -> tuple[str, str]:
+    r = subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "phase4_fpga_both_runthrough_evidence_gate.py"), "--gate"],
+        cwd=str(ROOT),
+        capture_output=True,
+        text=True,
+    )
+    out = ((r.stdout or "") + (r.stderr or "")).strip()
+    snippet = out.splitlines()[-1] if out else f"exit={r.returncode}"
+    return ("pass", snippet[:200]) if r.returncode == 0 else ("fail", snippet[:400])
+
+
+def gate_vivado_bit() -> tuple[str, str]:
+    r = subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "phase4_fpga_vivado_bit_gate.py"), "--gate"],
+        cwd=str(ROOT),
+        capture_output=True,
+        text=True,
+    )
+    out = ((r.stdout or "") + (r.stderr or "")).strip()
+    snippet = out.splitlines()[-1] if out else f"exit={r.returncode}"
+    return ("pass", snippet[:200]) if r.returncode == 0 else ("fail", snippet[:400])
+
+
 RUNNERS = {
     "N-CI-SYNTAX": gate_syntax,
     "N-CI-SMOKE": gate_smoke,
@@ -113,6 +149,9 @@ RUNNERS = {
     "N-CI-DOCS": gate_docs,
     "N-CI-VERILATOR": gate_verilator,
     "N-CI-YOSYS-S1": gate_yosys_s1,
+    "N-CI-S2-EVAL": gate_s2_eval,
+    "N-CI-BOTH-EVIDENCE": gate_both_evidence,
+    "N-CI-VIVADO-BIT": gate_vivado_bit,
 }
 
 

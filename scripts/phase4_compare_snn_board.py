@@ -2,6 +2,8 @@
 """固定输入：对比 ORT(CPU) 与 Atlas OM 的 SNN 脉冲计数。"""
 from __future__ import annotations
 
+import os
+
 import argparse
 import json
 import subprocess
@@ -35,10 +37,10 @@ def main() -> int:
     scp = [
         "sshpass",
         "-p",
-        "Mind@123",
+        os.environ.get("ATLAS_PASS") or os.environ.get("NEURO_ATLAS_PASS") or "",
         "scp",
         "-o",
-        "StrictHostKeyChecking=no",
+        "StrictHostKeyChecking=accept-new",
     ]
     target = f"root@{args.host}"
     for local, remote in (
@@ -51,10 +53,10 @@ def main() -> int:
         [
             "sshpass",
             "-p",
-            "Mind@123",
+            os.environ.get("ATLAS_PASS") or os.environ.get("NEURO_ATLAS_PASS") or "",
             "ssh",
             "-o",
-            "StrictHostKeyChecking=no",
+            "StrictHostKeyChecking=accept-new",
             target,
             "bash -lc 'source /usr/local/Ascend/ascend-toolkit/set_env.sh && "
             "export PYTHONPATH=/usr/local/Ascend/thirdpart/aarch64/acllite:$PYTHONPATH && "

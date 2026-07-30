@@ -9,7 +9,8 @@ description: >-
 # 类脑 · FPGA 开发（neuro-fpga-dev）
 
 **身份**：陈正共 · ChenZhengGong（commit 须含该署名）  
-**流程真源**：`neuromorphic-computing/docs/FPGA_开发流程与工具一览_V0.md`  
+**目标真源**：`docs/FPGA_按项目目标_独立评审_Opus_V0.md`（汇报以此为准）
+**工具速查**：`docs/FPGA_开发流程与工具一览_V0.md`  
 **策略真源**：`docs/FPGA_工具链安全可控策略_V0.md`
 
 ## 何时用本 skill

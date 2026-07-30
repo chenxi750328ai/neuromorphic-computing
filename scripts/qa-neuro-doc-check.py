@@ -14,6 +14,8 @@ REQUIRED = [
     "docs/每日计划.md",
     "docs/项目看板.md",
     "docs/IPD-QA流程裁剪_待VP总裁批准.md",
+    "docs/FPGA_按项目目标_独立评审_Opus_V0.md",
+    "docs/FPGA_威胁模型与安全基线_V0.md",
     "CONTRIBUTING.md",
     "config/neuro-qa-gate-baseline.json",
 ]

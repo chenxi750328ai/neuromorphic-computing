@@ -10,17 +10,20 @@ from __future__ import annotations
 import argparse
 import json
 import subprocess
+import sys
 import tempfile
 import time
 from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "scripts"))
+from neuro_fpga_lab_auth import SSH_OPTS, require_pass  # noqa: E402
+
 OUT_DEFAULT = ROOT / "docs" / "phase4_poc_evidence" / "fpga_z2_openxc7_board_load.json"
 BIT_DEFAULT = ROOT / "fpga" / "openxc7_try" / "build" / "blinky_soft_ps7.bit"
 HOST_DEFAULT = "192.168.137.3"
 USER_DEFAULT = "xilinx"
-PASS_DEFAULT = "xilinx"
 
 REMOTE_LOADER = r'''#!/usr/bin/env python3
 import json, os, sys, shutil, subprocess
@@ -85,7 +88,7 @@ def run(cmd: list[str], timeout: float = 120) -> dict:
     try:
         r = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)
         return {
-            "cmd": [c if c != PASS_DEFAULT else "***" for c in cmd[:8]]
+            "cmd": ["***" if i >= 2 and cmd[i - 1] == "-p" else c for i, c in enumerate(cmd[:8])]
             + (["…"] if len(cmd) > 8 else []),
             "exit": r.returncode,
             "ok": r.returncode == 0,
@@ -104,11 +107,12 @@ def main() -> int:
     ap.add_argument("--bit", type=Path, default=BIT_DEFAULT)
     ap.add_argument("--host", default=HOST_DEFAULT)
     ap.add_argument("--user", default=USER_DEFAULT)
-    ap.add_argument("--password", default=PASS_DEFAULT)
+    ap.add_argument("--password", default="", help="或环境变量 PYNQ_PASS / NEURO_PYNQ_PASS")
     ap.add_argument("--out", type=Path, default=OUT_DEFAULT)
     ap.add_argument("--gate", action="store_true")
     ap.add_argument("--observe-sec", type=float, default=6.0)
     args = ap.parse_args()
+    password = args.password or require_pass("PYNQ", "PYNQ_PASS", "NEURO_PYNQ_PASS")
 
     stages: dict = {}
     if not args.bit.is_file():
@@ -131,27 +135,8 @@ def main() -> int:
     remote_py = "/tmp/openxc7_board_load.py"
     target_bit = f"{args.user}@{args.host}:{remote_bit}"
     target_py = f"{args.user}@{args.host}:{remote_py}"
-    scp_base = [
-        "sshpass",
-        "-p",
-        args.password,
-        "scp",
-        "-o",
-        "StrictHostKeyChecking=no",
-        "-o",
-        "ConnectTimeout=8",
-    ]
-    ssh_base = [
-        "sshpass",
-        "-p",
-        args.password,
-        "ssh",
-        "-o",
-        "StrictHostKeyChecking=no",
-        "-o",
-        "ConnectTimeout=8",
-        f"{args.user}@{args.host}",
-    ]
+    scp_base = ["sshpass", "-p", password, "scp", *SSH_OPTS]
+    ssh_base = ["sshpass", "-p", password, "ssh", *SSH_OPTS, f"{args.user}@{args.host}"]
 
     with tempfile.NamedTemporaryFile("w", suffix=".py", delete=False, encoding="utf-8") as tf:
         tf.write(REMOTE_LOADER)
@@ -171,7 +156,7 @@ def main() -> int:
 
     # password on stdin for sudo only; script path is argv
     load_remote = (
-        f"echo {args.password} | sudo -S /usr/local/share/pynq-venv/bin/python3 "
+        f"echo {password} | sudo -S /usr/local/share/pynq-venv/bin/python3 "
         f"{remote_py} {remote_bit}"
     )
     t0 = time.time()

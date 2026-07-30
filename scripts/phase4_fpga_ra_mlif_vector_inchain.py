@@ -59,7 +59,7 @@ def main() -> int:
     ap.add_argument("--samples", type=int, default=20)
     ap.add_argument("--host", default="192.168.137.3")
     ap.add_argument("--user", default="xilinx")
-    ap.add_argument("--pass", dest="password", default="xilinx")
+    ap.add_argument("--pass", dest="password", default="", help="env PYNQ_PASS/NEURO_PYNQ_PASS")
     ap.add_argument("--bit", type=Path, default=DEFAULT_BIT)
     ap.add_argument(
         "--out",
@@ -90,8 +90,8 @@ def main() -> int:
     host_correct = int(sum(int(p == t) for p, t in zip(host_preds, ys)))
 
     target = f"{args.user}@{args.host}"
-    ssh = ["sshpass", "-p", args.password, "ssh", "-o", "StrictHostKeyChecking=no", target]
-    scp = ["sshpass", "-p", args.password, "scp", "-o", "StrictHostKeyChecking=no"]
+    ssh = ["sshpass", "-p", args.password, "ssh", "-o", "StrictHostKeyChecking=accept-new", target]
+    scp = ["sshpass", "-p", args.password, "scp", "-o", "StrictHostKeyChecking=accept-new"]
     remote_bit = "/tmp/lif_step_overlay.bit"
     remote_npz = "/tmp/ra_mlif_vector_bundle.npz"
     remote_py = "/tmp/phase4_fpga_ra_mlif_vector_board.py"

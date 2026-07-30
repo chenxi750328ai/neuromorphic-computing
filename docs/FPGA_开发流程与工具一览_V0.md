@@ -2,8 +2,9 @@
 
 **作者**：陈正共 · ChenZhengGong  
 **日期**：2026-07-29  
-**用途**：汇报/自检的**唯一视角**——按阶段看进展；细节策略见 `FPGA_工具链安全可控策略_V0.md`  
-**Skill**：`~/.cursor/skills/neuro-fpga-dev/SKILL.md`
+**用途**：工具速查 / 阶段对照表（**不是**「完备」标尺，也**不是**汇报唯一视角）  
+**汇报真源**：[`FPGA_按项目目标_独立评审_Opus_V0.md`](./FPGA_按项目目标_独立评审_Opus_V0.md) · 机读 `scripts/phase4_fpga_goal_verify.py`  
+**策略**：`FPGA_工具链安全可控策略_V0.md` · Skill：`neuro-fpga-dev`
 
 ---
 

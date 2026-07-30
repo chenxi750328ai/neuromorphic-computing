@@ -69,8 +69,10 @@ if {[catch {
   }
   puts "BIT_OK [file join $OUT lif_step_overlay.bit]"
 } err]} {
-  puts "BD_BITSTREAM_SKIP: $err"
-  puts "NOTE: utilization.rpt 仍可用；BD 失败时手工在 GUI 挂 AXI 即可"
+  puts "BD_BITSTREAM_FAIL: $err"
+  puts "NOTE: utilization.rpt 可能仍可用；BD/bitstream 失败必须非零退出（禁假绿）"
+  puts "DONE outputs in $OUT"
+  exit 1
 }
 
 puts "DONE outputs in $OUT"
