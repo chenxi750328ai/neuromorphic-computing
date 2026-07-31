@@ -5,7 +5,7 @@
   "parentBaseline": "vcompany/data/qa-gate-baseline.json",
   "tailoringDoc": "docs/IPD-QA流程裁剪_待VP总裁批准.md",
   "baselinePath": "config/neuro-qa-gate-baseline.json",
-  "updated": "2026-06-08",
+  "updated": "2026-07-28",
   "owner": "陈正共 · ChenZhengGong",
   "ciPolicy": "NO_TAILORING",
   "ciPolicyNote": "总裁 2026-06-08：CI 不可裁剪；tier=ci 全 gate BLOCK；4090 全量训练手跑≠裁剪 CI",
@@ -61,6 +61,34 @@
       "owner": "陈正共",
       "blockMerge": true,
       "tailoring": "FORBIDDEN"
+    },
+    {
+      "id": "N-CI-VERILATOR",
+      "label": "FPGA LIF Verilator 开源仿真（F6 主信任根）",
+      "tier": "ci",
+      "script": "scripts/qa-neuro-baseline-run.py",
+      "args": [
+        "--only",
+        "N-CI-VERILATOR"
+      ],
+      "owner": "陈正共",
+      "blockMerge": true,
+      "tailoring": "FORBIDDEN",
+      "note": "F6：Vivado 不得替代本门；runner 须 apt install verilator"
+    },
+    {
+      "id": "N-CI-YOSYS-S1",
+      "label": "FPGA LIF Yosys 开源综合对照（F6 S1）",
+      "tier": "ci",
+      "script": "scripts/qa-neuro-baseline-run.py",
+      "args": [
+        "--only",
+        "N-CI-YOSYS-S1"
+      ],
+      "owner": "陈正共",
+      "blockMerge": true,
+      "tailoring": "FORBIDDEN",
+      "note": "F6 S1：generic synth 路径；Vivado 在 CI 可选；runner 须 apt install yosys"
     },
     {
       "id": "N-PRE-MERGE-QA",
