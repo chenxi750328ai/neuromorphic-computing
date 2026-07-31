@@ -46,7 +46,7 @@ try {
         Write-Host "=== After root ==="
         Write-Host $afterUser
 
-        $sp.Write("Mind@123`r")
+        $sp.Write("$env:ATLAS_PASS`r")
         Start-Sleep -Seconds 1
         $afterPass = Read-SerialFor $sp 2
         Write-Host "=== After password ==="

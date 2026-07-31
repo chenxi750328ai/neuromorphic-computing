@@ -88,7 +88,7 @@ def main() -> int:
     p = argparse.ArgumentParser(description="PYNQ spike accumulation + LED demo")
     p.add_argument("--host", default="192.168.137.3")
     p.add_argument("--user", default="xilinx")
-    p.add_argument("--password", default="xilinx")
+    p.add_argument("--password", default="", help="env PYNQ_PASS/NEURO_PYNQ_PASS")
     p.add_argument("--blink", action="store_true", help="Blink LD4 blue on each spike")
     p.add_argument("--hold", type=float, default=0.4, help="Seconds per spike blink")
     p.add_argument("--local", action="store_true", help="Run BOARD_SCRIPT locally (dry-run)")
@@ -124,7 +124,7 @@ def main() -> int:
             args.password,
             "scp",
             "-o",
-            "StrictHostKeyChecking=no",
+            "StrictHostKeyChecking=accept-new",
             str(local_script),
             f"{args.user}@{args.host}:{remote_path}",
         ]
@@ -141,7 +141,7 @@ def main() -> int:
             args.password,
             "ssh",
             "-o",
-            "StrictHostKeyChecking=no",
+            "StrictHostKeyChecking=accept-new",
             f"{args.user}@{args.host}",
             remote_cmd,
         ]

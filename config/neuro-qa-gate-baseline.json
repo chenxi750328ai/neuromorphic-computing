@@ -91,6 +91,48 @@
       "note": "F6 S1：generic synth 路径；Vivado 在 CI 可选；runner 须 apt install yosys"
     },
     {
+      "id": "N-CI-S2-EVAL",
+      "label": "F6 S2 迁移评估文档门",
+      "tier": "ci",
+      "script": "scripts/qa-neuro-baseline-run.py",
+      "args": [
+        "--only",
+        "N-CI-S2-EVAL"
+      ],
+      "owner": "陈正共",
+      "blockMerge": true,
+      "tailoring": "FORBIDDEN",
+      "note": "只验评估文档完备；不验买板/开源 LIF bit"
+    },
+    {
+      "id": "N-CI-BOTH-EVIDENCE",
+      "label": "F4 双通证据机读（N≥20）",
+      "tier": "ci",
+      "script": "scripts/qa-neuro-baseline-run.py",
+      "args": [
+        "--only",
+        "N-CI-BOTH-EVIDENCE"
+      ],
+      "owner": "陈正共",
+      "blockMerge": true,
+      "tailoring": "FORBIDDEN",
+      "note": "防假绿；要求 A2/B1 证据 n≥20"
+    },
+    {
+      "id": "N-CI-VIVADO-BIT",
+      "label": "Vivado LIF bit 完整性（闭源旁路硬门）",
+      "tier": "ci",
+      "script": "scripts/qa-neuro-baseline-run.py",
+      "args": [
+        "--only",
+        "N-CI-VIVADO-BIT"
+      ],
+      "owner": "陈正共",
+      "blockMerge": true,
+      "tailoring": "FORBIDDEN",
+      "note": "验 sha256/报表/tcl 硬失败；不宣称开源出 bit"
+    },
+    {
       "id": "N-PRE-MERGE-QA",
       "label": "VP QA 阶段验收签字",
       "tier": "pre_merge",

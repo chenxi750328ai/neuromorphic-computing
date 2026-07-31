@@ -53,5 +53,13 @@
     "或: vivado -mode batch -source fpga/vivado/create_lif_overlay.tcl",
     "把 .bit/.hwh/utilization.rpt 拷到 fpga/bitstreams/",
     "再跑 scripts/phase4_fpga_pynq_lif_pl.py --gate"
-  ]
+  ],
+  "stale": true,
+  "superseded_by": [
+    "docs/phase4_poc_evidence/fpga_vivado_bit_gate.json",
+    "docs/phase4_poc_evidence/fpga_ra_atlas_mlif_inchain_gate.json",
+    "docs/phase4_poc_evidence/fpga_s1_impl_chain_gate.json"
+  ],
+  "stale_reason": "2026-07-14 记录与现网矛盾（Vivado 已在本机且入链 PASS）；勿当总闸",
+  "stale_at": "2026-07-30T11:17:00.771541+08:00"
 }

@@ -60,8 +60,10 @@ Vivado **禁止**单独充当：「RTL 已检视」「功能已验证」「安�
 
 ### Phase S2 · 全链路可控（产品级选项）
 
-- [ ] 若安全可控升为硬约束：选 **开源全流程可闭环** 或国产可控器件/板卡，做迁移 PoC
-- [ ] 主推理/加速路径器件选型写入架构真源；Z2+Vivado 降为过渡对照平台
+- [x] 迁移评估落盘：`docs/FPGA_S2_开源友好器件迁移评估_V0.md`（默认维持 Z2；硬主权触发再 ECP5 PoC）
+- [x] 机读：`scripts/phase4_fpga_s2_migration_eval_gate.py --gate`
+- [ ] 若总裁升硬约束：开 **ECP5 + Yosys/nextpnr** 移植 PoC（另 PR）
+- [ ] PoC Go 后：主路径器件写入架构真源；Z2+Vivado 降为过渡对照
 
 ---
 

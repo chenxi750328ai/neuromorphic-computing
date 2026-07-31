@@ -27,7 +27,7 @@ def _ssh_cmd(host: str, password: str, remote: str) -> list[str]:
         password,
         "ssh",
         "-o",
-        "StrictHostKeyChecking=no",
+        "StrictHostKeyChecking=accept-new",
         f"root@{host}",
         remote,
     ]
@@ -40,7 +40,7 @@ def _scp_cmd(host: str, password: str, local: Path, remote: str) -> list[str]:
         password,
         "scp",
         "-o",
-        "StrictHostKeyChecking=no",
+        "StrictHostKeyChecking=accept-new",
         str(local),
         f"root@{host}:{remote}",
     ]
@@ -335,7 +335,7 @@ def main() -> int:
     p.add_argument("--samples", type=int, default=100)
     p.add_argument("--offset", type=int, default=0)
     p.add_argument("--host", default="192.168.137.2")
-    p.add_argument("--pass", dest="atlas_pass", default="Mind@123")
+    p.add_argument("--pass", dest="atlas_pass", default="")
     p.add_argument("--om", default="/tmp/phase4_snn/mnist_snn.om")
     p.add_argument("--onnx", type=Path, default=ROOT / "runs" / "phase4_export" / "model_snn.onnx")
     p.add_argument("--data", type=Path, default=ROOT / "data" / "mnist")

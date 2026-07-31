@@ -73,7 +73,7 @@ if ($LASTEXITCODE -eq 0 -or (Select-String -InputObject (Get-Content $Log -Tail 
     Log "--- ssh probe root@192.168.0.2 ---"
     $ssh = Get-Command ssh -ErrorAction SilentlyContinue
     if ($ssh) {
-        echo y | ssh -o StrictHostKeyChecking=no -o ConnectTimeout=8 -o BatchMode=yes root@192.168.0.2 "hostname; npu-smi info 2>/dev/null | head -5 || echo npu-smi-missing" 2>&1 | ForEach-Object { Log $_ }
+        echo y | ssh -o StrictHostKeyChecking=accept-new -o ConnectTimeout=8 -o BatchMode=yes root@192.168.0.2 "hostname; npu-smi info 2>/dev/null | head -5 || echo npu-smi-missing" 2>&1 | ForEach-Object { Log $_ }
     } else {
         Log "ssh client not in PATH"
     }

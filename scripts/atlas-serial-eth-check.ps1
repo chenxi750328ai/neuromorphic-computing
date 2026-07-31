@@ -16,7 +16,7 @@ $sp.Open()
 try {
     $sp.Write("`r"); Start-Sleep -Seconds 1
     $sp.Write("root`r"); Start-Sleep -Seconds 1
-    $sp.Write("Mind@123`r"); Start-Sleep -Seconds 2
+    $sp.Write("$env:ATLAS_PASS`r"); Start-Sleep -Seconds 2
     foreach ($cmd in @(
         "ip link show eth0",
         "ip link show eth1",

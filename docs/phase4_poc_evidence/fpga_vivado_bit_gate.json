@@ -1,0 +1,34 @@
+{
+  "schema": "phase4.1-fpga-vivado-bit-gate-v0",
+  "generated_at": "2026-07-30T11:19:06.929784+08:00",
+  "agent": "ChenZhengGong",
+  "checks": {
+    "bit": {
+      "ok": true,
+      "bytes": 4045676,
+      "sha256": "694554ce61721d4d02318196e6bf868f3bb452b5fe61ef36e0ca16728a1ce249"
+    },
+    "manifest": {
+      "ok": true,
+      "path": "/home/cx/neuromorphic-computing/fpga/bitstreams/lif_step_overlay.sha256"
+    },
+    "util": {
+      "ok": true,
+      "path": "/home/cx/neuromorphic-computing/fpga/bitstreams/lif_step_utilization.rpt"
+    },
+    "timing": {
+      "ok": true,
+      "path": "/home/cx/neuromorphic-computing/fpga/bitstreams/lif_step_timing.rpt"
+    },
+    "tcl": {
+      "ok": true,
+      "path": "/home/cx/neuromorphic-computing/fpga/vivado/create_lif_overlay.tcl"
+    },
+    "tcl_hard_fail": {
+      "ok": true
+    }
+  },
+  "errors": [],
+  "pass": true,
+  "honesty": "本门验闭源旁路产物完整性与脚本硬失败；不宣称开源出 bit"
+}

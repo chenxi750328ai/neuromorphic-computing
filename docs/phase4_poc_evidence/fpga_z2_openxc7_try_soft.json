@@ -1,0 +1,107 @@
+{
+  "schema": "phase4.1-fpga-z2-openxc7-try-v0",
+  "generated_at": "2026-07-29T09:46:15.010081+08:00",
+  "agent": "ChenZhengGong",
+  "part": "xc7z020clg400-1",
+  "board": "PYNQ-Z2",
+  "design": "blinky_z2_soft.v (soft)",
+  "toolchain_notes": {
+    "yosys": "system /usr/bin/yosys 0.33",
+    "nextpnr": "openXC7/nextpnr-xilinx stable-backports @62839b3",
+    "prjxray": "local build xc7frames2bit (Wno-error=deprecated-declarations)",
+    "carry_counter": "FAIL route on this build (see design=carry)",
+    "board_load": "not attempted this run"
+  },
+  "stages": {
+    "tools": {
+      "yosys": true,
+      "nextpnr-xilinx": true,
+      "bbasm": true,
+      "fasm2frames": true,
+      "xc7frames2bit": true,
+      "python": true
+    },
+    "tool_paths": {
+      "yosys": "/usr/bin/yosys",
+      "nextpnr-xilinx": "/home/cx/neuromorphic-computing/third_party/openxc7-try/nextpnr-xilinx/build/nextpnr-xilinx",
+      "bbasm": "/home/cx/neuromorphic-computing/third_party/openxc7-try/nextpnr-xilinx/build/bbasm",
+      "fasm2frames": "/home/cx/neuromorphic-computing/third_party/openxc7-try/prjxray/utils/fasm2frames.py",
+      "xc7frames2bit": "/home/cx/neuromorphic-computing/third_party/openxc7-try/prjxray/build/tools/xc7frames2bit",
+      "python": "/home/cx/neuromorphic-computing/third_party/openxc7-try/venv/bin/python3"
+    },
+    "design_variant": "soft",
+    "synth": {
+      "cmd": [
+        "/usr/bin/yosys",
+        "-p",
+        "synth_xilinx -flatten -arch xc7 -top blinky; write_json /home/cx/neuromorphic-computing/fpga/openxc7_try/build/blinky_soft.json",
+        "/home/cx/neuromorphic-computing/fpga/openxc7_try/blinky_z2_soft.v"
+      ],
+      "exit": 0,
+      "ok": true,
+      "seconds": 3.93,
+      "stdout_tail": "                5\n     IBUF                            1\n     LUT4                            1\n     OBUF                            4\n     SRL16E                          1\n     SRLC32E                         1\n\n   Estimated number of LCs:          1\n\n2.52. Executing CHECK pass (checking for obvious problems).\nChecking module blinky...\nFound and reported 0 problems.\n\n3. Executing JSON backend.\n\nEnd of script. Logfile hash: bb00b984a7, CPU: user 2.06s system 0.04s, MEM: 133.32 MB peak\nYosys 0.33 (git sha1 2584903a060)\nTime spent: 59% 19x read_verilog (1 sec), 11% 1x synth_xilinx (0 sec), ...\n",
+      "stderr_tail": "",
+      "netlist": "/home/cx/neuromorphic-computing/fpga/openxc7_try/build/blinky_soft.json",
+      "rtl": "/home/cx/neuromorphic-computing/fpga/openxc7_try/blinky_z2_soft.v"
+    },
+    "chipdb": {
+      "ok": true,
+      "path": "/home/cx/neuromorphic-computing/third_party/openxc7-try/chipdb/xc7z020clg400-1.bin",
+      "cached": true,
+      "bytes": 136149868
+    },
+    "pnr": {
+      "cmd": [
+        "/home/cx/neuromorphic-computing/third_party/openxc7-try/nextpnr-xilinx/build/nextpnr-xilinx",
+        "--chipdb",
+        "/home/cx/neuromorphic-computing/third_party/openxc7-try/chipdb/xc7z020clg400-1.bin",
+        "--xdc",
+        "/home/cx/neuromorphic-computing/fpga/openxc7_try/pynq_z2_leds.xdc",
+        "--json",
+        "/home/cx/neuromorphic-computing/fpga/openxc7_try/build/blinky_soft.json",
+        "--fasm",
+        "/home/cx/neuromorphic-computing/fpga/openxc7_try/build/blinky_soft.fasm",
+        "--seed",
+        "1"
+      ],
+      "exit": 0,
+      "ok": true,
+      "seconds": 1.49,
+      "stdout_tail": "",
+      "stderr_tail": "                                                       led3      1 0.0ms\n                                                                                    led2      1 0.0ms\n                                                                                     clk      2 0.0ms\nInfo: Router2 time 0.89s\nInfo: Routing $PACKER_VCC_NET connections...\nInfo:     $PACKER_VCC_NET: 16/16 sinks bridged (0 left to main router; max BFS 31)\nInfo: Routing $PACKER_GND_NET connections...\nInfo:     $PACKER_GND_NET: 4/4 sinks bridged (0 left to main router; max BFS 105)\nInfo: Running post-routing legalisation...\n",
+      "fasm": "/home/cx/neuromorphic-computing/fpga/openxc7_try/build/blinky_soft.fasm",
+      "fasm_bytes": 12395
+    },
+    "frames": {
+      "ok": true,
+      "exit": 0,
+      "stderr_tail": "RuntimeWarning: Unable to import fast Antlr4 parser implementation.\n  ImportError: cannot import name 'antlr_to_tuple' from partially initialized module 'fasm.parser' (most likely due to a circular import) (/home/cx/neuromorphic-computing/third_party/openxc7-try/venv/lib/python3.12/site-packages/fasm/parser/__init__.py)\n\n  Falling back to the much slower pure Python textX based parser\n  implementation.\n\n  Getting the faster antlr parser can normally be done by installing the\n  required dependencies and then reinstalling the fasm package with:\n    pip uninstall\n    pip install -v fasm\n\n  warn(\n",
+      "frames_bytes": 8753844
+    },
+    "bitstream": {
+      "cmd": [
+        "/home/cx/neuromorphic-computing/third_party/openxc7-try/prjxray/build/tools/xc7frames2bit",
+        "--part_file",
+        "/home/cx/neuromorphic-computing/third_party/openxc7-try/prjxray-db/zynq7/xc7z020clg400-1/part.yaml",
+        "--part_name",
+        "xc7z020clg400-1",
+        "--frm_file",
+        "/home/cx/neuromorphic-computing/fpga/openxc7_try/build/blinky_soft.frames",
+        "--output_file",
+        "/home/cx/neuromorphic-computing/fpga/openxc7_try/build/blinky_soft.bit"
+      ],
+      "exit": 0,
+      "ok": true,
+      "seconds": 0.06,
+      "stdout_tail": "",
+      "stderr_tail": "",
+      "bit_path": "/home/cx/neuromorphic-computing/fpga/openxc7_try/build/blinky_soft.bit",
+      "bit_bytes": 4045728
+    }
+  },
+  "pass_full_open_bit": true,
+  "pass_synth_xilinx": true,
+  "conclusion": "OPEN_BITSTREAM_OK",
+  "honesty": "结果以本机实测阶段为准，不是 pen 判断"
+}

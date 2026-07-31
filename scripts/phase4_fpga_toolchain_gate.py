@@ -75,7 +75,7 @@ def main() -> int:
         args.password,
         "ssh",
         "-o",
-        "StrictHostKeyChecking=no",
+        "StrictHostKeyChecking=accept-new",
         "-o",
         "ConnectTimeout=8",
         f"{args.user}@{args.host}",
