@@ -77,10 +77,16 @@ module linear_mac_axi_lite (
             end
             if (s_axi_awready && s_axi_awvalid && s_axi_wready && s_axi_wvalid) begin
                 case (s_axi_awaddr[7:0])
+                    // Stream protocol: START → (W_DATA then X_DATA)×dim
+                    // Writing X_DATA pulses both valids (AXI cannot assert W+X same cycle).
                     8'h00: if (s_axi_wdata[0]) start_pulse <= 1'b1;
                     8'h04: dim <= s_axi_wdata[15:0];
-                    8'h08: begin w_data <= s_axi_wdata; w_valid <= 1'b1; end
-                    8'h0C: begin x_data <= s_axi_wdata; x_valid <= 1'b1; end
+                    8'h08: w_data <= s_axi_wdata;
+                    8'h0C: begin
+                        x_data <= s_axi_wdata;
+                        w_valid <= 1'b1;
+                        x_valid <= 1'b1;
+                    end
                     8'h10: bias_q16 <= s_axi_wdata;
                     default: ;
                 endcase

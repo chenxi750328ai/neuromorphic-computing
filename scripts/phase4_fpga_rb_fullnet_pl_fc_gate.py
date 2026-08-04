@@ -35,7 +35,7 @@ from phase4_fpga_snn_fixedpoint import FixedPointSNN, lif_step_fp, linear_fp, to
 from train_mnist_snn import loaders  # noqa: E402
 
 DEFAULT_CKPT = ROOT / "runs" / "20260527T092534Z" / "checkpoint.pt"
-DEFAULT_BIT = ROOT / "fpga" / "bitstreams" / "lif_step_overlay.bit"
+DEFAULT_BIT = ROOT / "fpga" / "bitstreams" / "f7_fullnet_pl_fc_overlay.bit"
 BOARD_PY = ROOT / "scripts" / "phase4_fpga_rb_fullnet_pl_fc_board.py"
 OUT_DEFAULT = ROOT / "docs" / "phase4_poc_evidence" / "fpga_rb_fullnet_pl_fc_gate.json"
 FRAC = 16

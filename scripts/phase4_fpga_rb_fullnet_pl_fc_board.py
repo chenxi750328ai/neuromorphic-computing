@@ -69,10 +69,10 @@ def main() -> int:
         dim = int(w_row.shape[0])
         mac_drv.write(0x04, dim)
         mac_drv.write(0x10, u32(bias))
+        mac_drv.write(0x00, 1)  # start before stream
         for i in range(dim):
             mac_drv.write(0x08, u32(int(w_row[i])))
-            mac_drv.write(0x0C, u32(int(x_vec[i])))
-        mac_drv.write(0x00, 1)
+            mac_drv.write(0x0C, u32(int(x_vec[i])))  # X write pulses W+X valid
         for _ in range(500000):
             if mac_drv.read(0x14) & 1:
                 break

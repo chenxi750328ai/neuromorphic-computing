@@ -60,11 +60,14 @@ if {[catch {
     error "impl finished but no .bit under impl_1"
   }
   file copy -force [lindex $bit_glob 0] [file join $OUT f7_fullnet_pl_fc_overlay.bit]
-  catch {
-    set hwh [lindex [glob -nocomplain ./_vivado_f7_fullnet/**/hw_handoff/*.hwh] 0]
-    if {$hwh ne ""} {
-      file copy -force $hwh [file join $OUT f7_fullnet_pl_fc_overlay.hwh]
-    }
+  set hwh_candidates [concat \
+    [glob -nocomplain ./_vivado_f7_fullnet/f7_fullnet_overlay.gen/sources_1/bd/design_1/hw_handoff/*.hwh] \
+    [glob -nocomplain ./_vivado_f7_fullnet/**/hw_handoff/*.hwh]]
+  if {[llength $hwh_candidates] > 0} {
+    file copy -force [lindex $hwh_candidates 0] [file join $OUT f7_fullnet_pl_fc_overlay.hwh]
+    puts "HWH_OK [file join $OUT f7_fullnet_pl_fc_overlay.hwh]"
+  } else {
+    puts "HWH_MISSING"
   }
   puts "BIT_OK [file join $OUT f7_fullnet_pl_fc_overlay.bit]"
 } err]} {
