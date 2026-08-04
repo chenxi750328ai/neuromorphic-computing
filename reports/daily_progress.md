@@ -1,9 +1,4 @@
 ## 2026-08-04
-- **19:33 F7 N=20 PASS**：`PASS_f7_pl_fc` · board_match_rate=**1.0** · pl_model=1.0 · acc_vs_label=0.95 · fc_on_pl/lif_on_pl · mac=mmio · wall≈102min。证据 `fpga_rb_fullnet_pl_fc_gate.json`。下一步 WO-DEV 复验/checker。**未代关 Phase4.1**（待 WO+PR）。
-- **16:52 自驱唤醒**：N=20 F7 gate **仍在跑**（主机+板上进程在；证据文件尚未改写）。机尽·等结果·wake consume。Phase8 仍等人。
-- **16:34 F7 板上推进**：口令可用；修 MMIO 后 **N=1 烟测 PASS**（pred=label=7，~310s，`d77b92b`）；**N=20 --gate 后台跑中**（预计≥1.5h）。
-- **16:12 自驱唤醒·F7 推进**：规格/IPD 已批（wake「待审」作废）。pathScope+board.py（编排 8418223）。Vivado 出 `f7_fullnet_pl_fc_overlay.bit`+hwh（含 `linear_mac_0`）；修 MAC AXI 流握手；commit `92d6d2b`。**板上 --gate 未跑**：缺 `PYNQ_PASS`。Phase8 仍等人。
-- **15:44 IPD R-req-change 执行**：OR-NEURO-DEMO-001 钉 F7；INTAKE 已验；建单 WO-DEV/TEST-NEURO-F7-PL-FC（lint绿 · orchestrate 71ddb97）；DEV 已派发验真 **FAIL**（缺 linear_mac overlay · board.py pathScope）；TEST 等待。**整网仍未通**。
 - **11:42 自驱唤醒执行**：推送 `feature/phase4.1-fpga-sovereign-s2`（`0e4cdb8`+`0f88064`）并开 **PR [#21](https://github.com/chenxi750328ai/neuromorphic-computing/pull/21)**（openXC7 LIF AXI 入链 G1–G8 + PYNQ 硬件狗）。本地 `goal_verify` 仍 **8/8**。**≠关口关闭**；合 main 待 neuro-ci。
 - **11:18 自驱唤醒核盘**：PR [#14](https://github.com/chenxi750328ai/neuromorphic-computing/pull/14) **已合**（FPGA 双路线：R-A 单算子 PL 通 / R-B Z2 并行整网资源墙）。G-LAT [#13](https://github.com/chenxi750328ai/neuromorphic-computing/pull/13) 已合（r2 p50≈3.5ms）。
 - **Phase8**：仍等总裁书面解除 F2；默认不开。TR2 VP / US-EN 可选不阻塞。
