@@ -1,0 +1,117 @@
+{
+  "schema": "lif-golden-vectors-v0",
+  "golden": "scripts/phase4_fpga_lif_fixedpoint.py::FixedPointLIF",
+  "frac_bits": 16,
+  "beta_fp": 58982,
+  "th_fp": 65536,
+  "vectors": [
+    {
+      "cur_fp": 0,
+      "mem_in_fp": 0,
+      "spk": 0,
+      "mem_out_fp": 0
+    },
+    {
+      "cur_fp": 0,
+      "mem_in_fp": 0,
+      "spk": 0,
+      "mem_out_fp": 0
+    },
+    {
+      "cur_fp": 78643,
+      "mem_in_fp": 0,
+      "spk": 1,
+      "mem_out_fp": 78643
+    },
+    {
+      "cur_fp": 0,
+      "mem_in_fp": 78643,
+      "spk": 0,
+      "mem_out_fp": 5242
+    },
+    {
+      "cur_fp": 0,
+      "mem_in_fp": 5242,
+      "spk": 0,
+      "mem_out_fp": 4717
+    },
+    {
+      "cur_fp": 72090,
+      "mem_in_fp": 4717,
+      "spk": 1,
+      "mem_out_fp": 76335
+    },
+    {
+      "cur_fp": 72090,
+      "mem_in_fp": 76335,
+      "spk": 1,
+      "mem_out_fp": 75255
+    },
+    {
+      "cur_fp": 0,
+      "mem_in_fp": 75255,
+      "spk": 0,
+      "mem_out_fp": 2193
+    },
+    {
+      "cur_fp": 0,
+      "mem_in_fp": 2193,
+      "spk": 0,
+      "mem_out_fp": 1973
+    },
+    {
+      "cur_fp": 68813,
+      "mem_in_fp": 1973,
+      "spk": 1,
+      "mem_out_fp": 70588
+    },
+    {
+      "cur_fp": 32768,
+      "mem_in_fp": 70588,
+      "spk": 0,
+      "mem_out_fp": 30760
+    },
+    {
+      "cur_fp": 131072,
+      "mem_in_fp": 30760,
+      "spk": 1,
+      "mem_out_fp": 158755
+    },
+    {
+      "cur_fp": -6554,
+      "mem_in_fp": 158755,
+      "spk": 1,
+      "mem_out_fp": 70788
+    },
+    {
+      "cur_fp": 524288,
+      "mem_in_fp": 70788,
+      "spk": 1,
+      "mem_out_fp": 522460
+    },
+    {
+      "cur_fp": -524288,
+      "mem_in_fp": 522460,
+      "spk": 0,
+      "mem_out_fp": -119614
+    },
+    {
+      "cur_fp": 58982,
+      "mem_in_fp": -119614,
+      "spk": 0,
+      "mem_out_fp": -48670
+    },
+    {
+      "cur_fp": 65536,
+      "mem_in_fp": -48670,
+      "spk": 0,
+      "mem_out_fp": 21733
+    },
+    {
+      "cur_fp": 65537,
+      "mem_in_fp": 21733,
+      "spk": 1,
+      "mem_out_fp": 85096
+    }
+  ]
+}

@@ -32,16 +32,40 @@ def s32(v: int) -> int:
     return v - 0x100000000 if v >= 0x80000000 else v
 
 
+class _MmioRegs:
+    """openXC7 位流无 BD 层次时，按 Vivado 同址 0x40000000 直接 MMIO。"""
+
+    def __init__(self, base: int = 0x40000000) -> None:
+        from pynq import MMIO
+
+        self._m = MMIO(base, 0x100)
+
+    def write(self, off: int, val: int) -> None:
+        self._m.write(int(off), int(val) & 0xFFFFFFFF)
+
+    def read(self, off: int) -> int:
+        return int(self._m.read(int(off)))
+
+
 class Lif1Engine:
     def __init__(self) -> None:
         self.drv = None
         self.mem = None
+        self.backend = None
 
     def load(self, bit: str) -> None:
-        from pynq import Overlay
+        from pynq import Bitstream, Overlay
 
-        ol = Overlay(bit)
-        self.drv = ol.lif_step_0
+        # Vivado overlay：有 lif_step_0；openXC7：仅 PS7+从机，无 BD IP 名
+        try:
+            ol = Overlay(bit)
+            self.drv = ol.lif_step_0
+            self.backend = "overlay_ip"
+            return
+        except Exception as e:
+            Bitstream(bit).download()
+            self.drv = _MmioRegs(0x40000000)
+            self.backend = f"mmio_0x40000000_fallback:{type(e).__name__}"
 
     def reset(self, n: int) -> None:
         import numpy as np
@@ -54,7 +78,8 @@ class Lif1Engine:
         drv.write(0x08, u32(mem))
         drv.write(0x00, 1)
         st = 0
-        for _ in range(20000):
+        # hard-mul ~3 cycle；open soft-mul ~35+ cycle
+        for _ in range(200000):
             st = drv.read(0x0C)
             if st & 1:
                 break
@@ -80,7 +105,7 @@ def handle(eng: Lif1Engine, req: dict) -> dict:
         return {"ok": True, "pong": True}
     if op == "load_overlay":
         eng.load(str(req.get("bit") or "/tmp/lif_step_overlay.bit"))
-        return {"ok": True, "loaded": True}
+        return {"ok": True, "loaded": True, "backend": eng.backend}
     if op == "reset_mem":
         eng.reset(int(req.get("n") or 256))
         return {"ok": True, "n": len(eng.mem)}

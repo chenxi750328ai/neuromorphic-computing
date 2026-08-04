@@ -1,29 +1,29 @@
 {
   "schema": "phase4.1-fpga-goal-verify-G1-G8-v0",
-  "generated_at": "2026-07-30T11:19:32.152113+08:00",
+  "generated_at": "2026-08-04T11:35:24.410444+08:00",
   "agent": "ChenZhengGong",
   "source": "docs/FPGA_按项目目标_独立评审_Opus_V0.md",
   "goals": {
     "G1": {
       "title": "交付核开源出 bit",
-      "ok": false,
-      "note": "no openXC7 lif_step bitstream",
-      "evidence": "docs/phase4_poc_evidence/fpga_z2_openxc7_lif_probe.json"
+      "ok": true,
+      "note": "OPEN_BITSTREAM_OK",
+      "evidence": "docs/phase4_poc_evidence/fpga_z2_openxc7_try_lif_axi.json"
     },
     "G2": {
       "title": "开源 bit 上板≡金标",
-      "ok": false,
-      "note": "入链 bit 非开源: vivado overlay"
+      "ok": true,
+      "note": "PASS_ra_atlas_fpga_mlif"
     },
     "G3": {
       "title": "主信任根金标独立",
-      "ok": false,
-      "note": "需 TB 引用 FixedPointLIF 而非内嵌复刻；当前启发式 FAIL"
+      "ok": true,
+      "note": "需 TB 引用 FixedPointLIF 而非内嵌复刻；当前启发式 PASS"
     },
     "G4": {
       "title": "干净机可复现",
-      "ok": false,
-      "note": "third_party.lock 缺失"
+      "ok": true,
+      "note": "lock present"
     },
     "G5": {
       "title": "安全基线",
@@ -47,8 +47,8 @@
       "note": "总裁一页须显式待 D1/D2/D3，不得把 F6 全链路勾成已完成"
     }
   },
-  "score": "4/8",
-  "pass_all": false,
+  "score": "8/8",
+  "pass_all": true,
   "honesty": "0/8 或低分不等于没干活；表示与目标成功标准未对齐",
   "blinky_open_bit": true
 }
