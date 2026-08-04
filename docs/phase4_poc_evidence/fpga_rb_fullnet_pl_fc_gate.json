@@ -1,0 +1,91 @@
+{
+  "schema": "phase4.1-fpga-rb-fullnet-pl-fc-v1",
+  "generated_at": "2026-08-04T15:38:16.064287+08:00",
+  "agent": "ag-chenzhengfei",
+  "route": "F7 time-mux fc+LIF on PL",
+  "checkpoint": "/home/cx/neuromorphic-computing/runs/20260527T092534Z/checkpoint.pt",
+  "note": "F7: fc_on_pl+lif_on_pl; PS load/orchestrate only; 禁 PASS_rb_tmd",
+  "fc_on_pl": true,
+  "lif_on_pl": true,
+  "ps_role": "load_dma_orchestrate",
+  "host_proxy": {
+    "preds": [
+      7,
+      2,
+      1,
+      0,
+      4,
+      1,
+      4,
+      9,
+      6,
+      9,
+      0,
+      6,
+      9,
+      0,
+      1,
+      5,
+      9,
+      7,
+      3,
+      4
+    ],
+    "n": 20
+  },
+  "pl_model": {
+    "preds": [
+      7,
+      2,
+      1,
+      0,
+      4,
+      1,
+      4,
+      9,
+      6,
+      9,
+      0,
+      6,
+      9,
+      0,
+      1,
+      5,
+      9,
+      7,
+      3,
+      4
+    ],
+    "pred_match_rate": 1.0,
+    "acc_vs_label": 0.95,
+    "fc_on_pl": true,
+    "lif_on_pl": true,
+    "ps_role": "load_dma_orchestrate",
+    "route": "F7 PL time-mux fc+LIF (host-side PL behavior model)"
+  },
+  "board": {},
+  "board_ssh": {
+    "ok": false,
+    "returncode": 2,
+    "wall_ms": 16564.197,
+    "stderr_tail": "[sudo] password for xilinx: ",
+    "stdout_tail": "{\"ok\": false, \"error\": \"missing linear_mac_0 IP \\u2014 fc_on_pl=false\"}\n"
+  },
+  "verilator_smoke": {
+    "ok": false,
+    "returncode": 2,
+    "stderr_tail": "/home/cx/neuromorphic-computing/fpga/sim/tb_fullnet_pl_fc.cpp:4:10: fatal error: Vlif_step.h: No such file or directory\n    4 | #include \"Vlif_step.h\"\n      |          ^~~~~~~~~~~~~\ncompilation terminated.\nmake: *** [Vlinear_mac.mk:61: tb_fullnet_pl_fc.o] Error 1\nmake: *** Waiting for unfinished jobs....\n%Error: make -C /tmp/f7_vl_ufvlh8xn/obj -f Vlinear_mac.mk -j 20 exited with 2\n%Error: Command Failed ulimit -s unlimited 2>/dev/null; exec /usr/bin/verilator_bin -Wall -Wno-DECLFILENAME -Wno-UNUSEDSIGNAL --cc --exe --build -j 0 -Mdir /tmp/f7_vl_ufvlh8xn/obj /home/cx/neuromorphic-computing/fpga/rtl/linear_mac.v /home/cx/neuromorphic-computing/fpga/rtl/lif_step.v /home/cx/neuromorphic-computing/fpga/sim/tb_fullnet_pl_fc.cpp --top-module linear_mac\n"
+  },
+  "compare": {
+    "board_pred_match": 0,
+    "board_pred_match_rate": 0.0,
+    "pl_model_pred_match": 20,
+    "pl_model_pred_match_rate": 1.0
+  },
+  "blockers": [
+    "board: board_run_failed",
+    "overlay missing linear_mac_0 — need Vivado rebuild with MAC IP"
+  ],
+  "platform_fullnet_pl_fc": false,
+  "verdict": "FAIL_f7_pl_fc"
+}
