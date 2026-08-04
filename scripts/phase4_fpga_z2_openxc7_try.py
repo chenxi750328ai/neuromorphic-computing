@@ -85,9 +85,9 @@ def main() -> int:
     ap.add_argument("--gate", action="store_true", help="require full .bit success")
     ap.add_argument(
         "--design",
-        choices=("soft", "soft_ps7", "carry", "ps7"),
+        choices=("soft", "soft_ps7", "carry", "ps7", "lif_open", "lif_axi"),
         default="soft",
-        help="soft=LFSR无CARRY；soft_ps7=LFSR+PS7(上板)；carry=加法；ps7=计数+PS7",
+        help="soft/soft_ps7/carry/ps7；lif_open=软乘LIF探头；lif_axi=软乘LIF+AXI@0x40000000",
     )
     ap.add_argument("--skip-pnr", action="store_true")
     args = ap.parse_args()
@@ -129,12 +129,23 @@ def main() -> int:
     }
 
     design_map = {
-        "soft": TRY / "blinky_z2_soft.v",
-        "soft_ps7": TRY / "blinky_z2_soft_ps7.v",
-        "carry": TRY / "blinky_z2_nops.v",
-        "ps7": TRY / "blinky_z2.v",
+        "soft": [TRY / "blinky_z2_soft.v"],
+        "soft_ps7": [TRY / "blinky_z2_soft_ps7.v"],
+        "carry": [TRY / "blinky_z2_nops.v"],
+        "ps7": [TRY / "blinky_z2.v"],
+        # soft-mul LIF + always-update probe (avoid DSP/CARRY/CEUSEDMUX)
+        "lif_open": [
+            ROOT / "fpga" / "rtl" / "lif_step_open.v",
+            TRY / "lif_open_probe_z2.v",
+        ],
+        "lif_axi": [
+            # AXI 握手做在顶层（GenZ always-ready），不再例化 axi_lite_open
+            ROOT / "fpga" / "rtl" / "lif_step_open.v",
+            TRY / "lif_open_axi_z2.v",
+        ],
     }
-    vlog = design_map[args.design]
+    vlogs = design_map[args.design]
+    vlog = vlogs[-1]
     xdc = TRY / "pynq_z2_leds.xdc"
     stem = f"blinky_{args.design}"
     json_net = work / f"{stem}.json"
@@ -150,22 +161,38 @@ def main() -> int:
     synth_flags = "-flatten -arch xc7"
     if args.design in ("carry", "ps7"):
         synth_flags = "-flatten -abc9 -arch xc7"
+    if args.design in ("lif_open", "lif_axi"):
+        # no DSP/CARRY; soft mul in RTL; dffunmap before map_ffs avoids CEUSEDMUX P&R bug
+        synth_flags = "-flatten -arch xc7 -nodsp -nocarry"
     if not tools["yosys"]:
         stages["synth"] = {"ok": False, "error": "yosys missing"}
-    elif not vlog.is_file():
-        stages["synth"] = {"ok": False, "error": f"missing {vlog}"}
+    elif not all(p.is_file() for p in vlogs):
+        stages["synth"] = {"ok": False, "error": f"missing {[str(p) for p in vlogs if not p.is_file()]}"}
     else:
+        if args.design in ("lif_open", "lif_axi"):
+            # full dffunmap (CE+SRST); RTL uses sync reset to avoid SRUSEDMUX
+            yosys_script = (
+                f"synth_xilinx {synth_flags} -top blinky -run :map_ffs; "
+                f"dffunmap; "
+                f"synth_xilinx {synth_flags} -top blinky -run map_ffs:; "
+                f"write_json {json_net}"
+            )
+        else:
+            yosys_script = f"synth_xilinx {synth_flags} -top blinky; write_json {json_net}"
+
         stages["synth"] = run(
             [
                 tools["yosys"],
                 "-p",
-                f"synth_xilinx {synth_flags} -top blinky; write_json {json_net}",
-                str(vlog),
+                yosys_script,
+                *[str(p) for p in vlogs],
             ],
             timeout=300,
         )
         stages["synth"]["netlist"] = str(json_net) if json_net.is_file() else None
-        stages["synth"]["rtl"] = str(vlog)
+        stages["synth"]["rtl"] = [str(p) for p in vlogs]
+        if args.design in ("lif_open", "lif_axi"):
+            stages["synth"]["note"] = "dffunmap -ce-only between fine and map_ffs (CEUSEDMUX workaround)"
 
     # 2) chipdb
     if chipdb.is_file():

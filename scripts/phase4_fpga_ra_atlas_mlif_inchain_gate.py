@@ -174,6 +174,7 @@ def main() -> int:
         "agent": "ChenZhengGong",
         "route": "R-A A2 Atlas↔PYNQ M-lif",
         "checkpoint": str(args.checkpoint),
+        "bit": str(args.bit),
         "topology": "Atlas Q16.16 fc*/lif2 ↔ TCP:9530 ↔ PYNQ lif1 PL TMD",
         "host_proxy": {"preds": hp, "n": len(ys)},
         "atlas_client": board,

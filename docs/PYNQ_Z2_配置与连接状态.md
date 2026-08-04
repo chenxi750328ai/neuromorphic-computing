@@ -70,7 +70,26 @@ sshpass -p xilinx ssh xilinx@192.168.137.3 'bash /home/xilinx/fpga_pynq_setup.sh
 
 ```powershell
 powershell -File C:\Users\Public\fpga-serial-setip.ps1
+# 或仓内：
+# powershell.exe -File scripts/fpga-serial-setip.ps1
 ```
+
+### 看门狗（防 AXI/驱动硬挂后无人复位）
+
+- 硬件：`cdns-wdt` · `/dev/watchdog0` · 超时约 **10s**（`dmesg | grep Watchdog`）
+- 启用（systemd 喂狗；CPU 硬挂停喂 → 自动整片复位）：
+
+```bash
+export PYNQ_PASS=xilinx
+sshpass -p "$PYNQ_PASS" scp scripts/fpga_pynq_enable_watchdog.sh xilinx@192.168.137.3:/tmp/
+sshpass -p "$PYNQ_PASS" ssh xilinx@192.168.137.3 \
+  'PYNQ_SUDO_PASS=xilinx bash /tmp/fpga_pynq_enable_watchdog.sh'
+# 落盘：neuro-hw-watchdog.service（enabled）+ system.conf.d/10-watchdog.conf
+# 验收：systemctl is-active neuro-hw-watchdog.service → active
+```
+
+> 狗不能代替正确的 AXI 从机；只是挂死后少人工按 RESET。  
+> **2026-08-04**：本机已 `enable --now neuro-hw-watchdog.service`（active）。
 
 ---
 

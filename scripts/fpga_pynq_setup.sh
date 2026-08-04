@@ -26,8 +26,13 @@ echo "[3/4] Verify import pynq"
 export XILINX_XRT=/usr
 python3 -c "import pydantic; import pynq; print('pynq', pynq.__version__, 'pydantic', pydantic.__version__)"
 
-echo "[4/4] Blue LED smoke (LD4, needs sudo for PL mmap)"
+echo "[4/5] Blue LED smoke (LD4, needs sudo for PL mmap)"
 export XILINX_XRT=/usr
 echo "$PASS" | sudo -S -E python3 "${SCRIPT_DIR}/fpga_blue_led.py" 3
+
+echo "[5/5] Hardware watchdog (systemd RuntimeWatchdogSec=10)"
+if [[ -f "${SCRIPT_DIR}/fpga_pynq_enable_watchdog.sh" ]]; then
+  PYNQ_SUDO_PASS="$PASS" bash "${SCRIPT_DIR}/fpga_pynq_enable_watchdog.sh" || true
+fi
 
 echo "PYNQ_SETUP_OK"

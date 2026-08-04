@@ -37,20 +37,33 @@ def main() -> int:
 
     goals: dict = {}
 
-    # G1 开源出 lif_step bit
-    lif_probe = ROOT / "docs" / "phase4_poc_evidence" / "fpga_z2_openxc7_lif_probe.json"
+    # G1 开源出 lif_step bit（含 soft-mul lif_open）
+    lif_candidates = [
+        ROOT / "docs" / "phase4_poc_evidence" / "fpga_z2_openxc7_try_lif_axi.json",
+        ROOT / "docs" / "phase4_poc_evidence" / "fpga_z2_openxc7_try_lif_open.json",
+        ROOT / "docs" / "phase4_poc_evidence" / "fpga_z2_openxc7_lif_probe.json",
+    ]
     soft = ROOT / "docs" / "phase4_poc_evidence" / "fpga_z2_openxc7_try.json"
     g1_ok = False
     g1_note = "no openXC7 lif_step bitstream"
-    if lif_probe.is_file():
+    g1_ev = None
+    for lif_probe in lif_candidates:
+        if not lif_probe.is_file():
+            continue
         d = json.loads(lif_probe.read_text(encoding="utf-8"))
-        g1_ok = bool(d.get("pass_full_open_bit") and "lif" in str(d.get("design", "")).lower())
+        design = str(d.get("design", "")).lower()
+        if d.get("pass_full_open_bit") and "lif" in design:
+            g1_ok = True
+            g1_note = d.get("conclusion") or "OPEN_BITSTREAM_OK"
+            g1_ev = str(lif_probe.relative_to(ROOT))
+            break
         g1_note = d.get("conclusion") or g1_note
+        g1_ev = str(lif_probe.relative_to(ROOT))
     goals["G1"] = {
         "title": "交付核开源出 bit",
         "ok": g1_ok,
         "note": g1_note,
-        "evidence": str(lif_probe.relative_to(ROOT)) if lif_probe.is_file() else None,
+        "evidence": g1_ev,
     }
 
     # G2 开源 bit 上板≡金标（需开源 lif bit；点灯上板不算）
