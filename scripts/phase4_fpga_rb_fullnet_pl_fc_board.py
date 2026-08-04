@@ -14,10 +14,14 @@ import time
 import numpy as np
 
 os.environ["XILINX_XRT"] = "/usr"
-from pynq import Overlay  # noqa: E402
+from pynq import MMIO, Overlay  # noqa: E402
 
 FRAC = 16
 SCALE = 1 << FRAC
+# F7 overlay map (see f7_fullnet_pl_fc_overlay.hwh). PYNQ may omit module_ref
+# linear_mac_0 from ip_dict/attrs — drive via MMIO when missing.
+MAC_BASE = 0x40001000
+LIF_BASE = 0x40000000
 
 
 def u32(v: int) -> int:
@@ -27,6 +31,17 @@ def u32(v: int) -> int:
 def s32(v: int) -> int:
     v = int(v) & 0xFFFFFFFF
     return v - 0x100000000 if v >= 0x80000000 else v
+
+
+class _MmioRegs:
+    def __init__(self, base: int, span: int = 0x1000) -> None:
+        self._m = MMIO(base, span)
+
+    def write(self, off: int, val: int) -> None:
+        self._m.write(off, u32(val))
+
+    def read(self, off: int) -> int:
+        return int(self._m.read(off))
 
 
 def main() -> int:
@@ -44,20 +59,25 @@ def main() -> int:
     in_dim = int(w1.shape[1])
 
     ol = Overlay(bit)
-    if not hasattr(ol, "lif_step_0"):
-        print(json.dumps({"ok": False, "error": "missing lif_step_0 IP"}))
-        return 2
-    lif_drv = ol.lif_step_0
+    lif_drv = getattr(ol, "lif_step_0", None) or _MmioRegs(LIF_BASE)
     mac_drv = getattr(ol, "linear_mac_0", None)
-    fc_on_pl = mac_drv is not None
-    if not fc_on_pl:
-        print(json.dumps({"ok": False, "error": "missing linear_mac_0 IP — fc_on_pl=false"}))
-        return 2
+    mac_via = "ip_dict"
+    if mac_drv is None:
+        # Probe PL: write/read DIM @ +0x04
+        probe = _MmioRegs(MAC_BASE)
+        probe.write(0x04, 0xA5)
+        if probe.read(0x04) != 0xA5:
+            print(json.dumps({"ok": False, "error": "missing linear_mac_0 IP — fc_on_pl=false"}))
+            return 2
+        mac_drv = probe
+        mac_via = "mmio_0x40001000"
+    fc_on_pl = True
 
     def lif_pl(cur: int, mem: int) -> tuple[int, int]:
         lif_drv.write(0x04, u32(cur))
         lif_drv.write(0x08, u32(mem))
         lif_drv.write(0x00, 1)
+        st = 0
         for _ in range(20000):
             st = lif_drv.read(0x0C)
             if st & 1:
@@ -125,6 +145,7 @@ def main() -> int:
         "n_lif_pl_calls": int(n_lif_calls),
         "fc_on_pl": True,
         "lif_on_pl": True,
+        "mac_access": mac_via,
         "ps_role": "load_dma_orchestrate",
         "split": "F7 fullnet: fc*+LIF on PL time-mux; PS load/orchestrate only",
         "in_dim": in_dim,
