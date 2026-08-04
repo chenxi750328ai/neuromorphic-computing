@@ -1,6 +1,6 @@
 {
   "schema": "phase4.1-fpga-goal-verify-G1-G8-v0",
-  "generated_at": "2026-08-02T10:38:05.723192+08:00",
+  "generated_at": "2026-08-04T11:35:24.410444+08:00",
   "agent": "ChenZhengGong",
   "source": "docs/FPGA_按项目目标_独立评审_Opus_V0.md",
   "goals": {
