@@ -1,3 +1,7 @@
+## 2026-08-05
+- **09:48 总裁裁定回退**：PR [#22](https://github.com/chenxi750328ai/neuromorphic-computing/pull/22) 因 **TEST 未过先合入** 违反 IPD，已用 [#24](https://github.com/chenxi750328ai/neuromorphic-computing/pull/24) 回退（`908f356`）。F7 实现/证据仍在 `feature/phase4.1-f7-pl-fc`；**测试沟通验收后再合**。补 `neuro-pre-merge-ipd-gate.py` + PR 模板 + [CI/CD 审计](../docs/ops/2026-08-05-质量流程与CICD审计_PR22.md)。缺口：GitHub 无 required review；CI 不读 WO-TEST。Phase8 仍等 F2。
+- **09:35 认错**：09:21 合入 / 09:27 TEST 才 PASS；后补不能洗白。
+
 ## 2026-08-04
 - **11:42 自驱唤醒执行**：推送 `feature/phase4.1-fpga-sovereign-s2`（`0e4cdb8`+`0f88064`）并开 **PR [#21](https://github.com/chenxi750328ai/neuromorphic-computing/pull/21)**（openXC7 LIF AXI 入链 G1–G8 + PYNQ 硬件狗）。本地 `goal_verify` 仍 **8/8**。**≠关口关闭**；合 main 待 neuro-ci。
 - **11:18 自驱唤醒核盘**：PR [#14](https://github.com/chenxi750328ai/neuromorphic-computing/pull/14) **已合**（FPGA 双路线：R-A 单算子 PL 通 / R-B Z2 并行整网资源墙）。G-LAT [#13](https://github.com/chenxi750328ai/neuromorphic-computing/pull/13) 已合（r2 p50≈3.5ms）。
