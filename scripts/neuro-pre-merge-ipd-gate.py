@@ -32,20 +32,26 @@ def load_wo(wo_id: str) -> dict:
 
 
 def last_verify_ok(wo_id: str) -> tuple[bool, str]:
+    notes: list[str] = []
     es = VC / "data" / "wo-agent-execution-state" / f"{wo_id}.json"
-    if not es.is_file():
-        return False, "no executionState"
-    state = json.loads(es.read_text(encoding="utf-8"))
-    lv = state.get("lastVerify") or {}
-    if lv.get("ok") is True:
-        return True, f"lastVerify.ok=true id={lv.get('id') or lv.get('verifyId')}"
-    # fallback: dispatch-check summary
+    if es.is_file():
+        state = json.loads(es.read_text(encoding="utf-8"))
+        lv = state.get("lastVerify") or {}
+        if lv.get("ok") is True:
+            return True, f"lastVerify.ok=true id={lv.get('id') or lv.get('verifyId')}"
+        notes.append(f"lastVerify not ok: {lv!r}")
+    else:
+        notes.append("no executionState")
+    # fallback: checker dispatch-check summary（执行态未落盘时）
     summary = VC / "data" / "ops" / "wo-verify" / f"{wo_id}-dispatch-check-summary.json"
     if summary.is_file():
         s = json.loads(summary.read_text(encoding="utf-8"))
         if s.get("nodeVerdict") == "PASS" and not s.get("red"):
             return True, f"dispatch-check PASS @ {s.get('ranAt')}"
-    return False, f"lastVerify not ok: {lv!r}"
+        notes.append(f"dispatch-check not PASS: verdict={s.get('nodeVerdict')} red={s.get('red')}")
+    else:
+        notes.append("no dispatch-check summary")
+    return False, "; ".join(notes)
 
 
 def main() -> int:
