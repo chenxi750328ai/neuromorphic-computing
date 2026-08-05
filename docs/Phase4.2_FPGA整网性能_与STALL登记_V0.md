@@ -75,7 +75,7 @@ Phase4.1 功能可用 ──┬──► Phase5 + GWT-0/6 仿真（并行）
 | 其它业务指标 | ✅ 同意：**单独定标**（不塞进 4.2-LAT） |
 | 本 STALL 表 | ✅ 按登记执行 |
 
-下一刀：**WO-DEV-NEURO-F7-PERF** exec 已落分支 `feature/phase4.2-f7-perf-lat100` + perf 脚本 + fast-MMIO + tick 调度 RTL 草案；**P4.2-LAT 仍 FAIL** → 需 overlay v2 + 板测。
+下一刀：**WO-DEV-NEURO-F7-PERF** exec rework（2026-08-05T1633）：离线充实 `fullnet_tick_scheduler.v` + Verilator 骨架 + overlay v2 TCL 草案；**板 192.168.137.3 DOWN** → perf JSON 标 `board.status=unreachable`；**P4.2-LAT 仍 FAIL**（≈306s/张）→ **STALL 保持** → 需 overlay v2 bitstream + 板可达复测。
 
 ---
 
