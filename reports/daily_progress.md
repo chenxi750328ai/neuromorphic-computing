@@ -1,5 +1,10 @@
 ## 2026-08-05
-- **15:16 自驱唤醒**：wake「待 Approve #26」已过时。真态：[#26](https://github.com/chenxi750328ai/neuromorphic-computing/pull/26) **已 Approve+MERGED**（`e0c41a9` · 15:14 · `chenxi750328`）。F7 证据在 main。DEV/TEST 仍 `awaiting_acceptance`（待 VP 关单）。**未代关 Phase4.1**；Phase8 仍等 F2。更新计划/milestones；wake consume。
+- **15:53 总裁裁定落盘**：4.1 **性能不达标不算过**（仅功能可用）；同意与 Phase5 并行往后走；依赖性能的点标 **STALL**，此前必须完成 **Phase4.2**。落盘 `Phase4.2_FPGA整网性能_与STALL登记_V0.md`，修订 GWT 依赖 DAG / F7 一页 / 并行计划。STALL：P7-2/P7-3、P8 能效、FPGA 加速话术。
+- **15:43 自驱唤醒**：VP 关单仍等人。并行开工：F7 延迟一页 + Phase5/GWT-0 计划已开 PR；不代关 4.1、不开 Phase8 工程。wake consume。
+- **15:42 F7 延迟一页 + 并行口径**：整网墙钟≈**306s/张**（MMIO time-mux，非加速）；落盘 `docs/phase4_poc_evidence/F7_整网延迟与性能_一页_20260805.md`。总裁：5/6/7/8 能并行则并行；Phase8 工程仍要 F2 书面句。
+- **15:35 自驱唤醒**：仍机尽。纠偏焦点污染——**Phase8≠下一站**；4.1 关后主链是 **Phase5→6→7(GWT)**，Phase8 仅 F2 另轨。P0 只留 **VP 关单** DEV/TEST。不代关、不开 Phase8。wake consume。
+- **15:22 自驱唤醒**：P0 为人侧 VP 关单；#26 已在 main。
+- **15:16 自驱唤醒**：[#26](https://github.com/chenxi750328ai/neuromorphic-computing/pull/26) **已 Approve+MERGED**（`e0c41a9`）。DEV/TEST 仍待 VP 关单；Phase8 仍等 F2。
 - **10:55 自驱唤醒纠偏**：当时 #26 仍待审；现已合入，本条作历史。
 - **10:34 合规重合**：开 [#26](https://github.com/chenxi750328ai/neuromorphic-computing/pull/26)（`feature/phase4.1-f7-pl-fc-remerge`，反回退 402195f）；`neuro-pre-merge-ipd-gate` 绿。
 - **09:48 总裁裁定回退**：PR [#22](https://github.com/chenxi750328ai/neuromorphic-computing/pull/22) 因 TEST 未过先合，[#24](https://github.com/chenxi750328ai/neuromorphic-computing/pull/24) 已回退。补 IPD 门禁 + 审计。Phase8 仍等 F2。
