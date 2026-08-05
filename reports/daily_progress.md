@@ -1,4 +1,5 @@
 ## 2026-08-05
+- **15:43 自驱唤醒**：VP 关单仍等人。按并行口径开工：落盘 F7 延迟一页 + Phase5/GWT-0 并行计划；**不**代关 4.1、**不**开 Phase8 工程。wake consume。
 - **10:34 合规重合准备**：required review=1 已开；DEV/TEST IPD gate PASS；自 `402195f` 反回退恢复 F7 入链证据，开重合 PR（待 neuro-ci + 人审 Approve）。
 - **09:48 总裁裁定回退**：PR [#22](https://github.com/chenxi750328ai/neuromorphic-computing/pull/22) 因 **TEST 未过先合入** 违反 IPD，已用 [#24](https://github.com/chenxi750328ai/neuromorphic-computing/pull/24) 回退（`908f356`）。F7 实现/证据仍在 `feature/phase4.1-f7-pl-fc`；**测试沟通验收后再合**。补 `neuro-pre-merge-ipd-gate.py` + PR 模板 + [CI/CD 审计](../docs/ops/2026-08-05-质量流程与CICD审计_PR22.md)。缺口：GitHub 无 required review；CI 不读 WO-TEST。Phase8 仍等 F2。
 - **09:35 认错**：09:21 合入 / 09:27 TEST 才 PASS；后补不能洗白。
