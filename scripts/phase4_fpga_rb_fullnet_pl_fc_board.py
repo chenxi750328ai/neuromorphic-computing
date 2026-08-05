@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""F7 · PL fc+LIF 整网前向 — PYNQ 板侧（陈正飞 · WO-DEV-NEURO-F7-PL-FC）.
+"""F7 · PL fc+LIF 整网前向 — PYNQ 板侧（陈正飞 · WO-DEV-NEURO-F7-PL-FC / Phase4.2 perf）.
 
 PS 仅 load_dma_orchestrate：装权重/图、kick start、读 pred。
 fc* 与 LIF 均在 PL（MMIO linear_mac_0 + lif_step_0）；禁止 PS numpy fc。
+Phase4.2：软件侧 fast MMIO（紧轮询 / 本地引用）；RTL DMA 调度另账。
 """
 from __future__ import annotations
 
@@ -16,21 +17,12 @@ import numpy as np
 os.environ["XILINX_XRT"] = "/usr"
 from pynq import MMIO, Overlay  # noqa: E402
 
+from phase4_fpga_f7_mmio_fast import lif_pl_fast, mac_pl_fast, s32, u32  # noqa: E402
+
 FRAC = 16
 SCALE = 1 << FRAC
-# F7 overlay map (see f7_fullnet_pl_fc_overlay.hwh). PYNQ may omit module_ref
-# linear_mac_0 from ip_dict/attrs — drive via MMIO when missing.
 MAC_BASE = 0x40001000
 LIF_BASE = 0x40000000
-
-
-def u32(v: int) -> int:
-    return int(v) & 0xFFFFFFFF
-
-
-def s32(v: int) -> int:
-    v = int(v) & 0xFFFFFFFF
-    return v - 0x100000000 if v >= 0x80000000 else v
 
 
 class _MmioRegs:
@@ -72,31 +64,11 @@ def main() -> int:
         mac_drv = probe
         mac_via = "mmio_0x40001000"
     fc_on_pl = True
-
-    def lif_pl(cur: int, mem: int) -> tuple[int, int]:
-        lif_drv.write(0x04, u32(cur))
-        lif_drv.write(0x08, u32(mem))
-        lif_drv.write(0x00, 1)
-        st = 0
-        for _ in range(20000):
-            st = lif_drv.read(0x0C)
-            if st & 1:
-                break
-        spk = (st >> 1) & 1
-        return spk, s32(lif_drv.read(0x10))
-
-    def mac_pl(w_row: np.ndarray, x_vec: np.ndarray, bias: int) -> int:
-        dim = int(w_row.shape[0])
-        mac_drv.write(0x04, dim)
-        mac_drv.write(0x10, u32(bias))
-        mac_drv.write(0x00, 1)  # start before stream
-        for i in range(dim):
-            mac_drv.write(0x08, u32(int(w_row[i])))
-            mac_drv.write(0x0C, u32(int(x_vec[i])))  # X write pulses W+X valid
-        for _ in range(500000):
-            if mac_drv.read(0x14) & 1:
-                break
-        return s32(mac_drv.read(0x18))
+    # Pre-bind for inner loops (Phase4.2 fast path — same overlay, less Python overhead)
+    w1_rows = [w1[j] for j in range(hidden)]
+    w2_rows = [w2[k] for k in range(n_out)]
+    b1_i = [int(b1[j]) for j in range(hidden)]
+    b2_i = [int(b2[k]) for k in range(n_out)]
 
     preds: list[int] = []
     t_fc_ms = 0.0
@@ -113,17 +85,17 @@ def main() -> int:
             spk1 = np.zeros(hidden, dtype=np.int64)
             t_a = time.perf_counter()
             for j in range(hidden):
-                cur1 = mac_pl(w1[j], x, int(b1[j]))
+                cur1 = mac_pl_fast(mac_drv, w1_rows[j], x, b1_i[j])
                 n_mac_calls += 1
-                spk, mem1[j] = lif_pl(int(cur1), int(mem1[j]))
+                spk, mem1[j] = lif_pl_fast(lif_drv, int(cur1), int(mem1[j]))
                 spk1[j] = spk * SCALE
                 n_lif_calls += 1
             t_fc_ms += (time.perf_counter() - t_a) * 1000
             t_b = time.perf_counter()
             for k in range(n_out):
-                cur2 = mac_pl(w2[k], spk1, int(b2[k]))
+                cur2 = mac_pl_fast(mac_drv, w2_rows[k], spk1, b2_i[k])
                 n_mac_calls += 1
-                spk, mem2[k] = lif_pl(int(cur2), int(mem2[k]))
+                spk, mem2[k] = lif_pl_fast(lif_drv, int(cur2), int(mem2[k]))
                 spk_sum[k] += spk
                 n_lif_calls += 1
             t_lif_ms += (time.perf_counter() - t_b) * 1000
@@ -151,6 +123,12 @@ def main() -> int:
         "in_dim": in_dim,
         "hidden": hidden,
         "n_out": n_out,
+        "optimizations_applied": [
+            "phase4.2_fast_mmio_helpers",
+            "tighter_done_polling",
+            "prebound_weight_rows",
+        ],
+        "perf_note": "Phase4.2 software MMIO trim; ≤100ms needs PL layer scheduler + DMA overlay",
     }
     from pathlib import Path
 

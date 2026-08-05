@@ -1,0 +1,24 @@
+# Phase4.2 F7 · fullnet_tick_scheduler Verilator 仿真骨架
+# 用法: make -f Makefile.tick_scheduler run
+# 依赖: verilator, g++
+
+VERILATOR ?= verilator
+RTL_DIR   := ../rtl
+BUILD_DIR := obj_dir_tick_sched
+TOP       := fullnet_tick_scheduler
+TB        := tb_fullnet_tick_scheduler.cpp
+
+.PHONY: all run clean
+
+all: $(BUILD_DIR)/V$(TOP)
+
+$(BUILD_DIR)/V$(TOP): $(RTL_DIR)/$(TOP).v $(TB)
+	$(VERILATOR) -Wall -Wno-UNUSEDPARAM -Wno-UNUSEDSIGNAL --cc $(RTL_DIR)/$(TOP).v --top-module $(TOP) \
+		-Mdir $(BUILD_DIR) --exe $(TB) -CFLAGS "-std=c++17"
+	$(MAKE) -C $(BUILD_DIR) -f V$(TOP).mk V$(TOP)
+
+run: all
+	./$(BUILD_DIR)/V$(TOP) 25 256 10
+
+clean:
+	rm -rf $(BUILD_DIR)

@@ -1,0 +1,80 @@
+{
+  "schema": "phase4.2-fpga-rb-fullnet-pl-fc-perf-v1",
+  "generated_at": "2026-08-05T16:40:00+08:00",
+  "agent": "ag-chenzhengfei",
+  "wo_id": "WO-DEV-NEURO-F7-PERF",
+  "route": "F7 time-mux fc+LIF on PL · Phase4.2 LAT",
+  "source": "baseline_gate_json",
+  "threshold_ms": 100.0,
+  "n": 20,
+  "board_pred_match_rate": 1.0,
+  "fc_on_pl": true,
+  "lif_on_pl": true,
+  "per_sample_ms": 306201.30545,
+  "p50_ms": 306201.30545,
+  "wall_ms": 6124026.109,
+  "fc_pl_ms": 6046521.25,
+  "lif_pl_ms": 77463.064,
+  "n_mac_pl_calls": 133000,
+  "n_lif_pl_calls": 133000,
+  "mac_access": "mmio_0x40001000",
+  "ps_role": "load_dma_orchestrate",
+  "preds": [7, 2, 1, 0, 4, 1, 4, 9, 6, 9, 0, 6, 9, 0, 1, 5, 9, 7, 3, 4],
+  "board": {
+    "status": "unreachable",
+    "host": "192.168.137.3",
+    "probe": "device-lab-20260805-163231",
+    "detail": "ping/SSH/ARP 全挂；Atlas 192.168.137.2 UP",
+    "ok": false,
+    "n": 20,
+    "correct": 19,
+    "acc_vs_label": 0.95,
+    "preds": [7, 2, 1, 0, 4, 1, 4, 9, 6, 9, 0, 6, 9, 0, 1, 5, 9, 7, 3, 4],
+    "labels": [7, 2, 1, 0, 4, 1, 4, 9, 5, 9, 0, 6, 9, 0, 1, 5, 9, 7, 3, 4],
+    "wall_ms": 6124026.109,
+    "fc_pl_ms": 6046521.25,
+    "lif_pl_ms": 77463.064,
+    "n_mac_pl_calls": 133000,
+    "n_lif_pl_calls": 133000,
+    "fc_on_pl": true,
+    "lif_on_pl": true,
+    "mac_access": "mmio_0x40001000",
+    "ps_role": "load_dma_orchestrate",
+    "split": "F7 fullnet: fc*+LIF on PL time-mux; PS load/orchestrate only",
+    "in_dim": 784,
+    "hidden": 256,
+    "n_out": 10,
+    "note": "延迟数字引用 Phase4.1 基线；本轮未上板复测"
+  },
+  "board_ssh": {
+    "ok": false,
+    "skipped": true,
+    "reason": "board_unreachable"
+  },
+  "baseline_ref": "/home/cx/neuromorphic-computing/docs/phase4_poc_evidence/fpga_rb_fullnet_pl_fc_gate.json",
+  "baseline_per_sample_ms": 306201.30545,
+  "optimizations_applied": [],
+  "offline_engineering": {
+    "round": "WO-DEV-NEURO-F7-PERF-rework-20260805T1633",
+    "items": [
+      "fullnet_tick_scheduler.v FSM 充实（fc1/lif1/fc2/lif2 × 25 tick）",
+      "Verilator 仿真骨架 fpga/sim/tb_fullnet_tick_scheduler.cpp",
+      "overlay v2 TCL 草案 create_fullnet_pl_fc_overlay_v2.tcl",
+      "overlays/README_f7_overlay_v2.md 集成笔记"
+    ]
+  },
+  "blockers": [
+    "PYNQ 192.168.137.3 DOWN — 禁止 --skip-board 冒充板上验收绿",
+    "P4.2-LAT 未达标：per_sample_ms≈306201 >> 100ms 阈值",
+    "需 overlay v2 bitstream + 板可达后真实 perf 采集"
+  ],
+  "stall": {
+    "keep": true,
+    "ids": ["STALL-P7-2", "STALL-P7-3", "STALL-P8-EN", "STALL-DEMO-FPGA", "STALL-4CLOSE-PERF"],
+    "note": "Phase4.2 未过关前 STALL 保持"
+  },
+  "verdict": "FAIL_p4.2_lat",
+  "p4_2_lat_ok": false,
+  "p4_2_acc_ok": true,
+  "p4_2_pl_ok": true
+}
