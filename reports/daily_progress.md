@@ -1,10 +1,17 @@
 ## 2026-08-05
-- **10:34 合规重合准备**：required review=1 已开；DEV/TEST IPD gate PASS；自 `402195f` 反回退恢复 F7 入链证据，开重合 PR（待 neuro-ci + 人审 Approve）。
-- **09:48 总裁裁定回退**：PR [#22](https://github.com/chenxi750328ai/neuromorphic-computing/pull/22) 因 **TEST 未过先合入** 违反 IPD，已用 [#24](https://github.com/chenxi750328ai/neuromorphic-computing/pull/24) 回退（`908f356`）。F7 实现/证据仍在 `feature/phase4.1-f7-pl-fc`；**测试沟通验收后再合**。补 `neuro-pre-merge-ipd-gate.py` + PR 模板 + [CI/CD 审计](../docs/ops/2026-08-05-质量流程与CICD审计_PR22.md)。缺口：GitHub 无 required review；CI 不读 WO-TEST。Phase8 仍等 F2。
+- **15:59 KPI**：总裁接受 **P4.2-LAT ≤100ms/张**；其它业务指标单独定标。登记表已钉；下一刀开 Phase4.2 性能 WO（与 Phase5 并行）。
+- **15:53 总裁裁定落盘**：4.1 **性能不达标不算过**（仅功能可用）；同意与 Phase5 并行往后走；依赖性能的点标 **STALL**，此前必须完成 **Phase4.2**。落盘 `Phase4.2_FPGA整网性能_与STALL登记_V0.md`，修订 GWT 依赖 DAG / F7 一页 / 并行计划。STALL：P7-2/P7-3、P8 能效、FPGA 加速话术。
+- **15:43 自驱唤醒**：VP 关单仍等人。并行开工：F7 延迟一页 + Phase5/GWT-0 计划已开 PR；不代关 4.1、不开 Phase8 工程。wake consume。
+- **15:42 F7 延迟一页 + 并行口径**：整网墙钟≈**306s/张**（MMIO time-mux，非加速）；落盘 `docs/phase4_poc_evidence/F7_整网延迟与性能_一页_20260805.md`。总裁：5/6/7/8 能并行则并行；Phase8 工程仍要 F2 书面句。
+- **15:35 自驱唤醒**：仍机尽。纠偏焦点污染——**Phase8≠下一站**；4.1 关后主链是 **Phase5→6→7(GWT)**，Phase8 仅 F2 另轨。P0 只留 **VP 关单** DEV/TEST。不代关、不开 Phase8。wake consume。
+- **15:22 自驱唤醒**：P0 为人侧 VP 关单；#26 已在 main。
+- **15:16 自驱唤醒**：[#26](https://github.com/chenxi750328ai/neuromorphic-computing/pull/26) **已 Approve+MERGED**（`e0c41a9`）。DEV/TEST 仍待 VP 关单；Phase8 仍等 F2。
+- **10:55 自驱唤醒纠偏**：当时 #26 仍待审；现已合入，本条作历史。
+- **10:34 合规重合**：开 [#26](https://github.com/chenxi750328ai/neuromorphic-computing/pull/26)（`feature/phase4.1-f7-pl-fc-remerge`，反回退 402195f）；`neuro-pre-merge-ipd-gate` 绿。
+- **09:48 总裁裁定回退**：PR [#22](https://github.com/chenxi750328ai/neuromorphic-computing/pull/22) 因 TEST 未过先合，[#24](https://github.com/chenxi750328ai/neuromorphic-computing/pull/24) 已回退。补 IPD 门禁 + 审计。Phase8 仍等 F2。
 - **09:35 认错**：09:21 合入 / 09:27 TEST 才 PASS；后补不能洗白。
 
 ## 2026-08-04
-- **19:42 F7 N=20 PASS**：`PASS_f7_pl_fc` · board_match_rate=**1.0** · pl_model=1.0 · acc_vs_label=0.95 · fc_on_pl/lif_on_pl · mac=mmio · wall≈102min。证据 `fpga_rb_fullnet_pl_fc_gate.json`。下一步 WO-DEV 复验/checker。**未代关 Phase4.1**（待 WO+PR）。
 - **11:42 自驱唤醒执行**：推送 `feature/phase4.1-fpga-sovereign-s2`（`0e4cdb8`+`0f88064`）并开 **PR [#21](https://github.com/chenxi750328ai/neuromorphic-computing/pull/21)**（openXC7 LIF AXI 入链 G1–G8 + PYNQ 硬件狗）。本地 `goal_verify` 仍 **8/8**。**≠关口关闭**；合 main 待 neuro-ci。
 - **11:18 自驱唤醒核盘**：PR [#14](https://github.com/chenxi750328ai/neuromorphic-computing/pull/14) **已合**（FPGA 双路线：R-A 单算子 PL 通 / R-B Z2 并行整网资源墙）。G-LAT [#13](https://github.com/chenxi750328ai/neuromorphic-computing/pull/13) 已合（r2 p50≈3.5ms）。
 - **Phase8**：仍等总裁书面解除 F2；默认不开。TR2 VP / US-EN 可选不阻塞。

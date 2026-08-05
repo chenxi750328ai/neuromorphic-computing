@@ -89,25 +89,18 @@
          ├──► FPGA 路径 B PR · TR2 签字  （P0 并行）
          │
          ▼
-       Phase4 关单（G0 签字 + 分工定稿）
+       Phase4.1 功能可用（≠性能过关）
          │
-         ├──────────────────────────────┐
-         ▼                              ▼
-   Phase5 · 感知模块 M1            陈东轨（并行）
-   N-MNIST/事件编码                     CL-1 探针冻结
-         │                              NEU-I1→I2
-         ▼                              NEU-D1 检索 emit
-   GWT-0 工作区协议冻结 ◄───────────────┘
-         │
-         ▼
-   Phase6 · GWT-MVP（4090 仿真）
-     GWT-1 → GWT-2 → GWT-3（CL 探针）
-         │
-         ▼
-   Phase7 · 异构映射（吃 Phase4.1 分工）
-         │
-         ▼
-   Phase8 · 能效 + 自学习/continual（v2 立项）
+         ├──────────────────┬─────────────────────────┐
+         ▼                  ▼                         ▼
+   Phase4.2 性能      Phase5 · M1              陈东轨（并行）
+   （解 STALL）        N-MNIST/事件编码              CL / NEU-*
+         │                  │
+         │                  ▼
+         │            GWT-0 → Phase6 仿真（GWT-1…3）
+         │                  │
+         ▼                  ▼
+   解除 STALL-* ──► Phase7 P7-2/P7-3 跨板  ·  Phase8 能效表
 
 [OPTIONAL 研究轨] J-lens teacher 探针 → 仅 NEU-I4 / A 轨审计，不挡主链
 ```
@@ -116,22 +109,31 @@
 
 ## 4. 各阶段交付与门禁
 
-### 4.1 Phase4.1 → Phase4 关单（当前 P0）
+### 4.1 Phase4.1 · 功能可用（≠性能过关）
 
 | ID | 交付 | 依赖 | PASS |
 |----|------|------|------|
 | P4.1-G0 | 总裁签 §8 R1–R5 + B1–B3 | G1–G3 bench | 签字记录 |
 | P4.1-G1 | ssh/daemon bench JSON | Atlas 可达 | exit 0 |
 | P4.1-G3 | 瓶颈报告 + 分工 v1 | G1 | `Phase4.1_链路bench与分工报告_V1.md` |
-| P4-FPGA | FPGA 路径 B PR | neuro-ci | main 合并 |
+| P4-FPGA | FPGA 路径 B / F7 功能（pred≡golden） | neuro-ci | main 合并 |
 
-**真源**：[phase4_distributed_inference_V1.md](./phase4_distributed_inference_V1.md) · `data/neuromorphic-milestones.json` → `phase41_status`
+**真源**：[phase4_distributed_inference_V1.md](./phase4_distributed_inference_V1.md) · `neuromorphic-milestones.json`  
+**2026-08-05 裁定**：4.1 **性能不达标不能算过**，只记 **功能可用**；性能见 **§4.1b Phase4.2**。
 
-### 4.2 Phase5 · 感知模块 M1
+### 4.1b Phase4.2 · FPGA 整网性能（与 Phase5 并行）
 
 | ID | 内容 | 依赖 | PASS |
 |----|------|------|------|
-| P5-1 | N-MNIST 或事件编码管线 | Phase4 关 | loader + 1 epoch smoke |
+| P4.2-* | 延迟/吞吐门禁 + 机读报告 | 4.1 功能可用 | 见 [Phase4.2_FPGA整网性能_与STALL登记_V0.md](./Phase4.2_FPGA整网性能_与STALL登记_V0.md) |
+
+**STALL**：凡标 `STALL-*` 的下游，**4.2 完成前不得验收/宣称通过**。
+
+### 4.2 Phase5 · 感知模块 M1（可与 4.2 并行）
+
+| ID | 内容 | 依赖 | PASS |
+|----|------|------|------|
+| P5-1 | N-MNIST 或事件编码管线 | 4.1 功能可用即可开工（不等 4.2） | loader + 1 epoch smoke |
 | P5-2 | 独立感知 SNN（≠ MnistSNN 单体） | P5-1 | test acc ≥ 基线或 CHARTER KPI |
 | P5-3 | 输出 **感知特征向量**（固定 dim） | P5-2 | `runs/m1_perception/metrics.json` |
 
@@ -141,9 +143,9 @@
 
 | ID | 内容 | 依赖 | PASS |
 |----|------|------|------|
-| GWT-0 | [GWT_工作区协议_V0.md](./GWT_工作区协议_V0.md) 评审通过 | 无（可与 P5 并行） | PL + 总裁批注 |
+| GWT-0 | [GWT_工作区协议_V0.md](./GWT_工作区协议_V0.md) 评审通过 | 无（可与 P5 / 4.2 并行） | PL + 总裁批注 |
 
-### 4.4 Phase6 · GWT-MVP（仿真）
+### 4.4 Phase6 · GWT-MVP（仿真 · 不 STALL）
 
 | ID | 模块范围 | 依赖 | PASS |
 |----|----------|------|------|
@@ -151,28 +153,25 @@
 | GWT-2 | M1+M2+M3+M4 · 竞争写 · 广播读 · T≥8 global tick | GWT-1 | `--stage 2` exit 0 |
 | GWT-3 | 接陈东 CL：`chendong_probe_exam.py` P-ML + P-RET | GWT-2 + CL-1 | ret_hit_rate ≥ baseline |
 
-**脚本（待建）**：
-
 ```bash
-# 规格；实现 WO 另开
 python3 scripts/gwt_mvp_exam.py --stage 2 --workspace-doc docs/GWT_工作区协议_V0.md
 ```
 
-### 4.5 Phase7 · 异构映射
+### 4.5 Phase7 · 异构映射（含 STALL）
 
-| ID | 内容 | 依赖 | PASS |
-|----|------|------|------|
-| P7-1 | 模块→节点映射表（吃 G0 分工） | GWT-2 + Phase4 关 | `docs/GWT_异构映射_V0.md` |
-| P7-2 | workspace payload 走 daemon 链 | P7-1 | 复用 `distributed_bench_*.json` 格式 |
-| P7-3 | e2e GWT tick ≥1 跨板 | P7-2 | comm_ratio 可接受 |
+| ID | 内容 | 依赖 | PASS | STALL |
+|----|------|------|------|-------|
+| P7-1 | 模块→节点映射表草稿 | GWT-2 + 4.1 功能 | `docs/GWT_异构映射_V0.md` | 否 |
+| P7-2 | workspace payload 走 daemon/板链（性能相关） | P7-1 + **Phase4.2** | 复用 bench JSON | **STALL-P7-2** |
+| P7-3 | e2e GWT tick ≥1 跨板实跑 | P7-2 + **Phase4.2** | comm_ratio 可接受 | **STALL-P7-3** |
 
-### 4.6 Phase8 · v2 能力（立项后）
+### 4.6 Phase8 · v2 能力（立项后 · 能效 STALL）
 
-| 方向 | 内容 | 前置 |
-|------|------|------|
-| 能效 | 墙插 + 延迟表 | Phase7 |
-| 自学习/continual | 在线更新协议 | GWT-3 + NEU-I4 |
-| 工业场景 | 贴膜机等 KPI | 总裁另批 OR |
+| 方向 | 内容 | 前置 | STALL |
+|------|------|------|-------|
+| 能效 | 墙插 + 延迟表 | Phase7 + **Phase4.2** | **STALL-P8-EN** |
+| 自学习/continual | 在线更新协议 | GWT-3 + NEU-I4 + F2 | 否（算法）；板测另论 |
+| 工业场景 | 贴膜机等 KPI | 总裁另批 OR | 视 KPI 是否含延迟 |
 
 ---
 
