@@ -1,3 +1,15 @@
+## 2026-08-05
+- **10:34 合规重合准备**：required review=1 已开；DEV/TEST IPD gate PASS；自 `402195f` 反回退恢复 F7 入链证据，开重合 PR（待 neuro-ci + 人审 Approve）。
+- **09:48 总裁裁定回退**：PR [#22](https://github.com/chenxi750328ai/neuromorphic-computing/pull/22) 因 **TEST 未过先合入** 违反 IPD，已用 [#24](https://github.com/chenxi750328ai/neuromorphic-computing/pull/24) 回退（`908f356`）。F7 实现/证据仍在 `feature/phase4.1-f7-pl-fc`；**测试沟通验收后再合**。补 `neuro-pre-merge-ipd-gate.py` + PR 模板 + [CI/CD 审计](../docs/ops/2026-08-05-质量流程与CICD审计_PR22.md)。缺口：GitHub 无 required review；CI 不读 WO-TEST。Phase8 仍等 F2。
+- **09:35 认错**：09:21 合入 / 09:27 TEST 才 PASS；后补不能洗白。
+
+## 2026-08-04
+- **19:42 F7 N=20 PASS**：`PASS_f7_pl_fc` · board_match_rate=**1.0** · pl_model=1.0 · acc_vs_label=0.95 · fc_on_pl/lif_on_pl · mac=mmio · wall≈102min。证据 `fpga_rb_fullnet_pl_fc_gate.json`。下一步 WO-DEV 复验/checker。**未代关 Phase4.1**（待 WO+PR）。
+- **11:42 自驱唤醒执行**：推送 `feature/phase4.1-fpga-sovereign-s2`（`0e4cdb8`+`0f88064`）并开 **PR [#21](https://github.com/chenxi750328ai/neuromorphic-computing/pull/21)**（openXC7 LIF AXI 入链 G1–G8 + PYNQ 硬件狗）。本地 `goal_verify` 仍 **8/8**。**≠关口关闭**；合 main 待 neuro-ci。
+- **11:18 自驱唤醒核盘**：PR [#14](https://github.com/chenxi750328ai/neuromorphic-computing/pull/14) **已合**（FPGA 双路线：R-A 单算子 PL 通 / R-B Z2 并行整网资源墙）。G-LAT [#13](https://github.com/chenxi750328ai/neuromorphic-computing/pull/13) 已合（r2 p50≈3.5ms）。
+- **Phase8**：仍等总裁书面解除 F2；默认不开。TR2 VP / US-EN 可选不阻塞。
+- **收工**：更新 `docs/每日计划.md` · 本文件 · `vcompany/data/neuromorphic-milestones.json` · wake consume。
+
 ## 2026-07-27
 - **11:17 G-LAT r2（connection_reuse）**：分支 `feature/phase4.1-g-lat` · 部署/重启 Atlas daemon:9527 · WSL `phase4_distributed_bench.py --daemon-reuse-conn --vs-ort --samples 100` · 门禁 `--gate` **exit 0** → **G-ACC=1.0** · **G-LAT p50=3.501/p95=4.036 PASS** · **G-COMM ok** · **overall_ok=true** · 对照 r1 p50=5.513 → r2 3.501 · 证据 `docs/phase4_poc_evidence/spec_gate_report_daemon_n100_vs_ort_20260727_r2.json` + summary + `g_lat_r1_vs_r2_20260727.md` · **未开 PR**（G-LAT 过≠Phase4.1 关口关闭）。
 - **10:48 外部 STDP MD 摄入 + 计划刷新**：读 `neu/docs` 新 MD《无目标函数、无监督条件下：STDP权重优化…》；落盘摄入笔记（部分 DOI 待核）；**不影响 G-LAT**；强化 Phase8 读出+弱引导、首版不做联邦/静默突触。G-LAT 计划补测试用例白话；新建 Phase8 文献刷新计划。下一工程刀仍是 G-LAT 连接复用→r2。

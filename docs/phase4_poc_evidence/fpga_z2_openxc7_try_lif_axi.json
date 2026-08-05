@@ -1,0 +1,112 @@
+{
+  "schema": "phase4.1-fpga-z2-openxc7-try-v0",
+  "generated_at": "2026-08-02T10:32:42.540700+08:00",
+  "agent": "ChenZhengGong",
+  "part": "xc7z020clg400-1",
+  "board": "PYNQ-Z2",
+  "design": "lif_open_axi_z2.v (lif_axi)",
+  "toolchain_notes": {
+    "yosys": "system /usr/bin/yosys 0.33",
+    "nextpnr": "openXC7/nextpnr-xilinx stable-backports @62839b3",
+    "prjxray": "local build xc7frames2bit (Wno-error=deprecated-declarations)",
+    "carry_counter": "FAIL route on this build (see design=carry)",
+    "board_load": "not attempted this run"
+  },
+  "stages": {
+    "tools": {
+      "yosys": true,
+      "nextpnr-xilinx": true,
+      "bbasm": true,
+      "fasm2frames": true,
+      "xc7frames2bit": true,
+      "python": true
+    },
+    "tool_paths": {
+      "yosys": "/usr/bin/yosys",
+      "nextpnr-xilinx": "/home/cx/neuromorphic-computing/third_party/openxc7-try/nextpnr-xilinx/build/nextpnr-xilinx",
+      "bbasm": "/home/cx/neuromorphic-computing/third_party/openxc7-try/nextpnr-xilinx/build/bbasm",
+      "fasm2frames": "/home/cx/neuromorphic-computing/third_party/openxc7-try/prjxray/utils/fasm2frames.py",
+      "xc7frames2bit": "/home/cx/neuromorphic-computing/third_party/openxc7-try/prjxray/build/tools/xc7frames2bit",
+      "python": "/home/cx/neuromorphic-computing/third_party/openxc7-try/venv/bin/python3"
+    },
+    "design_variant": "lif_axi",
+    "synth": {
+      "cmd": [
+        "/usr/bin/yosys",
+        "-p",
+        "synth_xilinx -flatten -arch xc7 -nodsp -nocarry -top blinky -run :map_ffs; dffunmap; synth_xilinx -flatten -arch xc7 -nodsp -nocarry -top blinky -run map_ffs:; write_json /home/cx/neuromorphic-computing/fpga/openxc7_try/build/blinky_lif_axi.json",
+        "/home/cx/neuromorphic-computing/fpga/rtl/lif_step_open.v",
+        "/home/cx/neuromorphic-computing/fpga/openxc7_try/lif_open_axi_z2.v"
+      ],
+      "exit": 0,
+      "ok": true,
+      "seconds": 5.75,
+      "stdout_tail": "                193\n     LUT6                          222\n     MUXF7                          36\n     MUXF8                          17\n     OBUF                            4\n     PS7                             1\n\n   Estimated number of LCs:        626\n\n5.12. Executing CHECK pass (checking for obvious problems).\nChecking module blinky...\nFound and reported 0 problems.\n\n6. Executing JSON backend.\n\nEnd of script. Logfile hash: 8e8d22110d, CPU: user 5.41s system 0.08s, MEM: 135.25 MB peak\nYosys 0.33 (git sha1 2584903a060)\nTime spent: 23% 18x read_verilog (1 sec), 20% 54x opt_clean (1 sec), ...\n",
+      "stderr_tail": "",
+      "netlist": "/home/cx/neuromorphic-computing/fpga/openxc7_try/build/blinky_lif_axi.json",
+      "rtl": [
+        "/home/cx/neuromorphic-computing/fpga/rtl/lif_step_open.v",
+        "/home/cx/neuromorphic-computing/fpga/openxc7_try/lif_open_axi_z2.v"
+      ],
+      "note": "dffunmap -ce-only between fine and map_ffs (CEUSEDMUX workaround)"
+    },
+    "chipdb": {
+      "ok": true,
+      "path": "/home/cx/neuromorphic-computing/third_party/openxc7-try/chipdb/xc7z020clg400-1.bin",
+      "cached": true,
+      "bytes": 136149868
+    },
+    "pnr": {
+      "cmd": [
+        "/home/cx/neuromorphic-computing/third_party/openxc7-try/nextpnr-xilinx/build/nextpnr-xilinx",
+        "--chipdb",
+        "/home/cx/neuromorphic-computing/third_party/openxc7-try/chipdb/xc7z020clg400-1.bin",
+        "--xdc",
+        "/home/cx/neuromorphic-computing/fpga/openxc7_try/pynq_z2_leds.xdc",
+        "--json",
+        "/home/cx/neuromorphic-computing/fpga/openxc7_try/build/blinky_lif_axi.json",
+        "--fasm",
+        "/home/cx/neuromorphic-computing/fpga/openxc7_try/build/blinky_lif_axi.fasm",
+        "--seed",
+        "1"
+      ],
+      "exit": 0,
+      "ok": true,
+      "seconds": 5.66,
+      "stdout_tail": "",
+      "stderr_tail": "             $abc$9089$auto$rtlil.cc:2609:MuxGate$8106      1 0.3ms\n                                               $abc$9089$auto$rtlil.cc:2609:MuxGate$7902      1 0.3ms\n                                               $abc$9089$auto$rtlil.cc:2609:MuxGate$7330      1 0.3ms\nInfo: Router2 time 3.68s\nInfo: Routing $PACKER_VCC_NET connections...\nInfo:     $PACKER_VCC_NET: 7/7 sinks bridged (0 left to main router; max BFS 26)\nInfo: Routing $PACKER_GND_NET connections...\nInfo:     $PACKER_GND_NET: 1728/1728 sinks bridged (0 left to main router; max BFS 3251)\nInfo: Running post-routing legalisation...\n",
+      "fasm": "/home/cx/neuromorphic-computing/fpga/openxc7_try/build/blinky_lif_axi.fasm",
+      "fasm_bytes": 849699
+    },
+    "frames": {
+      "ok": true,
+      "exit": 0,
+      "stderr_tail": "RuntimeWarning: Unable to import fast Antlr4 parser implementation.\n  ImportError: cannot import name 'antlr_to_tuple' from partially initialized module 'fasm.parser' (most likely due to a circular import) (/home/cx/neuromorphic-computing/third_party/openxc7-try/venv/lib/python3.12/site-packages/fasm/parser/__init__.py)\n\n  Falling back to the much slower pure Python textX based parser\n  implementation.\n\n  Getting the faster antlr parser can normally be done by installing the\n  required dependencies and then reinstalling the fasm package with:\n    pip uninstall\n    pip install -v fasm\n\n  warn(\n",
+      "frames_bytes": 8753844
+    },
+    "bitstream": {
+      "cmd": [
+        "/home/cx/neuromorphic-computing/third_party/openxc7-try/prjxray/build/tools/xc7frames2bit",
+        "--part_file",
+        "/home/cx/neuromorphic-computing/third_party/openxc7-try/prjxray-db/zynq7/xc7z020clg400-1/part.yaml",
+        "--part_name",
+        "xc7z020clg400-1",
+        "--frm_file",
+        "/home/cx/neuromorphic-computing/fpga/openxc7_try/build/blinky_lif_axi.frames",
+        "--output_file",
+        "/home/cx/neuromorphic-computing/fpga/openxc7_try/build/blinky_lif_axi.bit"
+      ],
+      "exit": 0,
+      "ok": true,
+      "seconds": 0.09,
+      "stdout_tail": "",
+      "stderr_tail": "",
+      "bit_path": "/home/cx/neuromorphic-computing/fpga/openxc7_try/build/blinky_lif_axi.bit",
+      "bit_bytes": 4045731
+    }
+  },
+  "pass_full_open_bit": true,
+  "pass_synth_xilinx": true,
+  "conclusion": "OPEN_BITSTREAM_OK",
+  "honesty": "结果以本机实测阶段为准，不是 pen 判断"
+}

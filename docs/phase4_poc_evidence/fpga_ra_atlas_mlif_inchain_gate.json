@@ -1,9 +1,10 @@
 {
   "schema": "phase4.1-fpga-ra-atlas-mlif-inchain-v0",
-  "generated_at": "2026-07-28T10:16:50.362790+08:00",
+  "generated_at": "2026-08-02T10:37:47.543638+08:00",
   "agent": "ChenZhengGong",
   "route": "R-A A2 Atlas↔PYNQ M-lif",
   "checkpoint": "/home/cx/neuromorphic-computing/runs/20260527T092534Z/checkpoint.pt",
+  "bit": "fpga/bitstreams/lif_step_overlay_openxc7.bit",
   "topology": "Atlas Q16.16 fc*/lif2 ↔ TCP:9530 ↔ PYNQ lif1 PL TMD",
   "host_proxy": {
     "preds": [
@@ -79,18 +80,18 @@
       3,
       4
     ],
-    "wall_ms": 19866.657,
-    "fpga_lif1_ms": 18280.947,
-    "avg_e2e_ms": 993.333,
-    "avg_fpga_lif1_ms": 914.047,
+    "wall_ms": 21945.87,
+    "fpga_lif1_ms": 20294.555,
+    "avg_e2e_ms": 1097.294,
+    "avg_fpga_lif1_ms": 1014.728,
     "topology": "Atlas(fc*/lif2 Q16.16) ↔ TCP ↔ PYNQ(lif1 PL TMD)",
     "fpga": "192.168.137.3:9530"
   },
   "atlas_ssh": {
     "ok": true,
     "returncode": 0,
-    "wall_ms": 20902.78,
-    "stdout_tail": "ATLAS_MLIF_INCHAIN_OK\n{\"ok\": true, \"n\": 20, \"correct\": 19, \"acc_vs_label\": 0.95, \"preds\": [7, 2, 1, 0, 4, 1, 4, 9, 6, 9, 0, 6, 9, 0, 1, 5, 9, 7, 3, 4], \"labels\": [7, 2, 1, 0, 4, 1, 4, 9, 5, 9, 0, 6, 9, 0, 1, 5, 9, 7, 3, 4], \"wall_ms\": 19866.657, \"fpga_lif1_ms\": 18280.947, \"avg_e2e_ms\": 993.333, \"avg_fpga_lif1_ms\": 914.047, \"topology\": \"Atlas(fc*/lif2 Q16.16) \\u2194 TCP \\u2194 PYNQ(lif1 PL TMD)\", \"fpga\": \"192.168.137.3:9530\"}\n",
+    "wall_ms": 22034.332,
+    "stdout_tail": "ATLAS_MLIF_INCHAIN_OK\n{\"ok\": true, \"n\": 20, \"correct\": 19, \"acc_vs_label\": 0.95, \"preds\": [7, 2, 1, 0, 4, 1, 4, 9, 6, 9, 0, 6, 9, 0, 1, 5, 9, 7, 3, 4], \"labels\": [7, 2, 1, 0, 4, 1, 4, 9, 5, 9, 0, 6, 9, 0, 1, 5, 9, 7, 3, 4], \"wall_ms\": 21945.87, \"fpga_lif1_ms\": 20294.555, \"avg_e2e_ms\": 1097.294, \"avg_fpga_lif1_ms\": 1014.728, \"topology\": \"Atlas(fc*/lif2 Q16.16) \\u2194 TCP \\u2194 PYNQ(lif1 PL TMD)\", \"fpga\": \"192.168.137.3:9530\"}\n",
     "stderr_tail": ""
   },
   "compare": {

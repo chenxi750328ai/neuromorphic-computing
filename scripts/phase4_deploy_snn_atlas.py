@@ -12,7 +12,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_HOST = "192.168.137.2"
 DEFAULT_USER = "root"
-DEFAULT_PASS = "Mind@123"
+DEFAULT_PASS = ""  # set ATLAS_PASS
 WORKDIR = "/tmp/phase4_snn"
 
 
@@ -34,8 +34,8 @@ def main() -> int:
 
     pw = os.environ.get("ATLAS_SSH_PASS", DEFAULT_PASS)
     target = f"{DEFAULT_USER}@{args.host}"
-    ssh = ["sshpass", "-p", pw, "ssh", "-o", "StrictHostKeyChecking=no", target]
-    scp = ["sshpass", "-p", pw, "scp", "-o", "StrictHostKeyChecking=no"]
+    ssh = ["sshpass", "-p", pw, "ssh", "-o", "StrictHostKeyChecking=accept-new", target]
+    scp = ["sshpass", "-p", pw, "scp", "-o", "StrictHostKeyChecking=accept-new"]
 
     run(ssh + [f"mkdir -p {WORKDIR}"])
     for local, remote in (

@@ -30,7 +30,7 @@ try {
     $p = Read-For $sp 2
     Write-Host $p
 
-    Send $sp "Mind@123`r"
+    Send $sp "$env:ATLAS_PASS`r"
     $p = Read-For $sp 3
     Write-Host $p
 

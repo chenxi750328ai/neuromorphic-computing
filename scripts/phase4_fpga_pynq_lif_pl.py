@@ -67,7 +67,7 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--host", default=os.environ.get("PYNQ_HOST", "192.168.137.3"))
     ap.add_argument("--user", default="xilinx")
-    ap.add_argument("--pass", dest="password", default="xilinx")
+    ap.add_argument("--pass", dest="password", default="", help="env PYNQ_PASS/NEURO_PYNQ_PASS")
     ap.add_argument(
         "--bit",
         type=Path,
@@ -95,8 +95,8 @@ def main() -> int:
     remote_bit = "/tmp/lif_step_overlay.bit"
     remote_py = "/tmp/phase4_fpga_pynq_lif_pl_board.py"
     target = f"{args.user}@{args.host}"
-    ssh = ["sshpass", "-p", args.password, "ssh", "-o", "StrictHostKeyChecking=no", target]
-    scp = ["sshpass", "-p", args.password, "scp", "-o", "StrictHostKeyChecking=no"]
+    ssh = ["sshpass", "-p", args.password, "ssh", "-o", "StrictHostKeyChecking=accept-new", target]
+    scp = ["sshpass", "-p", args.password, "scp", "-o", "StrictHostKeyChecking=accept-new"]
 
     subprocess.run(scp + [str(args.bit), f"{target}:{remote_bit}"], check=True)
     Path("/tmp/_lif_pl_board.py").write_text(BOARD_SCRIPT, encoding="utf-8")

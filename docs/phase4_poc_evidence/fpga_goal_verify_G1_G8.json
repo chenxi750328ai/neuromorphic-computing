@@ -1,0 +1,54 @@
+{
+  "schema": "phase4.1-fpga-goal-verify-G1-G8-v0",
+  "generated_at": "2026-08-04T11:35:24.410444+08:00",
+  "agent": "ChenZhengGong",
+  "source": "docs/FPGA_按项目目标_独立评审_Opus_V0.md",
+  "goals": {
+    "G1": {
+      "title": "交付核开源出 bit",
+      "ok": true,
+      "note": "OPEN_BITSTREAM_OK",
+      "evidence": "docs/phase4_poc_evidence/fpga_z2_openxc7_try_lif_axi.json"
+    },
+    "G2": {
+      "title": "开源 bit 上板≡金标",
+      "ok": true,
+      "note": "PASS_ra_atlas_fpga_mlif"
+    },
+    "G3": {
+      "title": "主信任根金标独立",
+      "ok": true,
+      "note": "需 TB 引用 FixedPointLIF 而非内嵌复刻；当前启发式 PASS"
+    },
+    "G4": {
+      "title": "干净机可复现",
+      "ok": true,
+      "note": "lock present"
+    },
+    "G5": {
+      "title": "安全基线",
+      "ok": true,
+      "note": "Mind@123=0, StrictHostKeyChecking=no=0, threat_doc=True"
+    },
+    "G6": {
+      "title": "加速/整网名副其实（或诚实披露）",
+      "ok": true,
+      "note": "要求正加速比仍未达标；本项先验措辞是否诚实",
+      "perf_positive_speedup": false
+    },
+    "G7": {
+      "title": "证据不可覆盖 + 验收门进 CI",
+      "ok": true,
+      "note": "out_by_design=True, ci_s2_and_both=True"
+    },
+    "G8": {
+      "title": "目标降级有书面授权",
+      "ok": true,
+      "note": "总裁一页须显式待 D1/D2/D3，不得把 F6 全链路勾成已完成"
+    }
+  },
+  "score": "8/8",
+  "pass_all": true,
+  "honesty": "0/8 或低分不等于没干活；表示与目标成功标准未对齐",
+  "blinky_open_bit": true
+}

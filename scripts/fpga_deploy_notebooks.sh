@@ -4,13 +4,13 @@ set -euo pipefail
 
 HOST="${PYNQ_HOST:-192.168.137.3}"
 USER="${PYNQ_USER:-xilinx}"
-PASS="${PYNQ_PASS:-xilinx}"
+PASS="${PYNQ_PASS:?set PYNQ_PASS}"
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 REMOTE_DIR="/home/xilinx/jupyter_notebooks/neuromorphic"
 
-sshpass -p "$PASS" ssh -o StrictHostKeyChecking=no "${USER}@${HOST}" "mkdir -p ${REMOTE_DIR}"
+sshpass -p "$PASS" ssh -o StrictHostKeyChecking=accept-new "${USER}@${HOST}" "mkdir -p ${REMOTE_DIR}"
 
-sshpass -p "$PASS" scp -o StrictHostKeyChecking=no \
+sshpass -p "$PASS" scp -o StrictHostKeyChecking=accept-new \
   "${ROOT}/notebooks/fpga/"*.ipynb \
   "${USER}@${HOST}:${REMOTE_DIR}/"
 

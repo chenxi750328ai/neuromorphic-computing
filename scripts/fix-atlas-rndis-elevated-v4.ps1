@@ -64,7 +64,7 @@ ping.exe -n 4 192.168.0.2 2>&1 | ForEach-Object { Log $_ }
 $pingOk = Select-String -Path $Log -Pattern "TTL=" -Quiet
 if ($pingOk) {
     Log "SSH probe..."
-    ssh -o StrictHostKeyChecking=no -o ConnectTimeout=10 -o BatchMode=yes root@192.168.0.2 "hostname; uname -a; npu-smi info 2>/dev/null | head -8" 2>&1 | ForEach-Object { Log $_ }
+    ssh -o StrictHostKeyChecking=accept-new -o ConnectTimeout=10 -o BatchMode=yes root@192.168.0.2 "hostname; uname -a; npu-smi info 2>/dev/null | head -8" 2>&1 | ForEach-Object { Log $_ }
 }
 
 Log "=== v4 done ==="

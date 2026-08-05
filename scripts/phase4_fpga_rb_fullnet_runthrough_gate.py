@@ -51,7 +51,7 @@ def main() -> int:
     ap.add_argument("--samples", type=int, default=20)
     ap.add_argument("--host", default="192.168.137.3")
     ap.add_argument("--user", default="xilinx")
-    ap.add_argument("--pass", dest="password", default="xilinx")
+    ap.add_argument("--pass", dest="password", default="", help="env PYNQ_PASS/NEURO_PYNQ_PASS")
     ap.add_argument("--bit", type=Path, default=DEFAULT_BIT)
     ap.add_argument(
         "--out",
@@ -74,8 +74,8 @@ def main() -> int:
     hp = host_preds(net, x_fp)
 
     target = f"{args.user}@{args.host}"
-    ssh = ["sshpass", "-p", args.password, "ssh", "-o", "StrictHostKeyChecking=no", target]
-    scp = ["sshpass", "-p", args.password, "scp", "-o", "StrictHostKeyChecking=no"]
+    ssh = ["sshpass", "-p", args.password, "ssh", "-o", "StrictHostKeyChecking=accept-new", target]
+    scp = ["sshpass", "-p", args.password, "scp", "-o", "StrictHostKeyChecking=accept-new"]
     remote_bit, remote_npz = "/tmp/lif_step_overlay.bit", "/tmp/rb_fullnet_bundle.npz"
     remote_py, remote_out = "/tmp/phase4_fpga_rb_fullnet_runthrough_board.py", "/tmp/rb_fullnet_board.json"
     hwh = args.bit.with_suffix(".hwh")

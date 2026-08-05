@@ -1,0 +1,52 @@
+# openXC7 / Phase4.1 FPGA toolchain pin — 陈正共 (G4)
+# Tools live under third_party/openxc7-try/ (gitignored bulk); this file is the
+# clean-machine recipe. Verify chipdb sha256 after bbaexport+bbasm.
+
+schema: third-party-lock-v0
+part: xc7z020clg400-1
+family: zynq7
+updated: 2026-07-30
+agent: ChenZhengGong
+
+components:
+  yosys:
+    source: distro /usr/bin/yosys
+    version: "0.33 (git sha1 2584903a060)"
+    note: system package; pin OS image or build from https://github.com/YosysHQ/yosys @2584903a060
+
+  nextpnr-xilinx:
+    repo: https://github.com/openXC7/nextpnr-xilinx.git
+    commit: 62839b34304705eb8a0e44398a740fb701d27b17
+    branch_hint: stable-backports
+    build_dir: third_party/openxc7-try/nextpnr-xilinx/build
+    binary: nextpnr-xilinx
+
+  prjxray:
+    repo: https://github.com/openXC7/prjxray.git
+    # local checkout may track openXC7 fork; recorded HEAD:
+    commit: c9f02d8576042325425824647ab5555b1bc77833
+    build_note: cmake with -Wno-error=deprecated-declarations for xc7frames2bit
+    binary: xc7frames2bit
+    fasm2frames: third_party/openxc7-try/prjxray/utils/fasm2frames.py
+
+  prjxray-db:
+    repo: https://github.com/f4pga/prjxray-db.git
+    commit: 0a0addedd73e7e4139d52a6d8db4258763e0f1f3
+    path: third_party/openxc7-try/prjxray-db
+
+  chipdb:
+    file: third_party/openxc7-try/chipdb/xc7z020clg400-1.bin
+    bytes: 136149868
+    sha256: a8829df883134b0b5b869ad3c63cfe35637dc4db42339b1d8138c4aaa1abc826
+    generate: |
+      nextpnr-xilinx/bbaexport.py --device xc7z020clg400-1 ...
+      bbasm chipdb/xc7z020clg400-1.bba chipdb/xc7z020clg400-1.bin
+
+reproduce_smoke: |
+  python3 scripts/phase4_fpga_z2_openxc7_try.py --design soft_ps7 --gate
+  python3 scripts/phase4_fpga_z2_openxc7_try.py --design lif_open --gate
+
+known_limits:
+  - nextpnr-xilinx on this chipdb fails CARRY routing for counter/LIF hard mul
+  - use fpga/rtl/lif_step_open.v (soft mul) for open bitstream path
+  - Vivado path still uses fpga/rtl/lif_step.v

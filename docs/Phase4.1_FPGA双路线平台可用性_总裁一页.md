@@ -1,55 +1,69 @@
 # FPGA 双路线平台可用性 · 总裁一页（阶段结论）
 
-> **日期**：2026-07-28 · **负责人**：陈正共  
-> **裁决**：F1–F5（双通 + A2 必做）  
+> **日期**：2026-07-30 · **负责人**：陈正共  
+> **裁决**：F1–F5（双通 + A2 必做）· F6 安全可控优先  
 > **计划**：[`plans/2026-07-28-fpga-both-routes-runthrough.md`](./plans/2026-07-28-fpga-both-routes-runthrough.md)  
-> **纪律**：合 PR ≠ 关口关闭；本页≠「Phase4.1 了结」。
+> **纪律**：合 PR ≠ 关口关闭；本页≠「Phase4.1 了结」。  
+> **目标评审**：[`FPGA_按项目目标_独立评审_Opus_V0.md`](./FPGA_按项目目标_独立评审_Opus_V0.md)（汇报以目标为准，不以流程表为完备标尺）
 
 ---
 
 ## 0. Phase4.1 的意义
 
-平台可行性 + **F4 双通**：加速与整网都要跑通。  
-整网在 Z2 = **分时**（并行 LUT 墙仍成立，不再停在「墙」上交差）。
+平台可行性 + **F4 双通**：要证明加速路径与整网路径在平台上**能否跑对**。  
+整网在 Z2 = **分时**（并行 LUT 墙仍成立）。
 
-| 账 | 今日答案 |
-|----|----------|
+| 账 | 今日答案（诚实口径） |
+|----|----------------------|
 | Atlas 主链 / G-LAT | ✅ #13 |
-| **R-A 加速跑通** | ✅ 同板向量入链 #16 + **Atlas↔PYNQ A2 PASS**（本枝） |
-| **R-B 整网跑通** | ✅ **分时整网 PASS**（LIF 全 PL；fc 在 PS）；并行仍不可用 |
+| **R-A 卸载路径功能连通** | ✅ Atlas↔PYNQ A2（**非正加速**；相对 Atlas 整网为性能负增益量级） |
+| **R-B Zynq 板内整网** | ✅ 分时跑通：**fc\* 在 ARM PS，LIF 在 FPGA PL**（FPGA 算术量占比极低，勿称「FPGA 整网」） |
+| R-B 并行 256 LIF | ❌ 资源墙（定量依据待约束进仓后重算） |
 
 ---
 
-## 1. 双通证据（2026-07-28）
+## 1. 双通证据
 
 | 路线 | 结果 | 证据 | 人话 |
 |------|------|------|------|
-| **R-A A2** | **PASS** | `fpga_ra_atlas_mlif_inchain_gate.json` | Atlas 定点 fc*/lif2 ↔ TCP:9530 ↔ PYNQ lif1 PL；N=20 pred 一致 **100%**、标签 **95%** |
-| **R-B TMD** | **PASS** | `fpga_rb_fullnet_runthrough_gate.json` | 同板分时整网；lif1+lif2 上 PL；N=20 pred **100%**、标签 **95%** |
-| R-B 并行 | FAIL（保留） | `fpga_rb_fullnet_platform_gate.json` | 379×256 > Z2 LUT |
-
-延迟均远逊 G-LAT（MMIO/分时）——**功能跑通 ≠ 延迟过尺**。
+| **R-A A2** | **功能 PASS** | `fpga_ra_atlas_mlif_inchain_gate.json` | 卸载路径 pred 一致；**延迟远逊 G-LAT**；禁用「加速跑通」措辞 |
+| **R-B TMD** | **板内 PASS** | `fpga_rb_fullnet_runthrough_gate.json` | Zynq 板内分时整网；**不是**全部算力在 FPGA |
+| R-B 并行 | FAIL（保留） | `fpga_rb_fullnet_platform_gate.json` | 并行不可用 |
 
 ---
 
-## 2. 建议
+## 2. F6 安全可控（待总裁 D1–D3）
 
-1. 推理产品主链仍可优先 **Atlas 整网**；FPGA 加速路径（A2）与板内整网分时路径均已证明「能跑对」。  
-2. 若要逼近 G-LAT：须片上调度/批量 MMIO/更大器件——另立项。  
-3. **Phase8**：F2 默认仍开；双通已齐，是否解除 → 请你书面一句。  
-4. **F6 安全可控优先**（2026-07-28）：验证主链走开源（Verilator 等）；**Vivado 仅快验/对照出 bit**。策略：[`FPGA_工具链安全可控策略_V0.md`](./FPGA_工具链安全可控策略_V0.md)；计划：[`plans/2026-07-28-fpga-sovereign-toolchain.md`](./plans/2026-07-28-fpga-sovereign-toolchain.md)。S0：Verilator 门 + RTL-CR 已绿（CI `N-CI-VERILATOR`）。
+| 项 | 状态 |
+|----|------|
+| S0 开源前仿 + RTL-CR + CI | 部分成立（Verilator 门实） |
+| S1 Yosys 对照 + Vivado 钉版本 | 已合 #19 |
+| S2 评估 + blinky 开源出 bit/上板 | 证据在 PR#20 枝；**LIF 开源出 bit 未通** |
+| 全链路自主可控交付 | **未交付**（见目标评审 G1–G8） |
+
+**须总裁书面裁定（未裁定前不得勾「F6 全链路完成」）**
+
+| # | 议题 |
+|---|------|
+| **D1** | F6「全链路可控」是否批准分阶段？（待裁定） |
+| **D2** | 「FPGA 整网」是否接受「ARM 跑 fc + FPGA 跑 LIF」并改措辞？（建议：接受事实、改措辞） |
+| **D3** | 「加速」是否要求正加速比？（建议：要求则另立性能工单；功能连通另述） |
 
 ---
 
 ## 3. 勾选
 
-- [x] F4 双通批注 · A2 必做  
-- [x] B1 分时整网跑通  
-- [x] A2 Atlas↔FPGA 加速入链  
-- [x] 双通汇总 PR **#17**（不代合）  
-- [x] F6 安全可控优先 · S0 验证链可控（Verilator + RTL-CR + 策略 V0）
-- [x] F6 S1 实现链降依赖（Yosys 对照 + Vivado 钉版本指纹 + batch TCL；PR 待审）  
+- [x] F4 双通批注 · A2 必做（功能连通）  
+- [x] B1 Zynq 板内分时整网跑通（诚实口径）  
+- [x] A2 Atlas↔FPGA 卸载入链（非正加速）  
+- [x] 双通汇总 PR **#17**  
+- [x] F6-S0 验证链部分（Verilator + RTL-CR）  
+- [x] F6-S1 实现链降依赖（#19）  
+- [ ] F6「全链路可控」完成 — **待 D1**  
+- [ ] F6-S2 视为 F6 完成 — **待 D1**；评估/blinky 证据另计  
+- [ ] Phase4.1 关口关闭 — **否**  
+- [ ] Phase8 — **默认仍阻塞**  
 
 ---
 
-*陈正共 · ChenZhengGong*
+*陈正共 · ChenZhengGong · 2026-07-30 按目标评审修订*

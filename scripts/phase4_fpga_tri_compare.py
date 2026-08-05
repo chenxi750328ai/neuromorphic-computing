@@ -24,7 +24,7 @@ def main() -> int:
     p.add_argument("--checkpoint", type=Path, default=ROOT / "runs" / "20260527T092534Z" / "checkpoint.pt")
     p.add_argument("--host", default="192.168.137.2")
     p.add_argument("--om", default="/tmp/phase4_snn/mnist_snn.om")
-    p.add_argument("--atlas-pass", default="Mind@123")
+    p.add_argument("--atlas-pass", default="", help="env ATLAS_PASS/NEURO_ATLAS_PASS")
     p.add_argument("--samples", type=int, default=8)
     p.add_argument("--seed", type=int, default=7)
     p.add_argument("--skip-atlas", action="store_true")
@@ -51,7 +51,7 @@ def main() -> int:
         batch_path = poc_dir / "tri_compare_inputs.npy"
         np.save(batch_path, xs)
 
-        scp_base = ["sshpass", "-p", args.atlas_pass, "scp", "-o", "StrictHostKeyChecking=no"]
+        scp_base = ["sshpass", "-p", args.atlas_pass, "scp", "-o", "StrictHostKeyChecking=accept-new"]
         target = f"root@{args.host}"
         subprocess.run(scp_base + [str(batch_path), f"{target}:/tmp/phase4_snn/tri_compare_inputs.npy"], check=True)
         subprocess.run(
@@ -66,7 +66,7 @@ def main() -> int:
                 args.atlas_pass,
                 "ssh",
                 "-o",
-                "StrictHostKeyChecking=no",
+                "StrictHostKeyChecking=accept-new",
                 target,
                 "bash -lc 'source /usr/local/Ascend/ascend-toolkit/set_env.sh && "
                 "export PYTHONPATH=/usr/local/Ascend/thirdpart/aarch64/acllite:$PYTHONPATH && "

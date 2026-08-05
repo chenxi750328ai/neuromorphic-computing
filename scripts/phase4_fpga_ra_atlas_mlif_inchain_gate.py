@@ -19,6 +19,7 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
+from neuro_fpga_lab_auth import require_pass, scp_cmd, ssh_cmd  # noqa: E402
 from phase4_fpga_snn_fixedpoint import FixedPointSNN, linear_fp, lif_step_fp, to_fp  # noqa: E402
 from train_mnist_snn import loaders  # noqa: E402
 
@@ -45,25 +46,17 @@ def host_preds(net: FixedPointSNN, xs: np.ndarray) -> list[int]:
     return out
 
 
-def ssh_base(user: str, host: str, password: str) -> list[str]:
-    return ["sshpass", "-p", password, "ssh", "-o", "StrictHostKeyChecking=no", f"{user}@{host}"]
-
-
-def scp_base(password: str) -> list[str]:
-    return ["sshpass", "-p", password, "scp", "-o", "StrictHostKeyChecking=no"]
-
-
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--checkpoint", type=Path, default=DEFAULT_CKPT)
     ap.add_argument("--data", type=Path, default=ROOT / "data" / "mnist")
-    ap.add_argument("--samples", type=int, default=10)
+    ap.add_argument("--samples", type=int, default=20, help="验收默认 N≥20")
     ap.add_argument("--pynq", default="192.168.137.3")
     ap.add_argument("--pynq-user", default="xilinx")
-    ap.add_argument("--pynq-pass", default="xilinx")
+    ap.add_argument("--pynq-pass", default="", help="或环境变量 PYNQ_PASS / NEURO_PYNQ_PASS")
     ap.add_argument("--atlas", default="192.168.137.2")
     ap.add_argument("--atlas-user", default="root")
-    ap.add_argument("--atlas-pass", default="Mind@123")
+    ap.add_argument("--atlas-pass", default="", help="或环境变量 ATLAS_PASS / NEURO_ATLAS_PASS")
     ap.add_argument("--bit", type=Path, default=DEFAULT_BIT)
     ap.add_argument("--fpga-port", type=int, default=9530)
     ap.add_argument(
@@ -73,6 +66,9 @@ def main() -> int:
     )
     ap.add_argument("--gate", action="store_true")
     args = ap.parse_args()
+
+    pynq_pass = args.pynq_pass or require_pass("PYNQ", "PYNQ_PASS", "NEURO_PYNQ_PASS")
+    atlas_pass = args.atlas_pass or require_pass("Atlas", "ATLAS_PASS", "NEURO_ATLAS_PASS")
 
     net = FixedPointSNN.from_checkpoint(args.checkpoint)
     _, tl = loaders(args.data, batch_size=1)
@@ -88,10 +84,10 @@ def main() -> int:
 
     pynq = f"{args.pynq_user}@{args.pynq}"
     atlas = f"{args.atlas_user}@{args.atlas}"
-    scp = scp_base(args.pynq_pass)
-    scp_a = scp_base(args.atlas_pass)
-    ssh_p = ssh_base(args.pynq_user, args.pynq, args.pynq_pass)
-    ssh_a = ssh_base(args.atlas_user, args.atlas, args.atlas_pass)
+    scp = scp_cmd(pynq_pass)
+    scp_a = scp_cmd(atlas_pass)
+    ssh_p = ssh_cmd(args.pynq_user, args.pynq, pynq_pass)
+    ssh_a = ssh_cmd(args.atlas_user, args.atlas, atlas_pass)
 
     remote_bit = "/tmp/lif_step_overlay.bit"
     remote_daemon = "/tmp/phase4_fpga_pynq_lif1_daemon.py"
@@ -104,17 +100,17 @@ def main() -> int:
     subprocess.run(scp + [str(DAEMON_PY), f"{pynq}:{remote_daemon}"], check=True)
 
     # kill old daemon; start new
-    subprocess.run(ssh_p + ["echo", args.pynq_pass, "|", "sudo", "-S", "pkill", "-f", "phase4_fpga_pynq_lif1_daemon.py"], check=False)
+    subprocess.run(ssh_p + ["echo", pynq_pass, "|", "sudo", "-S", "pkill", "-f", "phase4_fpga_pynq_lif1_daemon.py"], check=False)
     # simpler:
     subprocess.run(
         ssh_p
         + [
-            f"echo {args.pynq_pass} | sudo -S pkill -f phase4_fpga_pynq_lif1_daemon.py || true"
+            f"echo {pynq_pass} | sudo -S pkill -f phase4_fpga_pynq_lif1_daemon.py || true"
         ],
         check=False,
     )
     start_cmd = (
-        f"echo {args.pynq_pass} | sudo -S bash -c '"
+        f"echo {pynq_pass} | sudo -S bash -c '"
         f"nohup /usr/local/share/pynq-venv/bin/python3 {remote_daemon} "
         f"--port {args.fpga_port} --bit {remote_bit} --autoload "
         f">/tmp/lif1_daemon.log 2>&1 &'"
@@ -178,6 +174,7 @@ def main() -> int:
         "agent": "ChenZhengGong",
         "route": "R-A A2 Atlas↔PYNQ M-lif",
         "checkpoint": str(args.checkpoint),
+        "bit": str(args.bit),
         "topology": "Atlas Q16.16 fc*/lif2 ↔ TCP:9530 ↔ PYNQ lif1 PL TMD",
         "host_proxy": {"preds": hp, "n": len(ys)},
         "atlas_client": board,

@@ -139,7 +139,7 @@ def main() -> int:
     ap.add_argument("--data", type=Path, default=ROOT / "data" / "mnist")
     ap.add_argument("--samples", type=int, default=100)
     ap.add_argument("--host", default="192.168.137.3")
-    ap.add_argument("--pass", dest="password", default="xilinx")
+    ap.add_argument("--pass", dest="password", default="", help="env PYNQ_PASS/NEURO_PYNQ_PASS")
     ap.add_argument(
         "--bit",
         type=Path,

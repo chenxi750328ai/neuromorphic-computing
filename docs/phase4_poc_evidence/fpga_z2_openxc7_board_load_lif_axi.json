@@ -1,0 +1,100 @@
+{
+  "schema": "phase4.1-fpga-z2-openxc7-board-load-v0",
+  "generated_at": "2026-08-02T10:33:14.969955+08:00",
+  "agent": "ChenZhengGong",
+  "board": "PYNQ-Z2",
+  "host": "192.168.137.3",
+  "bit": "fpga/openxc7_try/build/blinky_lif_axi.bit",
+  "stages": {
+    "preflight": {
+      "ok": true,
+      "bit": "fpga/openxc7_try/build/blinky_lif_axi.bit",
+      "bit_bytes": 4045731,
+      "host": "192.168.137.3"
+    },
+    "ping": {
+      "cmd": [
+        "ping",
+        "-c",
+        "2",
+        "-W",
+        "2",
+        "192.168.137.3"
+      ],
+      "exit": 0,
+      "ok": true,
+      "seconds": 1.01,
+      "stdout_tail": "PING 192.168.137.3 (192.168.137.3) 56(84) bytes of data.\n64 bytes from 192.168.137.3: icmp_seq=1 ttl=63 time=2.05 ms\n64 bytes from 192.168.137.3: icmp_seq=2 ttl=63 time=1.79 ms\n\n--- 192.168.137.3 ping statistics ---\n2 packets transmitted, 2 received, 0% packet loss, time 1053ms\nrtt min/avg/max/mdev = 1.793/1.919/2.045/0.126 ms\n",
+      "stderr_tail": ""
+    },
+    "scp_bit": {
+      "cmd": [
+        "sshpass",
+        "-p",
+        "***",
+        "scp",
+        "-o",
+        "StrictHostKeyChecking=accept-new",
+        "-o",
+        "ConnectTimeout=8",
+        "…"
+      ],
+      "exit": 0,
+      "ok": true,
+      "seconds": 3.93,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    "scp_loader": {
+      "cmd": [
+        "sshpass",
+        "-p",
+        "***",
+        "scp",
+        "-o",
+        "StrictHostKeyChecking=accept-new",
+        "-o",
+        "ConnectTimeout=8",
+        "…"
+      ],
+      "exit": 0,
+      "ok": true,
+      "seconds": 2.36,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    "download": {
+      "exit": 0,
+      "ok": true,
+      "seconds": 14.35,
+      "stdout_tail": "{\"bit\": \"/tmp/blinky_openxc7.bit\", \"methods\": [{\"name\": \"pynq.Bitstream.download\", \"ok\": true}], \"/sys/class/fpga_manager/fpga0/state\": \"operating\", \"/sys/class/fpga_manager/fpga0/name\": \"Xilinx Zynq FPGA Manager\", \"dmesg_fpga_tail\": [\"[   40.223082] fpga_manager fpga0: Xilinx Zynq FPGA Manager registered\", \"[  187.947264] fpga_manager fpga0: writing blinky_openxc7.bin to Xilinx Zynq FPGA Manager\", \"[  257.265760] fpga_manager fpga0: writing blinky_openxc7.bin to Xilinx Zynq FPGA Manager\"], \"ok\": true, \"error\": null}\n",
+      "stderr_tail": "[sudo] password for xilinx: ",
+      "board_json": {
+        "bit": "/tmp/blinky_openxc7.bit",
+        "methods": [
+          {
+            "name": "pynq.Bitstream.download",
+            "ok": true
+          }
+        ],
+        "/sys/class/fpga_manager/fpga0/state": "operating",
+        "/sys/class/fpga_manager/fpga0/name": "Xilinx Zynq FPGA Manager",
+        "dmesg_fpga_tail": [
+          "[   40.223082] fpga_manager fpga0: Xilinx Zynq FPGA Manager registered",
+          "[  187.947264] fpga_manager fpga0: writing blinky_openxc7.bin to Xilinx Zynq FPGA Manager",
+          "[  257.265760] fpga_manager fpga0: writing blinky_openxc7.bin to Xilinx Zynq FPGA Manager"
+        ],
+        "ok": true,
+        "error": null
+      }
+    },
+    "observe": {
+      "ok": true,
+      "seconds": 6.0,
+      "note": "人眼确认 LD0–LD3 是否按 ~2s 节拍闪烁；本脚本不摄录"
+    }
+  },
+  "pass_board_load": true,
+  "conclusion": "BOARD_LOAD_OK",
+  "honesty": "load_ok=PL 下载无异常且 dmesg/board_json 可核；LED 功能需人眼确认"
+}

@@ -29,7 +29,7 @@ try {
     $listen = Read-SerialFor $sp 15
     if ($listen) { Write-Host $listen } else { Write-Host "(no data yet)" }
 
-    foreach ($cmd in @("`r", "`r`n", "root`r", "Mind@123`r", "`r", "ip a`r", "ifconfig`r", "uname -a`r")) {
+    foreach ($cmd in @("`r", "`r`n", "root`r", "$env:ATLAS_PASS`r", "`r", "ip a`r", "ifconfig`r", "uname -a`r")) {
         $sp.Write($cmd)
         Start-Sleep -Milliseconds 800
         $out = Read-SerialFor $sp 2

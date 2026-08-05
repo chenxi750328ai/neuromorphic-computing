@@ -28,7 +28,7 @@ def try_ssh(ip: str, user: str = "xilinx", timeout: int = 5) -> tuple[bool, str]
         [
             "ssh",
             "-o",
-            "StrictHostKeyChecking=no",
+            "StrictHostKeyChecking=accept-new",
             "-o",
             f"ConnectTimeout={timeout}",
             "-o",
