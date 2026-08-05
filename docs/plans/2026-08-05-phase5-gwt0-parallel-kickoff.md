@@ -39,9 +39,11 @@
 2. `scripts/phase5_event_loader.py` + smoke 测试  
 3. `--smoke` → `runs/m1_perception/loader_smoke.json`  
 
-## Phase4.2 下一刀（与上并行）
+## Phase4.2 下一刀（与 Phase5 并行）
 
-见 STALL 登记 §2 KPI（阈值待总裁钉）+ F7 延迟一页工程方向。
+- **P4.2-LAT**：单张 e2e ≤ **100 ms/张**（总裁已接受；当前 ≈306 s/张）  
+- 其它业务指标：**单独定标**，不混进本门  
+- 工程：见 STALL 登记 + F7 延迟一页
 
 ---
 
