@@ -1,3 +1,7 @@
+## 2026-08-05
+- **16:40 Phase4.2 续**：pathScope 扩完（VC `695d22f`）；DEV 返工离线工程 tip `74a79c1`（tick RTL+Verilator+overlay v2 TCL）；draft **PR [#29](https://github.com/chenxi750328ai/neuromorphic-computing/pull/29)**；LAT 门禁仍红（≈306s）；**PYNQ `.3` DOWN**（陈小六 device-lab；Atlas `.2` UP）→ 需人上电；STALL 保持。功能 F7 WO 仍 awaiting_acceptance。
+- **午前**：F7 合规重复合 #26；4.1≠性能过 → 立 4.2 + STALL 表；并行 Phase5/GWT 文档 PR#28。
+
 ## 2026-08-04
 - **19:42 F7 N=20 PASS**：`PASS_f7_pl_fc` · board_match_rate=**1.0** · pl_model=1.0 · acc_vs_label=0.95 · fc_on_pl/lif_on_pl · mac=mmio · wall≈102min。证据 `fpga_rb_fullnet_pl_fc_gate.json`。下一步 WO-DEV 复验/checker。**未代关 Phase4.1**（待 WO+PR）。
 - **11:42 自驱唤醒执行**：推送 `feature/phase4.1-fpga-sovereign-s2`（`0e4cdb8`+`0f88064`）并开 **PR [#21](https://github.com/chenxi750328ai/neuromorphic-computing/pull/21)**（openXC7 LIF AXI 入链 G1–G8 + PYNQ 硬件狗）。本地 `goal_verify` 仍 **8/8**。**≠关口关闭**；合 main 待 neuro-ci。

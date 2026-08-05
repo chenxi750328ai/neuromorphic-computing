@@ -75,7 +75,7 @@ Phase4.1 功能可用 ──┬──► Phase5 + GWT-0/6 仿真（并行）
 | 其它业务指标 | ✅ 同意：**单独定标**（不塞进 4.2-LAT） |
 | 本 STALL 表 | ✅ 按登记执行 |
 
-下一刀：**WO-DEV-NEURO-F7-PERF** exec rework（2026-08-05T1633）：离线充实 `fullnet_tick_scheduler.v` + Verilator 骨架 + overlay v2 TCL 草案；**板 192.168.137.3 DOWN** → perf JSON 标 `board.status=unreachable`；**P4.2-LAT 仍 FAIL**（≈306s/张）→ **STALL 保持** → 需 overlay v2 bitstream + 板可达复测。
+下一刀：**WO-DEV-NEURO-F7-PERF** exec rework（2026-08-05T1633→1637）：离线充实 tick RTL + Verilator 骨架 + overlay v2 TCL（neuro `74a79c1`）；draft **PR [#29](https://github.com/chenxi750328ai/neuromorphic-computing/pull/29)**；陈小六确认 **PYNQ DOWN**（Atlas UP）；perf JSON `board.status=unreachable`；**P4.2-LAT 仍 FAIL**（≈306s/张）→ **STALL 保持** → **人上电** + overlay v2 bitstream + 无 skip-board 复测。
 
 ---
 
