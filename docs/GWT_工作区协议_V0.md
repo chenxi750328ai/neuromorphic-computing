@@ -139,6 +139,19 @@ class GWTModule(Protocol):
 | GWT-0-b | K/D/k_active 默认值冻结 | 改须 CCB 或总裁 hotfix |
 | GWT-0-c | 竞争写伪代码可实现 | `scripts/gwt_workspace.py` 单测（Phase6 前可 stub） |
 
+### 6.1 并行开工核对（2026-08-06 · 板待修）
+
+机读：`python3 scripts/gwt0_protocol_gate.py --gate` → `runs/gwt/gwt0_protocol_gate.json`
+
+| 项 | 状态 |
+|----|------|
+| K=32 / k_active=8 / D=256 与代码常量对齐 | ✅ 机检（GWT-0-b） |
+| 竞争写 top-k + 广播读可跑 | ✅ `gwt_workspace` + gate 脚本（GWT-0-c） |
+| workspace ≠ M4 emit 文本 | ✅ 协议 §1 已钉；实现 `M4Output.read_emit` 分离 |
+| 批「按 V0 开 GWT-1 仿真」 | ☐ **待人**（GWT-0-a · PL 已推机检，总裁/正式批注） |
+
+**纪律**：本门禁不依 FPGA；不宣称板上 workspace。
+
 ---
 
 ## 7. Non-goals（V0 不做）

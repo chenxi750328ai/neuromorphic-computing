@@ -1,0 +1,33 @@
+{
+  "schema": "gwt0-protocol-gate-v1",
+  "generated_at": "2026-08-06T11:40:19.248493+08:00",
+  "agent": "ag-chenzhenggong",
+  "ok": true,
+  "doc": "docs/GWT_工作区协议_V0.md",
+  "code_defaults": {
+    "K": 32,
+    "k_active": 8,
+    "D": 256,
+    "version": 0
+  },
+  "doc_defaults": {
+    "K": 32,
+    "k_active": 8,
+    "D": 256
+  },
+  "align": {
+    "K": true,
+    "k_active": true,
+    "D": true
+  },
+  "compete_write": {
+    "ok": true,
+    "tick": 1,
+    "active": 8,
+    "writes": 8
+  },
+  "human_pending": [
+    "GWT-0-a PL+总裁批注「按 V0 开 GWT-1 仿真」"
+  ],
+  "board_independent": true
+}

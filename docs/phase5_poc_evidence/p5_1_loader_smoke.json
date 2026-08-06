@@ -1,0 +1,37 @@
+{
+  "schema": "phase5-p5-1-event-loader-smoke-v1",
+  "generated_at": "2026-08-06T11:40:55.738529+08:00",
+  "agent": "ag-chenzhenggong",
+  "ok": true,
+  "wall_ms": 135.219,
+  "batch": {
+    "n": 32,
+    "T": 10,
+    "shape": [
+      32,
+      10,
+      28,
+      28
+    ],
+    "encoding": "mnist_rate_poisson",
+    "mean_spike_rate": 0.13053651147959183,
+    "label_hist": {
+      "0": 5,
+      "1": 5,
+      "2": 1,
+      "3": 3,
+      "4": 2,
+      "6": 4,
+      "7": 2,
+      "8": 6,
+      "9": 4
+    }
+  },
+  "nmnist": {
+    "available": false,
+    "path": "/home/cx/neuromorphic-computing/data/nmnist",
+    "reason": "absent"
+  },
+  "board_independent": true,
+  "note": "P5-1 smoke · MNIST→rate events · Phase4.2 board deferred"
+}
