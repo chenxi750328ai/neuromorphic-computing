@@ -1,4 +1,5 @@
 ## 2026-08-06
+- **11:45 自驱唤醒**：`.3` 仍 DOWN → 人修板/Approve 机尽；不空转派 PERF。续并行 **P5-2** `train_m1_perception_snn.py --smoke` PASS（feat_dim=256 · ≠MnistSNN）；证据 `p5_2_perception_smoke.json`；推 PR#30。修正 focus：并行软件 + 等人。wake consume。
 - **11:40 板待修→并行软件轨**：P5-1 `scripts/phase5_event_loader.py` smoke PASS（MNIST→rate，n=32,T=10）；GWT-0 `gwt0_protocol_gate.py --gate` PASS；分支 `feature/phase5-p5-1-gwt0-parallel`。4.2 上板暂停；STALL 保持；PR#28 仍待人 Approve。
 
 ## 2026-08-05
