@@ -49,6 +49,15 @@
 | 单测 | ✅ `tests/test_phase5_event_loader.py` |
 | 下一 | P5-2 独立感知 SNN（仍不依板） |
 
+### P5-2 落地（2026-08-06 续）
+
+| 项 | 状态 |
+|----|------|
+| 模型 | ✅ `PerceptionSNN`（事件体入 · feat_dim=256 · ≠ MnistSNN） |
+| 脚本 | ✅ `.venv/bin/python scripts/train_m1_perception_snn.py --smoke --gate` |
+| 证据 | ✅ `docs/phase5_poc_evidence/p5_2_perception_smoke.json` |
+| 说明 | 1 epoch smoke 通即可；正式 acc KPI 另定，不绑板上 |
+
 ### GWT-0 机检（同日）
 
 | 项 | 状态 |
