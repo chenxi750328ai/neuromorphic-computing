@@ -1,0 +1,21 @@
+{
+  "schema": "phase5-p5-2-perception-snn-smoke-v1",
+  "generated_at": "2026-08-06T11:45:32.332825+08:00",
+  "agent": "ag-chenzhenggong",
+  "ok": true,
+  "model": "PerceptionSNN",
+  "not_mnist_snn": true,
+  "feat_dim": 256,
+  "epochs": 1,
+  "n_train": 256,
+  "n_test": 64,
+  "T": 8,
+  "device": "cpu",
+  "train_acc": 0.1016,
+  "test_acc": 0.1562,
+  "last_loss": 2.302585,
+  "wall_ms": 174.189,
+  "checkpoint": "runs/m1_perception/perception_snn_smoke.pt",
+  "board_independent": true,
+  "note": "P5-2 smoke · event-in PerceptionSNN · Phase4.2 board deferred"
+}
